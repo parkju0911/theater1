@@ -5,6 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="../resources/SE2/js/HuskyEZCreator.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
 h1 {
@@ -57,6 +61,7 @@ input {
 	width: 135px;
 }
 </style>
+
 <script type="text/javascript">
 	$(function() {
 		//SmartEditor start
@@ -135,9 +140,7 @@ input {
 <c:import url="../temp/header.jsp"></c:import>
 
 <div class="board_wrap">
-<script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="../resources/SE2/js/HuskyEZCreator.js"></script>
+
 	<h1>${board}Write Form</h1>
 
 	<form action="${board}Write" method="post" id="frm" enctype="multipart/form-data">
