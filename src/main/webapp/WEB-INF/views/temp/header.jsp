@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!-- header 시작 -->
 <header>
 	<div class="header_wrap">
@@ -12,30 +12,30 @@
 			</div>
 		</div>
 		<div class="member_wrap">
-			<%-- <c:if test="${empty member}">  --%>
-			<li><a
-				href="${pageContext.request.contextPath}/member/memberLogin.member">Login</a>
-				<a
-				href="${pageContext.request.contextPath}/member/memberAgree.member">Join</a>
-			</li>
-			<%-- </c:if>
-						<c:if test="${not empty member}">
-							<c:if test="${member.id eq 'admin'}">
-								<li>
-									<a>관리자</a>
-									<a href="${pageContext.request.contextPath}/member/memberLogout.member">Logout</a>
-								</li>
-							</c:if>
-							<c:if test="${member.id ne 'admin'}">
-								
-								<li><p style="font-family: 'Nanum Gothic';	font-size: 8pt;	color: #795548;	font-weight: 600;">
-								${member.id}님, 환영합니다 :)</p>
-									<a href="${pageContext.request.contextPath}/member/memberLogout.member">Logout</a>
-									<a href="${pageContext.request.contextPath}/member/memberMypage.member">MYTicket</a>
-									<a href="${pageContext.request.contextPath}/member/memberMypage.member">MYPage</a>
-								</li>
-							</c:if>
-						</c:if>  --%>
+			<c:if test="${member eq null}">
+				<li>
+					<a href="${pageContext.request.contextPath}/member/memberLogin">Login</a>
+					<a href="${pageContext.request.contextPath}/member/memberJoin">Join</a>
+				</li>
+			</c:if>
+			<c:if test="${member ne null}">
+				<c:if test="${member.id eq 'admin'}">
+					<li>
+						<a>관리자</a>
+						<a href="${pageContext.request.contextPath}/member/memberLogout">Logout</a>
+					</li>
+				</c:if>
+				<c:if test="${member.id ne 'admin'}">
+					<li>
+						<p style="font-family: 'Nanum Gothic';	font-size: 8pt;	color: #795548;	font-weight: 600;">
+								${member.id}님, 환영합니다 :)
+						</p>
+						<a href="${pageContext.request.contextPath}/member/memberLogout">Logout</a>
+						<a href="${pageContext.request.contextPath}/member/memberMypage.member">MYTicket</a>
+						<a href="${pageContext.request.contextPath}/member/memberMypage">MYPage</a>
+					</li>
+				</c:if>
+			</c:if>
 		</div>
 		<div class="search_bar">
 			<input type="text" placeholder="연극 검색"><button>검색</button>
