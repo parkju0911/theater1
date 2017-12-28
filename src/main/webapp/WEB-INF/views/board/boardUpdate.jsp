@@ -119,8 +119,11 @@ input{
 	font-size: 17px;
 }
 </style>
+<link href="../resources/css/common/header.css" rel="stylesheet">
 </head>
 <body>
+<c:import url="../temp/header.jsp"></c:import>
+<div class="board_wrap">
 	<h1>${board} Update Form</h1>
 	<form action="${board}Update" method="post" enctype="multipart/form-data" id="frm">
 		<input type="hidden" name="num" value="${view.notice_num}">
@@ -146,5 +149,7 @@ input{
 	
 	<input type="button" id="savebutton" value="Update">
 	</form>
+	</div>
+<c:import url="../temp/footer.jsp"></c:import>
 </body>
 </html>

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 	
 <!-- header 시작 -->
 <header>
@@ -7,8 +6,8 @@
 		<div class="header_logo">
 			<div>
 				<%-- <a href="${pageContext.request.contextPath}/view/home.jsp"> --%>
-				<img id="main_logo" alt=""
-					src="${pageContext.request.contextPath}/resources/images/common/teatro_logo4.png"></a>
+				<a href="${pageContext.request.contextPath}">
+				<img id="main_logo" alt="" src="${pageContext.request.contextPath}/resources/images/common/teatro_logo4.png"></a>
 			</div>
 		</div>
 		<div class="member_wrap">

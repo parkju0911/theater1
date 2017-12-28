@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
@@ -58,8 +57,6 @@ input {
 	width: 135px;
 }
 </style>
-<script type="text/javascript"
-	src="../resources/SE2/js/HuskyEZCreator.js"></script>
 <script type="text/javascript">
 	$(function() {
 		//SmartEditor start
@@ -132,8 +129,15 @@ input {
 
 	});
 </script>
+<link href="../resources/css/common/header.css" rel="stylesheet">
 </head>
 <body>
+<c:import url="../temp/header.jsp"></c:import>
+
+<div class="board_wrap">
+<script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="../resources/SE2/js/HuskyEZCreator.js"></script>
 	<h1>${board}Write Form</h1>
 
 	<form action="${board}Write" method="post" id="frm" enctype="multipart/form-data">
@@ -160,5 +164,7 @@ input {
 		
 		<input type="button" id="savebutton" value="write">
 	</form>
+	</div>
+<c:import url="../temp/footer.jsp"></c:import>
 </body>
 </html>
