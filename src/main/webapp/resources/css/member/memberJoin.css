@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.o {
+    font-size: 16px;
+    color: #ffc108;
+    text-align: left;
+    font-weight: 500;
+}
+
+.member_txt {
+    width: 250px;
+    height: 33px;
+    padding-left: 10px;
+    background: #fcfcfc;
+    border: 1px solid #e6e6e6;
+}
