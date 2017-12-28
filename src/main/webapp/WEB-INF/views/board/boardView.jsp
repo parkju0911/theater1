@@ -25,8 +25,12 @@ td{
 	height: 100px;
 }
 </style>
+<link href="../resources/css/common/header.css" rel="stylesheet">
 </head>
 <body>
+<c:import url="../temp/header.jsp"></c:import>
+
+<div class="board_wrap">
 	<h1>${board} View Page</h1>
 	
 	<table>
@@ -52,5 +56,7 @@ td{
 	<a href="./${board}Delete?num=${view.notice_num}">DELETE</a>
 	
 	<a href="./${board}List">LIST</a>
+	</div>
+<c:import url="../temp/footer.jsp"></c:import>
 </body>
 </html>
