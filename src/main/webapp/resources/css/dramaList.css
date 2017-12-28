@@ -1,0 +1,460 @@
+@charset "UTF-8";
+
+html{
+    width: 100%;
+    height: 100%;
+}
+* {
+    padding: 0px;
+    margin: 0px;
+}
+div {
+	margin: 0;
+	padding: 0;
+	display: block;
+}
+a {
+	text-decoration: none;
+	color: #555;
+}
+
+/* body {
+    font-size: 14px;
+    line-height: 1.42857143;
+    margin-bottom: 220px;
+    color: #555;
+} */
+
+/* html, body {
+    font-family: 'Apple SD 산돌고딕 Neo','Apple SD Gothic Neo',"Helvetica Neue","HelveticaNeue",Helvetica,"Malgun Gothic","맑은 고딕",mg,sans-serif !important;
+} */
+
+.path-board {
+    overflow: hidden;
+    height: 30px;
+    line-height: 30px;
+}
+
+.path-board ol {
+    float: right;
+}
+
+.path-board li {
+    float: left;
+    font-size: 11px;
+    padding: 0 0 0 11px;
+    margin: 0 0 0 7px;
+    color: #757575;
+}
+
+.path-board li:first-child {
+    background: none;
+}
+
+.path-board li a {
+    font-size: 11px;
+    color: #757575;
+}
+
+.tit-board  {
+	min-height: 30px;
+	border-bottom: 1px solid #0000000d;
+	margin-top: 30ox;
+	margin: 50px auto;
+	}
+
+.tit-board p.img {
+    margin: 0 0 10px;
+    text-align: center;
+}
+
+.tit-board h2 {
+    display: inline-block;
+        font-size: 14pt;
+    line-height: 17px;
+    color: #2e2e2e;
+    font-weight: bold;
+}
+
+.tit-board p.info {
+    margin: 17px 0 0;
+    color: #939393;
+    font-size: 12px;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+    width: 1200px;
+        height: 500px;
+}
+.btn-group-vertical>.btn-group:after, .btn-group-vertical>.btn-group:before, .btn-toolbar:after, .btn-toolbar:before, .clearfix:after, .clearfix:before, .container-fluid:after, .container-fluid:before, .container:after, .container:before, .dl-horizontal dd:after, .dl-horizontal dd:before, .form-horizontal .form-group:after, .form-horizontal .form-group:before, .modal-footer:after, .modal-footer:before, .modal-header:after, .modal-header:before, .nav:after, .nav:before, .navbar-collapse:after, .navbar-collapse:before, .navbar-header:after, .navbar-header:before, .navbar:after, .navbar:before, .pager:after, .pager:before, .panel-body:after, .panel-body:before, .row:after, .row:before {
+    display: table;
+    content: " ";
+}
+
+
+.col-md-4 {
+    width: 30%;
+}
+
+.col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9 {
+    float: left;
+}
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.unpa-card:not(.user-card):not(.unpa-table-cell) {
+    width: 100%;
+    background-color: #fff;
+    position: relative;
+}
+
+.unpa-card-row .unpa-card {
+    margin: 0 0 2em;
+    display: block;
+    text-decoration: none;
+}
+
+.unpa-card:not(.user-card):not(.unpa-table-cell) .main-section>.user-info-link {
+    padding: 8px;
+    text-decoration: none;
+    border: none;
+    display: block;
+    -webkit-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
+    -webkit-box-shadow: inset 0 0 0 1px transparent;
+    -moz-box-shadow: inset 0 0 0 1px transparent;
+    box-shadow: inset 0 0 0 1px transparent;
+}
+
+element.style {
+    display: inline-block;
+}
+
+.unpa-card:not(.user-card):not(.unpa-table-cell) .main-section>.user-info-link>.user-info>.unpa-feed-user-info-box {
+    padding: 5px;
+    position: relative;
+    top: 2px;
+}
+
+.unpa-feed-user-info-box {
+    display: inline;
+    position: relative;
+    top: 2px;
+}
+
+.unpa-card:not(.user-card):not(.unpa-table-cell) .main-section>.user-info-link>.user-info>.unpa-feed-user-info-box>.user-profile-image {
+    vertical-align: inherit;
+}
+.unpa-feed-user-info-box .user-profile-image {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    vertical-align: middle;
+    background: no-repeat center center;
+    background-size: cover;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.unpa-card:not(.user-card):not(.unpa-table-cell) .main-section>.user-info-link>.user-info>.unpa-feed-user-info-box>.unpa-user-block {
+    display: inline-block;
+    color: #555;
+    position: relative;
+    top: -4px;
+}
+
+.unpa-feed-user-info-box .user-name {
+    font-weight: 600;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.unpa-feed-user-info-box .skin-type, .unpa-feed-user-info-box .skin-tone {
+    border: 1px solid #ccc;
+    color: #aaa;
+    -webkit-border-radius: 1em;
+    -moz-border-radius: 1em;
+    border-radius: 1em;
+    padding: 2px 5px;
+    font-size: 10px;
+    vertical-align: text-bottom;
+}
+
+.unpa-card:not(.user-card):not(.unpa-table-cell) .main-section>.user-info-link>.time {
+    font-size: 11px;
+    line-height: 32px;
+    height: 32px;
+    color: #888;
+    float: right;
+    margin-right: 5px;
+}
+
+
+.unpa-card:not(.user-card):not(.unpa-table-cell) .main-section div.main-image {
+    width: 100%;
+    height: 200px;
+    background: #fff no-repeat center center;   
+    position: relative;
+    border-bottom: 1px solid #f2f2f2;
+}
+.unpa-card:not(.user-card):not(.unpa-table-cell) .main-section .unpa-feed-card-hover-actions {
+    display: none;
+    opacity: 0;
+    -webkit-transition: opacity .2s ease-in-out;
+    transition: opacity .2s ease-in-out;
+}
+.unpa-card:not(.user-card):not(.unpa-table-cell) .main-section .unpa-feed-card-hover-actions .unpa-share-this-button {
+    position: absolute;
+    left: 8px;
+    top: 62px;
+    font-size: 15px;
+    z-index: 1;
+    background-color: #fff;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    padding: 0;
+    color: #888;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.sub-section>div.count-info div.like>a.like-button div.icon,.sub-section>a.count-info div.like>a.like-button div.icon {
+    background-image: url("../image/review/ic_heart_xs_normal.png");
+        margin-bottom: 20px;
+}
+}
+
+.unpa-card:not(.user-card):not(.unpa-table-cell) .main-section .unpa-feed-card-hover-actions div.number-of-images {
+    position: absolute;
+    right: 4px;
+    top: 62px;
+    color: #fff;
+    font-size: 12px;
+    line-height: 12px;
+    padding: 4px 6px;
+    z-index: 1;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    font-weight: bold;
+    text-shadow: 1px 1px #888;
+}
+
+.unpa-card:not(.user-card):not(.unpa-table-cell) .main-section div.main-image .content {
+    /* position: absolute; */
+    color: #fff;
+    max-width: 80%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    font-size: 12px;
+    opacity: 0;
+    -ms-transform: translate(-50%, -25%);
+    -webkit-transform: translate(-50%, -25%);
+    transform: translate(-50%, -25%);
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+.unpa-card:not(.user-card):not(.unpa-table-cell) .main-section divview-contents {
+    min-height: 100%;
+    position: relative;
+}
+.unpa-card:not(.user-card):not(.unpa-table-cell) .main-section div.review-contents>div {
+    padding: 12px;
+}
+.unpa-card.unpa-review .product-info {
+    position: relative;
+    min-height: 72px;
+   
+}
+
+.unpa-card.unpa-review .product-info .left {
+    float: left;
+    margin-right: 16px;
+}
+.unpa-card.unpa-review .product-info .product-image {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    border: 1px solid transparent;
+   /*  border-bottom-color: #f2f2f2; */
+    background: no-repeat center center;
+    background-size: contain;
+}
+
+.unpa-card.unpa-review .product-info .brand-name-and-rating .brand-name {
+    display: inline-block;
+        font-size: 19px;
+    font-weight: 600;
+    color: #333;
+
+}
+
+.unpa-card.unpa-review .product-info .product-name {
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+    margin-top: 9px;
+    line-height: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section {
+    border-top: 1px solid #f2f2f2 !important;
+}
+
+.unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>div.count-info, .unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>a.count-info {
+    display: inline;
+    vertical-align: middle;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #b4b4b4;
+    padding: 8px 12px;
+}
+
+.unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>div.count-info>div, .unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>a.count-info>div {
+    /* vertical-align: middle; */
+    display: inline-block;
+    margin-right: 12px;
+}
+
+
+.unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>div.count-info div.pouch>a.unpa-pouch-button div.icon, .unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>a.count-info div.pouch>a.unpa-pouch-button div.icon, .unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>div.count-info div.like>a.like-button div.icon, .unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>a.count-info div.like>a.like-button div.icon {
+    height: 14px;
+    width: 14px;
+    display: inline-block;
+    -webkit-background-size: contain;
+    background-size: contain;
+    vertical-align: middle;
+}
+
+.unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>div.count-info div.pouch>a.unpa-pouch-button div.count, .unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>a.count-info div.pouch>a.unpa-pouch-button div.count, .unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>div.count-info div.like>a.like-button div.count, .unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>a.count-info div.like>a.like-button div.count {
+    display: inline;
+    position: relative;
+    top: 1px;
+}
+
+.unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>div.count-info>div img, .unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>a.count-info>div img, .unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>div.count-info>div div, .unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>a.count-info>div div {
+    height: 14px;
+}
+
+.unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>div.count-info>div, .unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>a.count-info>div {
+    /* vertical-align: middle; */
+    display: inline-block;
+    margin-right: 12px;
+}
+
+img {
+    vertical-align: middle;
+}
+
+
+.unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>div.count-info div.pouch>a.unpa-pouch-button div.icon, .unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>a.count-info div.pouch>a.unpa-pouch-button div.icon {
+    background-image:url("../image/ic_pouch_xs_normal.png");
+}
+
+.unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>div.count-info div.pouch>a.unpa-pouch-button div.icon, .unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>a.count-info div.pouch>a.unpa-pouch-button div.icon, .unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>div.count-info div.like>a.like-button div.icon, .unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>a.count-info div.like>a.like-button div.icon {
+    height: 14px;
+    width: 14px;
+    display: inline-block;
+    -webkit-background-size: contain;
+    background-size: contain;
+    vertical-align: middle;
+}
+.unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>div.count-info .views, .unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>a.count-info .views {
+    float: right;
+}
+
+.unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>div.count-info>div, .unpa-card:not(.user-card):not(.unpa-table-cell) .sub-section>a.count-info>div {
+    /* vertical-align: middle; */
+    display: inline-block;
+    margin-right: 12px;
+}
+
+body>.container {
+    padding: 50px 0 0;
+}
+.container {
+    width: 1170px;
+}
+.container {
+    width: 750px;
+}
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.text-center {
+    text-align: center;
+}
+
+.unpa-load-more-button {
+    background-color: #ccc;
+    color: #fff;
+    font-size: 17px;
+    padding: 10px 60px;
+    font-weight: 600;
+    margin: 0 auto;
+    display: block;
+    -webkit-transition: all .15s ease-in-out;
+    transition: all .15s ease-in-out;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus, #modal-account input, button, #user-form-wrap input {
+    border: none !important;
+    outline: none !important;
+    color: darkgrey;
+	text-decoration: none;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+body>.container {
+    padding: 50px 0 0;
+  
+}
+
+.container {
+    width: 1170px;
+}
+
+.user-info-link a {
+    margin: 10px;
+}
+
+li {
+    list-style: none;
+    float: left;
+        margin-left: 10px;
+
+}
+
+ul.pagination {
+
+    padding: 20px 600px;
+}
+
+.text-center {
+    width: 1300px;
+}

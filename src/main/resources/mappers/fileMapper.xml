@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  	
+  	 <mapper namespace="fileMapper">  	
+  	<resultMap type="FileDTO" id="fileResult">
+  		<id property="file_num" column="file_num"/>
+  		<result property="file_name" column="file_name"/>
+  		<result property="file_route" column="file_route"/>
+  	</resultMap>
+  	
+  	<resultMap type="com.theater.drama.DramaTestDTO" id="dramaTest">
+  		<id property="drama_num" column="drama_num"/>
+  		<result property="company_num" column="company_num"/>
+  		<result property="title" column="title"/>
+  		<result property="contents" column="contents"/>
+  		<result property="place" column="place"/>
+  		<result property="price" column="price"/>
+  		<result property="buy_hit" column="buy_hit"/>
+  		<result property="file_num" column="file_num"/>
+  		<association property="fileDTO" javaType="FileDTO" resultMap="fileResult">
+  			<id property="file_num" column="file_num"/>
+  			<result property="file_name" column="file_name"/>
+  			<result property="file_route" column="file_route"/>
+  		</association>
+  	</resultMap>
+  	
+  	<resultMap type="NoticeDTO" id="noticeResult">
+  		<id property="notice_num" column="notice_num"/>
+  		<result property="title" column="title"/>
+  		<result property="contents" column="contents"/>
+  		<result property="hit" column="hit"/>
+  		<result property="file_num" column="file_num"/>
+  		<collection property="fileNames" javaType="ArrayList" ofType="FileDTO">
+  			<id property="file_num" column="file_num"/>
+  			<result property="file_name" column="file_name"/>
+  			<result property="file_route" column="file_route"/>
+  		</collection>
+  	</resultMap>
+  	
+  	
+  	<resultMap type="DramaDTO" id="dramaResult">
+  		<id property="drama_num" column="drama_num"/>
+  		<result property="company_num" column="company_num"/>
+  		<result property="title" column="title"/>
+  		<result property="contents" column="contents"/>
+  		<result property="place" column="place"/>
+  		<result property="price" column="price"/>
+  		<result property="buy_hit" column="buy_hit"/>
+  		<result property="file_num" column="file_num"/>	
+  		<collection property="fileNames" javaType="ArrayList" ofType="FileDTO">
+  			<id property="file_num" column="file_num"/>
+  			<result property="file_name" column="file_name"/>
+  			<result property="file_route" column="file_route"/>
+  		</collection>
+  	</resultMap>
+  	
+  <!-- 다중 insert  -->
+  	<insert id="fileInsert" parameterType="java.util.List">
+  		insert All
+  		<foreach collection="list" item="item" index="index">
+  		into file_table values
+  			(
+  				file_num.nextval,
+  				#{item.file_name},
+  				#{item.file_route}
+  			)
+  		</foreach>
+  		select * from dual
+  	</insert>
+  	
+  
+
+ 
+  	  	
+  	<insert id="insert" parameterType="FileDTO">
+  		<selectKey keyProperty="file_num" resultType="int" order="BEFORE">
+  			select file_num.nextval from dual
+  		</selectKey>
+  		insert into file_table values(#{file_num}, #{file_name}, #{file_route})
+  	</insert>
+  	
+  	<select id="selectList" parameterType="int" resultType="FileDTO">
+  		select * from file_table where file_num=#{file_num}
+  	</select>
+    
+
+  </mapper>

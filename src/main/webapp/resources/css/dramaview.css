@@ -1,0 +1,137 @@
+@CHARSET "UTF-8";
+*{
+	maing:0;
+	padding:0;
+}
+#section_form{
+	width: 100%;
+	height: 1500px;
+	background-color: #f4f4f4;
+}
+#section_info{
+	width:830px;
+	border: 1px red solid;
+	margin-left: 600px;
+}
+#drama_image{
+	width: 480px;
+	height:320px;
+	padding: 10px 10px 7px 10px;
+	border: 1px red solid;
+	display: inline-block;
+}
+#drama_info_form{
+	width: 305px;
+	height: 320px;
+
+	float: right;
+}
+#drama_info{
+	width: 305px;
+	display: inline-block;
+	float: right;
+	text-align: center;
+	border: 1px white	solid;
+	background-color: white;
+}
+#title{
+	width: 280px;
+	height:50px;
+	font-size: 30px;
+	
+}
+#contents{
+	width: 280px;
+	font-size: 20px;
+	border-bottom: 1px gray solid;
+}
+#price{
+	width:280px;
+	height:50px;
+	font-size: 20px;
+	color: red;
+	text-align: center;
+	font-weight: 25px;
+	border: 1px red soild;
+}
+.info_bar{
+	width: 820px;
+	height: 50px;
+	font-size: 20px;
+	color:gray;
+	border: 1px gray solid;
+	display: inline-block;
+	background-color: white;
+}
+.info_bar  li{
+	text-align:center;
+	list-style: none;
+	line-height: 50px;
+	text-decoration: none;
+}
+
+#drama_date{
+	width: 306px;
+	height: 44px;
+	margin-top: 20px;
+	float:left;
+	display: inline-block;
+}
+.select_date{
+	text-align: left;
+}
+#drama_time{
+	width: 306px;
+	height: 44px;
+	margin-top: 10px;
+}
+#drama_ticket{
+	margin-top:10px;
+	width: 300px;
+	height: 30px;
+	
+}
+#ticket_buy{
+	width: 306px;
+	height: 50px;
+	font-size:30px;
+	color:white;
+	background-color: pink;
+	margin-top: 20px;	
+}
+#afterview{
+	width: 810px;
+	height: 214px;
+	border: 1px red solid;
+	margin-top: 30px;
+}
+#after_top_text{
+	font-size: 20px;
+	font-weight: bolder;
+}
+#star_total{
+	font-size: 15px;
+	text-decoration: none;
+}
+#info_1{
+	width: 205px;
+	height: 50px;
+	float: left;
+	text-decoration: none;
+}
+#after{
+	width: 205px;
+	height:50px;
+	float: left;
+}
+#QNA{
+	width: 205px;
+	height: 50px;
+	float: left;
+}
+#warning{
+	width: 700px;
+	height: 95px;
+	border: 1px red solid;
+	margin-left: 60px;
+}
