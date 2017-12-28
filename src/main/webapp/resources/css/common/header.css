@@ -1,33 +1,33 @@
 @charset "UTF-8";
-/* header 시작 */	
-	
+/* header 시작 */   
+   
 /* @font-face { font-family: 'NanumGothic'; src: url(../font/NanumGothicBold.ttf) format('truetype'); } */
 @import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
 
 *{
-	margin: 0;
-	padding: 0;
+   margin: 0;
+   padding: 0;
 }
 
 header{
-	width: 100%;
-	height: 160px;
-	/* background-color: #80808029; */
-	top: 0;
-	left: 0;
+   width: 100%;
+   height: 160px;
+   /* background-color: #80808029; */
+   top: 0;
+   left: 0;
 }
 
 .header_wrap{
-	width: 955px;
-	height: 150px;
-	margin: 0 auto;
+   width: 1125px;
+   height: 150px;
+   margin: 0 auto;
 }
 .header_logo {
     float: left;
     margin-top: -50px;
     height: 210px;
     width: 200px;
-    margin-left: -180px;
+    margin-left: -38px;
 }
 
 #main_logo{
@@ -38,23 +38,23 @@ header{
     margin-top: 28px;
 }
 .member_wrap li{
-	list-style: none;
+   list-style: none;
     text-decoration-line: none;
     margin-top: 15px;
-	float: right;   
+   float: right;   
 }
 .member_wrap{
-	width: 920px;
-	height: 84px;
+   width: 920px;
+   height: 84px;
     margin: 0 auto; 
-	margin-right: 30px;
+   margin-right: 30px;
 }
  .member_wrap a {
-	text-decoration: none;
-	font-family: 'Nanum Gothic';
-	font-size: 8pt;
-	color: #795548;
-	margin-left: 25px;	
+   text-decoration: none;
+   font-family: 'Nanum Gothic';
+   font-size: 8pt;
+   color: #795548;
+   margin-left: 25px;   
  }
 /*  */
 
@@ -63,69 +63,69 @@ input::-webkit-input-placeholder {font-size:8px; color:#79554896;}
 input::-moz-placeholder {color:#79554896;font-size:8px;}
 
 .search_bar{
-	height: 30px;
-	width: 245px;
-	border: 1px #795548;
-	background: white;
-	float: right;
-	margin-top: -20px;
+   height: 30px;
+   width: 245px;
+   border: 1px #795548;
+   background: white;
+   float: right;
+   margin-top: -20px;
 }
 
 .search_bar input {
-	font-size: 16px;
-	width: 170px;
-	padding: 10px;
-	outline: none;
-	float: left;
-	position: absolute;
-	height: 30px;
-	
+   font-size: 16px;
+   width: 170px;
+   padding: 10px;
+   outline: none;
+   float: left;
+   position: absolute;
+   height: 30px;
+   
 }
 
 .search_bar button {
-	width:44px;
-	border: 0px;
-	background: #795548;
-	outline: none;
-	float: right;
-	color: white;	
-	height: 30px;
-	position: absolute;
-	margin-left: 170px;
-	font-size: 11px;
+   width:44px;
+   border: 0px;
+   background: #795548;
+   outline: none;
+   float: right;
+   color: white;   
+   height: 30px;
+   position: absolute;
+   margin-left: 170px;
+   font-size: 11px;
 }
 
 /*  */
  
  .main_menu {
- 	width: 950px;
+    width: 1125px;
     height: 28px;
     margin: 0 auto;
     margin-top: 25px;
 }
 nav{
-	float: right;
-}	
-	
+   float: right;
+}   
+   
 nav li{
-	list-style: none;
+   list-style: none;
     text-decoration-line: none;
     float: left;
     
 }
 
 nav li a {
-	text-decoration: none;
-	font-family: 'Nanum Gothic', sans-serif;
-	font-weight:Bold;
-	font-size: 10pt;
-	color: #795548;
-	margin-left: 30px;
+   text-decoration: none;
+   font-family: 'Nanum Gothic', sans-serif;
+   font-weight:Bold;
+   font-size: 10pt;
+   color: #795548;
+   margin-left: 30px;
     margin-right: 30px;
 }
 
 .blank{
-	height: 110px;
+   height: 110px;
 }
 
 
@@ -137,12 +137,12 @@ nav li a {
 
 
 footer {
-	width: 100%;
-	height: 200px;
-	background-color: #404040;
-	bottom: 0;
-	padding-top: 30px;
-	margin-top: 500px;
+   width: 100%;
+   height: 200px;
+   background-color: #404040;
+   bottom: 0;
+   padding-top: 30px;
+   margin-top: 500px;
 }
 
 .footer_wrap {
@@ -161,18 +161,18 @@ footer {
     color: #ffbc0d !important;
     font-weight: bold;
     text-decoration: none;
-	font-family: 'Nanum Gothic';
+   font-family: 'Nanum Gothic';
 }
 
 .f_ag{
-	    color: #ccc;
+       color: #ccc;
 }
 .footer_wrap a {
     text-decoration: none;
     vertical-align: baseline;
     background: transparent;
     cursor: pointer;
-	font-family: 'Nanum Gothic';
+   font-family: 'Nanum Gothic';
 }
 
 .footer_wrap ul.copy_menu {
@@ -186,11 +186,11 @@ footer {
     display: inline-block;
     margin: 0 7px;
     list-style: none;
-	font-family: 'Nanum Gothic';
+   font-family: 'Nanum Gothic';
 }
 
 .f_link {
-	margin-top:15px;
+   margin-top:15px;
     background: none;
     border: 2px solid #fff;
     border-radius: 3px;
@@ -201,4 +201,17 @@ footer {
     width: 90px;
     height: 30px;
     line-height: 30px;
+}
+
+#blank{
+   width:100%;
+   height: 20px;
+}
+
+
+
+.board_wrap{
+   width: 1100px;
+   height: auto;
+   margin: 0 auto;
 }

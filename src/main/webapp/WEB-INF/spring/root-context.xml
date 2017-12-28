@@ -22,7 +22,7 @@
 	<context:component-scan base-package="com.theater.util"></context:component-scan>
 	<context:component-scan base-package="com.theater.file"></context:component-scan>
 	<context:component-scan base-package="com.theater.notice"></context:component-scan>
-
+	<context:component-scan base-package="com.theater.point"></context:component-scan>
 	
 
 </beans>

@@ -17,7 +17,8 @@
 
 <a href="./notice/noticeList">Go Notice</a>
 <a href="./qna/qnaList">Go Qna</a>
-
+<a href="point/pointList">포인트내역</a>
+<a href="point/pointCheck">출석체크</a>
 <c:import url="./temp/footer.jsp"></c:import>
 </body>
 </html>
