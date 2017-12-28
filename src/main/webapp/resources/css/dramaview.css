@@ -1,29 +1,30 @@
 @CHARSET "UTF-8";
-*{
-	maing:0;
-	padding:0;
-}
-#section_form{
-	width: 100%;
-	height: 1500px;
+#section{
+	padding-top : 20px;
+	min-height : 100%;
 	background-color: #f4f4f4;
 }
+
 #section_info{
 	width:830px;
+	min-height : 100%;
 	border: 1px red solid;
-	margin-left: 600px;
+	margin : 0 auto;
 }
 #drama_image{
-	width: 480px;
-	height:320px;
-	padding: 10px 10px 7px 10px;
-	border: 1px red solid;
+	width : 460px;
+	height : 320px;
 	display: inline-block;
+	background-color: white;
+	padding:20px;
+	overflow: auto;
+}
+img{
+	width : 100%;
 }
 #drama_info_form{
 	width: 305px;
 	height: 320px;
-
 	float: right;
 }
 #drama_info{
@@ -32,13 +33,21 @@
 	float: right;
 	text-align: center;
 	border: 1px white	solid;
-	background-color: white;
 }
 #title{
-	width: 280px;
-	height:50px;
-	font-size: 30px;
-	
+	text-align: center;
+	padding: 20px 0 10px 0;
+}
+#title>h3{
+	display: inline-block;
+}
+.skin-type{
+    border: 1px solid #ddd;
+    color: #777;
+    border-radius: 1em;
+    padding: 2px 3px;
+    font-size: 10px;
+    vertical-align: text-bottom;
 }
 #contents{
 	width: 280px;
