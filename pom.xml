@@ -27,8 +27,38 @@
 	
 	   
       
-      
-      
+      <!-- Websocket -->
+      <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-websocket</artifactId>
+    <version>${org.springframework-version}</version>
+</dependency>
+
+	<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+		<version>2.3.3</version>
+	</dependency>
+
+
+	<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-core</artifactId>
+		<version>2.3.3</version>
+	</dependency>
+
+
+	<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-annotations</artifactId>
+		<version>2.3.0</version>
+	</dependency>
+
+
       <!-- JSON -->
       <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
       <dependency>
