@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link href="../resources/css/member/memberLogin.css" rel="stylesheet">
+<link href="../resources/css/common/header.css" rel="stylesheet">
 </head>
 <body>
+	<c:import url="../temp/header.jsp"></c:import>
 	<form action="memberLogin" method="post" name="happy_member_login_form">
 		<!-- <input type="hidden" name="returnUrl" value="http://timeticket.co.kr/happy_member.php?mode=joinus2&amp;member_group=1">
 		<input type="hidden" name="save_id" value=""> -->
@@ -49,5 +52,6 @@
 			</div>
 		</div>
 	</form>
+	<c:import url="../temp/footer.jsp"></c:import>
 </body>
 </html>
