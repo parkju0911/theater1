@@ -8,7 +8,7 @@ html{
     padding: 0px;
     margin: 0px;
 }
-div {
+/* div {
 	margin: 0;
 	padding: 0;
 	display: block;
@@ -16,7 +16,7 @@ div {
 a {
 	text-decoration: none;
 	color: #555;
-}
+} */
 
 /* body {
     font-size: 14px;
@@ -416,7 +416,7 @@ body>.container {
     transition: all .15s ease-in-out;
 }
 
-.btn:focus, .btn:active:focus, .btn.active:focus, #modal-account input, button, #user-form-wrap input {
+.btn:focus, .btn:active:focus, .btn.active:focus, button {
     border: none !important;
     outline: none !important;
     color: darkgrey;
@@ -443,7 +443,7 @@ body>.container {
     margin: 10px;
 }
 
-li {
+/* li {
     list-style: none;
     float: left;
         margin-left: 10px;
@@ -453,7 +453,7 @@ li {
 ul.pagination {
 
     padding: 20px 600px;
-}
+} */
 
 .text-center {
     width: 1300px;

@@ -15,7 +15,7 @@
 <P>  The time on the server is ${serverTime}. </P>
 <a href="drama/dramaList">Drama List</a>
 
-<a href="./notice/noticeList">Go Notice</a>
+
 <a href="./qna/qnaList">Go Qna</a>
 
 <c:import url="./temp/footer.jsp"></c:import>

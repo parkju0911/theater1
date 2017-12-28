@@ -33,8 +33,12 @@
 		cursor: pointer;
 	}
 </style>
+<link href="../resources/css/common/header.css" rel="stylesheet">
 </head>
 <body>
+<c:import url="../temp/header.jsp"></c:import>
+
+<div class="board_wrap">
 	<h1>${fn:toUpperCase(board)} List</h1>
 	<form name="frm" action="./${board}List" method="get">
 		<input type="hidden" name="curPage" value="1">
@@ -85,6 +89,7 @@
 	</div>
 	
 	<a href="${board}Write">WRITE</a>
-	
+	</div>
+<c:import url="../temp/footer.jsp"></c:import>
 </body>
 </html>
