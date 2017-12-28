@@ -31,7 +31,7 @@
 								${member.id}님, 환영합니다 :)
 						</p>
 						<a href="${pageContext.request.contextPath}/member/memberLogout">Logout</a>
-						<a href="${pageContext.request.contextPath}/member/memberMypage.member">MYTicket</a>
+						<a href="${pageContext.request.contextPath}/member/memberMypage">MYTicket</a>
 						<a href="${pageContext.request.contextPath}/member/memberMypage">MYPage</a>
 					</li>
 				</c:if>
