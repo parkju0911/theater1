@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,8 +47,11 @@
 }
 </style>
 <link href="../resources/css/member/memberJoin.css" rel="stylesheet">
+<link href="../resources/css/common/header.css" rel="stylesheet">
 </head>
 <body>
+	<c:import url="../temp/header.jsp"></c:import>
+	
 	<form action="./memberJoin" method="post" id="frm">
 		<div
 			style="width: 700px; margin: 20px auto; padding: 30px 70px; border: 1px solid #e8e8e8; background: #fff; text-align: center;">
@@ -205,5 +209,7 @@
 			// 휴대폰 번호 자동 하이픈(-) 스크립트 END
 		</script>
 	</form>
+	
+	<c:import url="../temp/footer.jsp"></c:import>
 </body>
 </html>
