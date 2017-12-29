@@ -38,11 +38,11 @@
 				<label for="auto_login_use" style="font-size: 14px; color: #777; font-weight: 400; line-height: 16px;">자동로그인 설정</label>
 			</div>
 			
-			<!-- <div style="float: right; font-size: 14px; color: #333; font-weight: 300; padding: 15px 90px 0 0; line-height: 16px;">
-				<a href="happy_member.php?mode=lostid" onfocus="this.blur()">아이디 찾기</a>
+			<div style="float: right; font-size: 14px; color: #333; font-weight: 300; padding: 15px 90px 0 0; line-height: 16px;">
+				<a href="memberIdSearch" onfocus="this.blur()">아이디 찾기</a>
 				<span style="padding: 0 8px;">|</span>
-				<a href="happy_member.php?mode=lostid" onfocus="this.blur()">비밀번호 찾기</a>
-			</div> -->
+				<a href="memberIdSearch" onfocus="this.blur()">비밀번호 찾기</a>
+			</div>
 			
 			<div style="text-align: center; padding: 40px 0; font-size: 16px;">
 				<span style="color: #333;">TEATRO 회원이 아니신가요?</span>

@@ -34,4 +34,8 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE+"checkId", memberDTO);
 	}
 	
+	public MemberDTO searchId(MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"searchId", memberDTO);
+	}
+	
 }
