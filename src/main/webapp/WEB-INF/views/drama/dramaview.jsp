@@ -6,12 +6,46 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="../resources/css/dramaview.css" rel="stylesheet">
 
+
+</style>
+<link href="../resources/css/dramaview.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+	$(function() {
+			
+			$()	
+		
+			$(".reviewlist").click(function() {
+				$("#view_page").load("./reviewlist?drama_num="+${view.drama_num})
+			});
+		
+			$("#refund").click(function() {
+				$("#view_page").load("./refundlist")
+			});
+			$("#refund_1").click(function() {
+				$("#view_page").load("./refundlist")
+			});
+			
+			$("#info_default").click(function() {
+				location.reload();
+			})
+	});
+	
+	
+
+
+
+</script>
+<style type="text/css">
+A:VISITED { text-decoration: none;}
+
+</style>
 </head>
 <body>
 			<!-- header -->
-		<%-- <c:import url="../temp/Header.jsp"></c:import> --%>
+		 <c:import url="../temp/header.jsp"></c:import>
 			<!-- header end -->
 			
 			<section id="section">
@@ -89,26 +123,58 @@
 			
 		
 		<div id="afterview">
-		<div id="after_top_text">예매자 <span style="color:red;">별점</span> <!-- 별점/후기인원수 --><span id="star_total">/5.0 (총  <!-- 후기인원수 -->  명)</span> </div>
-		
+		<div id="after_top_text">예매자 <span style="color:red;">별점</span> <!-- 별점/후기인원수 --><span id="star_total">${avg } /5.0 (총  ${total }  명)</span> </div>
+		<div id="afterview_box">
+			<table>
+				<c:forEach items="${review }" var="re">
+				<tr>
+				<td><div id="afterview_box_a">${re.id } (${re.review_date })</div></td>
+				</tr>
+				<tr>
+				<td><div id="atfterview_box_b">
+				<c:if test="${re.star==5 }">
+				<img alt="" style="height: 17px" src="../resources/images/starpoint/star_5.png"> ${re.contents }
+				</c:if>
+				<c:if test="${re.star==4 }">
+				<img alt="" style="height: 17px" src="../resources/images/starpoint/star_4.png"> ${re.contents }
+				</c:if>
+				<c:if test="${re.star==3 }">
+				<img alt="" style="height: 17px" src="../resources/images/starpoint/star_3.png"> ${re.contents}
+				</c:if>
+				<c:if test="${re.star==2 }">
+				<img alt="" style="height: 17px" src="../resources/images/starpoint/star_2.png"> ${re.contents }
+				</c:if>
+				<c:if test="${re.star==1 }">
+				<img alt=""  style="height: 17px" src="../resources/images/starpoint/star_1.png"> ${re.contents }
+				</c:if>
+				</div>
+				</td>
+				</tr>
+			
+				</c:forEach>
+			</table>
+			<div id="afterview_total"><a href="#view_page" class="reviewlist">후기 전체보기></a></div>
+		</div>
 	
 		
 		</div>
 		
 		
 		<ul class="info_bar">
-		<li id="info_1"><a href="">안내</a></li>
-		<li id="after"><a href="">후기</a></li>
-		<li id="QNA"><a href="">QnA</a></li>
-		<li id="reprice"><a href="">환불규정</a></li>
+		<li id="info_1" class="selected"><div class="border_color"><a href="#default"  id="info_default" onclick="movefunction(); return false;"><span id="border_color_1">안내</span></a></div></li>
+		<li id="after"><a href="#after" class="reviewlist">후기(${total })</a></li>
+		<li id="QNA"><a href="#QNA">Q&A</a></li>
+		<li id="reprice"><a href="#reprice" id="refund">환불규정</a></li>
 		</ul>
-		<div class="view_page">
+		<div id="view_page">
 		
 		
 		<div id="warning">
-		예매 전 안내 및 주의사항을 꼭 확인하세요!
-
-		티켓에 따라 이용방법/환불규정이 상이합니다. 환불규정 바로가기 >
+		<div id="warning_tool">
+		<p>예매 전 안내 및 주의사항을 꼭 확인하세요!</p>
+	
+		<p>티켓에 따라 이용방법/환불규정이 상이합니다. <a href="##" id="refund_1">환불규정 바로가기</a></p>
+		</div>
 		</div>
 
 
@@ -175,7 +241,7 @@
 			</div>
 			</section>
 		<!-- footer  -->
-		<%-- <c:import url="../temp/Footer.jsp"></c:import> --%>
+		 <c:import url="../temp/footer.jsp"></c:import> 
 		<!-- footer end -->
 			
 </body>
