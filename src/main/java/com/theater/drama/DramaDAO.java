@@ -1,19 +1,14 @@
 package com.theater.drama;
 
 
-import java.util.List;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
-
-
 
 import com.theater.util.RowNum;
 
@@ -33,12 +28,15 @@ public class DramaDAO  {
 		return sqlSession.selectOne(namespace+"selectOne" , drama_num);
 		
 	}
-	public List<DramaListDTO> selectList_view(int drama_num)throws Exception{
+	public List<DramaListDTO> dateList(int drama_num)throws Exception{
 		
-		return sqlSession.selectList(namespace+"selectList_view", drama_num);
+		return sqlSession.selectList(namespace+"dateList", drama_num);
 	}
-	public int ticket_sell(int drama_num)throws Exception{
-		return sqlSession.selectOne(namespace+"ticket_sell", drama_num);
+	public int searchCompany_num(int drama_num) throws Exception{
+		return sqlSession.selectOne(namespace+"searchCompany_num", drama_num);
+	}
+	public int ticket_sell(int company_num)throws Exception{
+		return sqlSession.selectOne(namespace+"ticket_sell", company_num);
 	}  
 	
 	public List<DramaDTO> selectList(RowNum rowNum) throws Exception {

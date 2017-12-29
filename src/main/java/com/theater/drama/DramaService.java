@@ -8,13 +8,11 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.theater.file.FileDAO;
 import com.theater.file.FileDTO;
-import com.theater.notice.NoticeDTO;
 import com.theater.util.FileSaver;
 import com.theater.util.ListData;
 import com.theater.util.Pager;
@@ -30,6 +28,18 @@ public class DramaService {
 	private FileSaver fileSaver;
 	@Inject
 	private FileDAO fileDAO;
+	
+	public DramaDTO selectOne(int drama_num) throws Exception{
+		return dramaDAO.selectOne(drama_num);
+	}
+	public List<DramaListDTO> dramaList(int drama_num) throws Exception{
+		return dramaDAO.dateList(drama_num);
+	}
+	public int ticket_sell(int drama_num) throws Exception{
+		int company_num = dramaDAO.searchCompany_num(drama_num);
+		
+		return dramaDAO.ticket_sell(company_num);
+	}
 	
 	public ModelAndView selectList(ListData listData) throws Exception {
 		ModelAndView mv = new ModelAndView();

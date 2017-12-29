@@ -9,10 +9,7 @@
 </head>
 <body>
 <c:import url="./temp/header.jsp"></c:import>
-<h1>
-	Hello world!  
-</h1>
-<P>  The time on the server is ${serverTime}. </P>
+
 <a href="drama/dramaList">Drama List</a>
 
 

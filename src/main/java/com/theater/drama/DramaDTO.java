@@ -4,12 +4,6 @@ public class DramaDTO extends DramaFileDTO{
 	
 	private int drama_num;
 	private int company_num;
-    public int getCompany_num() {
-		return company_num;
-	}
-	public void setCompany_num(int company_num) {
-		this.company_num = company_num;
-	}
 	private String title;
     private String contents;
     private String place;
@@ -17,6 +11,12 @@ public class DramaDTO extends DramaFileDTO{
     private int buy_hit;
     private int file_num;
     
+    public int getCompany_num() {
+		return company_num;
+	}
+	public void setCompany_num(int company_num) {
+		this.company_num = company_num;
+	}
 	public int getFile_num() {
 		return file_num;
 	}
