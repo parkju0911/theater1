@@ -12,12 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
-import com.theater.util.Pager;
-import com.theater.util.RowNum;
 import com.theater.drama.DramaDTO;
+import com.theater.drama.DramaListDTO;
 import com.theater.drama.DramaService;
-
 import com.theater.util.ListData;
 
 @Controller
@@ -28,6 +25,27 @@ public class DramaController {
 	@Inject
 	public DramaService dramaService;
 	
+	//Drama View
+		@RequestMapping(value="dramaview")
+		public ModelAndView selectOne(int drama_num, ModelAndView mv,RedirectAttributes rd) throws Exception{
+			//공연 정보가져오기
+			DramaDTO dramaDTO = dramaService.selectOne(drama_num);
+			//해당 공연의 시간 정보 가져오기
+			List<DramaListDTO> ar = dramaService.dramaList(drama_num);
+			int ticket = dramaService.ticket_sell(drama_num);
+			
+			if(dramaDTO != null) {
+				mv.addObject("view", dramaDTO);
+				mv.addObject("list", ar);
+				mv.addObject("ticket", ticket);
+				mv.setViewName("drama/dramaview");
+			}else {
+				rd.addFlashAttribute("message", "잘못된 접근방식 입니다.");
+				mv.setViewName("Redirect:../");
+			}
+			
+			return mv;
+		}
 
 	//selectList
 	@RequestMapping(value="dramaList")

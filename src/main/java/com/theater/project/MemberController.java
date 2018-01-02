@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -20,6 +21,24 @@ public class MemberController {
 	
 	@Inject
 	private MemberService memberService;
+	
+	@RequestMapping(value="memberIdSearch", method=RequestMethod.POST)
+	public ModelAndView searchId(ModelAndView modelAndView, MemberDTO memberDTO){
+		try {
+			memberDTO = memberService.searchId(memberDTO);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		modelAndView.addObject("memberDTO", memberDTO);
+		modelAndView.setViewName("member/searchId");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="memberIdSearch", method=RequestMethod.GET)
+	public String memberIdSearch(){
+		return "member/memberIdSearch";
+	}
 	
 	@RequestMapping(value="memberJoin1", method=RequestMethod.GET)
 	public String memberJoin1(){
@@ -86,21 +105,19 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value="checkId", method=RequestMethod.GET)
-	public ModelAndView checkId(ModelAndView modelAndView, String id){
+	@RequestMapping(value="checkId", method=RequestMethod.POST)
+	@ResponseBody
+	public int checkId(String id){
+		int result = 0;
 		MemberDTO memberDTO = null;
 		try {
-			System.out.println(id);
 			memberDTO = memberService.checkId(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		if(memberDTO==null){
-			modelAndView.addObject("message", "사용가능한 ID 입니다.");
-		} else {
-			modelAndView.addObject("message", "중복된 ID 입니다.");
-		}
-		modelAndView.setViewName("common/result");
-		return modelAndView;
+			result = 1;
+		} 
+		return result;
 	}
 }

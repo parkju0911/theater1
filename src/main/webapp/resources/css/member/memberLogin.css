@@ -21,6 +21,18 @@ body, table {
     font-weight: 300;
 }
 
+a {
+    color: #313131;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
 #login_btn {
 	color: #fff;
 	background: #ffc108;

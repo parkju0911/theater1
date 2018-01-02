@@ -34,10 +34,34 @@
 		});
 		
 		$("#id").blur(function() {
-			var id = $(this).val();
-			$.get("../member/checkId?id="+id, function(data) {
-				alert(data);
-			});
+			$.ajax({
+                type: 'POST',
+                url: '../member/checkId',
+                data: {
+                    "id" : $(this).val()
+                },
+                success: function(data){
+                    if($.trim(data) == 1){
+                        $('#id_check_msg').html('<p style="color:blue">사용가능한 ID 입니다.</p>');
+                    }
+                    else{
+                        $('#id_check_msg').html('<p style="color:red">사용불가능한(중복된) ID 입니다.</p>');
+                    }
+                }
+            });
+		});
+		
+		$("#pw2").blur(function() {
+			var f1 = document.forms[0];
+			var pw = f1.pw.value;
+			var pw2 = f1.pw2.value;
+			if(pw!=pw2){
+				document.getElementById('pw_check_msg').style.color = "red";
+				document.getElementById('pw_check_msg').innerHTML = "동일한 암호를 입력하세요."; 
+			}else{
+				document.getElementById('pw_check_msg').style.color = "black";
+				document.getElementById('pw_check_msg').innerHTML = "암호가 확인 되었습니다.";  
+			}
 		});
 	});
 </script>
@@ -76,18 +100,20 @@
 							<input type="text" id="id" name="id" value="" class="member_txt">
 							<div id="id_check_msg"></div>
 						</div>
+						<!-- <button type="submit" id="checkbtn" class="btn btn-default">중복확인</button> -->
 						<div style="text-align: left; padding: 15px 0; clear: both; vertical-align: middle; height: 35px;">
 							<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">비밀번호*</div>
 							<div style="float: left; font-size: 16px; font-weight: 300;">
-								<input type="password" name="pw" value="" class="member_txt"
+								<input type="password" id="pw" name="pw" value="" class="member_txt"
 									size="20" hname="비밀번호*" required="">
 							</div>
 							<div style="text-align: left; padding: 15px 0; clear: both; vertical-align: middle; height: 35px;">
 								<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">비밀번호
 									확인*</div>
 								<div style="float: left; font-size: 16px; font-weight: 300;">
-									<input type="password" name="pw2" value="" class="member_txt"
+									<input type="password" id="pw2" name="pw2" value="" class="member_txt"
 										size="20" hname="비밀번호확인*" required="">
+									<div id="pw_check_msg"></div>
 								</div>
 								<div style="text-align: left; padding: 15px 0; clear: both; vertical-align: middle; height: 35px;">
 									<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">이름*</div>

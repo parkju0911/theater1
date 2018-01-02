@@ -102,8 +102,7 @@
 										<div class="right">
 											<div class="brand-name-and-rating">
 												<div class="brand-name">
-													<a
-														href="">${dto.title}</a>
+													<a href="./dramaview?drama_num=${dto.drama_num}">${dto.title}</a>
 												</div>
 											</div>
 											<div class="product-name">
