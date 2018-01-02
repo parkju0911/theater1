@@ -12,7 +12,7 @@
 
 <a href="drama/dramaList">Drama List</a>
 
-
+<a href="drama/dramaview?drama_num=1">drama</a>
 <a href="./qna/qnaList">Go Qna</a>
 
 <c:import url="./temp/footer.jsp"></c:import>

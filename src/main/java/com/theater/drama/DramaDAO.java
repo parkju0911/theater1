@@ -10,6 +10,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.theater.qna.QnaDTO;
+import com.theater.review.ReviewDTO;
 import com.theater.util.RowNum;
 
 
@@ -56,18 +58,27 @@ public class DramaDAO  {
 		
 		return sqlSession.selectOne(namespace+"totalCount", map);
 	}
-
-
-	
-	
-	
 	public int insert(DramaDTO dramaDTO) throws Exception {
 		System.out.println("Before: "+dramaDTO.getDrama_num());
 		int result = sqlSession.insert(namespace+"insert", dramaDTO);
 		System.out.println("After: "+dramaDTO.getDrama_num());
 		return result;
 	}
-
+	public List<ReviewDTO> selectList_review(int drama_num)throws Exception{
+		return sqlSession.selectList(namespace+"selectList_review", drama_num);
+	}
+	public ReviewDTO selectOne_review(int drama_num)throws Exception{
+		return sqlSession.selectOne(namespace+"selectOne_review", drama_num);
+	}
+	public int totalcount(int drama_num)throws Exception{
+		return sqlSession.selectOne(namespace+"totalcount", drama_num);
+	}
+	public int review_avg(int drama_num)throws Exception{
+		return sqlSession.selectOne(namespace+"review_avg", drama_num);
+	}
+	public List<QnaDTO> selectList_qna(int drama_num)throws Exception{
+		return sqlSession.selectList(namespace+"selectList_qna", drama_num);		
+	}
 
 
 }

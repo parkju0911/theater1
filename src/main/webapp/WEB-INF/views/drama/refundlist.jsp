@@ -6,8 +6,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div id="refund_form">
+
 <div id="refund_info">
-	환불규정 및 안내사항
+	<span></span>환불규정 및 안내사항
 </div>
 
 <div id="refund_rull">
@@ -44,6 +46,7 @@
 <p>2) 휴대폰결제: 공제금을 안내계좌로 입금하면 결제내역 전액취소</p>
 <p>3) 무통장/실시간계좌이체: 공제금을 제외한 금액을 회원 계좌로 이체</p>
 <p>* 휴대폰결제 취소는 '구매월'에만 가능하며, 구매월이 아닌 경우 계좌이체로 환불</p>
+</div>
 </div>
 </body>
 </html>

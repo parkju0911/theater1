@@ -20,7 +20,7 @@
 <body>
 		
 		
-			<div id="afterview">
+			<div id="afterview_list">
 		<div id="point_box">
 		
 		<div id="point_box1">별점<span style="color:red;"></span>  <!-- 별점/후기인원수 --><span id="star_total">${avg }/5.0 (총  ${total }  명)</span></div>
@@ -35,7 +35,7 @@
 		
 		</div>
 		</div>
-		<div id="afterview_box">
+		<div id="afterview_box_list">
 			<table>
 			<c:if test="${review==null }">
 					<tr>

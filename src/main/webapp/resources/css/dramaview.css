@@ -19,9 +19,7 @@
 	padding:20px;
 	overflow: auto;
 }
-img{
-	width : 100%;
-}
+
 #drama_info_form{
 	width: 305px;
 	height: 320px;
@@ -63,9 +61,9 @@ img{
 	font-size: 20px;
 	color: red;
 	text-align: center;
-<<<<<<< HEAD
-	font-weight: 25px;
-	border: 1px red soild;
+	border : 0;
+/* 	font-weight: 25px;
+	border: 1px red soild; */
 }
 .info_bar{
 	width: 830px;
@@ -94,10 +92,10 @@ img{
 	color:#888;
 }
 
-=======
+/* =======
 	border: 0;
 }
->>>>>>> 578e5a9a30f8c80283cb50a1c6bc512e39c56985
+>>>>>>> 578e5a9a30f8c80283cb50a1c6bc512e39c56985 */
 #drama_date{
 	width: 305px;
 	height: 35px;
@@ -122,10 +120,15 @@ img{
 }
 #afterview{
 	width: 830px;
-	height: 284px;
-	border: 1px red solid;
+
 	margin : 0 auto;
-	margin-top: 30px;
+	margin-top: 65px;
+}
+#afterview_list{
+	width: 830px;
+	border: 1px white solid;
+	margin : 0 auto;
+	background-color: white;
 }
 .view_page{
 	width: 820px;
@@ -133,6 +136,7 @@ img{
 	margin-top: 20px;
 	background-color: white;
 	padding-bottom: 20px;
+	margin-left: 632px;
 }
 .info_bar{
 	width : 100%;
@@ -189,6 +193,7 @@ img{
 	font-size: 15px;
 	text-decoration: none;
 }
+
 #info_1{
 	width: 205px;
 	height: 50px;
@@ -205,18 +210,15 @@ img{
 	height: 50px;
 	float: left;
 }
-<<<<<<< HEAD
+
 #reprice a{
 	text-decoration: none;
 	list-style: none;
 }
-#view_page{
-	background-color: white;
-}
+
 #warning{
 	width: 700px;
 	height: 135px;
-	border:1px red solid;	
 	margin-left: 60px;
 	margin-top: -20px;
 	padding-top: 20px;
@@ -224,13 +226,20 @@ img{
 #warning_tool{
 	width: 650px;
 	height: 100px;
-	border: 1px blue solid;
-	margin-left: 30px;
+	margin-left: 100px;
+}
+#images_noti{
+	margin-left:30px;
+	margin-top:15px;
+	width:80px;
+		float:left; 
+}
+#warning_text1{
+	margin-top: 20px;
 }
 #point_box{
 	width: 700px;
 	height: 150px;
-	border: 1px blue solid;
 	background-color:white;
 	margin-left: 65px;
 	margin-top: 30px;
@@ -238,22 +247,23 @@ img{
 #point_box1{
 	width: 628px;
 	height: 29px;
-	border: 1px red solid;
 	background-color: white;
 	margin-left: 36px;
 	margin-top:10px;
 	text-align: center;
+	font-size: 20px;
 }
 #point_box2{
 	width: 628px;
 	height: 29px;
-	border: 1px red solid;
+
 	background-color: white;
 	margin-left: 36px;
 	margin-top:10px;
 	text-align: center;
 }
-.starRating{ 
+.starRating{
+	width:150px;
 	display:inline-block;
 	height:21px;
 	background: transparent url(../images/starpoint/star_rating.png) no-repeat;
@@ -263,28 +273,43 @@ img{
 #point_box3{
 	width: 628px;
 	height: 29px;
-	border: 1px red solid;
+	font-size:20px;
 	background-color: white;
 	margin-left: 36px;
-	margin-top: 10px;
+	margin-top: 20px;
 	text-align: center;
 }
+#refund_form{
+
+}
 #refund_info{
-	width: 700px;
-	height: 50px;
-	margin-left: 30px;
-	background-color: white;
+	width:822px;
+	background-color:white;
+	margin-left: 640px;
 	font-size: 20px;
 	font-weight: bolder;
-	margin-top: -20px;
 	line-height: 60px;
+}
+##refund_info p{
+	margin-left: 30px;
+}
+#refund_rull{
+	width:822px;
+	margin-left:640px;
+	background-color: white;
 }
 #refund_rull p{
 	margin-left: 30px;
 }
 #refund_method{
+	width:822px;
+	margin-left: 640px;
+ 	background-color: white;
+ 	margin-top: -10px;
+}
+#refund_method p{
 	margin-left: 30px;
-=======
+}
 .warning{
 	width: 700px;
 	height: 95px;
@@ -318,5 +343,24 @@ img{
 	width: 700px;
 	margin: 0 auto;
 	margin-top: 20px;
->>>>>>> 578e5a9a30f8c80283cb50a1c6bc512e39c56985
 }
+#menu_info{
+	width: 208px;
+	text-align: center;
+	font-size: 20px;
+	margin-left: 632px;
+}
+.menu_li{
+	width: 208px;
+	text-align: center;
+	font-size: 20px;
+}
+.view_page p{
+	margin-left: 30px;
+}
+#afterview_box_list{
+	width: 835px;
+	margin-left: 630px;
+	background-color: white;
+}
+	

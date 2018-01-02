@@ -13,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.theater.file.FileDAO;
 import com.theater.file.FileDTO;
+import com.theater.qna.QnaDTO;
+import com.theater.review.ReviewDTO;
 import com.theater.util.FileSaver;
 import com.theater.util.ListData;
 import com.theater.util.Pager;
@@ -28,18 +30,45 @@ public class DramaService {
 	private FileSaver fileSaver;
 	@Inject
 	private FileDAO fileDAO;
-	
+	//영광
 	public DramaDTO selectOne(int drama_num) throws Exception{
 		return dramaDAO.selectOne(drama_num);
 	}
+	
 	public List<DramaListDTO> dramaList(int drama_num) throws Exception{
 		return dramaDAO.dateList(drama_num);
 	}
+	
 	public int ticket_sell(int drama_num) throws Exception{
 		int company_num = dramaDAO.searchCompany_num(drama_num);
 		
 		return dramaDAO.ticket_sell(company_num);
 	}
+	public List<ReviewDTO> selectList_review(int drama_num)throws Exception{
+		List<ReviewDTO> ar_review = dramaDAO.selectList_review(drama_num);
+		
+		return ar_review;
+	}
+	
+	public ReviewDTO selectOne_review(int drama_num)throws Exception{
+		ReviewDTO reviewDTO = dramaDAO.selectOne_review(drama_num);
+		return reviewDTO;
+	}
+	public int totalcount(int drama_num)throws Exception{
+		int totalcount = dramaDAO.totalcount(drama_num);
+		return totalcount;
+	}
+	public int review_avg(int drama_num)throws Exception{
+		int totalstar = dramaDAO.review_avg(drama_num);
+		return totalstar;
+	}
+	public List<QnaDTO> selectList_qna(int drama_num)throws Exception{
+		List<QnaDTO> qnaDTO = dramaDAO.selectList_qna(drama_num);
+		
+		return qnaDTO;
+	}
+	//영광 끝
+	
 	
 	public ModelAndView selectList(ListData listData) throws Exception {
 		ModelAndView mv = new ModelAndView();
