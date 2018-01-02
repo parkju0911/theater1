@@ -7,8 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<<<<<<< HEAD
-		dd
+
 
 </style>
 <link href="../resources/css/dramaview.css" rel="stylesheet">
@@ -65,7 +64,7 @@ A:VISITED { text-decoration: none;}
 	<!-- header -->
 	<c:import url="../temp/header.jsp"></c:import>
 	<!-- header end -->
->>>>>>> 578e5a9a30f8c80283cb50a1c6bc512e39c56985
+
 			
 	<section id="section">
 		<form id="section_info" action="좌석 선택 페이지" method="post">
@@ -107,7 +106,7 @@ A:VISITED { text-decoration: none;}
 				<option id="select_time">시간 선택</option>
 				<c:forEach items="${list2}" var="dto2">
 				<option>${dto2.drama_time }</option>
-				
+				</c:forEach>
 					<optgroup label="매수설정">
 						<option id="select_ticket">매수 설정</option>
 						<c:forEach begin="1" end="${ticket}" var="i">
@@ -120,7 +119,7 @@ A:VISITED { text-decoration: none;}
 			</div>
 		</form>
 		<div id="afterview">
-<<<<<<< HEAD
+
 		<div id="after_top_text">예매자 <span style="color:red;">별점</span> <!-- 별점/후기인원수 --><span id="star_total">${avg } /5.0 (총  ${total }  명)</span> </div>
 		<div id="afterview_box">
 			<table>
@@ -242,7 +241,7 @@ A:VISITED { text-decoration: none;}
 		 <c:import url="../temp/footer.jsp"></c:import> 
 		<!-- footer end -->
 			
-=======
+
 			<div id="after_top_text">예매자 <span style="color:red;">별점</span> <!-- 별점/후기인원수 --><span id="star_total">/5.0 (총  <!-- 후기인원수 -->  명)</span> </div>
 		</div>
 		<div class="view_page">
@@ -289,6 +288,6 @@ A:VISITED { text-decoration: none;}
 	<!-- footer  -->
 	<c:import url="../temp/footer.jsp"></c:import>
 	<!-- footer end -->	
->>>>>>> 578e5a9a30f8c80283cb50a1c6bc512e39c56985
+
 </body>
 </html>
