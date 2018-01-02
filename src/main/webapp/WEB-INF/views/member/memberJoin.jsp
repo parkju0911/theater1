@@ -77,18 +77,15 @@
 	<c:import url="../temp/header.jsp"></c:import>
 	
 	<form action="./memberJoin" method="post" id="frm">
-		<div
-			style="width: 700px; margin: 20px auto; padding: 30px 70px; border: 1px solid #e8e8e8; background: #fff; text-align: center;">
+		<div style="width: 700px; margin: 20px auto; padding: 30px 70px; border: 1px solid #e8e8e8; background: #fff; text-align: center;">
 			<!-- 타이틀 영역-->
 			<div>
 				<div style="float: left; text-align: left;">
 					<span style="font-size: 24px; font-weight: 400;">TEATRO 회원가입</span>
 				</div>
-				<div
-					style="font-size: 13px; font-weight: 300; text-align: right; padding-top: 15px; vertical-align: bottom;">
+				<div style="font-size: 13px; font-weight: 300; text-align: right; padding-top: 15px; vertical-align: bottom;">
 					* 필수 입력항목</div>
-				<div
-					style="border-top: 1px solid #e8e8e8; width: 100%; margin-top: 10px;"></div>
+				<div style="border-top: 1px solid #e8e8e8; width: 100%; margin-top: 10px;"></div>
 			</div>
 			<!-- 타이틀 영역 끝-->
 			<div alt="입력필드" style="padding: 20px; overflow: hidden;">

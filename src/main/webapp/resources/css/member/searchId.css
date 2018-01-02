@@ -1,0 +1,128 @@
+@CHARSET "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body, code {
+    font-size: 0.75em;
+    color: #353535;
+    background: #fff;
+}
+
+body, code, textarea {
+    font-family: "Nanum Gothic","Malgun Gothic","맑은 고딕","돋움","Dotum","Apple Gothic","Apple SD Gothic Neo",sans-serif;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    outline: none;
+}
+
+.xans-member-findidresult {
+    padding: 45px 0;
+    line-height: 170%;
+    text-align: center;
+}
+
+.xans-member-findidresult .findId {
+    width: 380px;
+    margin: 0 auto;
+}
+
+.xans-member-findidresult .findId h3 {
+    margin: 0 0 30px 0;
+    font-size: 20px;
+    text-align: center;
+}
+
+.xans-member-findidresult .findId p.desc {
+    margin: 0 0 7px;
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+}
+
+.xans-member-findidresult .findId p.info {
+    margin: 10px 0 20px 0;
+    font-size: 11px;
+    line-height: 17px;
+    color: #444;
+}
+
+.xans-member-findidresult .findId .memberInfo {
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    text-align: left;
+    font-size: 11px;
+}
+
+.xans-member-findidresult .findId ul {
+    float: left;
+    width: 330px;
+    padding: 17px 10px 17px 20px;
+}
+
+.xans-member-findidresult .findId li {
+    margin: 0 0 5px;
+}
+
+.xans-member-findidresult .findId .button {
+    margin: 25px 0 0;
+}
+
+.btn {
+    font-family: "Roboto","Arial","Nanum Gothic","돋움","Dotum","Apple Gothic","Apple SD Gothic Neo",sans-serif;
+    color: #7d7d7d;
+    font-size: 12px;
+    height: 27px;
+    line-height: 27px;
+    cursor: pointer;
+    outline: none;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px 8px 0 9px;
+    border: 1px solid #e0e0e0;
+    background: #fafafa;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    -moz-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-transition: all 0.12s ease-in-out;
+    -ms-transition: all 0.12s ease-in-out;
+    -moz-transition: all 0.12s ease-in-out;
+    -webkit-transition: all 0.12s ease-in-out;
+    transition: all 0.12s ease-in-out;
+}
+
+.btn.Dark {
+    background: #272727;
+    color: #ffffff;
+    border: 1px solid #272727;
+}
+
+.btn.Big {
+    font-size: 12px;
+    height: 41px;
+    min-width: 90px;
+    line-height: 41px;
+}
+
+.btn.Wbig {
+    min-width: 125px;
+}
