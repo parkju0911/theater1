@@ -26,56 +26,57 @@
 					<div id="title">
 						<span class="skin-type">${view.place}</span>
 						<h3>${view.title}</h3>
+						<div id="content">${view.contents}</div>
 					</div>
-					<%-- <div id="contents">${view.contents}</div>
-					<div id="price">${view.price}원</div> --%>
-				</div>	
-						<input type="hidden" value="${view.price}">  
-						<select id="drama_date">
-							<optgroup label="날짜 선택">
-								<option class ="select_date">날짜 선택</option>
-								<c:forEach items="${list}" var="dto">
-					 				<fmt:parseDate value='${dto.drama_date}'  var='dto_date'  pattern="yyyy-MM-dd"  scope="page"/>
-									<option><fmt:formatDate value="${dto_date}" pattern="yyyy-MM-dd"/></option>
-								</c:forEach>
-							</optgroup>
-						</select>
+					<input id="price"type="text" name="price" value="${view.price}원" readonly="readonly">
+				</div>	 
+				<select id="drama_date" name="date">
+					<optgroup label="날짜 선택">
+						<option class ="select_date">날짜 선택</option>
+						<c:forEach items="${list}" var="dto">
+					 		<fmt:parseDate value='${dto.drama_date}'  var='dto_date'  pattern="yyyy-MM-dd"  scope="page"/>
+							<option><fmt:formatDate value="${dto_date}" pattern="yyyy-MM-dd"/></option>
+						</c:forEach>
+					</optgroup>
+				</select>
 							
-						<select id="drama_time">
-							<optgroup label="시간 선택">
-								<option id="select_time">시간 선택</option>
-								<c:forEach items="${list}" var="dto">
-									<option>${dto.drama_time }</option>
-								</c:forEach>
-							</optgroup>
-						</select>
-						<select id="drama_ticket">
-							<optgroup label="매수설정">
-							<option id="select_ticket">매수 설정</option>
-								<c:forEach begin="1" end="${ticket}" var="i">
-									<option>${i }</option>
-								</c:forEach>
-	 						</optgroup>
-						</select>
+				<select id="drama_time" name="time">
+					<optgroup label="시간 선택">
+						<option id="select_time">시간 선택</option>
+						<c:forEach items="${list}" var="dto">
+							<option>${dto.drama_time }</option>
+						</c:forEach>
+					</optgroup>
+				</select>
 				
-						<button id="ticket_buy">예매하기</button>
+				<select id="drama_ticket" name="ticket">
+					<optgroup label="매수설정">
+						<option id="select_ticket">매수 설정</option>
+						<c:forEach begin="1" end="${ticket}" var="i">
+							<option>${i }</option>
+						</c:forEach>
+	 				</optgroup>
+				</select>
+				
+				<input id="btn_buy" type="image" src="../resources/images/btn_buy.png">
 			</div>
-			</form>
-			<div id="afterview">
-				<div id="after_top_text">예매자 <span style="color:red;">별점</span> <!-- 별점/후기인원수 --><span id="star_total">/5.0 (총  <!-- 후기인원수 -->  명)</span> </div>
-			</div>
+		</form>
+		<div id="afterview">
+			<div id="after_top_text">예매자 <span style="color:red;">별점</span> <!-- 별점/후기인원수 --><span id="star_total">/5.0 (총  <!-- 후기인원수 -->  명)</span> </div>
+		</div>
+		<div class="view_page">
 			<ul class="info_bar">
 				<li id="info_1"><a href="">안내</a></li>
 				<li id="after"><a href="">후기</a></li>
 				<li id="QNA"><a href="">QnA</a></li>
 				<li id="reprice"><a href="">환불규정</a></li>
 			</ul>
-			<div class="view_page">
-				<div id="warning">
-				예매 전 안내 및 주의사항을 꼭 확인하세요!
-		
-				티켓에 따라 이용방법/환불규정이 상이합니다. 환불규정 바로가기 >
-				</div>
+			<div class="warning">
+				<p class="warnning_1">예매 전 안내 및 주의사항을 꼭 확인하세요!</p>
+				<p class="warnning_2">티켓에 따라 이용방법/환불규정이 상이합니다.</p>
+				<img src="http://timeticket.co.kr/img/icon_noti.png">
+			</div>
+			<div class="info">
 				<p>예매정보</p>
 				<p>공연기간: 오픈런</p>
 				<p>예매가능시간: 공연 10분 전 까지</p>
@@ -101,11 +102,11 @@
 				<p>주소: ${view.place}</p>
 				<p>주차여부: 주차불가(인근 유료주차장 이용)</p>
 				<p>문의전화: 02-766-7667</p>
-			</div>			
+			</div>
+		</div>		
 	</section>
 	<!-- footer  -->
 	<c:import url="../temp/footer.jsp"></c:import>
-	<!-- footer end -->
-			
+	<!-- footer end -->	
 </body>
 </html>
