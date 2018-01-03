@@ -1,8 +1,14 @@
 package com.theater.project;
 
 import javax.inject.Inject;
+import javax.mail.MessagingException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,6 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.theater.email.EmailDTO;
+import com.theater.email.EmailSender;
 import com.theater.member.CompanyDTO;
 import com.theater.member.MemberDTO;
 import com.theater.member.MemberService;
@@ -22,6 +30,50 @@ public class MemberController {
 	@Inject
 	private MemberService memberService;
 	
+	@Autowired
+    private EmailSender emailSender;
+ 
+    @Autowired
+    private EmailDTO emailDTO;
+    
+    @Autowired
+    private JavaMailSender mailSender;
+    
+    @RequestMapping(value="memberPwSearch", method=RequestMethod.GET)
+    public String searchPw(){
+        return "member/searchPw";
+    }
+    
+    @RequestMapping(value="memberPwSearch", method=RequestMethod.POST)
+    public ModelAndView sendEmailAction (MemberDTO memberDTO, ModelAndView mv) throws Exception {
+        String id = memberDTO.getId();
+        String pw = memberDTO.getPw();
+        String email = memberDTO.getEmail();
+        if(pw!=null) {
+        	emailDTO.setContent("비밀번호는 "+pw+" 입니다."); // 이메일로 보낼 메시지
+        	emailDTO.setReceiver(email); // 받는이의 이메일 주소
+        	emailDTO.setSubject(id+"님 비밀번호 찾기 메일입니다."); // 이메일로 보낼 제목
+            try {
+                MimeMessage message = mailSender.createMimeMessage();
+                MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8"); //두번째 인자 true여야 파일첨부 가능.
+                 
+                messageHelper.setSubject(emailDTO.getSubject());
+                messageHelper.setText(emailDTO.getContent());
+                messageHelper.setTo(emailDTO.getReceiver());
+                messageHelper.setFrom("TEATRO@gmail.com"); // 보내는 이의 주소(root-context.xml 에서 선언했지만 적어줬음)
+                message.setRecipients(MimeMessage.RecipientType.TO , InternetAddress.parse(emailDTO.getReceiver()));
+                mailSender.send(message);
+            }catch(MessagingException e) {
+                System.out.println("MessagingException");
+                e.printStackTrace();
+            }
+            mv.setViewName("redirect:/member/memberIdSearch");
+        }else {
+            mv.setViewName("redirect:/member/memberIdSearch");
+        }
+        return mv;
+    }
+    
 	@RequestMapping(value="memberIdSearch", method=RequestMethod.POST)
 	public ModelAndView searchId(ModelAndView modelAndView, MemberDTO memberDTO){
 		try {
@@ -120,4 +172,6 @@ public class MemberController {
 		} 
 		return result;
 	}
+	
+	
 }

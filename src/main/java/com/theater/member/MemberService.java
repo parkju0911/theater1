@@ -33,4 +33,8 @@ public class MemberService {
 	public MemberDTO searchId(MemberDTO memberDTO) throws Exception {
 		return memberDAO.searchId(memberDTO);
 	}
+	
+	public MemberDTO searchPw(MemberDTO memberDTO) throws Exception {
+		return memberDAO.searchPw(memberDTO);
+	}
 }

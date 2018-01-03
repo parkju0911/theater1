@@ -38,4 +38,8 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE+"searchId", memberDTO);
 	}
 	
+	public MemberDTO searchPw(MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"searchPw", memberDTO);
+	}
+	
 }
