@@ -129,7 +129,7 @@
 											<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">이메일*</div>
 											<div style="float: left; font-size: 16px; font-weight: 300;">
 												<input onkeyup="email_input_check()" type="text" name="email" value="" class="member_txt">
-													<span style="font-size: 14px; color: #777; padding-left: 10px;">아이디 찾기에 필요합니다.</span>
+													<span style="font-size: 14px; color: #777; padding-left: 10px;">아이디/비밀번호 찾기에 필요합니다.</span>
 											</div>
 										</div>
 									</div>
