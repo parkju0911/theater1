@@ -24,8 +24,8 @@
             </props>
         </property>
     </bean>
-    <!-- <bean id="email" class="com.theater.email.EmailDTO"></bean>
-    <bean id="emailSender" class="com.theater.email.EmailSender"></bean> -->
+    <bean id="email" class="com.theater.email.EmailDTO"></bean>
+    <bean id="emailSender" class="com.theater.email.EmailSender"></bean>
 
 	<bean class="com.theater.util.FileSaver" id="fileSaver"></bean>
 
