@@ -40,7 +40,7 @@
 <input id="inputMessage" type="text"
 	onkeydown="if(event.keyCode==13){send();}" />
 <input type="submit" value="send" onclick="send();" />
-<div id="messageWindow2" style="padding:10px 0;height: 20em; overflow: auto; background-color: #a0c0d7;"></div>
+<div id="messageWindow2" style="padding:10px 0;height: 20em; overflow: auto; background-color: #a0c0d7;width: 350px;"></div>
 
 
 <c:import url="./temp/footer.jsp"></c:import>
@@ -48,7 +48,7 @@
 <script type="text/javascript">
 	
 	//웹소켓 설정
-	var webSocket = new WebSocket('ws://localhost:80/project/echo-ws');
+	var webSocket = new WebSocket('ws://192.168.20.48:80/project/echo-ws');
 	//var webSocket = new WebSocket('ws://localhost:8080/프로젝트명/broadcasting');
 	var inputMessage = document.getElementById('inputMessage');
 	//같은 이가 여러번 보낼때 이름 판별할 변수
