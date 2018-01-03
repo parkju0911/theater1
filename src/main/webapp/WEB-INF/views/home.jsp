@@ -11,7 +11,7 @@
 	if (session.getAttribute("nick") != null) {
 		nick = (String) session.getAttribute("nick");
 	} else {
-		nick = "NICK NULL";
+		nick = "상대방";
 	}
 %>
 
@@ -40,7 +40,8 @@
 <input id="inputMessage" type="text"
 	onkeydown="if(event.keyCode==13){send();}" />
 <input type="submit" value="send" onclick="send();" />
-<div id="messageWindow2" style="padding:10px 0;height: 20em; overflow: auto; background-color: #a0c0d7;width: 350px;"></div>
+<div id="messageWindow2" style="padding:10px 0;height: 20em; overflow: auto;width: 350px;
+    background-color: #774e3f85;"></div>
 
 
 <c:import url="./temp/footer.jsp"></c:import>
@@ -125,7 +126,7 @@
 		
 		div.style["text-align"]="center";
 		
-		div.innerHTML = "반갑습니다.";
+		div.innerHTML = "운영자와의 실시간 상담이 가능합니다. ^^";
 		document.getElementById('messageWindow2').appendChild(div);
 		
 		var clear=document.createElement('div');

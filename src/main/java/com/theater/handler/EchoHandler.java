@@ -53,7 +53,7 @@ public class EchoHandler extends TextWebSocketHandler{
              * 자신이 보낸 메시지를 받지 않는다.
              */
             if( !session.getId().equals(webSocketSession)) {
-                webSocketSession.sendMessage(new TextMessage("echo : " + message.getPayload()));
+                webSocketSession.sendMessage(new TextMessage(message.getPayload()));
             }
         }
          
