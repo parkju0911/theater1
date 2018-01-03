@@ -1,5 +1,7 @@
 package com.theater.project;
 
+import java.util.Random;
+
 import javax.inject.Inject;
 import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
@@ -12,12 +14,12 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.theater.email.EmailDTO;
-import com.theater.email.EmailSender;
 import com.theater.member.CompanyDTO;
 import com.theater.member.MemberDTO;
 import com.theater.member.MemberService;
@@ -26,54 +28,61 @@ import com.theater.member.UserDTO;
 @Controller
 @RequestMapping(value="/member/**")
 public class MemberController {
-	
+
 	@Inject
 	private MemberService memberService;
-	
+
+	/*@Inject
+	private EmailSender emailSender;*/
+
 	@Autowired
-    private EmailSender emailSender;
- 
-    @Autowired
-    private EmailDTO emailDTO;
-    
-    @Autowired
-    private JavaMailSender mailSender;
-    
-    @RequestMapping(value="memberPwSearch", method=RequestMethod.GET)
-    public String searchPw(){
-        return "member/searchPw";
-    }
-    
-    @RequestMapping(value="memberPwSearch", method=RequestMethod.POST)
-    public ModelAndView sendEmailAction (MemberDTO memberDTO, ModelAndView mv) throws Exception {
-        String id = memberDTO.getId();
-        String pw = memberDTO.getPw();
-        String email = memberDTO.getEmail();
-        if(pw!=null) {
-        	emailDTO.setContent("비밀번호는 "+pw+" 입니다."); // 이메일로 보낼 메시지
-        	emailDTO.setReceiver(email); // 받는이의 이메일 주소
-        	emailDTO.setSubject(id+"님 비밀번호 찾기 메일입니다."); // 이메일로 보낼 제목
-            try {
-                MimeMessage message = mailSender.createMimeMessage();
-                MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8"); //두번째 인자 true여야 파일첨부 가능.
-                 
-                messageHelper.setSubject(emailDTO.getSubject());
-                messageHelper.setText(emailDTO.getContent());
-                messageHelper.setTo(emailDTO.getReceiver());
-                messageHelper.setFrom("TEATRO@gmail.com"); // 보내는 이의 주소(root-context.xml 에서 선언했지만 적어줬음)
-                message.setRecipients(MimeMessage.RecipientType.TO , InternetAddress.parse(emailDTO.getReceiver()));
-                mailSender.send(message);
-            }catch(MessagingException e) {
-                System.out.println("MessagingException");
-                e.printStackTrace();
-            }
-            mv.setViewName("redirect:/member/memberIdSearch");
-        }else {
-            mv.setViewName("redirect:/member/memberIdSearch");
-        }
-        return mv;
-    }
-    
+	private EmailDTO emailDTO;
+
+	@Autowired
+	private JavaMailSender mailSender;
+
+	@RequestMapping(value="memberPwSearch", method=RequestMethod.GET)
+	public String searchPw(){
+		return "member/searchPw";
+	}
+
+	@RequestMapping(value="memberPwSearch", method=RequestMethod.POST)
+	public String sendEmailAction (MemberDTO memberDTO, RedirectAttributes attributes) {
+		try {
+			memberDTO = memberService.searchPw(memberDTO);
+			String id = memberDTO.getId();
+			String pw = memberDTO.getPw();
+			String email = memberDTO.getEmail();
+			String result = "귀하의 이메일로 가입된 아이디가 존재하지 않습니다.";
+			if(memberDTO!=null) {
+				emailDTO.setContent("비밀번호는 "+pw+" 입니다."); // 이메일로 보낼 메시지
+				emailDTO.setReceiver(email); // 받는이의 이메일 주소
+				emailDTO.setSubject(id+"님 비밀번호 찾기 메일입니다."); // 이메일로 보낼 제목
+				try {
+					MimeMessage message = mailSender.createMimeMessage();
+					MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8"); //두번째 인자 true여야 파일첨부 가능.
+
+					messageHelper.setSubject(emailDTO.getSubject());
+					messageHelper.setText(emailDTO.getContent());
+					messageHelper.setTo(emailDTO.getReceiver());
+					messageHelper.setFrom("officialTEATRO2017@gmail.com"); // 보내는 이의 주소(root-context.xml 에서 선언했지만 적어줬음)
+					message.setRecipients(MimeMessage.RecipientType.TO , InternetAddress.parse(emailDTO.getReceiver()));
+					mailSender.send(message);
+					result = "귀하의 이메일 주소로 비밀번호를 발송 하였습니다.";
+				}catch(MessagingException e) {
+					System.out.println("MessagingException");
+					e.printStackTrace();
+				}
+				attributes.addFlashAttribute("result", result);
+			}
+		}
+		catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		return "member/memberLogin";
+	}
+
 	@RequestMapping(value="memberIdSearch", method=RequestMethod.POST)
 	public ModelAndView searchId(ModelAndView modelAndView, MemberDTO memberDTO){
 		try {
@@ -86,27 +95,27 @@ public class MemberController {
 		modelAndView.setViewName("member/searchId");
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value="memberIdSearch", method=RequestMethod.GET)
 	public String memberIdSearch(){
 		return "member/memberIdSearch";
 	}
-	
+
 	@RequestMapping(value="memberJoin1", method=RequestMethod.GET)
 	public String memberJoin1(){
 		return "member/memberJoin1";
 	}
-	
+
 	@RequestMapping(value="memberJoin2", method=RequestMethod.GET)
 	public String memberJoin2(){
 		return "member/memberJoin2";
 	}
-	
+
 	@RequestMapping(value="memberJoin", method=RequestMethod.GET)
 	public String memberJoin(){
 		return "member/memberJoin";
 	}
-	
+
 	@RequestMapping(value="/user/memberJoin", method=RequestMethod.POST)
 	public String memberJoinUser(RedirectAttributes attributes, MemberDTO memberDTO, UserDTO userDTO) throws Exception {
 		System.out.println(userDTO.getBirth());
@@ -119,7 +128,7 @@ public class MemberController {
 		attributes.addFlashAttribute("message", message);
 		return "redirect:/";
 	}
-	
+
 	@RequestMapping(value="/company/memberJoin", method=RequestMethod.POST)
 	public String memberJoinCompany(RedirectAttributes attributes, MemberDTO memberDTO, CompanyDTO companyDTO) throws Exception {
 		int result = memberService.memberJoin(memberDTO);
@@ -131,10 +140,10 @@ public class MemberController {
 		attributes.addFlashAttribute("message", message);
 		return "redirect:/";
 	}
-	
+
 	@RequestMapping(value="memberLogin", method=RequestMethod.GET)
 	public void membrLogin(){}
-	
+
 	@RequestMapping(value="memberLogin", method=RequestMethod.POST)
 	public String memberLogin(MemberDTO memberDTO, HttpSession session){
 		try {
@@ -148,7 +157,7 @@ public class MemberController {
 		}
 		return "redirect:/";	
 	}
-	
+
 	@RequestMapping(value="memberLogout")
 	public String memberLogout(RedirectAttributes attributes, HttpSession session){
 		session.invalidate();
@@ -156,7 +165,7 @@ public class MemberController {
 		attributes.addFlashAttribute("message", message);
 		return "redirect:/";
 	}
-	
+
 	@RequestMapping(value="checkId", method=RequestMethod.POST)
 	@ResponseBody
 	public int checkId(String id){
@@ -172,6 +181,6 @@ public class MemberController {
 		} 
 		return result;
 	}
-	
-	
+
+
 }

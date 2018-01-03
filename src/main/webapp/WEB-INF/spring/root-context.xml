@@ -12,8 +12,8 @@
         <property name="host" value="smtp.gmail.com" />
         <property name="port" value="587" />
         <property name="defaultEncoding" value="utf-8"/>
-        <property name="username" value="TEATRO@gmail.com" />
-        <property name="password" value="TEATRO" />
+        <property name="username" value="officialTEATRO2017@gmail.com" />
+        <property name="password" value="TEATRO2017" />
        
         <property name="javaMailProperties">
             <props>
