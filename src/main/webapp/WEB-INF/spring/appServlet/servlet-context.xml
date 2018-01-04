@@ -37,6 +37,8 @@
 		<beans:property name="order" value="1" />
 	</beans:bean>
 	
+
+	
 	
 	<context:component-scan base-package="com.theater.project" />
 	
@@ -46,6 +48,8 @@
 <!-- 웹 소켓 서버로 사용할 클래스의 bean을 생성 --> 
 <beans:bean id="echoHandler" class="com.theater.handler.EchoHandler" /> 
 <beans:bean id="socketController" class="com.theater.project.SocketController" />
+
+
 
 
 <!-- 웹 소켓 서버와 URL을 매핑 --> 
