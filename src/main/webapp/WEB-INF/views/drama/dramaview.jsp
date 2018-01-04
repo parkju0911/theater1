@@ -123,7 +123,7 @@ A:VISITED {
 			</div>
 			<div id="afterview_box">
 				<table>
-					<c:forEach items="${review }" var="re">
+					<c:forEach items="${review }" var="re" begin="1" end="3">
 						<tr>
 							<td><div id="afterview_box_a">${re.id }
 									(${re.review_date })</div></td>
@@ -162,9 +162,14 @@ A:VISITED {
 
 
 		</div>
+		<div id="ticket_top">
+		<p>티켓 리뷰</p>
+		</div>
+		<div id="ticket_review">
+			
+		</div>
 
-
-
+	
 		<div class="contain">
 
 			<ul class="nav nav-tabs">
@@ -195,7 +200,7 @@ A:VISITED {
 			</div>
 		</div>
 
-		</div>
+		
 	</section>
 	<!-- footer  -->
 	<c:import url="../temp/footer.jsp"></c:import>

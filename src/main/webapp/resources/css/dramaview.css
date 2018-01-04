@@ -436,3 +436,20 @@
 	font-size: 25px;
 	font-weight: bolder;
 }
+#ticket_top{
+	width: 830px;
+	height: 40px;
+	margin-left: 640px;
+	margin-top: 10px;
+}
+#ticket_top p{
+	font-size: 20px;
+	font-weight: bolder;
+}
+#ticket_review{
+	width: 830px;
+	height: 120px;
+	margin-left: 640px;
+	margin-bottom: 30px;
+	background-color: white;
+}
