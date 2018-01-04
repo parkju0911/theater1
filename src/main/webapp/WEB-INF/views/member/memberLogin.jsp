@@ -8,6 +8,12 @@
 <title>Insert title here</title>
 <link href="../resources/css/member/memberLogin.css" rel="stylesheet">
 <link href="../resources/css/common/header.css" rel="stylesheet">
+<script type="text/javascript">
+	var result = '${result}';
+	if(result != ""){
+		alert('${result}');
+	}
+</script>
 </head>
 <body>
 	<c:import url="../temp/header.jsp"></c:import>
