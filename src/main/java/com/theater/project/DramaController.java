@@ -61,6 +61,7 @@ public class DramaController {
 			return mv;
 		
 		}
+		//리뷰 리스트 , 별점,별점 평균점수
 		@RequestMapping(value="reviewlist")
 		public ModelAndView review_list(ModelAndView mv , ListData listData , int drama_num)throws Exception{
 			mv = dramaService.review_list(listData);
@@ -83,11 +84,13 @@ public class DramaController {
 
 				return model;
 		}*/
+		//환불규정 page
 		@RequestMapping(value="refundlist")
 		public String refundlist()throws Exception{
 			
 			return "drama/refundlist";
 		}
+		//안내(지도api) page
 			@RequestMapping(value="text_info")
 		public String textinfo(Model model , int drama_num)throws Exception{ 
 				
@@ -95,7 +98,7 @@ public class DramaController {
 				model.addAttribute("view2", dramaDTO);
 				return "drama/text_info";
 			}
-			
+			//qna list page & write form(Get)
 		@RequestMapping(value="qnalist" , method=RequestMethod.GET)
 			public ModelAndView selectList_qna( ModelAndView mv , ListData listData)throws Exception{
 				
@@ -104,7 +107,8 @@ public class DramaController {
 				return mv;
 						
 			}
-		@RequestMapping(value="qnalist" , method=RequestMethod.POST)
+		//qna list page & write form(Post)
+		@RequestMapping(value="qnawrite" , method=RequestMethod.POST)
 		public String selectList_qna( ModelAndView mv , HttpSession session , ListData listData , Qna_viewDTO qna_viewDTO , RedirectAttributes rd)throws Exception{
 			int result=0;
 			result = dramaService.qna_insert(qna_viewDTO, session);
@@ -117,6 +121,7 @@ public class DramaController {
 			return "redirect:./dramaview";
 					
 		}
+		//qna delete 
 		@RequestMapping(value="qnalist")
 		public String delete_qnaview(int qna_viewnum ,RedirectAttributes rd , HttpSession session)throws Exception{
 		int	result = 0;
@@ -130,7 +135,12 @@ public class DramaController {
 				rd.addFlashAttribute("message", message);
 			return "redirect:./dramaview";
 		}
+		@RequestMapping(value="dramaReview")
+		public ModelAndView dramaReviewList(ModelAndView mv , ListData listData)throws Exception{
 		
+			mv = dramaService.dramaReviewList(listData);
+			return mv;
+		}
 		
 	//selectList
 	@RequestMapping(value="dramaList")

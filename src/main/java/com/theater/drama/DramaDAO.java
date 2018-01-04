@@ -98,4 +98,7 @@ public class DramaDAO  {
 	public int delete_qnaview(int qna_viewnum)throws Exception{
 		return sqlSession.delete(namespace+"delete_qnaview", qna_viewnum);
 	}
+	public List<ReviewDTO>dramaReviewList(RowNum rowNum)throws Exception{
+		return sqlSession.selectList(namespace+"dramaReviewList", rowNum);
+	}
 }
