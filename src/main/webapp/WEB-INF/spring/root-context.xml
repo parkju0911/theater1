@@ -41,7 +41,12 @@
 	<context:component-scan base-package="com.theater.util"></context:component-scan>
 	<context:component-scan base-package="com.theater.file"></context:component-scan>
 	<context:component-scan base-package="com.theater.notice"></context:component-scan>
+<<<<<<< HEAD
 	<context:component-scan base-package="com.theater.email"></context:component-scan>
+=======
 	<context:component-scan base-package="com.theater.event"></context:component-scan>
+
+>>>>>>> notice2
+	
 
 </beans>
