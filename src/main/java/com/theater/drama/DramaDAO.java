@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.theater.qna.QnaDTO;
+import com.theater.qna.Qna_viewDTO;
 import com.theater.review.ReviewDTO;
 import com.theater.util.RowNum;
 
@@ -73,12 +74,28 @@ public class DramaDAO  {
 	public int totalcount(int drama_num)throws Exception{
 		return sqlSession.selectOne(namespace+"totalcount", drama_num);
 	}
+	public int totalcount_qna(RowNum rowNum)throws Exception{
+		return sqlSession.selectOne(namespace+"totalcount_qna", rowNum);
+	}
 	public int review_avg(int drama_num)throws Exception{
 		return sqlSession.selectOne(namespace+"review_avg", drama_num);
 	}
-	public List<QnaDTO> selectList_qna(int drama_num)throws Exception{
-		return sqlSession.selectList(namespace+"selectList_qna", drama_num);		
+	public List<Qna_viewDTO> selectList_qna(RowNum rowNum)throws Exception{
+		return sqlSession.selectList(namespace+"selectList_qna", rowNum);		
 	}
-
-
+	public List<ReviewDTO> review_list(RowNum rowNum)throws Exception{
+		return sqlSession.selectList(namespace+"review_list", rowNum);
+	}
+/*	public int total_review(RowNum rowNum)throws Exception{
+		return sqlSession.selectOne(namespace+"total_review", rowNum);
+	}*/
+	public int totalcount_review(RowNum rowNum)throws Exception{
+		return sqlSession.selectOne(namespace+"totalcount_review", rowNum);
+	}
+	public int qna_insert(Qna_viewDTO qna_viewDTO)throws Exception{
+		return sqlSession.insert(namespace+"qna_insert", qna_viewDTO);
+	}
+	public int delete_qnaview(int qna_viewnum)throws Exception{
+		return sqlSession.delete(namespace+"delete_qnaview", qna_viewnum);
+	}
 }

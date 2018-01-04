@@ -16,6 +16,7 @@ import com.theater.drama.DramaDTO;
 import com.theater.drama.DramaListDTO;
 import com.theater.drama.DramaService;
 import com.theater.qna.QnaDTO;
+import com.theater.qna.Qna_viewDTO;
 import com.theater.review.ReviewDTO;
 import com.theater.util.ListData;
 
@@ -23,7 +24,6 @@ import com.theater.util.ListData;
 @RequestMapping(value="/drama/*")
 public class DramaController {
 	
-
 	@Inject
 	public DramaService dramaService;
 	
@@ -34,9 +34,10 @@ public class DramaController {
 			DramaDTO dramaDTO = dramaService.selectOne(drama_num);
 			//해당 공연의 시간 정보 가져오기
 			List<DramaListDTO> ar = dramaService.dramaList(drama_num);
+			
 			int ticket = dramaService.ticket_sell(drama_num);
 			
-			List<ReviewDTO> ar_review = dramaService.selectList_review(drama_num);
+			List<ReviewDTO> ar_review = dramaService.selectList_review(drama_num); //최신순으로 후기 보여줌(3개)
 			
 			int totalcount = dramaService.totalcount(drama_num); //연극 리뷰 총 인원
 			
@@ -61,25 +62,27 @@ public class DramaController {
 		
 		}
 		@RequestMapping(value="reviewlist")
-		public ModelAndView selectList(int drama_num ,ModelAndView model , RedirectAttributes rd)throws Exception{
-			List<ReviewDTO> ar_review = dramaService.selectList_review(drama_num);
+		public ModelAndView review_list(ModelAndView mv , ListData listData , int drama_num)throws Exception{
+			mv = dramaService.review_list(listData);
+			int totalcount = dramaService.totalcount(drama_num);
+			int review_avg = dramaService.review_avg(drama_num);
+			mv.addObject("total", totalcount);
+			mv.addObject("avg", review_avg);
+				return mv;
+		}
+/*		@RequestMapping(value="reviewlist")
+		public ModelAndView selectList(int drama_num ,ModelAndView model , RedirectAttributes rd , ListData listData)throws Exception{
 			
 			int totalcount = dramaService.totalcount(drama_num); //연극 리뷰 총 인원
 			
 			int review_avg = dramaService.review_avg(drama_num); //연극 리뷰 평균 점수
-			if(ar_review !=null){
-				model.addObject("review", ar_review);
+			
 				model.addObject("total", totalcount);
 				model.addObject("avg", review_avg);
 				model.setViewName("/drama/reviewlist");
-				
-			}else{
-				rd.addFlashAttribute("message", "관람일이 지났습니다.");
-				model.setViewName("/drama/dramalist");
-			}
-			
-			return model;
-		}
+
+				return model;
+		}*/
 		@RequestMapping(value="refundlist")
 		public String refundlist()throws Exception{
 			
@@ -93,19 +96,40 @@ public class DramaController {
 				return "drama/text_info";
 			}
 			
-		@RequestMapping(value="qnalist")
-			public String qnalist(int drama_num , ModelAndView mv)throws Exception{
+		@RequestMapping(value="qnalist" , method=RequestMethod.GET)
+			public ModelAndView selectList_qna( ModelAndView mv , ListData listData)throws Exception{
 				
-				List<QnaDTO> qnaDTO = dramaService.selectList_qna(drama_num);
+				mv = dramaService.selectList_qna(listData);
 				
-				if(qnaDTO !=null){
-					mv.addObject("qna", qnaDTO);
-					mv.setViewName("drama/qnalist");
-				}
-				
-				return "drama/qnalist";
+				return mv;
 						
 			}
+		@RequestMapping(value="qnalist" , method=RequestMethod.POST)
+		public String selectList_qna( ModelAndView mv , HttpSession session , ListData listData , Qna_viewDTO qna_viewDTO , RedirectAttributes rd)throws Exception{
+			int result=0;
+			result = dramaService.qna_insert(qna_viewDTO, session);
+			
+			String message="등록실패";
+			if(result>0){
+				message="등록완료";
+			}
+			rd.addFlashAttribute("message", message);
+			return "redirect:./dramaview";
+					
+		}
+		@RequestMapping(value="qnalist")
+		public String delete_qnaview(int qna_viewnum ,RedirectAttributes rd , HttpSession session)throws Exception{
+		int	result = 0;
+				result = dramaService.delete_qnaview(qna_viewnum, session);
+			
+				String message="삭제 실패";
+				if(result>0){
+					message="삭제 성공";
+					
+				}
+				rd.addFlashAttribute("message", message);
+			return "redirect:./dramaview";
+		}
 		
 		
 	//selectList

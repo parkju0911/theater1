@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.theater.file.FileDAO;
 import com.theater.file.FileDTO;
 import com.theater.qna.QnaDTO;
+import com.theater.qna.Qna_viewDTO;
 import com.theater.review.ReviewDTO;
 import com.theater.util.FileSaver;
 import com.theater.util.ListData;
@@ -49,7 +50,6 @@ public class DramaService {
 		
 		return ar_review;
 	}
-	
 	public ReviewDTO selectOne_review(int drama_num)throws Exception{
 		ReviewDTO reviewDTO = dramaDAO.selectOne_review(drama_num);
 		return reviewDTO;
@@ -62,10 +62,37 @@ public class DramaService {
 		int totalstar = dramaDAO.review_avg(drama_num);
 		return totalstar;
 	}
-	public List<QnaDTO> selectList_qna(int drama_num)throws Exception{
-		List<QnaDTO> qnaDTO = dramaDAO.selectList_qna(drama_num);
+	public ModelAndView selectList_qna(ListData listData)throws Exception{
+		ModelAndView model = new ModelAndView();
+		RowNum rowNum = listData.makeRow();
+		Pager pager = listData.makePage(dramaDAO.totalcount_qna(rowNum));
+		List<Qna_viewDTO> qnalist = dramaDAO.selectList_qna(rowNum);
 		
-		return qnaDTO;
+		
+		model.addObject("pager", pager);
+		model.addObject("qnalist", qnalist);
+		model.setViewName("drama/qnalist");
+		
+		return model;
+	}
+	public ModelAndView review_list(ListData listData)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		RowNum rowNum = listData.makeRow();
+		Pager pager = listData.makePage(dramaDAO.totalCount(rowNum));
+		List<ReviewDTO> review = dramaDAO.review_list(rowNum);
+		mv.addObject("pager", pager);
+		mv.addObject("review", review);
+		mv.setViewName("drama/reviewlist");
+		return mv;
+	}
+	public int qna_insert(Qna_viewDTO qna_viewDTO , HttpSession session)throws Exception{
+		int result = dramaDAO.qna_insert(qna_viewDTO);
+		
+		return result;
+	}
+	public int delete_qnaview(int qna_viewnum , HttpSession session)throws Exception{
+		int result = dramaDAO.delete_qnaview(qna_viewnum);
+		return result;
 	}
 	//영광 끝
 	

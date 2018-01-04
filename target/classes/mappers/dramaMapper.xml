@@ -8,6 +8,7 @@
  	<resultMap type="CompanyDTO" id="companyDTO"/>
   	<resultMap type="ReviewDTO" id="reviewDTO"/>
   	<resultMap type="QnaDTO" id="qnaDTO"/>
+  	<resultMap type="Qna_viewDTO" id="qna_viewDTO"/>
   	<resultMap type="DramaDTO" id="dramaDTO">
   		<id property="drama_num" column="drama_num"/>
   		<result property="company_num" column="company_num"/>
@@ -71,9 +72,13 @@
   	<select id="selectList_review" parameterType="com.theater.util.RowNum" resultMap="reviewDTO">
   	<!-- 	select * from
   		(select rownum r, N.* from
-  		(select * from review order by drama_num desc) N)
-  		where r between #{startRow} and #{lastRow} -->
-  		select * from review where drama_num=#{drama_num}  order by review_date desc
+  		(select * from review order by review_date desc) N)
+  		where r between #{startRow} and #{lastRow}  -->
+  		 select * from review where drama_num=#{drama_num}  order by review_date desc
+  </select>
+  
+  <select id="totalcount_review" parameterType="com.theater.util.RowNum" resultType="int">
+  		select nvl(count(review_num),0) from review
   </select>
   
   <select id="selectOne_review" parameterType="int"  resultMap="reviewDTO">
@@ -85,16 +90,37 @@
 	select COUNT(drama_num) from REVIEW where drama_num=#{drama_num}
   </select>
   
+  <select id="totalcount_qna" parameterType="com.theater.util.RowNum" resultType="int">
+  select nvl(count(qna_num),0) from qna
+  </select>
   <select id="review_avg" parameterType="int" resultType="int">
   select sum(star)/count(drama_num) from REVIEW where drama_num=#{drama_num}
   </select>
   
-  <select id="qnalist" parameterType="com.theater.util.RowNum" resultMap="qnaDTO">
- 		select * from qna  where drama_num=#{drama_num} order by qna_num desc
-  	
+  <select id="selectList_qna" parameterType="com.theater.util.RowNum" resultMap="qna_viewDTO">
+ 		select * from
+  		(select rownum r, N.* from
+  		(select * from qna_view order by ref desc , step asc) N)
+  		where r between #{startRow} and #{lastRow}  
   </select>
   
-  	
+  <select id="review_list" parameterType="com.theater.util.RowNum" resultMap="reviewDTO">
+  		select * from
+  		(select rownum r, N.* from
+  		(select * from review order by review_date desc) N)
+  		where r between #{startRow} and #{lastRow}  
+  </select>
+
+	<insert id="qna_insert" parameterType="qna_viewDTO">
+	<selectKey keyProperty="qna_viewnum" resultType="int" order="BEFORE">
+	select qna_viewnum.nextval from dual
+	</selectKey>
+	insert into qna_view values(#{qna_viewnum} ,#{drama_num}, #{id} , #{contents} , sysdate , #{qna_viewnum},0,0})
+	</insert>
+	
+	<delete id="delete_qnaview" parameterType="int">
+	delete qna_view where qna_viewnum=#{qna_viewnum}
+  </delete>
   	
   </mapper><!-- xml과 동일한 이름으로 한다. -->
   

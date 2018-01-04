@@ -7,14 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-.starRating{ 
-	display:inline-block;
-	height:21px;
-	background: transparent url(../resources/images/starpoint/star_rating.png) no-repeat;
-	overflow: hidden;
-	vertical-align: middle;
-}
-
 </style>
 </head>
 <body>
@@ -69,7 +61,19 @@
 			
 				</c:forEach>
 			</table>
+		<div id="paging">
+		<c:if test="${pager.curBlock gt 1}">
+			<span class="list" title="${pager.startNum-1}">[이전]</span>
+		</c:if>
+		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+			<span class="list" title="${i}">${i}</span>
+		</c:forEach>
+		<c:if test="${pager.curBlock lt pager.totalBlock}">
+			<span class="list" title="${pager.lastNum+1}">[다음]</span>
+		</c:if>
 		
+		
+	</div>
 		
 </body>
 </html>

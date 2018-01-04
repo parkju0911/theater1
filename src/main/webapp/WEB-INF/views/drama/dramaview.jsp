@@ -12,10 +12,9 @@
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=v1_dhkpTCMdne9dcmd_k&submodules=geocoder"></script>
 <script type="text/javascript">
 	
 	$(function() {
@@ -46,7 +45,7 @@
 			$("#refund_list").load("./refundlist")
 		});
 		//후기 전체 보기 클릭시 후기 리스트 출력
-		$(".reviewlist").click(function() {
+		$("#reviewlist_all").click(function() {
 			$("#review_list").load("./reviewlist?drama_num="+${view.drama_num})
 		});
 });
@@ -75,7 +74,7 @@ A:VISITED {
 	<section id="section">
 		<form id="section_info" action="좌석 선택 페이지" method="post">
 			<div id="drama_image">
-				<img src="../resources/images/drama_1.jpg">
+				<img src="../resources/images/drama_1.jpg" style="width: 100%; height: 100%;">
 			</div>
 
 			<div id="drama_info_form">
@@ -157,7 +156,7 @@ A:VISITED {
 					</c:forEach>
 				</table>
 				<div id="afterview_total">
-					<a href="#menu1" class="reviewlist">후기 전체보기></a>
+					<a href="#menu1" id="reviewlist_all">후기 전체보기></a>
 				</div>
 			</div>
 
@@ -178,7 +177,7 @@ A:VISITED {
 					id="refund">환불규정</a></li>
 			</ul>
 
-			<div class="tab-content">
+			<div class="tab-content"><!--  탭 클릭시 페이지 view -->
 				<div id="menu0" class="tab-pane fade in active">
 
 					<div id="info_text"></div>
@@ -187,7 +186,6 @@ A:VISITED {
 					<div id="review_list"></div>
 				</div>
 				<div id="menu2" class="tab-pane fade">
-					<h3>Menu 2</h3>
 					<div id="qna_list"></div>
 				</div>
 				<div id="menu3" class="tab-pane fade">
