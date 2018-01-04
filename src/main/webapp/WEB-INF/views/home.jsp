@@ -18,7 +18,7 @@
 
 <a href="./notice/noticeList">Go Notice</a>
 <a href="./qna/qnaList">Go Qna</a>
-<a href="./drama/chatform">chat</a>
+<a href="./drama/chatform">chatting</a>
 
 
   
