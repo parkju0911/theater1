@@ -29,6 +29,24 @@
 	<c:import url="../temp/header.jsp"></c:import>
 	<!-- Header 끝 -->
 
+
+
+  <!-- onkeydown을 통해서 엔터키로도 입력되도록 설정. -->
+<input id="inputMessage" type="text"
+	onkeydown="if(event.keyCode==13){send();}" />
+<input type="submit" value="send" onclick="send();" />
+<div id="messageWindow2" style="padding:10px 0;height: 20em; overflow: auto;width: 350px;
+    background-color: #774e3f85; margin-top: 15px;
+    
+    
+    "></div>
+
+
+	<!-- footer 시작 -->
+	<c:import url="../temp/footer.jsp"></c:import>
+	<!-- footer 끝 -->
+
+</body>
 <script type="text/javascript">
 	
 	//웹소켓 설정
@@ -170,24 +188,6 @@
 		
 	}
 </script>
-
-  <!-- onkeydown을 통해서 엔터키로도 입력되도록 설정. -->
-<input id="inputMessage" type="text"
-	onkeydown="if(event.keyCode==13){send();}" />
-<input type="submit" value="send" onclick="send();" />
-<div id="messageWindow2" style="padding:10px 0;height: 20em; overflow: auto;width: 350px;
-    background-color: #774e3f85; margin-top: 15px;
-    
-    
-    "></div>
-
-
-	<!-- footer 시작 -->
-	<c:import url="../temp/footer.jsp"></c:import>
-	<!-- footer 끝 -->
-
-</body>
-
 
 
 
