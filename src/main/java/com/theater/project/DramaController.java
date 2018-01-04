@@ -58,6 +58,9 @@ public class DramaController {
 	}
 	
 	
+	
+	
+	
 	//insert -> form 이동
 	@RequestMapping(value="dramaWrite", method=RequestMethod.GET)
 	public String insert(Model model) {
@@ -65,6 +68,14 @@ public class DramaController {
 		
 		return "drama/dramaWrite";
 	}
+	
+	//insert -> form 이동
+		@RequestMapping(value="chatform", method=RequestMethod.GET)
+		public String chatview(Model model) throws Exception {
+			model.addAttribute("board", "drama");
+			
+			return "drama/chatform";
+		}
 	
 	//insert -> DB 처리
 	@RequestMapping(value="dramaWrite", method=RequestMethod.POST)
