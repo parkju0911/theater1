@@ -48,12 +48,12 @@ public class MemberController {
 
 	@RequestMapping(value="memberPwSearch", method=RequestMethod.POST)
 	public String sendEmailAction (MemberDTO memberDTO, RedirectAttributes attributes) {
+		String result = "귀하의 이메일로 가입된 아이디가 존재하지 않습니다.";
 		try {
 			memberDTO = memberService.searchPw(memberDTO);
 			String id = memberDTO.getId();
 			String pw = memberDTO.getPw();
 			String email = memberDTO.getEmail();
-			String result = "귀하의 이메일로 가입된 아이디가 존재하지 않습니다.";
 			if(memberDTO!=null) {
 				emailDTO.setContent("비밀번호는 "+pw+" 입니다."); // 이메일로 보낼 메시지
 				emailDTO.setReceiver(email); // 받는이의 이메일 주소
@@ -73,14 +73,14 @@ public class MemberController {
 					System.out.println("MessagingException");
 					e.printStackTrace();
 				}
-				attributes.addFlashAttribute("result", result);
 			}
 		}
 		catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		return "member/memberLogin";
+		attributes.addFlashAttribute("result", result);
+		return "redirect:memberLogin";
 	}
 
 	@RequestMapping(value="memberIdSearch", method=RequestMethod.POST)

@@ -65,6 +65,12 @@
 		});
 	});
 </script>
+<script type="text/javascript">
+	var result = '${result}';
+	if(result != ""){
+		alert('${result}');
+	}
+</script>
 <style type="text/css">
 #company {
 	display: none;

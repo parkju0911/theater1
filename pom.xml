@@ -23,7 +23,29 @@
 		</repository>
 	</repositories>
 
-	<dependencies>
+<dependencies>
+
+<!-- websocket -->
+      
+      <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-websocket</artifactId>
+    <version>4.3.2.RELEASE</version>
+</dependency>
+
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-web</artifactId>
+    <version>${org.springframework-version}</version>
+</dependency>
+
+<dependency> 
+<groupId>javax.websocket</groupId> 
+<artifactId>javax.websocket-api</artifactId> 
+<version>1.1</version> 
+</dependency>
+      
+      
 		<!-- java mail -->
 		<dependency>
 			<groupId>javax.mail</groupId>
@@ -218,6 +240,7 @@
 			<version>${org.springframework-version}</version>
 			<scope>test</scope>
 		</dependency>
+
 
 		<!-- Test -->
 		<dependency>
