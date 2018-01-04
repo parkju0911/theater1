@@ -10,36 +10,16 @@
   		<result property="contents" column="contents"/>
   		<result property="reg_date" column="reg_date"/>
   		<result property="hit" column="hit"/>
-  		<result property="file_num" column="file_num"/>
-  		<collection property="fileNames" column="num" javaType="ArrayList" ofType="FileDTO" select="selectFile">
-  			<id property="file_num" column="file_num"/>
-  			<result property="file_name" column="file_name"/>
-  			<result property="file_route" column="file_route"/>
-  		</collection>
   	</resultMap>
-  	
-  	<!-- <select id="memoInsert" parameterType="java.util.Map">
-  		insert into memo values(#{num}, #{title}, #{contents}, sysdate)
-  	</select> -->
   	
   	<select id="selectOne" parameterType="java.lang.Integer" resultMap="noticeResult">
   		select * from notice where notice_num=#{notice_num}
   	</select>
   	
-  	<select id="selectFile" parameterType="int" resultType="FileDTO">
+  	<!-- <select id="selectFile" parameterType="int" resultType="FileDTO">
   		select * from file_table where file_num=#{file_num}
-  	</select>
-  	
-  	<!-- primative Type은 그냥 int로 써도 됨  --> 
-  	<!-- reference Type은 그냥 NoticeDTO를 쓰면 못찾으므로 풀패키지 명으로 써야함 -->
-  	<!-- <select id="selectOne" parameterType="java.lang.Integer" resultMap="noticeResult">
-  		select notice.*, upload.* from notice, upload where notice.num=#{num} and notice.num=upload.num
   	</select> -->
-  	
-  	<!-- <select id="selectOne" parameterType="java.lang.Integer" resultType="com.theater.notice.NoticeDTO">
-  		select * from notice where num=#{num}
-  	</select> -->
-  	
+  	  	
   	<select id="hitUpdate" parameterType="java.lang.Integer" resultType="int">
   		update notice set hit=hit+1 where notice_num=#{notice_num}
   	</select>
@@ -59,10 +39,10 @@
   		select * from
   		(select rownum R, N.* from
   		(select * from notice
-  		<!-- <if test="kind == 'title'">
+  		<if test="kind == 'title'">
   			<include refid="test" /> 
   		</if>
-  		<if test="kind == 'writer'">
+  		<!-- <if test="kind == 'writer'">
   			where writer like '%'||#{search}||'%'
   		</if> -->
   		<if test="kind == 'contents'">
@@ -77,7 +57,7 @@
   		<selectKey keyProperty="notice_num" resultType="int" order="BEFORE">
   			select notice_num.nextval from dual
   		</selectKey>
-  		insert into notice values(#{notice_num}, #{title}, #{contents}, sysdate, 0, #{file_num})
+  		insert into notice values(#{notice_num}, #{title}, #{contents}, sysdate, 0)
   	</insert>
   	
   	<delete id="delete" parameterType="java.lang.Integer">

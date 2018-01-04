@@ -2,18 +2,18 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="noticeMapper">
+  <mapper namespace="eventMapper">
    <!--  파일 이름과 동일한 이름으로 맞추기 --> 
-  	<resultMap type="NoticeDTO" id="noticeResult">
-  		<id property="notice_num" column="notice_num"/>
+  	<resultMap type="EventDTO" id="eventResult">
+  		<id property="event_num" column="event_num"/>
   		<result property="title" column="title"/>
   		<result property="contents" column="contents"/>
   		<result property="reg_date" column="reg_date"/>
   		<result property="hit" column="hit"/>
   	</resultMap>
   	
-  	<select id="selectOne" parameterType="java.lang.Integer" resultMap="noticeResult">
-  		select * from notice where notice_num=#{notice_num}
+  	<select id="selectOne" parameterType="java.lang.Integer" resultMap="eventResult">
+  		select * from event where event_num=#{event_num}
   	</select>
   	
   	<!-- <select id="selectFile" parameterType="int" resultType="FileDTO">
@@ -21,24 +21,24 @@
   	</select> -->
   	  	
   	<select id="hitUpdate" parameterType="java.lang.Integer" resultType="int">
-  		update notice set hit=hit+1 where notice_num=#{notice_num}
+  		update event set hit=hit+1 where event_num=#{event_num}
   	</select>
   	
-  	<select id="getNotice_num" resultType="int">
-  		select notice_num.nextval from dual
+  	<select id="getEvent_num" resultType="int">
+  		select event_num.nextval from dual
   	</select>
   
   	<select id="totalCount" resultType="int">
-  		select nvl(count(notice_num), 0) from notice where title like #{search}
+  		select nvl(count(event_num), 0) from event where title like #{search}
   	</select>
   	
   	 <!-- 자주 쓰는 중복되는 sql문을 따로 분리해서 저장한 뒤 불러와서 사용 --> 
   	<sql id="test">where title like '%'||#{search}||'%'</sql>
   	
-  	<select id="selectList" parameterType="com.theater.util.RowNum" resultType="com.theater.notice.NoticeDTO">
+  	<select id="selectList" parameterType="com.theater.util.RowNum" resultType="com.theater.event.EventDTO">
   		select * from
-  		(select rownum R, N.* from
-  		(select * from notice
+  		(select rownum R, E.* from
+  		(select * from event
   		<if test="kind == 'title'">
   			<include refid="test" /> 
   		</if>
@@ -48,24 +48,24 @@
   		<if test="kind == 'contents'">
   			where contents '%'||#{search}||'%'
   		</if>
-  		order by notice_num desc) N)
+  		order by event_num desc) E)
   		where R between #{startRow} and #{lastRow}
   	</select>
   	
   	<!-- insert / delete / update는 결과값이 모두 int이므로 resultType을 명시하지 않음 --> 
-  	<insert id="insert" parameterType="com.theater.notice.NoticeDTO">
-  		<selectKey keyProperty="notice_num" resultType="int" order="BEFORE">
-  			select notice_num.nextval from dual
+  	<insert id="insert" parameterType="com.theater.event.EventDTO">
+  		<selectKey keyProperty="event_num" resultType="int" order="BEFORE">
+  			select event_num.nextval from dual
   		</selectKey>
-  		insert into notice values(#{notice_num}, #{title}, #{contents}, sysdate, 0)
+  		insert into event values(#{event_num}, #{title}, #{contents}, sysdate, 0)
   	</insert>
   	
   	<delete id="delete" parameterType="java.lang.Integer">
-  		delete notice where notice_num=#{notice_num}
+  		delete event where event_num=#{event_num}
   	</delete>
   	
-  	<update id="update" parameterType="com.theater.notice.NoticeDTO">
-  		update notice set title=#{title}, contents=#{contents} where notice_num=#{notice_num}
+  	<update id="update" parameterType="com.theater.event.EventDTO">
+  		update event set title=#{title}, contents=#{contents} where event_num=#{event_num}
   	</update>
   	
   </mapper>

@@ -9,8 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 
 import com.theater.file.FileDTO;
 import com.theater.file.PhotoDTO;
@@ -38,12 +36,13 @@ public class FileController {
 	@RequestMapping(value="fileDown")
 	public ModelAndView fileDown(FileDTO fileDTO, HttpSession session){
 		String filePath = session.getServletContext().getRealPath("resources/upload");
-		//저장될 실제 파일 이름
+		//���옣�맆 �떎�젣 �뙆�씪 �씠由�
 		File file = new File(filePath, fileDTO.getFile_name());
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("down", file);
-		mv.addObject("oriname", fileDTO.getFile_name());
-		//viewName은 
+		mv.addObject("file_name", fileDTO.getFile_name());
+		mv.addObject("file_route", fileDTO.getFile_route());
+		//viewName�� 
 		mv.setViewName("filedown");
 		
 		return mv;

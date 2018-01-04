@@ -5,8 +5,15 @@
 <html>
 <head>
 	<title>Home</title>
-<link href="./resources/css/common/header.css" rel="stylesheet">
+<link href="./resources/css/com
+mon/header.css" rel="stylesheet">
 </head>
+<script type="text/javascript">
+   var result = '${result}';
+   if(result != ""){
+      alert('${result}');
+   }
+</script>
 <body>
 <c:import url="./temp/header.jsp"></c:import>
 <h1>
@@ -14,7 +21,6 @@
 </h1>
 <P>  The time on the server is ${serverTime}. </P>
 <a href="drama/dramaList">Drama List</a>
-
 
 <a href="./qna/qnaList">Go Qna</a>
 

@@ -12,6 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.theater.file.FileDTO;
+import com.theater.file.FileListDTO;
 import com.theater.notice.NoticeDTO;
 import com.theater.notice.NoticeService;
 import com.theater.util.ListData;
@@ -55,12 +57,9 @@ public class NoticeController {
 
 	//insert -> DB 泥섎━
 	@RequestMapping(value="noticeWrite", method=RequestMethod.POST)
-	public String insert(RedirectAttributes rd, NoticeDTO noticeDTO, HttpSession session, String path) throws Exception{
+	public String insert(RedirectAttributes rd, NoticeDTO noticeDTO) throws Exception{
 		int result = 0;
-		for(MultipartFile f : noticeDTO.getFiles()){
-			System.out.println(f.getOriginalFilename());
-		}
-		result=noticeService.insert(noticeDTO, session, path);
+		result=noticeService.insert(noticeDTO);
 		String message="FAIL";
 		if(result>0){
 			message="SUCCESS";
@@ -71,7 +70,7 @@ public class NoticeController {
 
 	//update -> form ?씠?룞
 	@RequestMapping(value="noticeUpdate", method = RequestMethod.GET)
-	public String update(int num, Model model) throws Exception{
+	public String update(int num, Model model, ListData listData) throws Exception{
 		NoticeDTO noticeDTO = noticeService.selectOne(num);
 		model.addAttribute("view", noticeDTO);
 		model.addAttribute("board", "notice");
@@ -81,10 +80,11 @@ public class NoticeController {
 	//update -> DB 泥섎━
 	@RequestMapping(value="noticeUpdate", method = RequestMethod.POST)
 	public String update(NoticeDTO noticeDTO, RedirectAttributes rd) throws Exception{
-		String message = "FAIL";
-		int result = noticeService.update(noticeDTO);
+		int result=0;
+		result = noticeService.update(noticeDTO);
+		String message = "수정에 실패하였습니다.";
 		if (result>0) {
-			message = "SUCCESS";
+			message = "수정이 완료되었습니다.";
 		}
 		rd.addFlashAttribute("message", message);
 		return "redirect:./noticeList";
@@ -95,9 +95,9 @@ public class NoticeController {
 	public String delete(int num, RedirectAttributes rd) throws Exception{
 		int result=0;
 		result = noticeService.delete(num);
-		String message="FAIL";
+		String message="삭제에 실패하였습니다.";
 		if(result>0){
-			message="SUCCESS";
+			message="삭제되었습니다.";
 		}
 		rd.addFlashAttribute("message", message);
 		return "redirect:./noticeList";

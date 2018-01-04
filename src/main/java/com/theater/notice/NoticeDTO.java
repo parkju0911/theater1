@@ -2,17 +2,13 @@ package com.theater.notice;
 
 import java.sql.Date;
 
-import com.theater.file.FileListDTO;
-
-
-public class NoticeDTO extends FileListDTO{
+public class NoticeDTO{
 	
 	private int notice_num;
     private String title;
     private String contents;
     private Date reg_date;
     private int hit;
-    private int file_num;
     
 	public int getNotice_num() {
 		return notice_num;
@@ -43,11 +39,5 @@ public class NoticeDTO extends FileListDTO{
 	}
 	public void setHit(int hit) {
 		this.hit = hit;
-	}
-	public int getFile_num() {
-		return file_num;
-	}
-	public void setFile_num(int file_num) {
-		this.file_num = file_num;
 	}
 }

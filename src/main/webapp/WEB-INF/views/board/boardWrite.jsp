@@ -1,10 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
 h1 {
@@ -14,7 +19,7 @@ h1 {
 table {
 	margin: 0 auto;
 	width: 1000px;
-	border: 1px solid #ddd;
+	/* border: 1px solid #ddd; */
 	border-collapse: collapse;
 }
 
@@ -22,9 +27,12 @@ td {
 	height: 25px;
 	text-align: center;
 	padding: 10px;
+	font-size: 10.5px;
+	color: #50382f;    
+	padding-top: 20px;
 }
 
-input {
+.write_ip {
 	padding: 3px;
 	width: 200px;
 	border-radius: 4px;
@@ -42,7 +50,9 @@ input {
 .btn {
 	padding: 5px 7px;
 	border-radius: 4px;
-	font-size: 17px;
+	font-size: 13px;
+	float: right;
+    margin-right: 106px;
 }
 
 .fileSec {
@@ -56,7 +66,11 @@ input {
 #delete {
 	width: 135px;
 }
+.#smart_editor2 .se2_input_wysiwyg{
+	min-height: 400px;
+}
 </style>
+<script type="text/javascript" src="../resources/SE2/js/HuskyEZCreator.js"></script>
 <script type="text/javascript">
 	$(function() {
 		//SmartEditor start
@@ -82,87 +96,47 @@ input {
 		$("#savebutton").click(
 				function() {
 					//id가 smarteditor인 textarea에 에디터에서 대입
-					editor_object.getById["contents"].exec(
-							"UPDATE_CONTENTS_FIELD", []);
-
-					// 이부분에 에디터 validation 검증
-
-					//폼 submit
+					editor_object.getById["contents"].exec("UPDATE_CONTENTS_FIELD", []);
 					$("#frm").submit();
-				})
-
-		//CKEDITOR.replace( 'contents' );
-
-		var a = $("#fileSec").html();
-		$(".fileSec").on("click", "#add", function() {
-			if ($(".fileDiv").length < 5) {
-				$("#fileAdd").append(a);
-			} else {
-				alert("5개까지 추가가 가능합니다.");
-			}
 		});
-
-		$(".fileSec").on("click", "#delete", function() {
-			$(this).parent().remove();
-		})
-
-		//쌤 방식
-		/* 	var index = 0;
-			var count = 0;
-			$("#add").click(function(){
-				if(count < 5){
-					var s = '<div id="d'+index+'">';
-					s = s+'<input type="file" name="f1"><span class="del" title="d'+index+'">X</span></div>';
-					$("#files").append(s);
-					count++;
-					index++;
-				}else{
-					alert("fail");
-				}
-			})
-			
-			$("#files").on("click",".del",function(){
-				var id = $(this).attr("title");
-				$("#"+id).remove();
-				index--;
-			}); */
-
 	});
 </script>
+<link href="../resources/css/board/boardHeader.css" rel="stylesheet">
 <link href="../resources/css/common/header.css" rel="stylesheet">
 </head>
 <body>
 <c:import url="../temp/header.jsp"></c:import>
-
-<div class="board_wrap">
-<script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="../resources/SE2/js/HuskyEZCreator.js"></script>
-	<h1>${board}Write Form</h1>
-
+<div class="head_line">
+<div class="title_wrap">
+	<c:if test="${board eq 'notice'}">
+	<h1 id="h1_title"><a href="${pageContext.request.contextPath}/${board}/${board}View.${board}?num=${view.notice_num}">${fn:toUpperCase(board)}</a></h1>
+	<h6 id="h6_title"><a href="${pageContext.request.contextPath}"><img alt="" src="../resources/images/common/homeImg.png" id="homeImg"></a> > <a href="${pageContext.request.contextPath}/notice/noticeList">${fn:toUpperCase(board)}</a> > 
+	<a href="${pageContext.request.contextPath}/${board}/${board}View.${board}?num=${view.notice_num}">${fn:toUpperCase(board)} WRITE</a></h6>
+	</c:if>
+	
+	<c:if test="${board eq 'event'}">
+	<h1 id="h1_title"><a href="${pageContext.request.contextPath}/${board}/${board}View.${board}?num=${view.event_num}">${fn:toUpperCase(board)}</a></h1>
+	<h6 id="h6_title"><a href="${pageContext.request.contextPath}"><img alt="" src="../resources/images/common/homeImg.png" id="homeImg"></a> > <a href="${pageContext.request.contextPath}/notice/noticeList">${fn:toUpperCase(board)}</a> > 
+	<a href="${pageContext.request.contextPath}/${board}/${board}View.${board}?num=${view.event_num}">${fn:toUpperCase(board)} WRITE</a></h6>
+	</c:if>
+	</div>
+</div>
+<div class="board_wrap1">
 	<form action="${board}Write" method="post" id="frm" enctype="multipart/form-data">
 		<table>
 			<tr>
-				<td><input type="text" name="title" placeholder="제목을 입력해주세요."></td>
-				<td><input type="text" name="writer" placeholder="글쓴이를 입력해주세요."></td>
+				<td style="margin-left: 10px; float: left;">제목 : <input type="text" name="title" placeholder="제목을 입력해주세요." class="write_ip"
+				 style="width: 500px; border: none; border-bottom: 1px solid lightgray; border-radius:0px;"></td>
+				<td style="float: right; margin-right: 50px; padding-bottom: 20px;">작성자 : <input type="text" value="${member.id}" placeholder="글쓴이를 입력해주세요." class="write_ip" readonly="readonly"
+				 style="width: 150px; border: none; border-bottom: 1px solid lightgray; border-radius:0px;"></td>
 			</tr>
 			<tr>
 				<td class="content" colspan="2">
 					<textarea id="contents" name="contents" draggable="false">내용을 입력해주세요.</textarea>
 				</td>
 			</tr>
-		</table>
-
-		<div class="fileSec" id="fileSec">
-			<div class="fileDiv">
-				<input type="file" name="files">
-				<input type="button" value="File Add" id="add">
-				<input type="button" value="delete" id="delete">
-			</div>
-		</div>
-		<div class="fileSec" id="fileAdd"></div>
-		
-		<input type="button" id="savebutton" value="write">
+		</table>		
+		<input type="button" id="savebutton" value="write" class="btn btn-default">
 	</form>
 	</div>
 <c:import url="../temp/footer.jsp"></c:import>
