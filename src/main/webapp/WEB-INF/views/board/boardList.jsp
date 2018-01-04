@@ -136,7 +136,6 @@
 					</c:catch>
 					<a href="./${board}View.${board}?num=${dto.event_num}">${dto.title}</a>
 				</td>
-				<td>${member.id}</td>
 				<td>${dto.reg_date}</td>
 				<td>${dto.hit}</td>
 			</tr>
