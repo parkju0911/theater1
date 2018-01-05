@@ -33,7 +33,10 @@ public class FileDAO {
 	public List<FileDTO> selectList(int num) throws Exception {
 		return sqlSession.selectList(NAMESPACE+"selectList", num);
 	}
-
+	
+	public FileDTO selectOne(FileDTO fileDTO) throws Exception	{
+		return sqlSession.selectOne(NAMESPACE+"selectOne", fileDTO);
+	}
 
 
 	/*public int insert(FileDTO fileDTO) throws Exception {

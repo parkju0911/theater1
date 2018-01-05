@@ -57,10 +57,10 @@ public class DramaService {
 		
 		return ar_review;
 	}
-	//티켓 리뷰 view(예정)
-	public ReviewDTO selectOne_review(int drama_num)throws Exception{
-		ReviewDTO reviewDTO = dramaDAO.selectOne_review(drama_num);
-		return reviewDTO;
+	//연극 리뷰 view(예정)
+	public int selectOne_review(int drama_num)throws Exception{
+		int selectOne_review = dramaDAO.selectOne_review(drama_num);
+		return selectOne_review;
 	}
 	//리뷰 수 합산
 	public int totalcount(int drama_num)throws Exception{
@@ -106,6 +106,7 @@ public class DramaService {
 		int result = dramaDAO.delete_qnaview(qna_viewnum);
 		return result;
 	}
+	//공연 리뷰List page
 	public ModelAndView dramaReviewList(ListData listData)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		RowNum rowNum = listData.makeRow();
@@ -117,6 +118,7 @@ public class DramaService {
 		return mv;
 	}
 	//광 
+	
 	
 	
 	public ModelAndView selectList(ListData listData) throws Exception {

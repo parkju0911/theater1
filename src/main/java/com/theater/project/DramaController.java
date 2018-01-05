@@ -19,6 +19,7 @@ import com.theater.drama.SeatDTO;
 import com.theater.member.CompanyDTO;
 import com.theater.member.MemberService;
 import com.theater.qna.Qna_viewDTO;
+import com.theater.review.ReviewDTO;
 import com.theater.util.ListData;
 
 @Controller
@@ -99,10 +100,20 @@ public class DramaController {
 		DramaDTO dramaDTO = dramaService.selectOne(drama_num);
 		//해당 공연의 날짜 정보 가져오기
 		List<DramaListDTO> ar = dramaService.dramaList(drama_num);
-				
+		//후기(합계) 숫자 표시
+		int totalcount =dramaService.totalcount(drama_num);
+		
+		//연극 리뷰 최신꺼 보여주기
+		/*int selectOne_review= dramaService.selectOne_review(drama_num);*/
+		
+		List<ReviewDTO> ar_review = dramaService.selectList_review(drama_num);
+		
 		if(dramaDTO != null) {
 			mv.addObject("view", dramaDTO);
 			mv.addObject("list", ar);
+			mv.addObject("review", ar_review);
+			mv.addObject("total", totalcount);
+		/*	mv.addObject("reviewOne", selectOne_review);*/
 			mv.setViewName("drama/dramaview");
 		}else {
 			rd.addFlashAttribute("message", "잘못된 접근방식 입니다.");
@@ -111,6 +122,7 @@ public class DramaController {
 				
 		return mv;
 	}
+	
 	//환불규정 page
 	@RequestMapping(value="refundlist")
 	public String refundlist()throws Exception{

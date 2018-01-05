@@ -12,8 +12,9 @@ public class ReviewDTO extends MemberDTO{
     private String writer;
     private int star;
     private Date review_date;
+
     
-    
+	
 	public Date getReview_date() {
 		return review_date;
 	}

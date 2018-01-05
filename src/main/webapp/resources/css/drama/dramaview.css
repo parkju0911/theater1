@@ -457,3 +457,8 @@
 	margin-bottom: 30px;
 	background-color: white;
 }
+#review_image{
+	width: 330px;
+	height: 40px;
+	border: 1px red solid;
+}

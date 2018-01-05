@@ -175,6 +175,11 @@ A:VISITED {
 		<p>연극 리뷰</p>
 		</div>
 		<div id="ticket_review">
+				<c:forEach items="${review }" var="One" begin="1" end="1">
+				<div id="review_image"><img alt="" src=""></div>
+				${One.title }
+				${One.contents }
+				</c:forEach>
 			
 		</div>
 
