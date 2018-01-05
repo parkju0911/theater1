@@ -61,6 +61,7 @@
 	font-size: 20px;
 	color: red;
 	text-align: center;
+<<<<<<< HEAD:src/main/webapp/resources/css/dramaview.css
 	border : 0;
 /* 	font-weight: 25px;
 	border: 1px red soild; */
@@ -96,6 +97,10 @@
 	border: 0;
 }
 >>>>>>> 578e5a9a30f8c80283cb50a1c6bc512e39c56985 */
+=======
+	border: 0;
+}
+>>>>>>> seat:src/main/webapp/resources/css/drama/dramaview.css
 #drama_date{
 	width: 305px;
 	height: 35px;
@@ -117,10 +122,20 @@
 }
 #btn_buy{
 	margin-top: 10px;
+	width:306px;
+	height:55px;
+	border:0;
+	background: url(../../images/btn_buy.png);
 }
 #afterview{
+<<<<<<< HEAD:src/main/webapp/resources/css/dramaview.css
 	width: 830px;
 
+=======
+	width: 810px;
+	height: 214px;
+	border: 1px red solid;
+>>>>>>> seat:src/main/webapp/resources/css/drama/dramaview.css
 	margin : 0 auto;
 	margin-top: 65px;
 }
@@ -159,36 +174,6 @@
 	font-size: 20px;
 	font-weight: bolder;
 }
-#afterview_box{
-	background-color: white;
-	margin-top: 5px;
-}
-#afterview_box_a{
-	width: 830px;
-	height: 30px;
-	margin-left: 30px;
-	font-size: 17px;
-}
-#atfterview_box_b{
-	width:830px;
-	height: 30px;
-	margin-left: 30px;
-	font-size:17px;
-	border-bottom: 1px solid #f3f3f3;
-}
-#afterview_total{
-	width: 830px;
-	height: 60px;
-	font-size: 20px;
-	text-align: center;
-	line-height: 60px;
-	text-decoration: none;
-	list-style: none;
-	color:#888;
-}
-#afterview_total a{
-	text-decoration: none;
-}
 #star_total{
 	font-size: 15px;
 	text-decoration: none;
@@ -198,7 +183,7 @@
 	width: 205px;
 	height: 50px;
 	float: left;
-	
+	text-decoration: none;
 }
 #after{
 	width: 205px;
@@ -210,6 +195,7 @@
 	height: 50px;
 	float: left;
 }
+<<<<<<< HEAD:src/main/webapp/resources/css/dramaview.css
 
 #reprice a{
 	text-decoration: none;
@@ -313,6 +299,8 @@
 #refund_method p{
 	margin-left: 30px;
 }
+=======
+>>>>>>> seat:src/main/webapp/resources/css/drama/dramaview.css
 .warning{
 	width: 700px;
 	height: 95px;
@@ -346,6 +334,7 @@
 	width: 700px;
 	margin: 0 auto;
 	margin-top: 20px;
+<<<<<<< HEAD:src/main/webapp/resources/css/dramaview.css
 }
 #menu_info{
 	width: 208px;
@@ -452,4 +441,6 @@
 	margin-left: 640px;
 	margin-bottom: 30px;
 	background-color: white;
+=======
+>>>>>>> seat:src/main/webapp/resources/css/drama/dramaview.css
 }

@@ -22,7 +22,6 @@ import com.theater.util.Pager;
 import com.theater.util.RowNum;
 
 @Service 
-//@Transactional
 public class DramaService {
 
 	@Inject
@@ -31,6 +30,7 @@ public class DramaService {
 	private FileSaver fileSaver;
 	@Inject
 	private FileDAO fileDAO;
+<<<<<<< HEAD
 	//영광
 	//연극 리스트에서 view page 이동시
 	public DramaDTO selectOne(int drama_num) throws Exception{
@@ -42,9 +42,29 @@ public class DramaService {
 	}
 	//티켓 판매수량(좌석수)
 	public int ticket_sell(int drama_num) throws Exception{
+=======
+	
+	public int search_dateNum(int drama_num, String drama_date, String drama_time) throws Exception{
+		return dramaDAO.search_dateNum(drama_num, drama_date, drama_time);
+	}
+	public List<SeatDTO> selectSeat(int drama_num, int date_num) throws Exception{
+		return dramaDAO.selectSeat(drama_num, date_num);
+	}
+	public DramaDTO selectOne(int drama_num) throws Exception{
+		return dramaDAO.selectOne(drama_num);
+	}
+	
+	public List<DramaListDTO> timeList(int drama_num, String drama_date) throws Exception{
+		return dramaDAO.timeList(drama_num, drama_date);
+	}
+	public List<DramaListDTO> dramaList(int drama_num) throws Exception{
+		return dramaDAO.dateList(drama_num);
+	}
+	public int total_seat(int drama_num) throws Exception{
+>>>>>>> seat
 		int company_num = dramaDAO.searchCompany_num(drama_num);
 		
-		return dramaDAO.ticket_sell(company_num);
+		return dramaDAO.total_seat(company_num);
 	}
 	// 리뷰 3개만 보여지는 리스트
 	public List<ReviewDTO> selectList_review(int drama_num)throws Exception{

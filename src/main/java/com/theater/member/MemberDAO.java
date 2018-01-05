@@ -12,6 +12,14 @@ public class MemberDAO {
 	private SqlSession sqlSession;
 	private static final String NAMESPACE="memberMapper.";
 	
+	public String searchCompanyName(String id) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"searchCompanyName", id);
+	}
+	
+	public CompanyDTO searchCompany(int company_num) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"searchCompany", company_num);
+	}
+	
 	public int memberJoin(MemberDTO memberDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"memberJoin", memberDTO);
 	}

@@ -6,10 +6,11 @@ public class SeatDTO {
 
 	private int drama_num;
     private int buy_num;
-    private int select_seat;
+    private String select_seat;
     private String id;
     private Date drama_date;
-    private int tickct_numbers;
+    private String drama_time;
+    private int ticket_numbers;
     
 	public int getDrama_num() {
 		return drama_num;
@@ -23,10 +24,10 @@ public class SeatDTO {
 	public void setBuy_num(int buy_num) {
 		this.buy_num = buy_num;
 	}
-	public int getSelect_seat() {
+	public String getSelect_seat() {
 		return select_seat;
 	}
-	public void setSelect_seat(int select_seat) {
+	public void setSelect_seat(String select_seat) {
 		this.select_seat = select_seat;
 	}
 	public String getId() {
@@ -41,10 +42,18 @@ public class SeatDTO {
 	public void setDrama_date(Date drama_date) {
 		this.drama_date = drama_date;
 	}
-	public int getTickct_numbers() {
-		return tickct_numbers;
+	
+	public String getDrama_time() {
+		return drama_time;
 	}
-	public void setTickct_numbers(int tickct_numbers) {
-		this.tickct_numbers = tickct_numbers;
+	public void setDrama_time(String drama_time) {
+		this.drama_time = drama_time;
 	}
+	public int getTicket_numbers() {
+		return ticket_numbers;
+	}
+	public void setTicket_numbers(int ticket_numbers) {
+		this.ticket_numbers = ticket_numbers;
+	}
+	
 }

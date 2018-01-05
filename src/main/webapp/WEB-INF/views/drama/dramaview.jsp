@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<<<<<<< HEAD
 <link href="../resources/css/dramaview.css" rel="stylesheet">
 <link href="../resources/css/common/header.css" rel="stylesheet">
 
@@ -65,14 +66,50 @@ A:VISITED {
 	text-decoration: none;
 }
 </style>
+=======
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="../resources/css/common/header.css" rel="stylesheet">
+<link href="../resources/css/drama/dramaview.css" rel="stylesheet">
+<script type="text/javascript">
+	$(function(){
+		$("#btn_buy").click(function(){
+			var drama_date = $("#drama_date").val();
+			var drama_time = $("#drama_time").val();
+			var drama_ticket = $("#drama_ticket").val();
+			if(drama_date=='날짜 선택' || drama_time=='시간 선택'||drama_ticket=='매수 설정'){
+				alert("날짜/시간/티켓 장수를 선택하세요.");
+			}else{
+				$("#section_info").prop("action", "./selectSeat");
+				document.frm.submit();
+			}
+		});
+		
+		var drama_date = '';
+		$('#drama_date').change(function(){
+			if($('#drama_date').val()!='날짜 선택'){
+				drama_date = $('#drama_date').val();				
+			}
+			$(".drama_time").load('dramaTime?drama_num=${view.drama_num}&&drama_date='+drama_date);
+		});
+		$(".drama_time").load('dramaTime?drama_num=${view.drama_num}&&drama_date='+drama_date);
+	});
+</script>
+>>>>>>> seat
 </head>
 <body>
 	<!-- header -->
 	<c:import url="../temp/header.jsp"></c:import>
+<<<<<<< HEAD
 	<!-- header end -->
 
+=======
+	<!-- header end -->		
+>>>>>>> seat
 	<section id="section">
-		<form id="section_info" action="좌석 선택 페이지" method="post">
+		<form id="section_info" name="frm"method="post">
+			<input type="hidden" name="drama_num" value="${view.drama_num}">
 			<div id="drama_image">
 				<img src="../resources/images/drama_1.jpg" style="width: 100%; height: 100%;">
 			</div>
@@ -84,13 +121,20 @@ A:VISITED {
 						<h3>${view.title}</h3>
 						<div id="content">${view.contents}</div>
 					</div>
+<<<<<<< HEAD
 					<input id="price" type="text" name="price" value="${view.price}원"
 						readonly="readonly">
 				</div>
 				<select id="drama_date" name="date">
+=======
+					<input id="price"type="text" name="price" value="${view.price}원" readonly="readonly">
+				</div>	 
+				<select id="drama_date" name="drama_date">
+>>>>>>> seat
 					<optgroup label="날짜 선택">
 						<option class="select_date">날짜 선택</option>
 						<c:forEach items="${list}" var="dto">
+<<<<<<< HEAD
 							<fmt:parseDate value='${dto.drama_date}' var='dto_date'
 								pattern="yyyy-MM-dd" scope="page" />
 							<option><fmt:formatDate value="${dto_date}"
@@ -198,13 +242,32 @@ A:VISITED {
 					<div id="refund_list"></div>
 				</div>
 			</div>
+=======
+					 		<fmt:parseDate value='${dto.drama_date}'  var='dto_date'  pattern="yyyy-MM-dd"  scope="page"/>
+							<option class="select_date"><fmt:formatDate value="${dto_date}" pattern="yyyy-MM-dd"/></option>
+						</c:forEach>
+					</optgroup>
+				</select>
+							
+				<div class="drama_time"></div>
+				<button id="btn_buy" ></button>
+
+			</div>
+		</form>
+		<div id="afterview">
+			<div id="after_top_text">예매자 <span style="color:red;">별점</span> <!-- 별점/후기인원수 --><span id="star_total">/5.0 (총  <!-- 후기인원수 -->  명)</span> </div>
+>>>>>>> seat
 		</div>
 
 		
 	</section>
 	<!-- footer  -->
 	<c:import url="../temp/footer.jsp"></c:import>
+<<<<<<< HEAD
 	<!-- footer end -->
 
+=======
+	<!-- footer end -->	
+>>>>>>> seat
 </body>
 </html>
