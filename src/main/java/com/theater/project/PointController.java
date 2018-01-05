@@ -100,31 +100,7 @@ public class PointController {
 		}
 		
 
-		
-		@RequestMapping(value="pointCheckImg",method=RequestMethod.GET)
-		public String insertPoint(Model model) throws Exception{
-			model.addAttribute("point", "point");
-			
-			return "point/pointCheckImg";
-		}
-		
-		
-		@RequestMapping(value="pointCheckImg",method=RequestMethod.POST)
-		public String insertPoint(PointDTO PointDTO, Model model, HttpSession session)throws Exception{
-		
-			int result = 0;
-			result=pointService.attendCheck(PointDTO, session);
-			 
-			String message = "이미출석했습니다.";
-			if(result > 0) {
-				message = "출석체크"
-						+ "";
-			}
-			model.addAttribute("message", message);
-			model.addAttribute("path","../point/pointCheck");
-			return "redirect:./pointList";
-		}
-		
+	
 
 		
 		
