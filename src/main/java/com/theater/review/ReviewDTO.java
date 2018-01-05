@@ -1,13 +1,25 @@
 package com.theater.review;
 
-public class ReviewDTO {
+import java.sql.Date;
+
+import com.theater.member.MemberDTO;
+
+public class ReviewDTO extends MemberDTO{
 	
 	private int review_num;
     private String title;
     private String contents;
     private String writer;
     private int star;
+    private Date review_date;
     
+    
+	public Date getReview_date() {
+		return review_date;
+	}
+	public void setReview_date(Date review_date) {
+		this.review_date = review_date;
+	}
 	public int getReview_num() {
 		return review_num;
 	}

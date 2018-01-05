@@ -10,6 +10,9 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.theater.qna.QnaDTO;
+import com.theater.qna.Qna_viewDTO;
+import com.theater.review.ReviewDTO;
 import com.theater.util.RowNum;
 
 
@@ -56,18 +59,46 @@ public class DramaDAO  {
 		
 		return sqlSession.selectOne(namespace+"totalCount", map);
 	}
-
-
-	
-	
-	
 	public int insert(DramaDTO dramaDTO) throws Exception {
 		System.out.println("Before: "+dramaDTO.getDrama_num());
 		int result = sqlSession.insert(namespace+"insert", dramaDTO);
 		System.out.println("After: "+dramaDTO.getDrama_num());
 		return result;
 	}
-
-
-
+	public List<ReviewDTO> selectList_review(int drama_num)throws Exception{
+		return sqlSession.selectList(namespace+"selectList_review", drama_num);
+	}
+	public ReviewDTO selectOne_review(int drama_num)throws Exception{
+		return sqlSession.selectOne(namespace+"selectOne_review", drama_num);
+	}
+	public int totalcount(int drama_num)throws Exception{
+		return sqlSession.selectOne(namespace+"totalcount", drama_num);
+	}
+	public int totalcount_qna(RowNum rowNum)throws Exception{
+		return sqlSession.selectOne(namespace+"totalcount_qna", rowNum);
+	}
+	public int review_avg(int drama_num)throws Exception{
+		return sqlSession.selectOne(namespace+"review_avg", drama_num);
+	}
+	public List<Qna_viewDTO> selectList_qna(RowNum rowNum)throws Exception{
+		return sqlSession.selectList(namespace+"selectList_qna", rowNum);		
+	}
+	public List<ReviewDTO> review_list(RowNum rowNum)throws Exception{
+		return sqlSession.selectList(namespace+"review_list", rowNum);
+	}
+/*	public int total_review(RowNum rowNum)throws Exception{
+		return sqlSession.selectOne(namespace+"total_review", rowNum);
+	}*/
+	public int totalcount_review(RowNum rowNum)throws Exception{
+		return sqlSession.selectOne(namespace+"totalcount_review", rowNum);
+	}
+	public int qna_insert(Qna_viewDTO qna_viewDTO)throws Exception{
+		return sqlSession.insert(namespace+"qna_insert", qna_viewDTO);
+	}
+	public int delete_qnaview(int qna_viewnum)throws Exception{
+		return sqlSession.delete(namespace+"delete_qnaview", qna_viewnum);
+	}
+	public List<ReviewDTO>dramaReviewList(RowNum rowNum)throws Exception{
+		return sqlSession.selectList(namespace+"dramaReviewList", rowNum);
+	}
 }
