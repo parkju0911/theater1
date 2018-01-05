@@ -63,41 +63,8 @@ img{
 	font-size: 20px;
 	color: red;
 	text-align: center;
-<<<<<<< HEAD
-	font-weight: 25px;
-	border: 1px red soild;
-}
-.info_bar{
-	width: 830px;
-	height: 50px;
-	font-size: 20px;
-	color:gray;
-	border: 1px solid #eee;
-	display: inline-block;
-	background-color: white;
-}
-.info_bar  li{
-	text-align:center;
-	list-style: none;
-	line-height: 50px;
-	text-decoration: none;
-}
-
-.border_color{
-	width:50px;
-	height:50px;
-	margin-left: 82px;
-	border-bottom: 4px solid #ed3d84;
-}
-.info_bar a{
-	text-decoration: none;
-	color:#888;
-}
-
-=======
 	border: 0;
 }
->>>>>>> 578e5a9a30f8c80283cb50a1c6bc512e39c56985
 #drama_date{
 	width: 305px;
 	height: 35px;
@@ -119,10 +86,14 @@ img{
 }
 #btn_buy{
 	margin-top: 10px;
+	width:306px;
+	height:55px;
+	border:0;
+	background: url(../../images/btn_buy.png);
 }
 #afterview{
-	width: 830px;
-	height: 284px;
+	width: 810px;
+	height: 214px;
 	border: 1px red solid;
 	margin : 0 auto;
 	margin-top: 30px;
@@ -155,36 +126,6 @@ img{
 	font-size: 20px;
 	font-weight: bolder;
 }
-#afterview_box{
-	background-color: white;
-	margin-top: 5px;
-}
-#afterview_box_a{
-	width: 830px;
-	height: 30px;
-	margin-left: 30px;
-	font-size: 17px;
-}
-#atfterview_box_b{
-	width:830px;
-	height: 30px;
-	margin-left: 30px;
-	font-size:17px;
-	border-bottom: 1px solid #f3f3f3;
-}
-#afterview_total{
-	width: 830px;
-	height: 60px;
-	font-size: 20px;
-	text-align: center;
-	line-height: 60px;
-	text-decoration: none;
-	list-style: none;
-	color:#888;
-}
-#afterview_total a{
-	text-decoration: none;
-}
 #star_total{
 	font-size: 15px;
 	text-decoration: none;
@@ -193,7 +134,7 @@ img{
 	width: 205px;
 	height: 50px;
 	float: left;
-	
+	text-decoration: none;
 }
 #after{
 	width: 205px;
@@ -205,86 +146,6 @@ img{
 	height: 50px;
 	float: left;
 }
-<<<<<<< HEAD
-#reprice a{
-	text-decoration: none;
-	list-style: none;
-}
-#view_page{
-	background-color: white;
-}
-#warning{
-	width: 700px;
-	height: 135px;
-	border:1px red solid;	
-	margin-left: 60px;
-	margin-top: -20px;
-	padding-top: 20px;
-}
-#warning_tool{
-	width: 650px;
-	height: 100px;
-	border: 1px blue solid;
-	margin-left: 30px;
-}
-#point_box{
-	width: 700px;
-	height: 150px;
-	border: 1px blue solid;
-	background-color:white;
-	margin-left: 65px;
-	margin-top: 30px;
-}
-#point_box1{
-	width: 628px;
-	height: 29px;
-	border: 1px red solid;
-	background-color: white;
-	margin-left: 36px;
-	margin-top:10px;
-	text-align: center;
-}
-#point_box2{
-	width: 628px;
-	height: 29px;
-	border: 1px red solid;
-	background-color: white;
-	margin-left: 36px;
-	margin-top:10px;
-	text-align: center;
-}
-.starRating{ 
-	display:inline-block;
-	height:21px;
-	background: transparent url(../images/starpoint/star_rating.png) no-repeat;
-	overflow: hidden;
-	vertical-align: middle;
-}
-#point_box3{
-	width: 628px;
-	height: 29px;
-	border: 1px red solid;
-	background-color: white;
-	margin-left: 36px;
-	margin-top: 10px;
-	text-align: center;
-}
-#refund_info{
-	width: 700px;
-	height: 50px;
-	margin-left: 30px;
-	background-color: white;
-	font-size: 20px;
-	font-weight: bolder;
-	margin-top: -20px;
-	line-height: 60px;
-}
-#refund_rull p{
-	margin-left: 30px;
-}
-#refund_method{
-	margin-left: 30px;
-=======
 .warning{
 	width: 700px;
 	height: 95px;
@@ -318,5 +179,4 @@ img{
 	width: 700px;
 	margin: 0 auto;
 	margin-top: 20px;
->>>>>>> 578e5a9a30f8c80283cb50a1c6bc512e39c56985
 }

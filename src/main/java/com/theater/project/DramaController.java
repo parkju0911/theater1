@@ -15,37 +15,90 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.theater.drama.DramaDTO;
 import com.theater.drama.DramaListDTO;
 import com.theater.drama.DramaService;
+import com.theater.drama.SeatDTO;
+import com.theater.member.CompanyDTO;
+import com.theater.member.MemberService;
 import com.theater.util.ListData;
 
 @Controller
 @RequestMapping(value="/drama/*")
 public class DramaController {
-	
-
 	@Inject
 	public DramaService dramaService;
+	@Inject
+	public MemberService memberService;
 	
-	//Drama View
-		@RequestMapping(value="dramaview")
-		public ModelAndView selectOne(int drama_num, ModelAndView mv,RedirectAttributes rd) throws Exception{
-			//공연 정보가져오기
-			DramaDTO dramaDTO = dramaService.selectOne(drama_num);
-			//해당 공연의 시간 정보 가져오기
-			List<DramaListDTO> ar = dramaService.dramaList(drama_num);
-			int ticket = dramaService.ticket_sell(drama_num);
+	//Select Seat
+	@RequestMapping(value="selectSeat")
+	public ModelAndView selectSeat(SeatDTO seatDTO,ModelAndView mv) throws Exception{
+		//공연 정보 가져오기
+		DramaDTO dramaDTO = dramaService.selectOne(seatDTO.getDrama_num());
 			
-			if(dramaDTO != null) {
-				mv.addObject("view", dramaDTO);
-				mv.addObject("list", ar);
-				mv.addObject("ticket", ticket);
-				mv.setViewName("drama/dramaview");
-			}else {
-				rd.addFlashAttribute("message", "잘못된 접근방식 입니다.");
-				mv.setViewName("Redirect:../");
-			}
+		//회사명,좌석 수 가져오기
+		CompanyDTO companyDTO = memberService.searchCompany(dramaDTO.getCompany_num());
+		companyDTO.setName(memberService.searchCompanyName(companyDTO.getId()));
 			
-			return mv;
+		//해당 공연 선택된 좌석 리스트 가져오기
+		int date_num= dramaService.search_dateNum(seatDTO.getDrama_num(), seatDTO.getDrama_date().toString(), seatDTO.getDrama_time());
+		List<SeatDTO> selectSeatDTO=dramaService.selectSeat(seatDTO.getDrama_num(), date_num);
+		int selectSize = selectSeatDTO.size();
+		mv.addObject("drama", dramaDTO);
+		mv.addObject("company", companyDTO);
+		mv.addObject("seat", seatDTO);
+		mv.addObject("select", selectSeatDTO);
+		mv.addObject("selectSize", selectSize);
+		mv.setViewName("drama/selectSeat");
+			
+		return mv;
+	}
+	//Drama_ticket
+	@RequestMapping("dramaTicket")
+	public ModelAndView drama_ticket(DramaListDTO dramaListDTO, ModelAndView mv) throws Exception{
+		//해당 날짜의 해당 시간의 남아있는 좌석 수만큼 가져오기
+		int total_seat = dramaService.total_seat(dramaListDTO.getDrama_num());
+		int date_num = dramaService.search_dateNum(dramaListDTO.getDrama_num(), dramaListDTO.getDrama_date(), dramaListDTO.getDrama_time());
+		List<SeatDTO> select = dramaService.selectSeat(dramaListDTO.getDrama_num(), date_num);
+			
+		int select_size = 0;
+		if(date_num != 0) {
+			select_size = total_seat-select.size();
 		}
+		mv.addObject("ticket", select_size);
+		mv.setViewName("drama/drama_ticket");
+			
+		return mv;
+	}
+	//Drama_time list
+	@RequestMapping(value="dramaTime")
+	public ModelAndView drama_time(DramaListDTO dramaListDTO, ModelAndView mv) throws Exception{
+		//해당 날짜 공연시간 가져오기
+		List<DramaListDTO> ar = dramaService.timeList(dramaListDTO.getDrama_num(), dramaListDTO.getDrama_date());
+			
+		mv.addObject("time", ar);
+		mv.addObject("view", dramaListDTO);
+		mv.setViewName("drama/drama_time");
+			
+		return mv;
+	}
+	//Drama View
+	@RequestMapping(value="dramaview")
+	public ModelAndView selectOne(int drama_num, ModelAndView mv,RedirectAttributes rd) throws Exception{
+		//공연 정보가져오기
+		DramaDTO dramaDTO = dramaService.selectOne(drama_num);
+		//해당 공연의 날짜 정보 가져오기
+		List<DramaListDTO> ar = dramaService.dramaList(drama_num);
+				
+		if(dramaDTO != null) {
+			mv.addObject("view", dramaDTO);
+			mv.addObject("list", ar);
+			mv.setViewName("drama/dramaview");
+		}else {
+			rd.addFlashAttribute("message", "잘못된 접근방식 입니다.");
+			mv.setViewName("Redirect:../");
+		}
+				
+		return mv;
+	}
 
 	//selectList
 	@RequestMapping(value="dramaList")
@@ -57,10 +110,6 @@ public class DramaController {
 		return mv;
 	}
 	
-	
-	
-	
-	
 	//insert -> form 이동
 	@RequestMapping(value="dramaWrite", method=RequestMethod.GET)
 	public String insert(Model model) {
@@ -70,12 +119,12 @@ public class DramaController {
 	}
 	
 	//insert -> form 이동
-		@RequestMapping(value="chatform", method=RequestMethod.GET)
-		public String chatview(Model model) throws Exception {
-			model.addAttribute("board", "drama");
+	@RequestMapping(value="chatform", method=RequestMethod.GET)
+	public String chatview(Model model) throws Exception {
+		model.addAttribute("board", "drama");
 			
-			return "drama/chatform";
-		}
+		return "drama/chatform";
+	}
 	
 	//insert -> DB 처리
 	@RequestMapping(value="dramaWrite", method=RequestMethod.POST)

@@ -10,6 +10,14 @@ public class MemberService {
 	@Inject
 	private MemberDAO memberDAO;
 	
+	public CompanyDTO searchCompany(int company_num) throws Exception{
+		return memberDAO.searchCompany(company_num);
+	}
+	
+	public String searchCompanyName(String id) throws Exception{
+		return memberDAO.searchCompanyName(id);
+	}
+	
 	public int memberJoin(MemberDTO memberDTO) throws Exception {
 		return memberDAO.memberJoin(memberDTO);
 	}

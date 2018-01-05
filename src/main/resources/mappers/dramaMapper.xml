@@ -7,6 +7,7 @@
   	<resultMap type="DramaListDTO" id="dramalistDTO"/>
  	<resultMap type="CompanyDTO" id="companyDTO"/>
   	<resultMap type="ReviewDTO" id="reviewDTO"/>
+  	<resultMap type="SeatDTO" id="seatDTO"/>
   	<resultMap type="DramaDTO" id="dramaDTO">
   		<id property="drama_num" column="drama_num"/>
   		<result property="company_num" column="company_num"/>
@@ -53,18 +54,26 @@
 			#{title}, #{contents}, #{place}, #{price}, 0, #{file_num}
 		)  	
   	</insert> 
- 
- 	<select id="selectOne" parameterType="int" resultMap="dramaDTO">
+  	<select id="selectOne" parameterType="int" resultMap="dramaDTO">
   		select * from drama where drama_num=#{drama_num}
   	</select>
-  	<select id="dateList" parameterType="com.theater.util.RowNum" resultMap="dramalistDTO">
-  		select * from date_list where drama_num=#{drama_num} order by drama_time asc
+  	<select id="timeList" parameterType="java.util.HashMap" resultMap="dramalistDTO">
+  		select distinct drama_time, drama_num, drama_date from date_list where drama_num=#{drama_num} and drama_date=#{drama_date} order by drama_time asc
+  	</select>
+  	<select id="dateList" parameterType="int" resultMap="dramalistDTO">
+  		select distinct drama_date, drama_num from date_list where drama_num=#{drama_num} order by drama_date asc
   	</select>
   	<select id="searchCompany_num" parameterType="int" resultType="int">
   		select company_num from drama where drama_num=#{drama_num}
   	</select>
-  	<select id="ticket_sell" parameterType="int" resultType="int">
+  	<select id="total_seat" parameterType="int" resultType="int">
   		select (row_num * col_num) from company_info where company_num=#{company_num}
+  	</select>
+  	<select id="search_dateNum" parameterType="java.util.HashMap" resultType="int">
+  		select date_num from date_list where drama_num=#{drama_num} and drama_date=#{drama_date} and drama_time=#{drama_time}
+  	</select>
+  	<select id="selectSeat" parameterType="java.util.HashMap" resultMap="seatDTO">
+  		select * from seat where drama_num=#{drama_num} and date_num=#{date_num}
   	</select>
   </mapper><!-- xml과 동일한 이름으로 한다. -->
   

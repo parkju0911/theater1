@@ -1,11 +1,11 @@
 package com.theater.member;
 
-public class CompanyDTO {
+public class CompanyDTO extends MemberDTO{
 	
 	private String id;
     private int company_num;
-    private int row;
-    private int col;
+    private int row_num;
+    private int col_num;
     
 	public String getId() {
 		return id;
@@ -19,16 +19,17 @@ public class CompanyDTO {
 	public void setCompany_num(int company_num) {
 		this.company_num = company_num;
 	}
-	public int getRow() {
-		return row;
+	public int getRow_num() {
+		return row_num;
 	}
-	public void setRow(int row) {
-		this.row = row;
+	public void setRow_num(int row_num) {
+		this.row_num = row_num;
 	}
-	public int getCol() {
-		return col;
+	public int getCol_num() {
+		return col_num;
 	}
-	public void setCol(int col) {
-		this.col = col;
+	public void setCol_num(int col_num) {
+		this.col_num = col_num;
 	}
+	
 }

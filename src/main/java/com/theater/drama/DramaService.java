@@ -19,7 +19,6 @@ import com.theater.util.Pager;
 import com.theater.util.RowNum;
 
 @Service 
-//@Transactional
 public class DramaService {
 
 	@Inject
@@ -29,16 +28,26 @@ public class DramaService {
 	@Inject
 	private FileDAO fileDAO;
 	
+	public int search_dateNum(int drama_num, String drama_date, String drama_time) throws Exception{
+		return dramaDAO.search_dateNum(drama_num, drama_date, drama_time);
+	}
+	public List<SeatDTO> selectSeat(int drama_num, int date_num) throws Exception{
+		return dramaDAO.selectSeat(drama_num, date_num);
+	}
 	public DramaDTO selectOne(int drama_num) throws Exception{
 		return dramaDAO.selectOne(drama_num);
+	}
+	
+	public List<DramaListDTO> timeList(int drama_num, String drama_date) throws Exception{
+		return dramaDAO.timeList(drama_num, drama_date);
 	}
 	public List<DramaListDTO> dramaList(int drama_num) throws Exception{
 		return dramaDAO.dateList(drama_num);
 	}
-	public int ticket_sell(int drama_num) throws Exception{
+	public int total_seat(int drama_num) throws Exception{
 		int company_num = dramaDAO.searchCompany_num(drama_num);
 		
-		return dramaDAO.ticket_sell(company_num);
+		return dramaDAO.total_seat(company_num);
 	}
 	
 	public ModelAndView selectList(ListData listData) throws Exception {
