@@ -12,8 +12,8 @@
   		<typeAlias type="com.theater.drama.DramaDTO" alias="DramaDTO"/>
   		<typeAlias type="com.theater.drama.DramaListDTO" alias="DramaListDTO"/>
   		<typeAlias type="com.theater.member.CompanyDTO" alias="CompanyDTO"/>
-
-
+		<typeAlias type="com.theater.point.PointDTO" alias="PointDTO"/>
+	
   		<typeAlias type="com.theater.review.ReviewDTO" alias="ReviewDTO"/>
 
   	</typeAliases>

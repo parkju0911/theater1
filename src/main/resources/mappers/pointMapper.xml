@@ -7,7 +7,8 @@
   
    <mapper namespace="pointMapper">	
 
-<!-- 	<resultMap type="PointDTO" id="pointResult">
+<resultMap type="PointDTO" id="pointDTO">
+ 
   		<id property="point_num" column="point_num"/>
   		<result property="id" column="id"/>
   		<result property="history" column="history"/>
@@ -16,7 +17,7 @@
   		<result property="kind" column="kind"/>
   		<result property="reg_date" column="reg_date"/>
   	
-  	</resultMap> -->
+  	</resultMap>
   
 
    <select id="selectList" resultType="com.theater.point.PointDTO" parameterType="com.theater.util.RowNum" >
@@ -33,6 +34,7 @@
    
    </select>
 
+
   	
   	<select id="totalCount" parameterType="com.theater.util.RowNum" resultType="int">
   		select count(*) from point
@@ -45,12 +47,18 @@
   
   </update>
 
+<update id="usePoint" parameterType="com.theater.point.PointDTO">
+  update point set point=#{point} where id=#{id}
+</update>
 
+<insert id="insert" parameterType="com.theater.point.PointDTO">
+insert into point values(point_num.nextval,#{id},#{history},#{point},(select nvl(total_point, 0) from point)+#{point},#{kind},sysdate)
+</insert>
 
+<insert id="pointcheck" parameterType="java.util.Map">
 
-  <insert id="attendCheck">
-<!--   insert into point values(point_seq.nextval, #{id},'적립','20',(select nvl(total_point, 0) from point)+#{point}, '출석체크', sysdate) -->
-insert into point values(point_seq.nextval, #{id},'적립',20,(select nvl(total_point, 0) from point)+#{point},'출석체크',sysdate)
-  </insert>
-  
+<!-- insert into point values(point_seq.nextval, #{id},'적립',20,(select nvl(total_point, 0) from point)+#{point},'출석체크',sysdate) -->
+insert into point values(point_num.nextval, #{id},#{history},#{point},#{total_point},#{kind},sysdate)
+ </insert>
+
    </mapper>
