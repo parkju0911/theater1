@@ -20,6 +20,7 @@ mon/header.css" rel="stylesheet">
 
 
 <a href="drama/dramaList">Drama List</a>
+<a href="drama/dramaview?drama_num=1">Drama_view</a>
 <a href="./notice/noticeList">Go Notice</a>
 <a href="./qna/qnaList">Go Qna</a>
 <a href="./drama/chatform">chatting</a>
