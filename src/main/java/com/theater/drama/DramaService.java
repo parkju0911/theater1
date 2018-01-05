@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.theater.file.FileDAO;
 import com.theater.file.FileDTO;
-import com.theater.qna.QnaDTO;
 import com.theater.qna.Qna_viewDTO;
 import com.theater.review.ReviewDTO;
 import com.theater.util.FileSaver;
@@ -30,19 +29,6 @@ public class DramaService {
 	private FileSaver fileSaver;
 	@Inject
 	private FileDAO fileDAO;
-<<<<<<< HEAD
-	//영광
-	//연극 리스트에서 view page 이동시
-	public DramaDTO selectOne(int drama_num) throws Exception{
-		return dramaDAO.selectOne(drama_num);
-	}
-	//연극 날짜 정하기
-	public List<DramaListDTO> dramaList(int drama_num) throws Exception{
-		return dramaDAO.dateList(drama_num);
-	}
-	//티켓 판매수량(좌석수)
-	public int ticket_sell(int drama_num) throws Exception{
-=======
 	
 	public int search_dateNum(int drama_num, String drama_date, String drama_time) throws Exception{
 		return dramaDAO.search_dateNum(drama_num, drama_date, drama_time);
@@ -61,7 +47,6 @@ public class DramaService {
 		return dramaDAO.dateList(drama_num);
 	}
 	public int total_seat(int drama_num) throws Exception{
->>>>>>> seat
 		int company_num = dramaDAO.searchCompany_num(drama_num);
 		
 		return dramaDAO.total_seat(company_num);

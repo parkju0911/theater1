@@ -7,12 +7,9 @@
   	<resultMap type="DramaListDTO" id="dramalistDTO"/>
  	<resultMap type="CompanyDTO" id="companyDTO"/>
   	<resultMap type="ReviewDTO" id="reviewDTO"/>
-<<<<<<< HEAD
   	<resultMap type="QnaDTO" id="qnaDTO"/>
   	<resultMap type="Qna_viewDTO" id="qna_viewDTO"/>
-=======
   	<resultMap type="SeatDTO" id="seatDTO"/>
->>>>>>> seat
   	<resultMap type="DramaDTO" id="dramaDTO">
   		<id property="drama_num" column="drama_num"/>
   		<result property="company_num" column="company_num"/>
@@ -59,15 +56,7 @@
 			#{title}, #{contents}, #{place}, #{price}, 0, #{file_num}
 		)  	
   	</insert> 
-<<<<<<< HEAD
  	<!-- 공연 선택 view page -->
- 	<select id="selectOne" parameterType="int" resultMap="dramaDTO">
-  		select * from drama where drama_num=#{drama_num}
-  	</select>
-  	<!-- 공연 날짜,시간 리스트 -->
-  	<select id="dateList" parameterType="com.theater.util.RowNum" resultMap="dramalistDTO">
-  		select * from date_list where drama_num=#{drama_num} order by drama_time asc
-=======
   	<select id="selectOne" parameterType="int" resultMap="dramaDTO">
   		select * from drama where drama_num=#{drama_num}
   	</select>
@@ -76,15 +65,9 @@
   	</select>
   	<select id="dateList" parameterType="int" resultMap="dramalistDTO">
   		select distinct drama_date, drama_num from date_list where drama_num=#{drama_num} order by drama_date asc
->>>>>>> seat
   	</select>
   	<select id="searchCompany_num" parameterType="int" resultType="int">
   		select company_num from drama where drama_num=#{drama_num}
-  	</select>
-<<<<<<< HEAD
-  	<!-- 티켓 매수 설정 -->
-  	<select id="ticket_sell" parameterType="int" resultType="int">
-  		select (row_num * col_num) from company_info where company_num=#{company_num}
   	</select>
  
   	<!-- 리뷰 3개만 보이게 -->
@@ -169,9 +152,6 @@
   		where r between #{startRow} and #{lastRow}
   	</select>
   	
-  	
-  	
-=======
   	<select id="total_seat" parameterType="int" resultType="int">
   		select (row_num * col_num) from company_info where company_num=#{company_num}
   	</select>
@@ -181,6 +161,5 @@
   	<select id="selectSeat" parameterType="java.util.HashMap" resultMap="seatDTO">
   		select * from seat where drama_num=#{drama_num} and date_num=#{date_num}
   	</select>
->>>>>>> seat
   </mapper><!-- xml과 동일한 이름으로 한다. -->
   

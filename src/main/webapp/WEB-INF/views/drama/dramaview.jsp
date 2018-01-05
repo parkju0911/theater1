@@ -7,8 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<<<<<<< HEAD
-<link href="../resources/css/dramaview.css" rel="stylesheet">
+<link href="../resources/css/drama/dramaview.css" rel="stylesheet">
 <link href="../resources/css/common/header.css" rel="stylesheet">
 
 <link rel="stylesheet"
@@ -49,31 +48,7 @@
 		$("#reviewlist_all").click(function() {
 			$("#review_list").load("./reviewlist?drama_num="+${view.drama_num})
 		});
-});
-	
-$(document).ready(function() {
-
-	 $("#info").trigger("click");
-
-	} );
-	
-
-
-
-</script>
-<style type="text/css">
-A:VISITED {
-	text-decoration: none;
-}
-</style>
-=======
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
-<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link href="../resources/css/common/header.css" rel="stylesheet">
-<link href="../resources/css/drama/dramaview.css" rel="stylesheet">
-<script type="text/javascript">
-	$(function(){
+		
 		$("#btn_buy").click(function(){
 			var drama_date = $("#drama_date").val();
 			var drama_time = $("#drama_time").val();
@@ -94,22 +69,31 @@ A:VISITED {
 			$(".drama_time").load('dramaTime?drama_num=${view.drama_num}&&drama_date='+drama_date);
 		});
 		$(".drama_time").load('dramaTime?drama_num=${view.drama_num}&&drama_date='+drama_date);
-	});
+});
+	
+$(document).ready(function() {
+
+	 $("#info").trigger("click");
+
+	} );
+	
+
+
+
 </script>
->>>>>>> seat
+<style type="text/css">
+A:VISITED {
+	text-decoration: none;
+}
+</style>
 </head>
 <body>
 	<!-- header -->
 	<c:import url="../temp/header.jsp"></c:import>
-<<<<<<< HEAD
 	<!-- header end -->
 
-=======
-	<!-- header end -->		
->>>>>>> seat
 	<section id="section">
-		<form id="section_info" name="frm"method="post">
-			<input type="hidden" name="drama_num" value="${view.drama_num}">
+		<form id="section_info" action="좌석 선택 페이지" method="post">
 			<div id="drama_image">
 				<img src="../resources/images/drama_1.jpg" style="width: 100%; height: 100%;">
 			</div>
@@ -121,42 +105,23 @@ A:VISITED {
 						<h3>${view.title}</h3>
 						<div id="content">${view.contents}</div>
 					</div>
-<<<<<<< HEAD
 					<input id="price" type="text" name="price" value="${view.price}원"
 						readonly="readonly">
 				</div>
 				<select id="drama_date" name="date">
-=======
-					<input id="price"type="text" name="price" value="${view.price}원" readonly="readonly">
-				</div>	 
-				<select id="drama_date" name="drama_date">
->>>>>>> seat
 					<optgroup label="날짜 선택">
 						<option class="select_date">날짜 선택</option>
 						<c:forEach items="${list}" var="dto">
-<<<<<<< HEAD
 							<fmt:parseDate value='${dto.drama_date}' var='dto_date'
 								pattern="yyyy-MM-dd" scope="page" />
 							<option><fmt:formatDate value="${dto_date}"
 									pattern="yyyy-MM-dd" /></option>
 						</c:forEach>
 					</optgroup>
-				</select> <select id="drama_time" name="time">
-					<optgroup label="시간 선택">
-						<option id="select_time">시간 선택</option>
-						<c:forEach items="${list}" var="dto">
-							<option>${dto.drama_time }</option>
-						</c:forEach>
-					</optgroup>
-				</select> <select id="drama_ticket" name="ticket">
-					<optgroup label="매수 설정">
-						<option id="select_ticket">매수 설정</option>
-						<c:forEach begin="1" end="${ticket}" var="i">
-							<option>${i }</option>
-						</c:forEach>
-					</optgroup>
-				</select> <input id="btn_buy" type="image"
-					src="../resources/images/btn_buy.png">
+				</select>
+				
+				<div class="drama_time"></div>
+				<button id="btn_buy" ></button>
 			</div>
 		</form>
 		<div id="afterview">
@@ -207,7 +172,7 @@ A:VISITED {
 
 		</div>
 		<div id="ticket_top">
-		<p>티켓 리뷰</p>
+		<p>연극 리뷰</p>
 		</div>
 		<div id="ticket_review">
 			
@@ -242,32 +207,13 @@ A:VISITED {
 					<div id="refund_list"></div>
 				</div>
 			</div>
-=======
-					 		<fmt:parseDate value='${dto.drama_date}'  var='dto_date'  pattern="yyyy-MM-dd"  scope="page"/>
-							<option class="select_date"><fmt:formatDate value="${dto_date}" pattern="yyyy-MM-dd"/></option>
-						</c:forEach>
-					</optgroup>
-				</select>
-							
-				<div class="drama_time"></div>
-				<button id="btn_buy" ></button>
-
-			</div>
-		</form>
-		<div id="afterview">
-			<div id="after_top_text">예매자 <span style="color:red;">별점</span> <!-- 별점/후기인원수 --><span id="star_total">/5.0 (총  <!-- 후기인원수 -->  명)</span> </div>
->>>>>>> seat
 		</div>
 
 		
 	</section>
 	<!-- footer  -->
 	<c:import url="../temp/footer.jsp"></c:import>
-<<<<<<< HEAD
 	<!-- footer end -->
 
-=======
-	<!-- footer end -->	
->>>>>>> seat
 </body>
 </html>

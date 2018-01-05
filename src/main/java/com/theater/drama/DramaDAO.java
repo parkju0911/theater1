@@ -10,7 +10,6 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.theater.qna.QnaDTO;
 import com.theater.qna.Qna_viewDTO;
 import com.theater.review.ReviewDTO;
 import com.theater.util.RowNum;
@@ -85,10 +84,6 @@ public class DramaDAO  {
 		
 		return sqlSession.selectOne(namespace+"totalCount", map);
 	}
-<<<<<<< HEAD
-=======
-
->>>>>>> seat
 	public int insert(DramaDTO dramaDTO) throws Exception {
 		System.out.println("Before: "+dramaDTO.getDrama_num());
 		int result = sqlSession.insert(namespace+"insert", dramaDTO);

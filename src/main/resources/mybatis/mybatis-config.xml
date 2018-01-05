@@ -15,6 +15,7 @@
   		<typeAlias type="com.theater.drama.SeatDTO" alias="SeatDTO"/>
   		<typeAlias type="com.theater.review.ReviewDTO" alias="ReviewDTO"/>
   		<typeAlias type="com.theater.event.EventDTO" alias="EventDTO"/>
-
+  		 <typeAlias type="com.theater.qna.QnaDTO"  alias="QnaDTO"/>
+      <typeAlias type="com.theater.qna.Qna_viewDTO" alias="qna_viewDTO"/>
   	</typeAliases>
   </configuration>
