@@ -1,6 +1,7 @@
 package com.theater.point;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -21,9 +22,9 @@ public class PointDAO {
 	public List<PointDTO> selectList(RowNum rowNum) throws Exception {
 		return sqlSession.selectList(namespace+"selectList", rowNum); 
 	}
-	public PointDTO selectOne(int num) throws Exception{
+/*	public PointDTO selectOne(int num) throws Exception{
 		return sqlSession.selectOne(namespace+"selectOne", num);	
-	}
+	}*/
 	
 	public int totalCount(RowNum rowNum) throws Exception {
 		return sqlSession.selectOne(namespace+"totalCount", rowNum);
@@ -33,8 +34,16 @@ public class PointDAO {
 		return sqlSession.update(namespace+"updatePoint",pointDTO);
 		
 	}
-	public int attendCheck(PointDTO pointDTO) throws Exception{//출석체크
+	public int attendCheck(Map<String, Object> map) throws Exception{//출석체크
 		
-		return sqlSession.insert(namespace+"attendCheck",pointDTO);
+		return sqlSession.insert(namespace+"pointcheck",map);
 	}
+	public int usePoint(PointDTO pointDTO)throws Exception{
+		
+		return sqlSession.update(namespace+"usePoint", pointDTO);
+	}
+	public int insert(PointDTO pointDTO) throws Exception{
+		return sqlSession.insert(namespace+"insert",pointDTO);
+	}
+	
 }
