@@ -50,7 +50,7 @@
 
   <insert id="attendCheck">
 <!--   insert into point values(point_seq.nextval, #{id},'적립','20',(select nvl(total_point, 0) from point)+#{point}, '출석체크', sysdate) -->
-insert into point values(point_seq.nextval, #{id},'적립',20,(select nvl(total_point, 0) from point)+#{point},'출석체크',sysdate)
+insert into point values(point_num.nextval, #{id},'적립',3,#{total_point},'출석체크',sysdate)
   </insert>
   
    </mapper>
