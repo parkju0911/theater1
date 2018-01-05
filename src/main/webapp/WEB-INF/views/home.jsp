@@ -6,8 +6,7 @@
 <html>
 <head>
 	<title>Home</title>
-<link href="./resources/css/com
-mon/header.css" rel="stylesheet">
+<link href="./resources/css/common/header.css" rel="stylesheet">
 </head>
 <script type="text/javascript">
    var result = '${result}';

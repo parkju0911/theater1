@@ -163,7 +163,7 @@ A:VISITED {
 
 		</div>
 		<div id="ticket_top">
-		<p>티켓 리뷰</p>
+		<p>연극 리뷰</p>
 		</div>
 		<div id="ticket_review">
 			

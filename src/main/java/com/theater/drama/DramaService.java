@@ -107,7 +107,7 @@ public class DramaService {
 		Pager pager = listData.makePage(dramaDAO.totalcount_review(rowNum));
 		List<ReviewDTO> reviewlist = dramaDAO.dramaReviewList(rowNum);
 		mv.addObject("pager", pager);
-		mv.addObject("review", reviewlist);
+		mv.addObject("re", reviewlist);
 		mv.setViewName("drama/dramaReview");
 		return mv;
 	}

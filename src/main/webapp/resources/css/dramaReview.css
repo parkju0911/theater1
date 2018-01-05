@@ -20,6 +20,7 @@
 	border: 1px red solid;
 	margin-left: 30px;
 	margin-top: 10px;
+	float: left;
 }
 .image_tool{
 	width: 300px;
@@ -36,4 +37,11 @@
 	height: 25px;
 	border: 1px green;
 	text-align: right;
+}
+#btn_tool{
+	width: 100px;
+	height: 30px;
+}
+#write_form{
+	float: right;
 }

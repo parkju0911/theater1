@@ -17,20 +17,25 @@
 	<section id="Review_main">
 	<div id="top_text">
 		☆공연 리뷰 페이지☆
+		<div id="write_form">
+		<a href="review_write"><button id="btn_tool">리뷰 작성하기</button></a>
+		</div>
 	</div>
-	<c:forEach items="review" var="list">
+	<c:forEach items="${re}" var="list">
 	<div class="list_box">
 		<div class="image_tool">이미지툴입니다.		
 			</div>
-		<div class="text_form"><a href="#">title ->view page로 이동</a>
+		<div class="text_form"><a href="#">${list.title } ->view page로 이동</a>
 			</div>
 		<div class="reg_date">작성 날짜 hit 수 
 			</div>
 	</div>
 	
+
+	
 	</c:forEach>
 	
-	
+
 	
 		
 	<div id="paging">
