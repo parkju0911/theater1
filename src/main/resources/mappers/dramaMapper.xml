@@ -152,5 +152,8 @@
 		order by review_date desc) N)
   		where r between #{startRow} and #{lastRow}
   	</select>
+  	
+  	
+  	
   </mapper><!-- xml과 동일한 이름으로 한다. -->
   
