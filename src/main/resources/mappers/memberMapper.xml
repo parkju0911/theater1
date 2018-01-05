@@ -29,6 +29,6 @@
   	</select>
   	
   	<select id="searchPw" resultType="com.theater.member.MemberDTO" parameterType="com.theater.member.MemberDTO">
-  		select * from member where id=#{id} and email=#{email }
+  		select * from member where id=#{id} and email=#{email}
   	</select> 	
   </mapper>
