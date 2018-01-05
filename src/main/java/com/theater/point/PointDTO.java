@@ -36,8 +36,6 @@ public class PointDTO {
 		this.point = point;
 	}
 	public int getTotal_point() {
-		
-		
 		total_point+=point;
 
 		return total_point;

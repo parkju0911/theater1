@@ -12,56 +12,20 @@
 		cursor: pointer; 
 	}
 </style>
-<script type="text/javascript">
-
-
-
-</script>
-<link href="../resources/css/common/header.css" rel="stylesheet">
 <link href="../resources/css/point/point.css" rel="stylesheet">
-
 </head>
 <body>
-<c:import url="../temp/header.jsp"></c:import>
 	<h1>${point} list Page</h1>
 
 
 
-<h2> ${id} point page</h2>
 
 
+<div class="total_point">
+<p>총 포인트 : ${p.total_point}</p>
 
 
-
-<c:set var = "sum" value = "0" />
-
-<c:set var="minus" value="0"/>
-
-<c:forEach var="total" items="${list}">
-
-
-
-<%-- <p id="point_history" > ${total.point} </p> --%>
-
-
-
-<c:set var= "sum" value="${sum + total.total_point}"/> 
-
-
-
-
-</c:forEach>
-
-
-
-<p> 총 포인트 : <b><c:out value="${sum}"/>P</b></p>
-
-
-
-
-
-
-
+</div>
 
 
 
@@ -86,7 +50,7 @@
 			<td>${dto.point_num }</td>
 			<td>${dto.reg_date}</td>
 			<td>${dto.kind}</td>		
-			<td>${dto.point}</td>
+			<td><a href="./${point}View?num=${dto.point_num}">${dto.point}</a></td>
 			<td>${dto.history}</td>
 			
 		</tr>
@@ -95,7 +59,20 @@
 
 	</table>
 	
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	<div>
@@ -110,7 +87,7 @@
 		</c:if>
 	</div>
 	
-	<c:import url="../temp/footer.jsp"></c:import>
+	
 	
 </body>
 </html>
