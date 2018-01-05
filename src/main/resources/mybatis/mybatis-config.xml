@@ -17,5 +17,6 @@
   		<typeAlias type="com.theater.event.EventDTO" alias="EventDTO"/>
   		 <typeAlias type="com.theater.qna.QnaDTO"  alias="QnaDTO"/>
       <typeAlias type="com.theater.qna.Qna_viewDTO" alias="qna_viewDTO"/>
+       <typeAlias type="com.theater.point.PointDTO" alias="PointDTO"/>
   	</typeAliases>
   </configuration>

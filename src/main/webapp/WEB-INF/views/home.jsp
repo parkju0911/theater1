@@ -24,6 +24,7 @@ mon/header.css" rel="stylesheet">
 <a href="./notice/noticeList">Go Notice</a>
 <a href="./qna/qnaList">Go Qna</a>
 <a href="./drama/chatform">chatting</a>
+<a href="./point/pointList">pointList</a>
 
 
   
