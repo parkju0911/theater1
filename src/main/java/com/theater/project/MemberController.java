@@ -187,5 +187,9 @@ public class MemberController {
 		return result;
 	}
 
+	@RequestMapping(value="memberMypage", method=RequestMethod.GET)
+	public String memberMypage(){
+		return "member/memberMypage";
+	}
 
 }

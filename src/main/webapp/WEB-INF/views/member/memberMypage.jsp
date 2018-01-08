@@ -60,11 +60,17 @@
 					<li class=""><strong class="title">휴대폰</strong> <strong
 						class="data use">&nbsp;<span
 							id="xans_myshop_bankbook_deposit">${member.phone}</span></strong></li>
+					<c:if test="${member.kind eq 'user'}">
 					<li><strong class="title">생일</strong> <strong class="data"><span
-							id="xans_myshop_bankbook_order_price">${member.user_info.birth}</span></strong></li>
+							id="xans_myshop_bankbook_order_price">${user.birth}</span></strong></li>
+					</c:if>
 					<li class=""><strong class="title">이메일</strong> <strong
 						class="data"><span id="xans_myshop_bankbook_coupon_cnt">${member.email}</span></strong>
 					</li>
+					<c:if test="${member.kind eq 'company'}">
+						<li><strong class="title">좌석</strong> <strong class="data"><span
+							id="xans_myshop_bankbook_order_price">${company.row_num}행 ${company.col_num}열</span></strong></li>
+					</c:if>
 				</ul>
 			</div>
 		</form>
