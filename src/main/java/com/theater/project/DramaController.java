@@ -175,10 +175,25 @@ public class DramaController {
 		ModelAndView mv = null;
 		mv = dramaService.selectList(listData);
 		mv.setViewName("drama/list");
-		
+	
 		return mv;
 	}
 	
+	
+	//Drama_file list
+		@RequestMapping(value="dramaFile")
+		public ModelAndView drama_file(FileDTO fileDTO, ModelAndView mv) throws Exception{
+			//해당 날짜 공연시간 가져오기
+			/*List<FileDTO> ar = dramaService.fileList(fileDTO.getFile_num(), fileDTO.getFile_name());
+				
+			mv.addObject("file", ar);
+			mv.addObject("view", fileDTO);
+			mv.setViewName("drama/drama_file");*/
+				
+			return mv;
+		}
+		
+		
 	//insert -> form 이동
 	@RequestMapping(value="dramaWrite", method=RequestMethod.GET)
 	public String insert(Model model) {

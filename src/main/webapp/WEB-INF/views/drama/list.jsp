@@ -1,3 +1,4 @@
+<%@page import="java.net.URLDecoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -51,7 +52,8 @@
 	<div class="container review">
 		<div id="review-feed-list-wrap">
 			<div class="row unpa-card-row row-flex-height-md">
-			<c:forEach items="${list}" var="dto">
+			<c:forEach items="${list}" var="dto" varStatus="i">
+
 				<%-- <c:forEach items="${requestScope.list}" var="dto"> --%>
 					<div class="col-md-4 unpa-ad-responsive-parent">
 
@@ -85,8 +87,9 @@
 
 								</div>
 
+
 								<div class="main-image"
-									style="background-image: url('../resources/images/drama_1.jpg')" >
+									style="background-image: url('../resources/upload/${file[i.index].file_name}')" >
 									<div class="content">
 										<a>${dto.contents}</a>
 									</div>
@@ -94,6 +97,7 @@
 								<div class="review-contents">
 									<div class="product-info">
 										<div class="left">
+										
 											<div class="product-image"
 												style="background-image: url(../resources/image/drama_1.jpg')"></div>
 										</div>
@@ -139,6 +143,52 @@
 						</div>
 					</div>
 			</c:forEach>
+			
+			<h5>최근 본 상품</h5>
+
+<div>
+
+<%
+
+	//쿠키 얻어오기
+
+	Cookie[] cook = request.getCookies();
+
+	if(cook!=null){
+
+		for(int i=0;i<cook.length;i++){
+
+			//전송된 쿠키이름 얻어오기
+
+			String name=cook[i].getName();
+
+			//쿠키이름에 item이 포함되어 있다면
+
+			if(name.indexOf("item")!=-1){
+
+				//해당 value얻어오기
+
+				String value=cook[i].getValue();
+
+				//euc-kr로 인코딩되어 있으므로 다시 euc-kr로 디코딩하여야 한다.
+
+				String item=URLDecoder.decode(value, "UTF-8");
+
+				out.println(item+"<br/>");
+
+			}
+
+		}
+
+	}else{
+
+		out.println("최근에 본 상품이 없습니다.");
+
+	}
+
+%>
+
+</div>
 			</div>
 		</div>
 	

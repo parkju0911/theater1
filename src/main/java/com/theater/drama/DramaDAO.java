@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.theater.file.FileDTO;
 import com.theater.member.MemberDTO;
 import com.theater.qna.Qna_viewDTO;
 import com.theater.review.ReviewDTO;
@@ -27,6 +28,13 @@ public class DramaDAO  {
 		map.put("drama_date", drama_date);
 		
 		return sqlSession.selectList(namespace+"timeList", map);
+	}
+	public FileDTO fileList(int file_num) throws Exception{
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("file_num", file_num);
+		
+		
+		return sqlSession.selectOne(namespace+"fileList", map);
 	}
 	
 	public int total_seat(int company_num) throws Exception{

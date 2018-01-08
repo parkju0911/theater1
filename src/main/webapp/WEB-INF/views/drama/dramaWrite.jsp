@@ -190,6 +190,8 @@
 					<input type="text" id="price" name="price">
 				</div>
 			</div>
+			
+		
 
 			<div class="row">
 				<div class="col-25">

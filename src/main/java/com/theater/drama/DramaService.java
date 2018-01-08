@@ -1,5 +1,6 @@
 package com.theater.drama;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,6 +41,10 @@ public class DramaService {
 	public DramaDTO selectOne(int drama_num) throws Exception{
 		return dramaDAO.selectOne(drama_num);
 	}
+	public FileDTO fileList(int file_num) throws Exception{
+		return dramaDAO.fileList(file_num);
+	}
+
 	
 	public List<DramaListDTO> timeList(int drama_num, String drama_date) throws Exception{
 		return dramaDAO.timeList(drama_num, drama_date);
@@ -126,8 +131,13 @@ public class DramaService {
 		RowNum rowNum = listData.makeRow();
 		Pager pager = listData.makePage(dramaDAO.totalCount(rowNum));
 		List<DramaDTO> ar = dramaDAO.selectList(rowNum);
+		List<FileDTO> file=new ArrayList<FileDTO>();
+		for(DramaDTO dramaDTO: ar){
+			FileDTO fileDTO=dramaDAO.fileList(dramaDTO.getFile_num());
+			file.add(fileDTO);
+		}
 		
-		mv.addObject("list", ar).addObject("pager", pager).addObject("board", "drama");
+		mv.addObject("list", ar).addObject("pager", pager).addObject("board", "drama").addObject("file", file);
 		
 		return mv;
 	}
@@ -167,6 +177,7 @@ public class DramaService {
 		
 		return result;
 	}
+	
 
 
 }
