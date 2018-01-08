@@ -10,7 +10,7 @@
 <script type="text/javascript">
 	$(function() {
 		var kind = "user";
-
+		
 		$("#join").click(function() {
 			if (kind == "user") {
 				$("#company").remove();
@@ -53,8 +53,8 @@
 		
 		$("#pw2").blur(function() {
 			var f1 = document.forms[0];
-			var pw = f1.pw.value;
-			var pw2 = f1.pw2.value;
+			var pw = $("#pw").val();
+			var pw2 = $("#pw2").val();
 			if(pw!=pw2){
 				document.getElementById('pw_check_msg').style.color = "red";
 				document.getElementById('pw_check_msg').innerHTML = "동일한 암호를 입력하세요."; 
@@ -64,6 +64,14 @@
 			}
 		});
 	});
+</script>
+<script type="text/javascript">
+	function checkForm(theForm) {
+		if (frm.chkok.checked != true) {
+			alert("이용약관 및 개인정보취급방침에 동의하셔야 가입이 가능합니다.");
+			return false;
+		}
+	}
 </script>
 <script type="text/javascript">
 	var result = '${result}';
@@ -82,7 +90,7 @@
 <body>
 	<c:import url="../temp/header.jsp"></c:import>
 	
-	<form action="./memberJoin" method="post" id="frm">
+	<form action="./memberJoin" method="post" id="frm" onsubmit="return checkForm(this);">
 		<div style="width: 700px; margin: 20px auto; padding: 30px 70px; border: 1px solid #e8e8e8; background: #fff; text-align: center;">
 			<!-- 타이틀 영역-->
 			<div>
@@ -109,6 +117,7 @@
 							<div style="float: left; font-size: 16px; font-weight: 300;">
 								<input type="password" id="pw" name="pw" value="" class="member_txt"
 									size="20" hname="비밀번호*" required="">
+								<div id="check_msg"></div>
 							</div>
 							<div style="text-align: left; padding: 15px 0; clear: both; vertical-align: middle; height: 35px;">
 								<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">비밀번호
@@ -121,7 +130,7 @@
 								<div style="text-align: left; padding: 15px 0; clear: both; vertical-align: middle; height: 35px;">
 									<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">이름*</div>
 									<div style="float: left; font-size: 16px; font-weight: 300;">
-										<input type="text" name="name" value="" class="member_txt" size="10" hname="이름*" required="">
+										<input type="text" id="name" name="name" value="" class="member_txt" size="10" hname="이름*" required="">
 									</div>
 									<div style="text-align: left; padding: 15px 0; clear: both; vertical-align: middle; height: 35px;">
 										<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">휴대폰*</div>
@@ -134,7 +143,7 @@
 										<div style="text-align: left; padding: 15px 0; clear: both; vertical-align: middle; height: 35px;">
 											<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">이메일*</div>
 											<div style="float: left; font-size: 16px; font-weight: 300;">
-												<input onkeyup="email_input_check()" type="text" name="email" value="" class="member_txt">
+												<input type="text" id="email" name="email" value="" class="member_txt">
 													<span style="font-size: 14px; color: #777; padding-left: 10px;">아이디/비밀번호 찾기에 필요합니다.</span>
 											</div>
 										</div>
@@ -194,7 +203,7 @@
 			</div>
 			<div alt="약관동의" style="padding-top: 30px;">
 				<div style="font-size: 16px; color: #555; font-weight: 300;">
-					<input type="checkbox" name="chkok" value="약관동의" style="vertical-align: middle; height: 18px; width: 18px;">
+					<input type="checkbox" id="chkok" name="chkok" value="약관동의" style="vertical-align: middle; height: 18px; width: 18px;">
 					<a href="memberJoin1"
 						target="_blank" style="padding-left: 3px; color: #ffc108; font-weight: 500; 
 						text-decoration: underline;">회원이용약관</a> 및 
