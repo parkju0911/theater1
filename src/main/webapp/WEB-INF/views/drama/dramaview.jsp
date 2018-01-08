@@ -93,9 +93,10 @@ A:VISITED {
 	<!-- header end -->
 
 	<section id="section">
-		<form id="section_info" action="좌석 선택 페이지" method="post">
+		<form id="section_info" name="frm"method="post">
+		<input type="hidden" name="drama_num" value="${view.drama_num}">
 			<div id="drama_image">
-				<img src="../resources/images/drama_1.jpg" style="width: 100%; height: 100%;">
+				<img src="../resources/images/drama_1.jpg">
 			</div>
 
 			<div id="drama_info_form">
@@ -108,13 +109,13 @@ A:VISITED {
 					<input id="price" type="text" name="price" value="${view.price}원"
 						readonly="readonly">
 				</div>
-				<select id="drama_date" name="date">
+				<select id="drama_date" name="drama_date">
 					<optgroup label="날짜 선택">
-						<option class="select_date">날짜 선택</option>
+						<option class ="select_date">날짜 선택</option>
 						<c:forEach items="${list}" var="dto">
 							<fmt:parseDate value='${dto.drama_date}' var='dto_date'
 								pattern="yyyy-MM-dd" scope="page" />
-							<option><fmt:formatDate value="${dto_date}"
+							<option  class="select_date"><fmt:formatDate value="${dto_date}"
 									pattern="yyyy-MM-dd" /></option>
 						</c:forEach>
 					</optgroup>
@@ -122,6 +123,7 @@ A:VISITED {
 				
 				<div class="drama_time"></div>
 				<button id="btn_buy" ></button>
+		
 			</div>
 		</form>
 		<div id="afterview">
