@@ -33,9 +33,10 @@ public class PointService {
 		
 		List<PointDTO> ar = pointDAO.selectList(rowNum);
 		
-		mv.addObject("id","iu");
+		
 		mv.addObject("pager", pager);
 		mv.addObject("list", ar);
+		
 		mv.addObject("point", "point");
 		
 		mv.setViewName("point/pointList");
@@ -59,7 +60,7 @@ public class PointService {
 		
 	
 		
-		
+
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		
@@ -73,7 +74,7 @@ public class PointService {
 		map.put("reg_date",pointDTO.getReg_date());
 	
 		int	result=pointDAO.attendCheck(map);
-	
+
 		
 
 		return result;

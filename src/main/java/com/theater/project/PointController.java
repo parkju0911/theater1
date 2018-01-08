@@ -22,10 +22,11 @@ public class PointController {
 	private PointService pointService;
 	
 	@RequestMapping(value="pointList")
-	public ModelAndView selectList(ModelAndView mv, ListData listData) throws Exception{
+	public ModelAndView selectList(ModelAndView mv, ListData listData,PointDTO pointDTO) throws Exception{
 			
+		
 		mv = pointService.selectList(listData);
-			
+		mv.addObject("pdto",pointDTO);
 		return mv;
 	}
 	
