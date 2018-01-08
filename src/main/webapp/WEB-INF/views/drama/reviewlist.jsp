@@ -5,8 +5,33 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title>Insert title here</title>
+<script type="text/javascript">
+$(function(){
+	
+	var message='${message}';
+	if(message !=''){
+		alert(message);
+	}
+	
+	
+	$(".list").click(function (){
+		var cur=$(this).attr("title");
+		var s = '${pager.search}';
+		var v = '${pager.kind}';
+		document.frm.curPage=cur;
+		document.frm.search=s;
+		document.frm.kind=v;
+		document.frm.submit();
+	});
+});
+
+</script>
 <style type="text/css">
+.list {
+		cursor: pointer;
+	}
 </style>
 </head>
 <body>

@@ -93,7 +93,8 @@ public class DramaDAO  {
 	public List<ReviewDTO> selectList_review(int drama_num)throws Exception{
 		return sqlSession.selectList(namespace+"selectList_review", drama_num);
 	}
-	public int selectOne_review(int drama_num)throws Exception{
+	//안되서 일단 리스트로 해놓음 변경할것
+		public ReviewDTO selectOne_review(int drama_num)throws Exception{
 		return sqlSession.selectOne(namespace+"selectOne_review", drama_num);
 	}
 	public int totalcount(int drama_num)throws Exception{
@@ -126,5 +127,8 @@ public class DramaDAO  {
 	}
 	public List<ReviewDTO>dramaReviewList(RowNum rowNum)throws Exception{
 		return sqlSession.selectList(namespace+"dramaReviewList", rowNum);
+	}
+	public ReviewDTO review_selectOne(int review_num)throws Exception{
+		return sqlSession.selectOne(namespace+"review_selectOne", review_num);
 	}
 }

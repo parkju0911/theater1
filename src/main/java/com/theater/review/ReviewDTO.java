@@ -12,9 +12,23 @@ public class ReviewDTO extends MemberDTO{
     private String writer;
     private int star;
     private Date review_date;
+    private int fileNum;
+    private int drama_num;
 
     
 	
+	public int getFileNum() {
+		return fileNum;
+	}
+	public void setFileNum(int fileNum) {
+		this.fileNum = fileNum;
+	}
+	public int getDrama_num() {
+		return drama_num;
+	}
+	public void setDrama_num(int drama_num) {
+		this.drama_num = drama_num;
+	}
 	public Date getReview_date() {
 		return review_date;
 	}

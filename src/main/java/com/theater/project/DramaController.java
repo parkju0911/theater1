@@ -103,8 +103,8 @@ public class DramaController {
 		//후기(합계) 숫자 표시
 		int totalcount =dramaService.totalcount(drama_num);
 		
-		//연극 리뷰 최신꺼 보여주기
-		/*int selectOne_review= dramaService.selectOne_review(drama_num);*/
+		//연극 리뷰 최신꺼 보여주기 안됨 대기
+	/*	ReviewDTO selectOne_review= dramaService.selectOne_review(drama_num);*/
 		
 		List<ReviewDTO> ar_review = dramaService.selectList_review(drama_num);
 		
@@ -112,8 +112,8 @@ public class DramaController {
 			mv.addObject("view", dramaDTO);
 			mv.addObject("list", ar);
 			mv.addObject("review", ar_review);
-			mv.addObject("total", totalcount);
-		/*	mv.addObject("reviewOne", selectOne_review);*/
+			mv.addObject("total", totalcount); 
+			/*mv.addObject("reviewOne", selectOne_review);*/
 			mv.setViewName("drama/dramaview");
 		}else {
 			rd.addFlashAttribute("message", "잘못된 접근방식 입니다.");
@@ -179,7 +179,15 @@ public class DramaController {
 		mv = dramaService.dramaReviewList(listData);
 		return mv;
 	}
+	@RequestMapping(value="dramaReviewview")
+		public ModelAndView dramaReviewview(ModelAndView mv, int review_num)throws Exception{
 		
+		ReviewDTO reviewDTO= dramaService.review_selectOne(review_num);
+		mv.addObject("selectOne", reviewDTO);
+		mv.setViewName("drama/dramaReviewview");
+		
+		return mv;
+	}
 	//selectList
 	@RequestMapping(value="dramaList")
 	public ModelAndView selectList(ListData listData) throws Exception {

@@ -84,10 +84,9 @@
   		select nvl(count(review_num),0) from review
   </select>
  
-  <!-- 연극 리뷰로 쓸껀데 잠시 대기 -->
-  <select id="selectOne_review" parameterType="int" resultType="int">
-   select * from review where drama_num=#{drama_num} order by review_date desc 
- 
+  <!-- 연극 리뷰(해당 drama 최신 리뷰 하나만 나오게 안되서 대기-->
+  <select id="selectOne_review" parameterType="int"  resultMap="reviewDTO">
+   select max(review_num) from review where drama_num=#{drama_num}
   </select>
  
   <!-- 후기(별점) 페이징 처리 -->
@@ -120,7 +119,10 @@
   		(select * from review order by review_date desc) N)
   		where r between #{startRow} and #{lastRow}  
   </select>
-
+<!-- 리뷰 selectOne -->
+<select id="review_selectOne" parameterType="int" resultType="reviewDTO">
+	select * from review where review_num=#{review_num}
+</select>
 <!--  qna write -->
 	<insert id="qna_insert" parameterType="qna_viewDTO">
 	<selectKey keyProperty="qna_viewnum" resultType="int" order="BEFORE">

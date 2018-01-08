@@ -57,10 +57,10 @@ public class DramaService {
 		
 		return ar_review;
 	}
-	//연극 리뷰 view(예정)
-	public int selectOne_review(int drama_num)throws Exception{
-		int selectOne_review = dramaDAO.selectOne_review(drama_num);
-		return selectOne_review;
+	//연극 리뷰 view(해당 drama에 최신 리뷰 하나만 보여준다. 안되서 일단 대기)
+	public ReviewDTO selectOne_review(int drama_num)throws Exception{
+		
+		return  dramaDAO.selectOne_review(drama_num);
 	}
 	//리뷰 수 합산
 	public int totalcount(int drama_num)throws Exception{
@@ -116,6 +116,11 @@ public class DramaService {
 		mv.addObject("review", reviewlist);
 		mv.setViewName("drama/dramaReview");
 		return mv;
+	}
+	//공연 리뷰 selectOne
+	public ReviewDTO review_selectOne(int review_num)throws Exception{
+	
+		return dramaDAO.review_selectOne(review_num);
 	}
 	//광 
 	

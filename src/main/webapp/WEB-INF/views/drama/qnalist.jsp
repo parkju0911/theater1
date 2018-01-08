@@ -11,7 +11,9 @@
 #reply_form{
 	display:none;
 }
-
+.list {
+		cursor: pointer;
+	}
 
 </style>
 <script type="text/javascript">
@@ -35,6 +37,17 @@
 				$(".reply_form").css("display" , "none");
 			}
 		}) */
+		
+			$(".list").click(function (){
+				var cur=$(this).attr("title");
+				var s = '${pager.search}';
+				var v = '${pager.kind}';
+				document.frm.curPage=cur;
+				document.frm.search=s;
+				document.frm.kind=v;
+				document.frm.submit();
+			});
+		
 	});
 
 </script>
@@ -50,11 +63,11 @@
 							<form action="qnawrite" method="post">
 								<div id="qna_textbox">
 							
-									<input type="hidden"  name="qna_viewnum" value="${qnalist.qna_viewnum }">
-									<input type="hidden" name="drama_num" value="${qnalist.drama_num }">
+									<input type="hidden"  name="qna_viewnum" >
+									<input type="hidden" name="drama_num" >
 									<input type="hidden" name="reg_date">
-									<input type="hidden" name="ref" value="${qnalist.qna_viewnum }">
-								<tarea style="width:530px; height: 70px; border: 1px solid #e6e6e6; font-size: 13px; color:#000;" name="contents"></textarea>
+									
+								<textarea style="width:530px; height: 70px; border: 1px solid #e6e6e6; font-size: 13px; color:#000;" name="contents"></textarea>
 										</div>
 							<div id="qna_button">
 								<button style="width: 150px; height: 70px; margin-top: 10px;">등록</button>
