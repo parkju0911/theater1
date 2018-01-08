@@ -21,7 +21,7 @@
 	<c:forEach items="${review}" var="list">
 	<div class="list_box">
 		<div class="box_left">
-			
+			-
 		</div>
 		<div class="box_right">
 			

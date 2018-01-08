@@ -118,7 +118,8 @@ public class DramaDAO  {
 		return sqlSession.selectOne(namespace+"totalcount_review", rowNum);
 	}
 	public int qna_insert(Qna_viewDTO qna_viewDTO)throws Exception{
-		return sqlSession.insert(namespace+"qna_insert", qna_viewDTO);
+		int result = sqlSession.insert(namespace+"qna_insert", qna_viewDTO);
+		return result;
 	}
 	public int delete_qnaview(int qna_viewnum)throws Exception{
 		return sqlSession.delete(namespace+"delete_qnaview", qna_viewnum);

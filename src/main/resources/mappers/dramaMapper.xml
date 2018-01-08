@@ -126,7 +126,7 @@
 	<selectKey keyProperty="qna_viewnum" resultType="int" order="BEFORE">
 	select qna_viewnum.nextval from dual
 	</selectKey>
-	insert into qna_view values(#{qna_viewnum} ,#{id}, #{drama_num} , #{contents} , sysdate , #{qna_viewnum},0,0})
+	insert into qna_view values(#{qna_viewnum} ,'T1', #{drama_num} , #{contents} , sysdate , #{qna_viewnum},0,0})
 	</insert>
 
 <!-- qnalist 삭제(자신이 올린 문의글 삭제) -->
