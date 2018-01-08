@@ -148,7 +148,7 @@ public class MemberController {
 	public void membrLogin(){}
 
 	@RequestMapping(value="memberLogin", method=RequestMethod.POST)
-	public String memberLogin(MemberDTO memberDTO, HttpSession session){
+	public String memberLogin(MemberDTO memberDTO, UserDTO userDTO, CompanyDTO companyDTO, HttpSession session){
 		try {
 			memberDTO=memberService.login(memberDTO);
 		} catch (Exception e) {
@@ -157,6 +157,8 @@ public class MemberController {
 		}
 		if(memberDTO != null){
 			session.setAttribute("member", memberDTO);
+			session.setAttribute("user", userDTO);
+			session.setAttribute("company", companyDTO);
 		}
 		return "redirect:/";	
 	}
