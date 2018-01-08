@@ -53,7 +53,7 @@
 			<div style="text-align: center; padding: 40px 0; font-size: 16px;">
 				<span style="color: #333;">TEATRO 회원이 아니신가요?</span>
 				<a href="memberJoin" alt="회원가입">
-					<span style="color: #ffc108; text-decoration: underline; padding-left: 5px;">회원가입</span>
+					<span style="color: #ffbc0d; text-decoration: underline; padding-left: 5px;">회원가입</span>
 				</a>
 			</div>
 		</div>

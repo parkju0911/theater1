@@ -35,10 +35,10 @@ a:visited {
 
 #login_btn {
 	color: #fff;
-	background: #ffc108;
+	background: #ffbc0d;
 	font-size: 20px;
 	border-radius: 7px;
-	border-color: #ffc108;
+	border-color: #ffbc0d;
 	border-style: none;
 }
 
@@ -71,7 +71,7 @@ input[type=checkbox]:checked + label:before {
     font-size: 12px;
     font-weight: 800;
     color: #fff;
-    background: #ffc108;
+    background: #ffbc0d;
     text-align: center;
     line-height: 18px;
     border: 1px solid #ccc;
