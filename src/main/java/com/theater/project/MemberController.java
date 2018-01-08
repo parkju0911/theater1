@@ -191,5 +191,10 @@ public class MemberController {
 	public String memberMypage(){
 		return "member/memberMypage";
 	}
+	
+	@RequestMapping(value="membership", method=RequestMethod.GET)
+	public String membership(){
+		return "member/membership";
+	}
 
 }

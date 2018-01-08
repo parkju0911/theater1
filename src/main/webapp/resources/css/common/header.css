@@ -3,7 +3,14 @@
 
 /* @font-face { font-family: 'NanumGothic'; src: url(../font/NanumGothicBold.ttf) format('truetype'); } */
 @import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
-
+/* @font-face {font-family:nBarun;src:url('/web/font/NanumBarunGothic.eot');
+src:url('/web/font/NanumBarunGothic.woff') format('woff'),url('/web/font/NanumBarunGothic.woff') format('embedded-opentype'),url('/web/font/NanumBarunGothic.ttf') format('truetype');}
+@font-face {font-family:nBarunB;src:url('/web/font/NanumBarunGothicBold.eot');src:url('/web/font/NanumBarunGothicBold.woff') format('woff'),url('/web/font/NanumBarunGothicBold.woff') format('embedded-opentype'),url('/web/font/NanumBarunGothicBold.ttf') format('truetype');}
+@font-face {font-family:fMdBt;src:url('/web/font/FuturaMediumBT.eot');
+src:url('/web/font/FuturaMediumBT.TTF.woff') format('woff'),url('/web/font/FuturaMediumBT.TTF.woff') format('embedded-opentype'),url('/web/font/FuturaMediumBT.TTF.woff') format('truetype');}
+@font-face {font-family:fBoBt;src:url('/web/font/FuturaBoldBT.eot');src:url('/web/font/FuturaBoldBT.TTF.woff') format('woff'),url('/web/font/FuturaBoldBT.TTF.woff') format('embedded-opentype'),url('/web/font/FuturaBoldBT.TTF.woff') format('truetype');}
+@font-face {font-family:fMiBt;src:url('/web/font/FuturaMI.eot');src:url('/web/font/FuturaMI.TTF.woff') format('woff'),url('/web/font/FuturaMI.TTF.woff') format('embedded-opentype'),url('/web/font/FuturaMI.TTF.woff') format('truetype');}
+ */
 * {
 	margin: 0;
 	padding: 0;
@@ -44,14 +51,15 @@ header {
 
 .member_wrap li {
 	list-style: none;
-	text-decoration-line: none;
-	margin-top: 15px;
-	float: right;
+    text-decoration-line: none;
+    /* margin-top: 28px; */
+    margin-right: 1px;
+    float: right
 }
 
 .member_wrap {
 	width: 920px;
-	height: 84px;
+	/* height: 84px; */
 	margin: 0 auto;
 	margin-right: 30px; 
 }
@@ -78,8 +86,8 @@ li.n_member_wrap {
 li.member_wrap {
 	list-style: none;
 	text-decoration-line: none;
-	margin-top: 34px;
-	margin-right: -92px;
+	/* margin-top: 34px; */
+	margin-right: 1px;
 	float: right;
 }
 
@@ -89,6 +97,8 @@ li.member_wrap {
 	font-size: 8pt;
 	color: #795548;
 	margin-left: 25px;
+	float: right;
+	/* margin-top: 10px; */
 }
 
 .n_member_wrap a {
@@ -121,7 +131,7 @@ input::-moz-placeholder {
 	border: 1px #795548;
 	background: white;
 	float: right;
-	margin-top: -20px;
+	margin-top: -12px;
 }
 
 .search_bar input {
