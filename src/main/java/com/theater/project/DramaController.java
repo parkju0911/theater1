@@ -16,6 +16,7 @@ import com.theater.drama.DramaDTO;
 import com.theater.drama.DramaListDTO;
 import com.theater.drama.DramaService;
 import com.theater.drama.SeatDTO;
+import com.theater.file.FileDTO;
 import com.theater.member.CompanyDTO;
 import com.theater.member.MemberService;
 import com.theater.qna.Qna_viewDTO;

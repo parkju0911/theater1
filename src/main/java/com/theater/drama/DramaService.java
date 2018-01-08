@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.theater.file.FileDAO;
 import com.theater.file.FileDTO;
+import com.theater.member.MemberDTO;
 import com.theater.qna.Qna_viewDTO;
 import com.theater.review.ReviewDTO;
 import com.theater.util.FileSaver;
@@ -133,30 +134,35 @@ public class DramaService {
 
 	
 	public int insert(DramaDTO dramaDTO, HttpSession session) throws Exception {
-		int result = dramaDAO.insert(dramaDTO);
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("drama_num", dramaDTO.getDrama_num());
-		map.put("title", dramaDTO.getTitle());
-		map.put("contents", dramaDTO.getContents());
-		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 	
-		
 		MultipartFile[] files =((DramaDTO)dramaDTO).getFiles();
 		
 		System.out.println("NUM: "+ dramaDTO.getDrama_num());
-		
+		int file_num = fileDAO.searchFile_num();
 		//저장 1. 저장경로 - realpath
 		//List<FileDTO> names = new ArrayList<FileDTO>();
 		for (MultipartFile multipartFile : files) {
 			String name = fileSaver.fileSave(multipartFile, session, "upload");
 			FileDTO fileDTO = new FileDTO();
-			fileDTO.setFile_num(dramaDTO.getDrama_num()); // 먼저 noticeDAO.insert(boardDTO); 했긴 때문에 가능
+			fileDTO.setFile_num(file_num); // 먼저 noticeDAO.insert(boardDTO); 했긴 때문에 가능
 			fileDTO.setFile_name(name);
 			fileDTO.setFile_route(multipartFile.getOriginalFilename());
 			//names.add(fileDTO);
 			fileDAO.insert(fileDTO);
 		}
+		
+		
+		int company_num =  dramaDAO.searchCompany_num(memberDTO);
+		dramaDTO.setCompany_num(company_num);
+		dramaDTO.setFile_num(file_num);
+		int result = dramaDAO.insert(dramaDTO);
+		
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("drama_num", dramaDTO.getDrama_num());
+		map.put("title", dramaDTO.getTitle());
+		map.put("contents", dramaDTO.getContents());
 		//((NoticeDTO)boardDTO).setFileNames(names);
 		
 		return result;
