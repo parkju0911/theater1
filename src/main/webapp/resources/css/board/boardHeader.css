@@ -51,7 +51,6 @@ a:hover, a:ACTIVE, a::SELECTION, a:AFTER {
 
 .board_wrap1 {
 	width: 1100px;
-	height: 750px;
 	margin: 0 auto;
 	margin-top: 16px;
 /* 	border: 1.5px solid #795548a1;
