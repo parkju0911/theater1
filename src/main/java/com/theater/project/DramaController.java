@@ -45,7 +45,7 @@ public class DramaController {
 	public ModelAndView selectSeat(SeatDTO seatDTO,ModelAndView mv) throws Exception{
 		//공연 정보 가져오기
 		DramaDTO dramaDTO = dramaService.selectOne(seatDTO.getDrama_num());
-			
+
 		//회사명,좌석 수 가져오기
 		CompanyDTO companyDTO = memberService.searchCompany(dramaDTO.getCompany_num());
 		companyDTO.setName(memberService.searchCompanyName(companyDTO.getId()));
