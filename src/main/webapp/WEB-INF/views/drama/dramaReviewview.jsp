@@ -17,17 +17,45 @@
 	
 	<div id="reviewbox">
 		
-	<div id="title_box"><div id="title">${selectOne.title }</div> <div id="writer">작성자 아이디</div> <div id="date_box">	${selectOne.review_date}</div></div>	
-	<div id="image_box"><img alt="" src=""> </div>
-	<div id="contents_box">${selectOne.contents }</div>
+		<div id="title_box"><div id="title">${selectOne.title }</div> <div id="writer">writer: 아이디</div> <div id="date_box">	${selectOne.review_date}</div></div>	
+		<div id="image_box"><img alt="" src=""> </div>
+		<div id="star_point">
+			<c:if test="${selectOne.star ==5}">
+				<img alt="" src="../resources/images/starpoint/star_5.png" style="height: 20px">
+			</c:if>
+			
+			<c:if test="${selectOne.star==4 }">
+				<img alt="" src="../resources/images/starpoint/star_4.png" style="height: 20px">
+			</c:if>
+			<c:if test="${selectOne.star==3 }">
+				<img alt="" src="../resources/images/starpoint/star_3.png" style="height: 20px">
+			</c:if>
+			<c:if test="${selectOne.star==2 }">
+				<img alt="" src="../resources/images/starpoint/star_2.png" style="height: 20px">
+			</c:if>
+			<c:if test="${selectOne.star==1 }">
+				<img alt="" src="../resources/images/starpoint/star_1.png" style="height: 20px">
+			</c:if>
 		
-	
-		${selectOne.star}
+		</div>
+			
+		<div id="contents_box">${selectOne.contents }</div>
+		
+			
+			<div id="option_box">
+				<div id="option_form">
+						<a href="./dramaReview">List</a>
+						<a href="./dramaReviewupdate?review_num=${selectOne.review_num}">Update</a>
+						<a href="./dramaReviewdelete?review_num=${selectOne.review_num }">Delete</a>
+				</div>
+			</div>
+	</div>
+		
 		
 			
 	</div>
 	
-	</div>
+	
 		<!-- footer  -->
 	<c:import url="../temp/footer.jsp"></c:import>
 	<!-- footer end -->	
