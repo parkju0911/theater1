@@ -131,6 +131,9 @@ public class MemberController {
 
 	@RequestMapping(value="/company/memberJoin", method=RequestMethod.POST)
 	public String memberJoinCompany(RedirectAttributes attributes, MemberDTO memberDTO, CompanyDTO companyDTO) throws Exception {
+		System.out.println(companyDTO.getCompany_num());
+		System.out.println(companyDTO.getCol_num());
+		System.out.println(companyDTO.getRow_num());
 		int result = memberService.memberJoin(memberDTO);
 		result = memberService.companyJoin(companyDTO);
 		String message="회원가입 실패";
@@ -145,7 +148,7 @@ public class MemberController {
 	public void membrLogin(){}
 
 	@RequestMapping(value="memberLogin", method=RequestMethod.POST)
-	public String memberLogin(MemberDTO memberDTO, HttpSession session){
+	public String memberLogin(MemberDTO memberDTO, UserDTO userDTO, CompanyDTO companyDTO, HttpSession session){
 		try {
 			memberDTO=memberService.login(memberDTO);
 		} catch (Exception e) {
@@ -154,6 +157,8 @@ public class MemberController {
 		}
 		if(memberDTO != null){
 			session.setAttribute("member", memberDTO);
+			session.setAttribute("user", userDTO);
+			session.setAttribute("company", companyDTO);
 		}
 		return "redirect:/";	
 	}
@@ -182,5 +187,9 @@ public class MemberController {
 		return result;
 	}
 
+	@RequestMapping(value="memberMypage", method=RequestMethod.GET)
+	public String memberMypage(){
+		return "member/memberMypage";
+	}
 
 }

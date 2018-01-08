@@ -17,7 +17,7 @@
   	</insert>
   	
   	<insert id="companyJoin" parameterType="com.theater.member.CompanyDTO">
-  		insert into company_info values(#{id}, #{company_num}, #{row_num}, #{col_num})
+  		insert into company_info values(#{company_num}, #{id}, #{row_num}, #{col_num})
   	</insert>
   	
   	<select id="checkId" resultType="com.theater.member.MemberDTO" parameterType="com.theater.member.MemberDTO">
