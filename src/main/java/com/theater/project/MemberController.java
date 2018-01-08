@@ -131,6 +131,9 @@ public class MemberController {
 
 	@RequestMapping(value="/company/memberJoin", method=RequestMethod.POST)
 	public String memberJoinCompany(RedirectAttributes attributes, MemberDTO memberDTO, CompanyDTO companyDTO) throws Exception {
+		System.out.println(companyDTO.getCompany_num());
+		System.out.println(companyDTO.getCol_num());
+		System.out.println(companyDTO.getRow_num());
 		int result = memberService.memberJoin(memberDTO);
 		result = memberService.companyJoin(companyDTO);
 		String message="회원가입 실패";
