@@ -70,15 +70,11 @@
   		</foreach>
   		select * from dual
   	</insert>
-  	
-  
-
- 
+  	<select id="searchFileNum" resultType="int">
+  		select file_num.nextval from dual
+  	</select>
   	  	
   	<insert id="insert" parameterType="FileDTO">
-  		<selectKey keyProperty="file_num" resultType="int" order="BEFORE">
-  			select file_num.nextval from dual
-  		</selectKey>
   		insert into file_table values(#{file_num}, #{file_name}, #{file_route})
   	</insert>
   	

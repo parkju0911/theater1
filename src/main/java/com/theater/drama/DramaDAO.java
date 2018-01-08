@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.theater.member.MemberDTO;
 import com.theater.qna.Qna_viewDTO;
 import com.theater.review.ReviewDTO;
 import com.theater.util.RowNum;
@@ -63,6 +64,15 @@ public class DramaDAO  {
 	public int searchCompany_num(int drama_num) throws Exception{
 		return sqlSession.selectOne(namespace+"searchCompany_num", drama_num);
 	}
+	public int searchCompany_num(MemberDTO memberDTO) throws Exception{
+		return sqlSession.selectOne(namespace+"searchCompanyNum", memberDTO);
+	}
+	
+	public int searchFile_num(DramaDTO dramaDTO) throws Exception{
+		return sqlSession.selectOne(namespace+"searchFileNum", dramaDTO);
+	}
+	
+
 	public int ticket_sell(int company_num)throws Exception{
 		return sqlSession.selectOne(namespace+"ticket_sell", company_num);
 	}  

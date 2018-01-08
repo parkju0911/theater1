@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+
 import com.theater.notice.NoticeDTO;
 
 @Repository
@@ -33,7 +34,9 @@ public class FileDAO {
 	public List<FileDTO> selectList(int num) throws Exception {
 		return sqlSession.selectList(NAMESPACE+"selectList", num);
 	}
-
+	public int searchFile_num() throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"searchFileNum");
+	}
 
 
 	/*public int insert(FileDTO fileDTO) throws Exception {

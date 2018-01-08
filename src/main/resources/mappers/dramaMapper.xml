@@ -48,9 +48,6 @@
   	</select>
   		
 	<insert id="insert" parameterType="com.theater.drama.DramaDTO">
-		<selectKey keyProperty="file_num" resultType="int" order="BEFORE">
-  			select file_num.nextval from dual
-  		</selectKey>
 		insert into drama values(
 			drama_num.nextval,#{company_num},
 			#{title}, #{contents}, #{place}, #{price}, 0, #{file_num}
@@ -160,6 +157,9 @@
   	</select>
   	<select id="selectSeat" parameterType="java.util.HashMap" resultMap="seatDTO">
   		select * from seat where drama_num=#{drama_num} and date_num=#{date_num}
+  	</select>
+  	<select id="searchCompanyNum" parameterType="com.theater.member.MemberDTO" resultType="int">
+  		select company_num from company_info where id='${id}'
   	</select>
   </mapper><!-- xml과 동일한 이름으로 한다. -->
   
