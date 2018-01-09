@@ -5,8 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../resources/SE2/js/HuskyEZCreator.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<title>Insert title here</title>
 <script type="text/javascript">
 	$(function() {
 		var kind = "user";
@@ -91,7 +95,7 @@
 	<c:import url="../temp/header.jsp"></c:import>
 	
 	<form action="./memberJoin" method="post" id="frm" onsubmit="return checkForm(this);">
-		<div style="width: 700px; margin: 20px auto; padding: 30px 70px; border: 1px solid #e8e8e8; background: #fff; text-align: center;">
+		<div style="width: 850px; margin: 20px auto; padding: 30px 70px; border: 1px solid #e8e8e8; background: #fff; text-align: center;">
 			<!-- 타이틀 영역-->
 			<div>
 				<div style="float: left; text-align: left;">
@@ -157,16 +161,16 @@
 											<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">회원*</div>
 											<div style="float: left; font-size: 16px; font-weight: 300;">
 												<input type="radio" name="kind" value="user" class="kind">
-												<label for="user_prefix_0" style="cursor: hand">개인회원</label>
+												<label for="user_prefix_0" style="cursor: hand; font-weight: normal; font-size: 14px;">개인회원</label>
 												&nbsp;
 												<input type="radio" name="kind" value="company" class="kind">
-												<label for="user_prefix_1" style="cursor: hand">회사회원</label>
+												<label for="user_prefix_1" style="cursor: hand; font-weight: normal; font-size: 14px;">회사회원</label>
 												&nbsp;
 											</div>
 											<div id="user" style="text-align: left; padding: 15px 0; clear: both; vertical-align: middle; height: 35px;">
 												<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">생년월일*</div>
 												<div style="float: left; font-size: 16px; font-weight: 300;">
-													<input type="date" name="birth" class="member_txt">
+													<input type="date" name="birth" class="member_txt" style=" font-size: 12px;">
 												</div>
 											</div>
 											
