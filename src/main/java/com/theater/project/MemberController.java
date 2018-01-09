@@ -196,5 +196,15 @@ public class MemberController {
 	public String membership(){
 		return "member/membership";
 	}
+	
+	@RequestMapping(value="mypoint", method=RequestMethod.GET)
+	public String mypoint(){
+		return "member/mypoint";
+	}
+	
+	@RequestMapping(value="orderlist", method=RequestMethod.GET)
+	public String orderlist(){
+		return "member/orderlist";
+	}
 
 }

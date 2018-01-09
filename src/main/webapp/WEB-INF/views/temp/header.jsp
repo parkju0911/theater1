@@ -34,7 +34,7 @@
 						</p>
 					<li class="member_wrap">
 						<a href="${pageContext.request.contextPath}/member/memberLogout">Logout</a>
-						<a href="${pageContext.request.contextPath}/member/memberMyticket">MYTicket</a>
+						<a href="${pageContext.request.contextPath}/member/orderlist">MYTicket</a>
 						<a href="${pageContext.request.contextPath}/member/memberMypage">MYPage</a>
 					</li>
 				</c:if>
