@@ -103,7 +103,8 @@ public class DramaDAO  {
 	public List<ReviewDTO> selectList_review(int drama_num)throws Exception{
 		return sqlSession.selectList(namespace+"selectList_review", drama_num);
 	}
-	public ReviewDTO selectOne_review(int drama_num)throws Exception{
+	//안되서 일단 리스트로 해놓음 변경할것
+		public ReviewDTO selectOne_review(int drama_num)throws Exception{
 		return sqlSession.selectOne(namespace+"selectOne_review", drama_num);
 	}
 	public int totalcount(int drama_num)throws Exception{
@@ -128,12 +129,16 @@ public class DramaDAO  {
 		return sqlSession.selectOne(namespace+"totalcount_review", rowNum);
 	}
 	public int qna_insert(Qna_viewDTO qna_viewDTO)throws Exception{
-		return sqlSession.insert(namespace+"qna_insert", qna_viewDTO);
+		int result = sqlSession.insert(namespace+"qna_insert", qna_viewDTO);
+		return result;
 	}
 	public int delete_qnaview(int qna_viewnum)throws Exception{
 		return sqlSession.delete(namespace+"delete_qnaview", qna_viewnum);
 	}
 	public List<ReviewDTO>dramaReviewList(RowNum rowNum)throws Exception{
 		return sqlSession.selectList(namespace+"dramaReviewList", rowNum);
+	}
+	public ReviewDTO review_selectOne(int review_num)throws Exception{
+		return sqlSession.selectOne(namespace+"review_selectOne", review_num);
 	}
 }

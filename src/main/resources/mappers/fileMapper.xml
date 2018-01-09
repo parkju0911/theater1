@@ -82,5 +82,5 @@
   		select * from file_table where file_num=#{file_num}
   	</select>
     
-
+	
   </mapper>

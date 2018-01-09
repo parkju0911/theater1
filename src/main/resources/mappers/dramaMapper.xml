@@ -81,10 +81,9 @@
   		select nvl(count(review_num),0) from review
   </select>
  
-  <!-- 티켓 리뷰로 쓸껀데 잠시 대기 -->
+  <!-- 연극 리뷰(해당 drama 최신 리뷰 하나만 나오게 안되서 대기-->
   <select id="selectOne_review" parameterType="int"  resultMap="reviewDTO">
- <!--  select * from review where drama_num=#{drama_num} order by review_date desc -->
- select * from REVIEW where drama_num=#{drama_num}
+   select max(review_num) from review where drama_num=#{drama_num}
   </select>
  
   <!-- 후기(별점) 페이징 처리 -->
@@ -92,9 +91,9 @@
 	select COUNT(drama_num) from REVIEW where drama_num=#{drama_num}
   </select>
  
-  <!-- qna 페이징 처리 -->
+  <!-- qna_view 페이징 처리 -->
   <select id="totalcount_qna" parameterType="com.theater.util.RowNum" resultType="int">
-  select nvl(count(qna_num),0) from qna
+  select nvl(count(qna_viewnum),0) from qna_view
   </select>
  
   <!-- 후기(별점) 평균점수 -->
@@ -117,13 +116,16 @@
   		(select * from review order by review_date desc) N)
   		where r between #{startRow} and #{lastRow}  
   </select>
-
+<!-- 리뷰 selectOne -->
+<select id="review_selectOne" parameterType="int" resultType="reviewDTO">
+	select * from review where review_num=#{review_num}
+</select>
 <!--  qna write -->
 	<insert id="qna_insert" parameterType="qna_viewDTO">
 	<selectKey keyProperty="qna_viewnum" resultType="int" order="BEFORE">
 	select qna_viewnum.nextval from dual
 	</selectKey>
-	insert into qna_view values(#{qna_viewnum} ,#{drama_num}, #{id} , #{contents} , sysdate , #{qna_viewnum},0,0})
+	insert into qna_view values(#{qna_viewnum} ,'T1', #{drama_num} , #{contents} , sysdate , #{qna_viewnum},0,0})
 	</insert>
 
 <!-- qnalist 삭제(자신이 올린 문의글 삭제) -->
@@ -148,7 +150,13 @@
 		order by review_date desc) N)
   		where r between #{startRow} and #{lastRow}
   	</select>
-  	
+  	<!-- 공연리뷰 write -->
+  	<insert id="review_insert" parameterType="reviewDTO">
+  	<selectKey keyProperty="review_num" resultType="int" order="BEFORE">
+  	select review_num.nextval from dual
+  	</selectKey>
+  		insert into review values(#{review_num}, #{title} , #{contents}, #{id} , #{star}, #{FILE_Num} , #{drama_Num} , sysdate)
+  	</insert>
   	<select id="total_seat" parameterType="int" resultType="int">
   		select (row_num * col_num) from company_info where company_num=#{company_num}
   	</select>

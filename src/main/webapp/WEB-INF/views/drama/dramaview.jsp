@@ -90,7 +90,10 @@ A:VISITED {
 
 	<section id="section">
 		<form id="section_info" name="frm"method="post">
+
 			<input type="hidden" name="drama_num" value="${view.drama_num}">
+
+
 			<div id="drama_image">
 				<img src="../resources/images/drama_1.jpg">
 			</div>
@@ -102,14 +105,20 @@ A:VISITED {
 						<h3>${view.title}</h3>
 						<div id="content">${view.contents}</div>
 					</div>
+
 					<input id="price"type="text" name="price" value="${view.price}원" readonly="readonly">
 				</div>	 
+
+
 				<select id="drama_date" name="drama_date">
 					<optgroup label="날짜 선택">
 						<option class ="select_date">날짜 선택</option>
 						<c:forEach items="${list}" var="dto">
+
 					 		<fmt:parseDate value='${dto.drama_date}'  var='dto_date'  pattern="yyyy-MM-dd"  scope="page"/>
 							<option class="select_date"><fmt:formatDate value="${dto_date}" pattern="yyyy-MM-dd"/></option>
+
+
 						</c:forEach>
 					</optgroup>
 				</select>
@@ -170,8 +179,17 @@ A:VISITED {
 		<p>연극 리뷰</p>
 		</div>
 		<div id="ticket_review">
+				<c:forEach items="${review }"   var="one"  begin="1" end="1">
+				<div id="review_image"><img alt="" src=""></div>
+				<div id="review_text">
+						<div id="review_title">${one.title }</div>
+						<div id="review_contents">${one.contents }<div id="view_go"><a href="./dramaReviewview?review_num=${one.review_num }"> ☞리뷰보러가기</a></div></div>
+					
+				</div>
+				
+				</c:forEach>
+	</div>
 			
-		</div>
 
 	
 		<div class="contain">

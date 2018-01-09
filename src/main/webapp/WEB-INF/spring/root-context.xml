@@ -45,4 +45,8 @@
 	<context:component-scan base-package="com.theater.event"></context:component-scan>
 	<context:component-scan base-package="com.theater.point"></context:component-scan>
 
+
+	
+	
+
 </beans>

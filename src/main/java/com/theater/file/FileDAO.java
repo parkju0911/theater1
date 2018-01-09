@@ -34,8 +34,12 @@ public class FileDAO {
 	public List<FileDTO> selectList(int num) throws Exception {
 		return sqlSession.selectList(NAMESPACE+"selectList", num);
 	}
+
 	public int searchFile_num() throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"searchFileNum");
+
+	
+
 	}
 
 
