@@ -178,7 +178,7 @@
   		insert into seat values(#{buy_num}, #{drama_num}, #{date_num}, #{id}, #{select_seat}, #{ticket_numbers})
   	</insert>
   	<insert id="insertBuy_List" parameterMap="seatDTO">
-  		insert into buy_list values(#{buy_num}, #{id}, #{drama_num})
+  		insert into buy_list values(#{buy_num}, #{id}, #{drama_num}, sysdate)
   	</insert>
   </mapper><!-- xml과 동일한 이름으로 한다. -->
   
