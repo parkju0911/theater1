@@ -7,6 +7,14 @@
   	<select id="login" resultType="com.theater.member.MemberDTO" parameterType="com.theater.member.MemberDTO">
   		select * from member where id=#{id} and pw=#{pw}
   	</select>
+  	
+  	<select id="userLogin" resultType="com.theater.member.UserDTO" parameterType="com.theater.member.MemberDTO">
+  		select * from user_info where id=#{id}
+  	</select>
+  	
+  	<select id="companyLogin" resultType="com.theater.member.CompanyDTO" parameterType="com.theater.member.MemberDTO">
+  		select * from company_info where id=#{id}
+  	</select>
   
   	<insert id="memberJoin" parameterType="com.theater.member.MemberDTO">
   		insert into member values(#{id}, #{pw}, #{name}, #{phone}, #{email}, #{kind})
@@ -30,8 +38,20 @@
   	
   	<select id="searchPw" resultType="com.theater.member.MemberDTO" parameterType="com.theater.member.MemberDTO">
   		select * from member where id=#{id} and email=#{email}
-  	</select> 	
-
+  	</select>
+  	
+  	<!-- <delete id="memberDelete" parameterType="String">
+  		delete member where id=#{id}
+  	</delete>
+  	
+  	<delete id="userDelete" parameterType="String">
+  		delete user_info where id=#{id}
+  	</delete>
+  	
+  	<delete id="companyDelete" parameterType="String">
+  		delete company_info where id=#{id}
+  	</delete> -->
+  	
   	<select id="searchCompany" parameterType="int" resultMap="companyDTO">
   		select * from company_info where company_num=#{company_num}
   	</select>

@@ -1,5 +1,8 @@
 package com.theater.member;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -50,4 +53,15 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE+"searchPw", memberDTO);
 	}
 	
+	/*public int memberDelete(MemberDTO memberDTO) throws Exception {
+		return sqlSession.delete(NAMESPACE+"memberDelete", memberDTO);
+	}
+	
+	public int userDelete(UserDTO userDTO) throws Exception {
+		return sqlSession.delete(NAMESPACE+"userDelete", userDTO);
+	}
+	
+	public int companyDelete(CompanyDTO companyDTO) throws Exception {
+		return sqlSession.delete(NAMESPACE+"companyDelete", companyDTO);
+	}*/
 }
