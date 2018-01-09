@@ -10,6 +10,7 @@
   	<resultMap type="QnaDTO" id="qnaDTO"/>
   	<resultMap type="Qna_viewDTO" id="qna_viewDTO"/>
   	<resultMap type="SeatDTO" id="seatDTO"/>
+  	<resultMap type="FileDTO" id="fileDTO"/>
   	<resultMap type="DramaDTO" id="dramaDTO">
   		<id property="drama_num" column="drama_num"/>
   		<result property="company_num" column="company_num"/>
@@ -53,11 +54,11 @@
 			#{title}, #{contents}, #{place}, #{price}, 0, #{file_num}
 		)  	
   	</insert> 
-  	
+  	<select id="fileList" parameterType="int" resultType="com.theater.file.FileDTO">
+  		select * from file_table where file_num=#{file_num}
+  	</select> 
   
-  	<select id="fileList" parameterType="int" resultMap="FileDTO">
-  		select distinct file_name, file_route from date_list where file_num=#{file_num} order by file_name asc
-  	</select>
+  	
  	<!-- 공연 선택 view page -->
   	<select id="selectOne" parameterType="int" resultMap="dramaDTO">
   		select * from drama where drama_num=#{drama_num}
