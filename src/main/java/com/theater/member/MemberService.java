@@ -45,4 +45,16 @@ public class MemberService {
 	public MemberDTO searchPw(MemberDTO memberDTO) throws Exception {
 		return memberDAO.searchPw(memberDTO);
 	}
+	
+	/*public int memberDelete(MemberDTO memberDTO) throws Exception {
+		return memberDAO.memberDelete(memberDTO);
+	}
+	
+	public int userDelete(UserDTO userDTO) throws Exception {
+		return memberDAO.userDelete(userDTO);
+	}
+	
+	public int companyDelete(CompanyDTO companyDTO) throws Exception {
+		return memberDAO.companyDelete(companyDTO);
+	}*/
 }

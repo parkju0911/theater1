@@ -70,19 +70,19 @@ height: auto;
 							id="xans_myshop_bankbook_deposit">${member.phone}</span></strong></li>
 					<c:if test="${member.kind eq 'user'}">
 					<li><strong class="title">생일</strong> <strong class="data"><span
-							id="xans_myshop_bankbook_order_price">${user.birth}</span></strong></li>
+							id="xans_myshop_bankbook_order_price">${birth}</span></strong></li>
 					</c:if>
 					<li class=""><strong class="title">이메일</strong> <strong
 						class="data"><span id="xans_myshop_bankbook_coupon_cnt">${member.email}</span></strong>
 					</li>
 					<c:if test="${member.kind eq 'company'}">
 						<li><strong class="title">좌석</strong> <strong class="data"><span
-							id="xans_myshop_bankbook_order_price">${company.row_num}행 ${company.col_num}열</span></strong></li>
+							id="xans_myshop_bankbook_order_price">${row_num}행 ${col_num}열</span></strong></li>
 					</c:if>
 				</ul>
 			</div>
 		</form>
-
+		<a href="./memberDelete?id=${member.id}" class="btn btn-default" onclick="if(!confirm('정말로 탈퇴하시겠습니까?')){return false;}" style="margin-top: 10px;">탈퇴</a>
 	</div>
 
 <c:import url="../temp/footer.jsp"></c:import>
