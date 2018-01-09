@@ -1,5 +1,6 @@
 package com.theater.project;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -16,8 +17,8 @@ import com.theater.drama.DramaDTO;
 import com.theater.drama.DramaListDTO;
 import com.theater.drama.DramaService;
 import com.theater.drama.SeatDTO;
-import com.theater.file.FileDTO;
 import com.theater.member.CompanyDTO;
+import com.theater.member.MemberDTO;
 import com.theater.member.MemberService;
 import com.theater.qna.Qna_viewDTO;
 import com.theater.review.ReviewDTO;
@@ -31,6 +32,20 @@ public class DramaController {
 	@Inject
 	public MemberService memberService;
 	
+	//좌석 선택
+	@RequestMapping(value="insertBuy")
+	public void insertBuy(SeatDTO seatDTO, String drama_date,HttpSession session) throws Exception{
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+
+		seatDTO.setDrama_date(Date.valueOf(drama_date));;
+		int result=dramaService.insertBuy(seatDTO, memberDTO);
+			
+		if(result>0) {
+			System.out.println("성공");
+		}else {
+			System.out.println("실패");
+		}
+	}
 	//리뷰 리스트 , 별점,별점 평균점수
 	@RequestMapping(value="reviewlist")
 	public ModelAndView review_list(ModelAndView mv , ListData listData , int drama_num)throws Exception{

@@ -78,7 +78,21 @@
 				},function(rsp){
 					if(rsp.success){
 						var msg = rsp.paid_amount+'결제가 완료 되었습니다.';
-						/* 이후 결제 완료된 부분을 보여주는 페이지로 이동하는거 추가 할 것 */
+						
+						$(".seat_span").each(function(){
+							var id=$(this).attr("title");
+							var color=$('#'+id).css('background-color');
+							if(color == 'rgb(255, 0, 0)' ){
+								$.post("./insertBuy", {
+									drama_num : ${drama.drama_num},
+									select_seat : $('#'+id).attr("title"),
+									drama_date : $('#date').val(),
+									drama_time : $('#time').val(),
+									ticket_numbers : ${seat.ticket_numbers}
+								});
+							}
+						});
+						$(location).attr('href', 'dramaview?drama_num='+'${drama.drama_num}');
 					}else{
 						var msg = '결제에 실패하였습니다.';
 						msg += '에러내용 : '+rsp.error_msg;
@@ -91,6 +105,7 @@
 		});
 		
 	});
+	
 </script>
 </head>
 <body>
@@ -99,34 +114,35 @@
 	<c:import url="../temp/header.jsp"></c:import>
 <!-- header end -->
 <!-- Contents Start -->
-	<div class="totalbody">
-		<div class="title">
-			<h1>${drama.title}</h1> <span>${drama.place} | ${company.name} | 남은좌석</span> <input type="text" id="anySeat" readonly="readonly" value="${(company.row_num * company.col_num)-selectSize}"><span>/${company.row_num * company.col_num} | 구매 장수 <input id="select" type="number" readonly="readonly"/>/${seat.ticket_numbers}</span> 
-			<h1 class="date">${seat.drama_date} ${seat.drama_time}</h1>
-		</div>
-		
-		<div class="seat">
-			<div class="stage">
-					<span>STAGE</span>
+	<form>
+		<div class="totalbody">
+			<div class="title">
+				<marquee id="title" behavior="alternate" width="160" direction="left" scrollamount="5" loop="3">${drama.title}</marquee><span>${drama.place} | ${company.name} | 남은좌석</span> <input type="text" id="anySeat" readonly="readonly" value="${(company.row_num * company.col_num)-selectSize}"><span>/${company.row_num * company.col_num} | 구매 장수 <input id="select" type="number" readonly="readonly"/>/${seat.ticket_numbers}</span> 
+				<input id="time" type="text" value="${seat.drama_time}" readonly="readonly"> <input id="date" type="text" value="${seat.drama_date}" readonly="readonly">
 			</div>
-			<table class="seat_contents">
-				<c:forEach begin="1" end="${company.row_num}" var="i">
-					<tr>
-						<td class="row" title="${i}"><input type="text" readonly="readonly" id="${i}"></td>
-						<c:forEach begin="1" end="${company.col_num}" var="j">
-							<td>
-								<span class="seat_span" title="r${i}c${j}" id="r${i}c${j}">${j}</span>
-							</td>
-						</c:forEach>
-					</tr>
-				</c:forEach>
-			</table>
+			
+			<div class="seat">
+				<div class="stage">
+						<span>STAGE</span>
+				</div>
+				<table class="seat_contents">
+					<c:forEach begin="1" end="${company.row_num}" var="i">
+						<tr>
+							<td class="row" title="${i}"><input type="text" readonly="readonly" id="${i}"></td>
+							<c:forEach begin="1" end="${company.col_num}" var="j">
+								<td>
+									<span class="seat_span" title="r${i}c${j}" id="r${i}c${j}">${j}</span>
+								</td>
+							</c:forEach>
+						</tr>
+					</c:forEach>
+				</table>
+			</div>
+			<div id="btn_div">
+				<input type="button" id="btn">
+			</div>
 		</div>
-		<div id="btn_div">
-			<button id="btn"></button>		
-		</div>
-	</div>
-	
+	</form>
 <!-- Contents End -->
 </div>
 <!-- footer  -->

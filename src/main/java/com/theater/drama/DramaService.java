@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,6 +32,19 @@ public class DramaService {
 	@Inject
 	private FileDAO fileDAO;
 	
+	@Transactional
+	public int insertBuy(SeatDTO seatDTO, MemberDTO memberDTO) throws Exception{
+		seatDTO.setBuy_num(dramaDAO.buyNum());
+		seatDTO.setDate_num(dramaDAO.search_dateNum(seatDTO.getDrama_num(), seatDTO.getDrama_date().toString(), seatDTO.getDrama_time()));
+		seatDTO.setId(memberDTO.getId());
+		
+		//seat테이블에 넣기
+		int result = dramaDAO.insertSeat(seatDTO);
+		//buy_list 테이블에 넣기
+		result = dramaDAO.insertBuy_List(seatDTO);
+		
+		return result;
+	}
 	public int search_dateNum(int drama_num, String drama_date, String drama_time) throws Exception{
 		return dramaDAO.search_dateNum(drama_num, drama_date, drama_time);
 	}

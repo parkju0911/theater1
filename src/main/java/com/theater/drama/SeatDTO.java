@@ -11,6 +11,7 @@ public class SeatDTO {
     private Date drama_date;
     private String drama_time;
     private int ticket_numbers;
+    private int date_num;
     
 	public int getDrama_num() {
 		return drama_num;
@@ -54,6 +55,12 @@ public class SeatDTO {
 	}
 	public void setTicket_numbers(int ticket_numbers) {
 		this.ticket_numbers = ticket_numbers;
+	}
+	public int getDate_num() {
+		return date_num;
+	}
+	public void setDate_num(int date_num) {
+		this.date_num = date_num;
 	}
 	
 }

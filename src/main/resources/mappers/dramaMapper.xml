@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="dramaMapper"> 
+  	<parameterMap type="SeatDTO" id="seatDTO"/>
   	<resultMap type="DramaListDTO" id="dramalistDTO"/>
  	<resultMap type="CompanyDTO" id="companyDTO"/>
   	<resultMap type="ReviewDTO" id="reviewDTO"/>
@@ -169,5 +170,15 @@
   	<select id="searchCompanyNum" parameterType="com.theater.member.MemberDTO" resultType="int">
   		select company_num from company_info where id='${id}'
   	</select>
+  	<!-- 좌석페이지 관련 mapper -->
+  	<select id="buyNum" resultType="int">
+  		select buy_num.nextval from dual
+  	</select>
+  	<insert id="insertSeat" parameterMap="seatDTO">
+  		insert into seat values(#{buy_num}, #{drama_num}, #{date_num}, #{id}, #{select_seat}, #{ticket_numbers})
+  	</insert>
+  	<insert id="insertBuy_List" parameterMap="seatDTO">
+  		insert into buy_list values(#{buy_num}, #{id}, #{drama_num})
+  	</insert>
   </mapper><!-- xml과 동일한 이름으로 한다. -->
   

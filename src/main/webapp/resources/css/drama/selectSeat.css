@@ -18,10 +18,19 @@
 	background-color: #333333;
 	color : #e6e6e6;
 }
-.title>h1, .title>span{
+.title>span{
 	display : inline-block;
 }
-.date{
+#title{
+	width : 170px;
+}
+#title,#date,#time{
+	color: #e6e6e6;
+	font-size: 2em;
+	font-weight: bold;
+}
+#date, #time{
+	width : 200px;
 	float: right;
 }
 #anySeat, span>input{
@@ -78,7 +87,7 @@ td>input{
 #btn_div{
 	text-align: center;
 }
-button{
+#btn{
 	background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/tnb/tnb_buttons.png) no-repeat;
 	width : 220px;
 	height: 108px;
