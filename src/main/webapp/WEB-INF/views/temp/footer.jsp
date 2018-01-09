@@ -21,7 +21,7 @@
 						<li>TEL : 02) 3015-1100 / FAX : 02) 3015-1106</li>
 						<li>개인정보 책임자 : 최유나</li>
 					</ul>
-					<span class="en">ⓒ 2015 Teatro Ticket Company. All Rights Reserved.</span>
+					<span class="en">ⓒ 2017 Teatro Ticketing Company. All Rights Reserved.</span>
 				</aside>
 		
 <%-- 			<div class="footer_logo"><img src="<%= request.getContextPath()%>"></div>
