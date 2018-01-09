@@ -154,7 +154,7 @@ th, td {
 
 							<thead>
 								<tr>
-
+									<th scope="col">주문날짜</th>
 									<th scope="col">티켓정보</th>
 									<th scope="col">관람자</th>
 									<th scope="col">관람일시</th>
@@ -182,7 +182,7 @@ th, td {
 								class="xans-element- xans-order xans-order-normallist center">
 								<tr class="xans-record-">
 
-
+									<td>0000.00.00</td>
 									<td>
 										<a href="#"><img src="../resources/images/drama_1.jpg" alt="" class="buyImage " style="width: auto; height: 200px; padding-bottom: 8px;">
 										<p>---공연정보---</p></a>
