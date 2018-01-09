@@ -153,7 +153,13 @@
 		order by review_date desc) N)
   		where r between #{startRow} and #{lastRow}
   	</select>
-  	
+  	<!-- 공연리뷰 write -->
+  	<insert id="review_insert" parameterType="reviewDTO">
+  	<selectKey keyProperty="review_num" resultType="int" order="BEFORE">
+  	select review_num.nextval from dual
+  	</selectKey>
+  		insert into review values(#{review_num}, #{title} , #{contents}, #{id} , #{star}, #{FILE_Num} , #{drama_Num} , sysdate)
+  	</insert>
   	<select id="total_seat" parameterType="int" resultType="int">
   		select (row_num * col_num) from company_info where company_num=#{company_num}
   	</select>
