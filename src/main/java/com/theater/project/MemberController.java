@@ -148,7 +148,7 @@ public class MemberController {
 	public void membrLogin(){}
 
 	@RequestMapping(value="memberLogin", method=RequestMethod.POST)
-	public String memberLogin(MemberDTO memberDTO, UserDTO userDTO, CompanyDTO companyDTO, HttpSession session){
+	public String memberLogin(MemberDTO memberDTO, HttpSession session){
 		try {
 			memberDTO=memberService.login(memberDTO);
 		} catch (Exception e) {
@@ -157,8 +157,6 @@ public class MemberController {
 		}
 		if(memberDTO != null){
 			session.setAttribute("member", memberDTO);
-			session.setAttribute("user", userDTO);
-			session.setAttribute("company", companyDTO);
 		}
 		return "redirect:/";	
 	}
@@ -201,10 +199,24 @@ public class MemberController {
 	public String mypoint(){
 		return "member/mypoint";
 	}
-	
+
 	@RequestMapping(value="orderlist", method=RequestMethod.GET)
 	public String orderlist(){
 		return "member/orderlist";
+	}
+	@RequestMapping(value="faq", method=RequestMethod.GET)
+	public String faq(){
+		return "member/faq";
+	}
+	
+	@RequestMapping(value="myboard", method=RequestMethod.GET)
+	public String myboard(){
+		return "member/myboard";
+	}
+	
+	@RequestMapping(value="qna", method=RequestMethod.GET)
+	public String qna(){
+		return "member/qna";
 	}
 
 }
