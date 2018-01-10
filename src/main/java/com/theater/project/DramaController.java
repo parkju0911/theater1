@@ -1,6 +1,7 @@
 package com.theater.project;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -32,7 +33,7 @@ public class DramaController {
 	@Inject
 	public MemberService memberService;
 	
-	//좌석 선택
+	//좌석 선택 1-10 수정
 	@RequestMapping(value="insertBuy")
 	public void insertBuy(SeatDTO seatDTO, String drama_date,HttpSession session) throws Exception{
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
@@ -57,41 +58,61 @@ public class DramaController {
 		return mv;
 	}
 	
-	//Select Seat
+	//Select Seat 1-10 수정
 	@RequestMapping(value="selectSeat")
 	public ModelAndView selectSeat(SeatDTO seatDTO,ModelAndView mv) throws Exception{
 		//공연 정보 가져오기
 		DramaDTO dramaDTO = dramaService.selectOne(seatDTO.getDrama_num());
-
 		//회사명,좌석 수 가져오기
 		CompanyDTO companyDTO = memberService.searchCompany(dramaDTO.getCompany_num());
 		companyDTO.setName(memberService.searchCompanyName(companyDTO.getId()));
-			
+		
 		//해당 공연 선택된 좌석 리스트 가져오기
 		int date_num= dramaService.search_dateNum(seatDTO.getDrama_num(), seatDTO.getDrama_date().toString(), seatDTO.getDrama_time());
-		List<SeatDTO> selectSeatDTO=dramaService.selectSeat(seatDTO.getDrama_num(), date_num);
-		int selectSize = selectSeatDTO.size();
+		List<SeatDTO> selectSeat=dramaService.selectSeat(seatDTO.getDrama_num(), date_num);
+		ArrayList<String> selectSeatDTO = new ArrayList<String>();
+	
+		for(SeatDTO SeatDTO : selectSeat) {
+			String[] split = SeatDTO.getSelect_seat().split(",");
+			for(int i=0; i<split.length; i++) {
+				selectSeatDTO.add(split[i]);
+			}
+		}
+		
+		int total_selectTicket = 0;
+		if(date_num != 0) {
+			for(int i=0; i<selectSeat.size(); i++) {
+				total_selectTicket =+ selectSeat.get(i).getTicket_numbers();
+			}
+		}
+		
 		mv.addObject("drama", dramaDTO);
 		mv.addObject("company", companyDTO);
 		mv.addObject("seat", seatDTO);
 		mv.addObject("select", selectSeatDTO);
-		mv.addObject("selectSize", selectSize);
+		mv.addObject("selectSize", total_selectTicket);
 		mv.setViewName("drama/selectSeat");
 			
 		return mv;
 	}
-	//Drama_ticket
+	//Drama_ticket 1-10 수정
 	@RequestMapping("dramaTicket")
 	public ModelAndView drama_ticket(DramaListDTO dramaListDTO, ModelAndView mv) throws Exception{
 		//해당 날짜의 해당 시간의 남아있는 좌석 수만큼 가져오기
 		int total_seat = dramaService.total_seat(dramaListDTO.getDrama_num());
 		int date_num = dramaService.search_dateNum(dramaListDTO.getDrama_num(), dramaListDTO.getDrama_date(), dramaListDTO.getDrama_time());
+		
 		List<SeatDTO> select = dramaService.selectSeat(dramaListDTO.getDrama_num(), date_num);
-			
-		int select_size = 0;
+		
+		int select_size=0;
+		int total_selectTicket = 0;
 		if(date_num != 0) {
-			select_size = total_seat-select.size();
+			for(int i=0; i<select.size(); i++) {
+				total_selectTicket =+ select.get(i).getTicket_numbers();
+			}
+			select_size = total_seat-total_selectTicket;
 		}
+		
 		mv.addObject("ticket", select_size);
 		mv.setViewName("drama/drama_ticket");
 			

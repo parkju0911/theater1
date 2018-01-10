@@ -21,17 +21,13 @@ public class DramaDAO  {
 	private SqlSession sqlSession;
 	private static final String namespace="dramaMapper.";
 	
-	//seat페이지 DB관련 01-09추가
+	//seat페이지 DB관련 01-10수정
 	public int buyNum() throws Exception{
 		return sqlSession.selectOne(namespace+"buyNum");
 	}
 		
 	public int insertSeat(SeatDTO seatDTO) throws Exception{
 		return sqlSession.insert(namespace+"insertSeat", seatDTO);
-	}
-		
-	public int insertBuy_List(SeatDTO seatDTO) throws Exception{
-		return sqlSession.insert(namespace+"insertBuy_List", seatDTO);
 	}
 	//-------------------------------	
 	public List<DramaListDTO> timeList(int drama_num, String drama_date) throws Exception{

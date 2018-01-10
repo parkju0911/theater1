@@ -32,18 +32,13 @@ public class DramaService {
 	@Inject
 	private FileDAO fileDAO;
 	
-	@Transactional
+	/*1-10수정*/
 	public int insertBuy(SeatDTO seatDTO, MemberDTO memberDTO) throws Exception{
 		seatDTO.setBuy_num(dramaDAO.buyNum());
 		seatDTO.setDate_num(dramaDAO.search_dateNum(seatDTO.getDrama_num(), seatDTO.getDrama_date().toString(), seatDTO.getDrama_time()));
 		seatDTO.setId(memberDTO.getId());
-		
-		//seat테이블에 넣기
-		int result = dramaDAO.insertSeat(seatDTO);
-		//buy_list 테이블에 넣기
-		result = dramaDAO.insertBuy_List(seatDTO);
-		
-		return result;
+
+		return dramaDAO.insertSeat(seatDTO);
 	}
 	public int search_dateNum(int drama_num, String drama_date, String drama_time) throws Exception{
 		return dramaDAO.search_dateNum(drama_num, drama_date, drama_time);

@@ -12,99 +12,104 @@
 <link href="../resources/css/common/header.css" rel="stylesheet">
 <link href="../resources/css/drama/selectSeat.css" rel="stylesheet">
 <script type="text/javascript">
-	$(function(){
-		var count=0;
-		/* 남은좌석 관련해서 추가 할 것  숫자*/
-		/* 이미 판매된 좌석 관련해서도 작업할것 */
-		/* 좌석 배치도 열 이름 출력 하는 부분 */
-		$(".row").each(function(){
-			var row=Number($(this).attr("title"));
-			var i=64;
-			i+=row;
-			var english = String.fromCharCode(i);
-			$('#'+row).attr("value", english+'열');
+$(function(){
+	var count=0;
+	/* 남은좌석 관련해서 추가 할 것  숫자*/
+	/* 이미 판매된 좌석 관련해서도 작업할것 */
+	/* 좌석 배치도 열 이름 출력 하는 부분 */
+	$(".row").each(function(){
+		var row=Number($(this).attr("title"));
+		var i=64;
+		i+=row;
+		var english = String.fromCharCode(i);
+		$('#'+row).attr("value", english+'열');
+	});
+	
+	/* 좌석 배치도 선택관련 부분 */
+	$(".seat_span").each(function(){
+		var id=$(this).attr("title");
+		<c:forEach items="${select}" var="dto">
+			var select = '${dto}';
+			if(select==id){
+				$('#'+id).css('background-image','url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/step2/seat_icons_new.png)');
+				$('#'+id).css('background-color', '#bbb');
+				$('#'+id).css('background-position', '-25px 0');
+			}
+		</c:forEach>
+		$('#'+id).click(function(){
+			var color=$('#'+id).css('background-color');
+			
+			if(color != 'rgb(187, 187, 187)'){
+				if(count<'${seat.ticket_numbers}'||color=='rgb(255, 0, 0)'){
+					if(color=='rgb(255, 0, 0)'){
+						count--;
+						if(count<0){
+							count=0;
+						}
+						$('#'+id).css('background-color', '#666');
+					}else{
+						count++;
+						$('#'+id).css('background-color', 'red');
+					}
+				}	
+			}
+			$('#select').attr("value", count);
+			$('#anySeat').attr("value", ${(company.row_num * company.col_num)-selectSize}-count);
 		});
-		
-		/* 좌석 배치도 선택관련 부분 */
+		$('#select').attr("value", count);
+	});
+	/* 결제 API 부분 */
+	$("#btn").click(function(){
+		var arr= new Array();
 		$(".seat_span").each(function(){
 			var id=$(this).attr("title");
-			<c:forEach items="${select}" var="dto">
-				var select = '${dto.select_seat}';
-				if(select==id){
-					$('#'+id).css('background-image','url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/step2/seat_icons_new.png)');
-					$('#'+id).css('background-color', '#bbb');
-					$('#'+id).css('background-position', '-25px 0');
-				}
-			</c:forEach>
-			$('#'+id).click(function(){
-				var color=$('#'+id).css('background-color');
-				
-				if(color != 'rgb(187, 187, 187)'){
-					if(count<'${seat.ticket_numbers}'||color=='rgb(255, 0, 0)'){
-						if(color=='rgb(255, 0, 0)'){
-							count--;
-							if(count<0){
-								count=0;
-							}
-							$('#'+id).css('background-color', '#666');
-						}else{
-							count++;
-							$('#'+id).css('background-color', 'red');
-						}
-					}	
-				}
-				$('#select').attr("value", count);
-				$('#anySeat').attr("value", ${(company.row_num * company.col_num)-selectSize}-count);
-			});
-			$('#select').attr("value", count);
-		});
-		/* 결제 API 부분 */
-		$("#btn").click(function(){
-			if(count=='${seat.ticket_numbers}'&&count!=0){
-				var IMP = window.IMP; /*생략가능 */
-				IMP.init('imp95781276');/* 가맹점 식별 코드 변경하지 마세요.*/
-				
-				IMP.request_pay({
-					pg : 'inicis', /* version 1.1.0부터 지원 */
-					pay_method : 'card',
-					merchant_uid : 'merchant_' + new Date().getTime(),
-					name : '${drama.title}', /* 나중에 공연명 데이터 받아오는걸로 변경 할 것 */
-					amount : ${drama.price * seat.ticket_numbers}, /* 나중에 총 금액 데이터 받아오는걸로 변경 할 것 */
-					buyer_email : 'test@test.com', /* 나중에 회원 정보에서 이메일 받아오는 걸로 변경할 것 */
-					buyer_tel : '010-1234-5678', /* 나중에 회원 정보에서 연락처 받아오는 걸로 변경 할 것 */
-					buyer_addr : '서울특별시 강남구 삼성동',/* mediabank에서 값을 안받알때 어떻게 진행했는지 확인 할것 */
-					buyer_postcode : '123-456', /* 위와 동일 */
-					m_redirect_url : 'https://www.yourdomain.com/payments/complete'
-				},function(rsp){
-					if(rsp.success){
-						var msg = rsp.paid_amount+'결제가 완료 되었습니다.';
-						
-						$(".seat_span").each(function(){
-							var id=$(this).attr("title");
-							var color=$('#'+id).css('background-color');
-							if(color == 'rgb(255, 0, 0)' ){
-								$.post("./insertBuy", {
-									drama_num : ${drama.drama_num},
-									select_seat : $('#'+id).attr("title"),
-									drama_date : $('#date').val(),
-									drama_time : $('#time').val(),
-									ticket_numbers : ${seat.ticket_numbers}
-								});
-							}
-						});
-						$(location).attr('href', 'dramaview?drama_num='+'${drama.drama_num}');
-					}else{
-						var msg = '결제에 실패하였습니다.';
-						msg += '에러내용 : '+rsp.error_msg;
-					}
-					alert(msg);
-				});	
-			}else{
-				alert('좌석을 선택하세요.');
+			var color=$('#'+id).css('background-color');
+			if(color == 'rgb(255, 0, 0)' ){
+				arr.push($(this).attr("title"));
 			}
 		});
-		
+
+		if(count=='${seat.ticket_numbers}'&&count!=0){
+			
+			var IMP = window.IMP; /*생략가능 */
+			IMP.init('imp95781276');/* 가맹점 식별 코드 변경하지 마세요.*/
+			
+			IMP.request_pay({
+				pg : 'inicis', /* version 1.1.0부터 지원 */
+				pay_method : 'card',
+				merchant_uid : 'merchant_' + new Date().getTime(),
+				name : '${drama.title}', /* 나중에 공연명 데이터 받아오는걸로 변경 할 것 */
+				amount : ${drama.price * seat.ticket_numbers}, /* 나중에 총 금액 데이터 받아오는걸로 변경 할 것 */
+				buyer_email : 'test@test.com', /* 나중에 회원 정보에서 이메일 받아오는 걸로 변경할 것 */
+				buyer_tel : '010-1234-5678', /* 나중에 회원 정보에서 연락처 받아오는 걸로 변경 할 것 */
+				buyer_addr : '서울특별시 강남구 삼성동',/* mediabank에서 값을 안받알때 어떻게 진행했는지 확인 할것 */
+				buyer_postcode : '123-456', /* 위와 동일 */
+				m_redirect_url : 'https://www.yourdomain.com/payments/complete'
+			},function(rsp){
+				if(rsp.success){
+					var msg = rsp.paid_amount+'결제가 완료 되었습니다.';
+					
+					$.post("./insertBuy", {
+						drama_num : ${drama.drama_num},
+						select_seat : arr.toString(),
+						drama_date : $('#date').val(),
+						drama_time : $('#time').val(),
+						ticket_numbers : ${seat.ticket_numbers}
+					});
+					
+					$(location).attr('href', 'dramaview?drama_num='+'${drama.drama_num}');
+				}else{
+					var msg = '결제에 실패하였습니다.';
+					msg += '에러내용 : '+rsp.error_msg;
+				}
+				alert(msg);
+			});	
+		}else{
+			alert('좌석을 선택하세요.');
+		}
 	});
+	
+});
 	
 </script>
 </head>
