@@ -49,7 +49,14 @@
 			});
 		
 	});
-
+	function del() {
+		var con = confirm("삭제하겠습니까?(복구되지않습니다)")
+		if(con==false){
+			window.location.reload();
+		}
+	} 
+		
+	
 </script>
 </head>
 <body>
@@ -58,40 +65,50 @@
 				<p style="padding-top: 30px; font-size: 25px; font-weight: bolder;">티켓관련 문의를 남겨주세요.</p>
 				<p style="padding-top: 20px; font-size: 15px;">환불/취소요청은 <a href="##환불 페이지 이동" style="text-decoration:underline;">마이티켓 > 환불신청</a>, 이용 불편 및 요청사항은 <a href="##1:1문의 페이지 이동" style="text-decoration: underline;">1:1문의</a>를 이용해주세요.</p>
 			</div>
-<!-- 문의 글 -->	<div id="qna_form">
+<!------------- 문의 글 ---------------->	
+				<div id="qna_form">
 							
 							<form action="qnawrite" method="post">
 								<div id="qna_textbox">
-							
-									<input type="hidden"  name="qna_viewnum" >
-									<input type="hidden" name="drama_num" >
-									<input type="hidden" name="reg_date">
-									
+	
+								<input type="hidden"  name="drama_num" value="${drama_num}" >
 								<textarea style="width:530px; height: 70px; border: 1px solid #e6e6e6; font-size: 13px; color:#000;" name="contents"></textarea>
-										</div>
+										
+								</div>
+							
 							<div id="qna_button">
 								<button style="width: 150px; height: 70px; margin-top: 10px;">등록</button>
 									</div>
 								<p style="color:red; float:left;">* Q&A를 통한 환불/취소/변경 문의는 처리되지 않습니다</p>
-								</form>
-							</div>
+								
+							</form>
+							
+					</div>
 		
 					
 			<table id="qna_box">
 				<c:forEach items="${qnalist}"  var="list">
 				
 					<tr>
-						<td><div id="member_qna1">${list.id } ${list.reg_date }<a href="##"  class="write_reply" id="${list.qna_viewnum }" title="${list.qna_viewnum }"><img alt="" src="../resources/images/starpoint/btn_write_reply.png"></a></div></td>
+						<td><div id="member_qna1">
+								${list.id } ${list.reg_date }<a href="##"  class="write_reply" id="${list.qna_viewnum }" title="${list.qna_viewnum }">
+																			<img alt="" src="../resources/images/starpoint/btn_write_reply.png"></a>
+																			
+																			<a href="qna_delete?qna_viewnum=${list.qna_viewnum }" class="del_reply" onclick="del()"><img alt="" src="../resources/images/starpoint/btn_del_reply.png"></a>
+																		
+																			</div></td>
 					</tr>
 					<tr>
 						<td><div id="member_qna2"> ${list.contents }</div></td>
 					</tr>
 					<tr>
-<!--답글 -->		<td class="${list.qna_viewnum }" id="reply_form">
+<!--------------답글------------->		
+						<td class="${list.qna_viewnum }" id="reply_form">
 							<form action="drama/qnalist" method="post" style="float: left;">
 								
 								<textarea  name="contents" style="width: 400px; height: 50px; margin-left: 30px;"></textarea>
 								<button style="width: 70px; height: 50px; margin-left: 10px; float: right;">답변하기</button> 
+							
 							</form>  
 						</td>
 					</tr>

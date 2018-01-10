@@ -116,23 +116,39 @@
   		(select * from review order by review_date desc) N)
   		where r between #{startRow} and #{lastRow}  
   </select>
+
 <!-- 리뷰 selectOne -->
 <select id="review_selectOne" parameterType="int" resultType="reviewDTO">
 	select * from review where review_num=#{review_num}
 </select>
+
 <!--  qna write -->
 	<insert id="qna_insert" parameterType="qna_viewDTO">
-	<selectKey keyProperty="qna_viewnum" resultType="int" order="BEFORE">
+	<selectKey keyProperty="qna_viewnum"  resultType="int" order="BEFORE">
 	select qna_viewnum.nextval from dual
 	</selectKey>
-	insert into qna_view values(#{qna_viewnum} ,'T1', #{drama_num} , #{contents} , sysdate , #{qna_viewnum},0,0})
+	insert into qna_view values(#{qna_viewnum},#{id}, #{drama_num} , #{contents} , sysdate ,#{qna_viewnum},0,0)
 	</insert>
 
 <!-- qnalist 삭제(자신이 올린 문의글 삭제) -->
 	<delete id="delete_qnaview" parameterType="int">
 	delete qna_view where qna_viewnum=#{qna_viewnum}
   </delete>
-  	
+ 
+ <!-- qna reply -->
+ <insert id="qna_reply" parameterType="qna_viewDTO">
+  insrt into qna_view values(#{qna_viewnum} , #{id} , #{drama_num} , #{contents} , sysdate , #{ref} , #{step} , #{depth})
+ </insert>
+ 
+<update id="stepUpdate" parameterType="qna_viewDTO">
+  	 <![CDATA[
+  	 update qna_view set step=step+1 where ref=#{ref} and step>#{step}
+  	 ]]>
+  </update>
+ <!-- qna 삭제시 redirect 로 받아올 넘버 출력 -->
+  	<select id="delete_drama_num" parameterType="int" resultType="qna_viewDTO">
+  	select *from qna_view where qna_viewnum=#{qna_viewnum} 
+  	</select>
   	<!-- 공연리뷰 -->
   	<select id="dramaReviewList" parameterType="com.theater.util.RowNum" resultType="reviewDTO">
   		select * from

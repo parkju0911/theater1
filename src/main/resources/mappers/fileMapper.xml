@@ -82,5 +82,11 @@
   		select * from file_table where file_num=#{file_num}
   	</select>
     
+    <insert id="review_file_num" parameterType="FileDTO">
+  		<selectKey keyProperty="file_num" resultType="int"  order="BEFORE">
+  		select file_num.nextval from dual	
+  		</selectKey>
+  
+    </insert>
 	
   </mapper>

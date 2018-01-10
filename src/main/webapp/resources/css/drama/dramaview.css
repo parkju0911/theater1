@@ -92,10 +92,7 @@
 	color:#888;
 }
 
-/* =======
-	border: 0;
-}
->>>>>>> 578e5a9a30f8c80283cb50a1c6bc512e39c56985 */
+
 #drama_date{
 	width: 305px;
 	height: 35px;
@@ -270,7 +267,7 @@
 	width:150px;
 	display:inline-block;
 	height:21px;
-	background: transparent url(../images/starpoint/star_rating.png) no-repeat;
+	background: transparent url(../../images/starpoint/star_rating.png) no-repeat;
 	overflow: hidden;
 	vertical-align: middle;
 }

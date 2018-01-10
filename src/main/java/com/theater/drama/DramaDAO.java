@@ -135,10 +135,23 @@ public class DramaDAO  {
 	public int delete_qnaview(int qna_viewnum)throws Exception{
 		return sqlSession.delete(namespace+"delete_qnaview", qna_viewnum);
 	}
+	public Qna_viewDTO delete_drama_num(int qna_viewnum)throws Exception{
+		return sqlSession.selectOne(namespace+"delete_drama_num", qna_viewnum);
+	}
 	public List<ReviewDTO>dramaReviewList(RowNum rowNum)throws Exception{
 		return sqlSession.selectList(namespace+"dramaReviewList", rowNum);
 	}
 	public ReviewDTO review_selectOne(int review_num)throws Exception{
 		return sqlSession.selectOne(namespace+"review_selectOne", review_num);
+	}
+	public int review_insert(ReviewDTO reviewDTO)throws Exception{
+		int result = sqlSession.insert(namespace+"review_insert", reviewDTO);
+		return result;
+	}
+	public int review_file_num(ReviewDTO reviewDTO)throws Exception{
+		return sqlSession.insert(namespace+"review_file_num", reviewDTO);
+	}
+	public int qna_reply(Qna_viewDTO qna_viewDTO)throws Exception{
+		return sqlSession.insert(namespace+"qna_reply", qna_viewDTO);
 	}
 }
