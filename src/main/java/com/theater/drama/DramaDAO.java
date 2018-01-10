@@ -154,4 +154,7 @@ public class DramaDAO  {
 	public int qna_reply(Qna_viewDTO qna_viewDTO)throws Exception{
 		return sqlSession.insert(namespace+"qna_reply", qna_viewDTO);
 	}
+	public int stepUpdate(Qna_viewDTO qna_viewDTO)throws Exception{
+		return sqlSession.update(namespace+"stepUpdate", qna_viewDTO);
+	}
 }
