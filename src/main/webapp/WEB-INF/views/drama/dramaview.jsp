@@ -16,8 +16,27 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=v1_dhkpTCMdne9dcmd_k&submodules=geocoder"></script>
+
+
+
 <script type="text/javascript">
-	
+function checkCookie() {
+    var itemID = getCookie("itemID");
+    var thisItem='<?=${view.title}?>';   // 제품 아이디와 이미지 이름을 저장  2차원 배열처럼 쓸려고 짱구를 굴림...  json 형태로 저장도 가능할텐데.... 그건 취향대로 
+	if (thisItem){
+		if (itemID != "" && itemID != null) {
+			if (itemID.indexOf(thisItem) ==-1 ){ //값이 없으면 
+					setCookie("itemID",thisItem+"&"+itemID,1);
+			}
+		} else {
+			if (itemID == "" || itemID == null) {
+				setCookie("itemID",thisItem+"&",1);
+			}
+		}
+	}
+}
+
+checkCookie();
 	$(function() {
 			
 
@@ -204,20 +223,14 @@ A:VISITED {
 					<div id="refund_list"></div>
 				</div>
 			</div>
+
 		</div>
-		<%
-
-	//상품에 대한 정보를 쿠키에 담기
-
-
-	Cookie cook = new Cookie("item1", URLEncoder.encode("${view.title}","UTF-8"));
-	cook.setMaxAge(60*60);//1시간동안 유지
-	response.addCookie(cook);
 	
 
-%>
 
-		
+
+
+
 	</section>
 	<!-- footer  -->
 	<c:import url="../temp/footer.jsp"></c:import>
