@@ -1,5 +1,7 @@
 package com.theater.point;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.theater.member.MemberDTO;
 import com.theater.util.ListData;
 import com.theater.util.Pager;
 import com.theater.util.RowNum;
@@ -30,8 +32,11 @@ public class PointService {
 		RowNum rowNum = listData.makeRow();
 		Pager pager = listData.makePage(pointDAO.totalCount(rowNum));
 		PointDTO pointDTO=new PointDTO();
-		
+	
 		List<PointDTO> ar = pointDAO.selectList(rowNum);
+/*		Map<String, Object> map = new HashMap<String, Object>();
+		MemberDTO memberDTO=new MemberDTO();
+		map.put("id", memberDTO.getId());*/
 		
 		
 		mv.addObject("pager", pager);
@@ -61,10 +66,11 @@ public class PointService {
 	
 		
 
-		Map<String, Object> map = new HashMap<String, Object>();
+		  Map<String, Object> map = new HashMap<String, Object>();
 		
-		
-	
+	/*	MemberDTO memberDTO=new MemberDTO();
+		String id = memberDTO.getId();
+		session.setAttribute("id",id);*/
 		map.put("point_num",pointDTO.getPoint_num());
 		map.put("id", "iu");
 		map.put("history","적립");

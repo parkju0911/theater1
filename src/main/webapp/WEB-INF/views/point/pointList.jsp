@@ -22,13 +22,16 @@
 </head>
 <body>
 	<c:import url="../temp/header.jsp"></c:import>
+	<section class="contentss">
+	<div class="contens_point">
+	<div class="contens_head">
 	<h1>${point}list Page</h1>
 
 
 
-	<h2>${pdto.id} point page</h2>
+	<h2>${id} point page</h2>
 
-
+</div>
 
 
 
@@ -52,7 +55,7 @@
 
 
 
-	<p>
+	<p class="total_point">
 		총 포인트 : <b><c:out value="${sum}" />P</b>
 	</p>
 
@@ -69,11 +72,11 @@
 	<table>
 		<thead>
 			<tr>
-				<th>no.</th>
-				<th>발생일자</th>
-				<th>유형</th>
-				<th>포인트</th>
-				<th>포인트 내역</th>
+				<th class="no_1">no.</th>
+				<th class="reg_date">발생일자</th>
+				<th class="kind">유형</th>
+				<th class="point_1">포인트</th>
+				<th class="history">포인트 내역</th>
 
 
 			</tr>
@@ -83,11 +86,11 @@
 			<c:forEach items="${list}" var="dto">
 				<tr>
 
-					<td>${dto.point_num }</td>
-					<td>${dto.reg_date}</td>
-					<td>${dto.kind}</td>
-					<td>${dto.point}</td>
-					<td>${dto.history}</td>
+					<td class="no_1">${dto.point_num }</td>
+					<td class="reg_date">${dto.reg_date}</td>
+					<td class="kind">${dto.kind}</td>
+					<td class="point_1">${dto.point}</td>
+					<td class="history">${dto.history}</td>
 
 				</tr>
 			</c:forEach>
@@ -98,7 +101,7 @@
 
 
 
-	<div>
+	<div class="row_num">
 		<c:if test="${pager.curBlock gt 1}">
 			<span class="list" title="${pager.startNum-1}">[이전]</span>
 		</c:if>
@@ -109,7 +112,8 @@
 			<span class="list" title="${pager.lastNum+1}">[다음]</span>
 		</c:if>
 	</div>
-
+	</div>
+</section>
 	<c:import url="../temp/footer.jsp"></c:import>
 
 </body>
