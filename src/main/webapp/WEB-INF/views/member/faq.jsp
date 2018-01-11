@@ -138,7 +138,7 @@
 										<td class="td-main">NO</td>
 										<td id="tb_title" class="td-main">TITLE</td>
 									</tr>
-									<c:forEach items="${faq}" var="dto">
+									<c:forEach items="${list}" var="dto">
 
 										<tr>
 											<td>${dto.faq_num}</td>
