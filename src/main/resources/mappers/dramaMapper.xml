@@ -57,6 +57,10 @@
   	<select id="fileList" parameterType="int" resultType="com.theater.file.FileDTO">
   		select * from file_table where file_num=#{file_num}
   	</select> 
+  	
+  	<update id="hitUpdate" parameterType="int">
+  		update drama set buy_hit=buy_hit+1 where drama_num=#{drama_num}
+  	</update>
   
   	
  	<!-- 공연 선택 view page -->

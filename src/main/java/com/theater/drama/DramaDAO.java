@@ -144,4 +144,8 @@ public class DramaDAO  {
 	public List<ReviewDTO>dramaReviewList(RowNum rowNum)throws Exception{
 		return sqlSession.selectList(namespace+"dramaReviewList", rowNum);
 	}
+	
+	public int hitUpdate(int buy_hit) throws Exception {
+		return sqlSession.update(namespace+"hitUpdate", buy_hit);
+	}
 }

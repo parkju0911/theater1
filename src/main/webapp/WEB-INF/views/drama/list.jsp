@@ -151,42 +151,26 @@
 <%
 
 	//쿠키 얻어오기
-
 	Cookie[] cook = request.getCookies();
-
 	if(cook!=null){
-
 		for(int i=0;i<cook.length;i++){
 
 			//전송된 쿠키이름 얻어오기
-
 			String name=cook[i].getName();
-
 			//쿠키이름에 item이 포함되어 있다면
-
 			if(name.indexOf("item")!=-1){
-
 				//해당 value얻어오기
-
 				String value=cook[i].getValue();
-
-				//euc-kr로 인코딩되어 있으므로 다시 euc-kr로 디코딩하여야 한다.
-
 				String item=URLDecoder.decode(value, "UTF-8");
-
 				out.println(item+"<br/>");
-
 			}
-
 		}
-
 	}else{
-
 		out.println("최근에 본 상품이 없습니다.");
-
 	}
-
 %>
+
+
 
 </div>
 			</div>

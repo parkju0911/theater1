@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -100,6 +101,7 @@ A:VISITED {
 					<div id="title">
 						<span class="skin-type">${view.place}</span>
 						<h3>${view.title}</h3>
+						
 						<div id="content">${view.contents}</div>
 					</div>
 					<input id="price"type="text" name="price" value="${view.price}원" readonly="readonly">
@@ -203,6 +205,17 @@ A:VISITED {
 				</div>
 			</div>
 		</div>
+		<%
+
+	//상품에 대한 정보를 쿠키에 담기
+
+
+	Cookie cook = new Cookie("item1", URLEncoder.encode("${view.title}","UTF-8"));
+	cook.setMaxAge(60*60);//1시간동안 유지
+	response.addCookie(cook);
+	
+
+%>
 
 		
 	</section>

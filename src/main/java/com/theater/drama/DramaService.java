@@ -39,6 +39,8 @@ public class DramaService {
 		return dramaDAO.selectSeat(drama_num, date_num);
 	}
 	public DramaDTO selectOne(int drama_num) throws Exception{
+		int buy_hit = 0;
+		dramaDAO.hitUpdate(buy_hit);
 		return dramaDAO.selectOne(drama_num);
 	}
 	public FileDTO fileList(int file_num) throws Exception{
