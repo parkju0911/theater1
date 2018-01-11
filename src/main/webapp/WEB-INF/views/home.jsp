@@ -6,8 +6,13 @@
 <html>
 <head>
 	<title>Home</title>
-<link href="./resources/css/com
-mon/header.css" rel="stylesheet">
+<link href="./resources/css/common/header.css" rel="stylesheet">
+
+<style type="text/css">
+.member_wrap a {
+   margin-top: 10px;
+}
+</style>
 </head>
 <script type="text/javascript">
    var result = '${result}';
