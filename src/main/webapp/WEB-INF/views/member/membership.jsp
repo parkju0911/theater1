@@ -12,6 +12,12 @@
 <script type="text/javascript" src="../resources/SE2/js/HuskyEZCreator.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <title>Insert title here</title>
+<script type="text/javascript">
+	var result = '${result}';
+	if(result != ""){
+		alert('${result}');
+	}
+</script>
 <style type="text/css">
 #contents{
 height: auto;
@@ -59,32 +65,69 @@ height: auto;
 				<ul>
 					<li class=" "><strong class="title">아이디</strong> <strong
 						class="data use">&nbsp;<span
-							id="xans_myshop_bankbook_avail_mileage">${member.id}</span></strong></li>
+							id="xans_myshop_bankbook_avail_mileage"><input type="text" id="id" name="id" value="${member.id}" readonly="readonly"></span></strong></li>
 					<li class=""><strong class="title">이름</strong> <strong
 						class="data"><span
-							id="xans_myshop_bankbook_total_mileage">${member.name}</span></strong></li>
+							id="xans_myshop_bankbook_total_mileage"><input type="text" id="name" name="name" value="${member.name}" readonly="readonly"></span></strong></li>
 					<%-- <li class=""><strong class="title">주소</strong> <strong
 						class="data"><span id="xans_myshop_bankbook_used_mileage">${member.address}</span></strong></li> --%>
 					<li class=""><strong class="title">휴대폰</strong> <strong
-						class="data use">&nbsp;<span
-							id="xans_myshop_bankbook_deposit">${member.phone}</span></strong></li>
+						class="data use">&nbsp;<span id="xans_myshop_bankbook_deposit">
+						<input type="tel" id="phone" name="phone" value="${member.phone}" maxlength="13" 
+						onkeypress="if( (event.keyCode<48) || (event.keyCode>57) ) event.returnValue=false;"></span></strong></li>
 					<c:if test="${member.kind eq 'user'}">
 					<li><strong class="title">생일</strong> <strong class="data"><span
-							id="xans_myshop_bankbook_order_price">${user.birth}</span></strong></li>
+							id="xans_myshop_bankbook_order_price"><input type="date" id="birth" name="birth" value="${user.birth}"></span></strong></li>
 					</c:if>
 					<li class=""><strong class="title">이메일</strong> <strong
-						class="data"><span id="xans_myshop_bankbook_coupon_cnt">${member.email}</span></strong>
+						class="data"><span id="xans_myshop_bankbook_coupon_cnt"><input type="text" id="email" name="email" value="${member.email}"></span></strong>
 					</li>
 					<c:if test="${member.kind eq 'company'}">
+						<li class=""><strong class="title">사업자번호</strong> <strong
+						class="data"><span id="xans_myshop_bankbook_coupon_cnt"><input type="text" id="company_num" name="company_num" value="${company.company_num}"></span></strong>
+						</li>
 						<li><strong class="title">좌석</strong> <strong class="data"><span
-							id="xans_myshop_bankbook_order_price">${company.row_num}행 ${company.col_num}열</span></strong></li>
+							id="xans_myshop_bankbook_order_price">
+							<input type="number" id="row_num" name="row_num" value="${company.row_num}">행 
+							<input type="number" id="col_num" name=col_num" value="${company.col_num}">열</span></strong></li>
 					</c:if>
 				</ul>
 			</div>
 		</form>
-		<a href="./memberDelete?id=${member.id}" class="btn btn-default" onclick="if(!confirm('정말로 탈퇴하시겠습니까?')){return false;}" style="margin-top: 10px;">탈퇴</a>
-		<a href="./memberUpdate?id=${member.id}" class="btn btn-default" style="margin-top: 10px;">수정</a>
+		<a href="./memberDelete?id=${member.id}" class="btn btn-default" onclick="if(!confirm('정말로 탈퇴하시겠습니까?')){return false;}" style="margin-top: 50px; float: left;">탈퇴</a>
+		<a href="./memberUpdate?id=${member.id}" class="btn btn-default" style="margin-top: 50px; float: right;">수정</a>
 	</div>
+	
+<script>
+	//휴대폰 번호 자동 하이픈(-) 스크립트
+	function autoHypenPhone(str) {
+		str = str.replace(/[^0-9]/g, '');
+		var tmp = '';
+		if (str.length < 4) {
+			return str;
+		} else if (str.length < 8) {
+			tmp += str.substr(0, 3);
+			tmp += '-';
+			tmp += str.substr(3);
+			return tmp;
+		} else if (str.length < 12) {
+			tmp += str.substr(0, 3);
+			tmp += '-';
+			tmp += str.substr(3, 4);
+			tmp += '-';
+			tmp += str.substr(7);
+			return tmp;
+		}
+		return str;
+	}
+	var cellPhone = document.getElementById('phone');
+	cellPhone.onkeyup = function(event) {
+		event = event || window.event;
+		var _val = this.value.trim();
+		this.value = autoHypenPhone(_val);
+	}
+	// 휴대폰 번호 자동 하이픈(-) 스크립트 END
+</script>
 
 <c:import url="../temp/footer.jsp"></c:import>
 </body>

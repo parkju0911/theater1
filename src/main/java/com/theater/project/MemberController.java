@@ -243,5 +243,27 @@ public class MemberController {
 		attributes.addFlashAttribute("message", message);
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value="memberUpdate", method=RequestMethod.GET)
+	public String memberUpdate(RedirectAttributes attributes, String id, HttpSession session){
+		int result = 0;
+		try {
+			result = memberService.memberUpdate(id);
+			if (session.getAttribute("user") != null) {
+				result = memberService.userUpdate(id);
+			} else if (session.getAttribute("company") != null) {
+				result = memberService.compantUpdate(id);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String message = "FAIL";
+		if (result>0) {
+			message = "SUCCESS";
+		}
+		attributes.addFlashAttribute("message", message);
+		return "redirect:./memberMypage";
+	}
 
 }

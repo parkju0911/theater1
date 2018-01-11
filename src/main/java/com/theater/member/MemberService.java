@@ -77,4 +77,18 @@ public class MemberService {
 	public int companyDelete(String id) throws Exception {
 		return memberDAO.companyDelete(id);
 	}
+	
+	
+	//회원 정보 수정
+	public int memberUpdate(String id) throws Exception {
+		return memberDAO.memberUpdate(id);
+	}
+	
+	public int userUpdate(String id) throws Exception {
+		return memberDAO.userUpdate(id);
+	}
+	
+	public int compantUpdate(String id) throws Exception {
+		return memberDAO.companyUpdate(id);
+	}
 }

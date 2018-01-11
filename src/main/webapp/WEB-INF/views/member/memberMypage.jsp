@@ -59,6 +59,12 @@
     margin-bottom: -8px;
 }
 </style>
+<script type="text/javascript">
+	var result = '${result}';
+	if(result != ""){
+		alert('${result}');
+	}
+</script>
 </head>
 <link href="../resources/css/common/header.css" rel="stylesheet">
 <link href="../resources/css/board/boardHeader.css" rel="stylesheet">

@@ -81,4 +81,18 @@ public class MemberDAO {
 	public int companyDelete(String id) throws Exception {
 		return sqlSession.delete(NAMESPACE+"companyDelete", id);
 	}
+	
+	
+	//회원 정보 수정
+	public int memberUpdate(String id) throws Exception {
+		return sqlSession.update(NAMESPACE+"memberUpdate", id);
+	}
+	
+	public int userUpdate(String id) throws Exception {
+		return sqlSession.update(NAMESPACE+"userUpdate", id);
+	}
+	
+	public int companyUpdate(String id) throws Exception {
+		return sqlSession.update(NAMESPACE+"companyUpdate", id);
+	}
 }
