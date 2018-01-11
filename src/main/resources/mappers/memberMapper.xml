@@ -40,7 +40,7 @@
   		select * from member where id=#{id} and email=#{email}
   	</select>
   	
-  	<!-- <delete id="memberDelete" parameterType="String">
+  	<delete id="memberDelete" parameterType="String">
   		delete member where id=#{id}
   	</delete>
   	
@@ -50,7 +50,7 @@
   	
   	<delete id="companyDelete" parameterType="String">
   		delete company_info where id=#{id}
-  	</delete> -->
+  	</delete>
   	
   	<select id="searchCompany" parameterType="int" resultMap="companyDTO">
   		select * from company_info where company_num=#{company_num}
