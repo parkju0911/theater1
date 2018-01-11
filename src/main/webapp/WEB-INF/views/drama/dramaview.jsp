@@ -169,7 +169,7 @@ A:VISITED {
 					</c:forEach>
 				</table>
 				<div id="afterview_total">
-					<a href="#menu1" id="reviewlist_all">후기 전체보기></a>
+					<a data-toggle="tab" href="#menu1" id="reviewlist_all">후기 전체보기></a>
 				</div>
 			</div>
 
@@ -194,14 +194,11 @@ A:VISITED {
 	
 		<div class="contain"  style="width: 830; margin: 0 auto;">
 
-			<ul class="nav nav-tabs"  >
-				<li class="active" id="menu_info"><a data-toggle="tab"
-					href="#menu0" id="info">안내</a></li>
-				<li class="menu_li"><a data-toggle="tab" href="#menu1"
-					id="review">후기(${total })</a></li>
+			<ul class="nav nav-tabs"  style="width: 830px; margin: 0 auto;" >
+				<li class="active" id="menu_info"><a data-toggle="tab" href="#menu0" id="info">안내</a></li>
+				<li class="menu_li"><a data-toggle="tab" href="#menu1" id="review">후기(${total })</a></li>
 				<li class="menu_li"><a data-toggle="tab" href="#menu2" id="qna">Q&A</a></li>
-				<li class="menu_li"><a data-toggle="tab" href="#menu3"
-					id="refund">환불규정</a></li>
+				<li class="menu_li"><a data-toggle="tab" href="#menu3" id="refund">환불규정</a></li>
 			</ul>
 
 			<div class="tab-content"><!--  탭 클릭시 페이지 view -->

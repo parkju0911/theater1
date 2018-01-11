@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 #Review_main{
 	width: 1230px;
-	margin-left: 430px;
+	margin:0 auto;
 	border-left: 1px #404040 solid;
 	border-right: 1px #404040 solid;
 }
