@@ -1,7 +1,5 @@
 package com.theater.project;
 
-import java.util.Random;
-
 import javax.inject.Inject;
 import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
@@ -14,7 +12,6 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -118,7 +115,6 @@ public class MemberController {
 
 	@RequestMapping(value="/user/memberJoin", method=RequestMethod.POST)
 	public String memberJoinUser(RedirectAttributes attributes, MemberDTO memberDTO, UserDTO userDTO) throws Exception {
-		System.out.println(userDTO.getBirth());
 		int result = memberService.memberJoin(memberDTO);
 		result = memberService.userJoin(userDTO);
 		String message="회원가입 실패";
@@ -131,9 +127,6 @@ public class MemberController {
 
 	@RequestMapping(value="/company/memberJoin", method=RequestMethod.POST)
 	public String memberJoinCompany(RedirectAttributes attributes, MemberDTO memberDTO, CompanyDTO companyDTO) throws Exception {
-		System.out.println(companyDTO.getCompany_num());
-		System.out.println(companyDTO.getCol_num());
-		System.out.println(companyDTO.getRow_num());
 		int result = memberService.memberJoin(memberDTO);
 		result = memberService.companyJoin(companyDTO);
 		String message="회원가입 실패";
@@ -148,15 +141,24 @@ public class MemberController {
 	public void membrLogin(){}
 
 	@RequestMapping(value="memberLogin", method=RequestMethod.POST)
-	public String memberLogin(MemberDTO memberDTO, HttpSession session){
+	public String memberLogin(MemberDTO memberDTO, UserDTO userDTO, CompanyDTO companyDTO, HttpSession session){
 		try {
 			memberDTO=memberService.login(memberDTO);
+			userDTO=memberService.userLogin(userDTO);
+			companyDTO=memberService.companyLogin(companyDTO);
 		} catch (Exception e) {
 			memberDTO=null;
+			userDTO=null;
+			companyDTO=null;
 			e.printStackTrace();
 		}
 		if(memberDTO != null){
 			session.setAttribute("member", memberDTO);
+			if(memberDTO.getKind().equals("user")){
+				session.setAttribute("user", userDTO);
+			}else if (memberDTO.getKind().equals("company")){
+				session.setAttribute("company", companyDTO);
+			}
 		}
 		return "redirect:/";	
 	}
@@ -217,6 +219,29 @@ public class MemberController {
 	@RequestMapping(value="qna", method=RequestMethod.GET)
 	public String qna(){
 		return "member/qna";
+	}
+	
+	@RequestMapping(value="memberDelete", method=RequestMethod.GET)
+	public String memberDelete(RedirectAttributes attributes, String id, HttpSession session){
+		int result=0;
+		try {
+			if (session.getAttribute("user") != null) {
+				result = memberService.userDelete(id);
+			} else if (session.getAttribute("company") != null) {
+				result = memberService.companyDelete(id);
+			}
+			result = memberService.memberDelete(id);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		session.invalidate();
+		String message="FAIL";
+		if(result>0){
+			message="SUCCESS";
+		}
+		attributes.addFlashAttribute("message", message);
+		return "redirect:/";
 	}
 
 }
