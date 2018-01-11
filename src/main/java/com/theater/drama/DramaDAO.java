@@ -128,33 +128,46 @@ public class DramaDAO  {
 	public int totalcount_review(RowNum rowNum)throws Exception{
 		return sqlSession.selectOne(namespace+"totalcount_review", rowNum);
 	}
+	//dramaview page write
 	public int qna_insert(Qna_viewDTO qna_viewDTO)throws Exception{
 		int result = sqlSession.insert(namespace+"qna_insert", qna_viewDTO);
 		return result;
 	}
+	//dramaview page qna delete
 	public int delete_qnaview(int qna_viewnum)throws Exception{
 		return sqlSession.delete(namespace+"delete_qnaview", qna_viewnum);
 	}
+	//dramaview page qna_delete(qna_viewnum을 넘겨줘야 redirec로 page 이동
 	public Qna_viewDTO delete_drama_num(int qna_viewnum)throws Exception{
 		return sqlSession.selectOne(namespace+"delete_drama_num", qna_viewnum);
 	}
+	//dramaview page qna_reply
+	public int qna_reply(Qna_viewDTO qna_viewDTO)throws Exception{
+		return sqlSession.insert(namespace+"qna_reply", qna_viewDTO);
+	}
+	//dramaview page qna_reply step update
+	public int stepUpdate(Qna_viewDTO qna_viewDTO)throws Exception{
+		return sqlSession.update(namespace+"stepUpdate", qna_viewDTO);
+	}
+	//공연리뷰 리스트 page
 	public List<ReviewDTO>dramaReviewList(RowNum rowNum)throws Exception{
 		return sqlSession.selectList(namespace+"dramaReviewList", rowNum);
 	}
+	//연극리뷰 selectOne page
 	public ReviewDTO review_selectOne(int review_num)throws Exception{
 		return sqlSession.selectOne(namespace+"review_selectOne", review_num);
 	}
+	//연극리뷰 작성
 	public int review_insert(ReviewDTO reviewDTO)throws Exception{
 		int result = sqlSession.insert(namespace+"review_insert", reviewDTO);
 		return result;
 	}
+	//연극리뷰 이미지 번호
 	public int review_file_num(ReviewDTO reviewDTO)throws Exception{
 		return sqlSession.insert(namespace+"review_file_num", reviewDTO);
 	}
-	public int qna_reply(Qna_viewDTO qna_viewDTO)throws Exception{
-		return sqlSession.insert(namespace+"qna_reply", qna_viewDTO);
-	}
-	public int stepUpdate(Qna_viewDTO qna_viewDTO)throws Exception{
-		return sqlSession.update(namespace+"stepUpdate", qna_viewDTO);
+	//연극리뷰 업데이트(수정)
+	public int review_update(ReviewDTO reviewDTO)throws Exception{
+		return sqlSession.update(namespace+"review_update", reviewDTO);
 	}
 }

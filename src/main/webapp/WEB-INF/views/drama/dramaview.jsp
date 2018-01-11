@@ -192,9 +192,9 @@ A:VISITED {
 			
 
 	
-		<div class="contain">
+		<div class="contain"  style="width: 830; margin: 0 auto;">
 
-			<ul class="nav nav-tabs">
+			<ul class="nav nav-tabs"  >
 				<li class="active" id="menu_info"><a data-toggle="tab"
 					href="#menu0" id="info">안내</a></li>
 				<li class="menu_li"><a data-toggle="tab" href="#menu1"

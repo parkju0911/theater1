@@ -204,13 +204,15 @@ public class DramaController {
 		
 		return mv;
 	}
-	//insert-->form 이동
+	//공연 리뷰 insert-->form 이동
 	@RequestMapping(value="dramaReviewwrite" , method=RequestMethod.GET)
 	public  String dramaReviewwrite()throws Exception{
+		
+	
 		return "drama/dramaReviewwrite";
 	}
 	
-	//insert-->DB 처리
+	//공연 리뷰 insert-->DB 처리
 	@RequestMapping(value="dramaReviewwrite" , method=RequestMethod.POST)
 	public String dramaReviewwrite(RedirectAttributes rd , ReviewDTO reviewDTO , HttpSession session , MultipartHttpServletRequest Ms , Model model)throws Exception{
 		int result = 0;
@@ -223,6 +225,13 @@ public class DramaController {
 			}
 				rd.addFlashAttribute("message", message);
 		return "redirect:./dramaReview";
+	}
+	//공연 업데이트(수정) form 이동
+	@RequestMapping(value="dramaReviewupdate" , method=RequestMethod.GET)
+	public String dramaReviewupdate(ReviewDTO reviewDTO , Model model)throws Exception{
+		
+		model.addAttribute("dto", reviewDTO);
+		return "drama/dramaReviewupdate";
 	}
 	//selectList
 	@RequestMapping(value="dramaList")

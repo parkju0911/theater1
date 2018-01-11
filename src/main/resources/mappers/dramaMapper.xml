@@ -122,6 +122,10 @@
 	select * from review where review_num=#{review_num}
 </select>
 
+<!-- 리뷰 update -->
+<update id="review_update" parameterType="reviewDTO">
+	update review set title=#{title} , contents=#{contents} , star=#{star}
+</update>
 <!--  qna write -->
 	<insert id="qna_insert" parameterType="qna_viewDTO">
 	<selectKey keyProperty="qna_viewnum"  resultType="int" order="BEFORE">

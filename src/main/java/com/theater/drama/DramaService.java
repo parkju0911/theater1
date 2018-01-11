@@ -170,6 +170,10 @@ public class DramaService {
 		
 		return result;
 	}
+	public int review_update(ReviewDTO reviewDTO)throws Exception{
+		int result = dramaDAO.review_update(reviewDTO);
+		return result;
+	}
 	//광 
 	
 	
