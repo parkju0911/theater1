@@ -13,9 +13,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <title>Insert title here</title>
 <script type="text/javascript">
-	var result = '${result}';
-	if(result != ""){
-		alert('${result}');
+	var message = '${message}';
+	if(message != ""){
+		alert('${message}');
 	}
 </script>
 <style type="text/css">
@@ -45,7 +45,8 @@ height: auto;
 		<div class="titleArea">
 			<h2>MEMBERSHIP</h2>
 		</div>
-		<form action="./memberLogin.member" method="POST">
+		<form action="./memberUpdate" method="POST">
+			<input type="hidden" name="kind" value="${member.kind}">
 			<div class="xans-element- xans-myshop xans-myshop-asyncbenefit">
 				<div class="infoWrap ">
 					<div class="myInfo">
@@ -84,18 +85,18 @@ height: auto;
 					</li>
 					<c:if test="${member.kind eq 'company'}">
 						<li class=""><strong class="title">사업자번호</strong> <strong
-						class="data"><span id="xans_myshop_bankbook_coupon_cnt"><input type="text" id="company_num" name="company_num" value="${company.company_num}"></span></strong>
+						class="data"><span id="xans_myshop_bankbook_coupon_cnt"><input type="number" id="company_num" name="company_num" value="${company.company_num}"></span></strong>
 						</li>
 						<li><strong class="title">좌석</strong> <strong class="data"><span
 							id="xans_myshop_bankbook_order_price">
 							<input type="number" id="row_num" name="row_num" value="${company.row_num}">행 
-							<input type="number" id="col_num" name=col_num" value="${company.col_num}">열</span></strong></li>
+							<input type="number" id="col_num" name="col_num" value="${company.col_num}">열</span></strong></li>
 					</c:if>
 				</ul>
 			</div>
+		<input type="submit" id="update" value="수정" class="btn btn-default" style="margin-top: 50px; float: right;">
 		</form>
 		<a href="./memberDelete?id=${member.id}" class="btn btn-default" onclick="if(!confirm('정말로 탈퇴하시겠습니까?')){return false;}" style="margin-top: 50px; float: left;">탈퇴</a>
-		<a href="./memberUpdate?id=${member.id}" class="btn btn-default" style="margin-top: 50px; float: right;">수정</a>
 	</div>
 	
 <script>

@@ -80,15 +80,15 @@ public class MemberService {
 	
 	
 	//회원 정보 수정
-	public int memberUpdate(String id) throws Exception {
-		return memberDAO.memberUpdate(id);
+	public int memberUpdate(MemberDTO memberDTO) throws Exception {
+		return memberDAO.memberUpdate(memberDTO);
 	}
 	
-	public int userUpdate(String id) throws Exception {
-		return memberDAO.userUpdate(id);
+	public int userUpdate(UserDTO userDTO) throws Exception {
+		return memberDAO.userUpdate(userDTO);
 	}
 	
-	public int compantUpdate(String id) throws Exception {
-		return memberDAO.companyUpdate(id);
+	public int companyUpdate(CompanyDTO companyDTO) throws Exception {
+		return memberDAO.companyUpdate(companyDTO);
 	}
 }

@@ -84,15 +84,15 @@ public class MemberDAO {
 	
 	
 	//회원 정보 수정
-	public int memberUpdate(String id) throws Exception {
-		return sqlSession.update(NAMESPACE+"memberUpdate", id);
+	public int memberUpdate(MemberDTO memberDTO) throws Exception {
+		return sqlSession.update(NAMESPACE+"memberUpdate", memberDTO);
 	}
 	
-	public int userUpdate(String id) throws Exception {
-		return sqlSession.update(NAMESPACE+"userUpdate", id);
+	public int userUpdate(UserDTO userDTO) throws Exception {
+		return sqlSession.update(NAMESPACE+"userUpdate", userDTO);
 	}
 	
-	public int companyUpdate(String id) throws Exception {
-		return sqlSession.update(NAMESPACE+"companyUpdate", id);
+	public int companyUpdate(CompanyDTO companyDTO) throws Exception {
+		return sqlSession.update(NAMESPACE+"companyUpdate", companyDTO);
 	}
 }
