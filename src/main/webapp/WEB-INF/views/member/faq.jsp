@@ -24,7 +24,8 @@
 }
 .faq_mainlist li{
 	margin-bottom: 5px;
-    margin-top: 5px;margin-top: 
+    margin-top: 5px;
+    font-weight: 700;
 }
 @use postcss-color-function;
 @use postcss-nested;
@@ -90,7 +91,7 @@
 
 
 	<div class="container">
-		<div class="title_wrap" style="width: 1000px;">
+		<div class="title_wrap" style="width: 1000px; font-family: 'Nanum Gothic', sans-serif;">
 			<h6 id="h6_title" style="margin-right: 5px; margin-top: 8px;">
 				<a href="${pageContext.request.contextPath}"><img alt=""
 					src="../resources/images/common/homeImg.png" id="homeImg"></a> >
@@ -143,9 +144,9 @@
 										<tr>
 											<td>${dto.faq_num}</td>
 											<td><c:catch>
-													<c:forEach begin="1" end="${dto.depth-1}">
-							--
-						</c:forEach>
+												<c:forEach begin="1" end="${dto.depth-1}">
+													--
+												</c:forEach>
 												</c:catch> <a href="./faq?faq_num=${dto.faq_num}">${faq.title}</a></td>
 											<td>${dto.reg_date}</td>
 											<td>${dto.hit}</td>

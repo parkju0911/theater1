@@ -106,7 +106,7 @@ td {
 </head>
 <body>
 <c:import url="../temp/header.jsp"></c:import>
-<div class="title_wrap" style="width: 1000px;">
+<div class="title_wrap" style="width: 1000px;font-family: 'Nanum Gothic', sans-serif;">
 			<h6 id="h6_title" style="margin-right: 5px; margin-top: 8px;">
 				<a href="${pageContext.request.contextPath}"><img alt=""
 					src="../resources/images/common/homeImg.png" id="homeImg"></a> >

@@ -24,7 +24,7 @@ public class NoticeService {
 		modelAndView.addObject("board", "notice");
 		return modelAndView;
 	}
-
+	
 	 
 	public NoticeDTO selectOne(int num) throws Exception {
 		noticeDAO.hitUpdate(num);
