@@ -12,7 +12,7 @@
 				<%-- <a href="${pageContext.request.contextPath}/view/home.jsp"> --%>
 				<a href="${pageContext.request.contextPath}"> <img
 					id="main_logo" alt=""
-					src="${pageContext.request.contextPath}/resources/images/common/teatro_logo4.png"></a>
+					src="${pageContext.request.contextPath}/resources/images/common/mainLogo2.png"></a>
 			</div>
 		</div>
 		<div class="mem_wrap">

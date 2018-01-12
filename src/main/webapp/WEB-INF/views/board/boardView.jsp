@@ -69,7 +69,7 @@ td{
 <body>
 <c:import url="../temp/header.jsp"></c:import>
 <div class="head_line">
-<div class="title_wrap">
+<div class="title_wrap" style=" font-family: 'Nanum Gothic', sans-serif;">
 	<c:if test="${board eq 'notice'}">
 	<h1 id="h1_title"><a href="${pageContext.request.contextPath}/${board}/${board}View.${board}?num=${view.notice_num}">${fn:toUpperCase(board)}</a></h1>
 	<h6 id="h6_title"><a href="${pageContext.request.contextPath}"><img alt="" src="../resources/images/common/homeImg.png" id="homeImg"></a> > <a href="${pageContext.request.contextPath}/notice/noticeList">${fn:toUpperCase(board)}</a> > 

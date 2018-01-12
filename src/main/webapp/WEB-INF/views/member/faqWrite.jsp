@@ -106,23 +106,17 @@ td {
 </head>
 <body>
 <c:import url="../temp/header.jsp"></c:import>
-<div class="head_line">
-<div class="title_wrap" style=" font-family: 'Nanum Gothic', sans-serif;">
-	<c:if test="${board eq 'notice'}">
-	<h1 id="h1_title"><a href="${pageContext.request.contextPath}/${board}/${board}View.${board}?num=${view.notice_num}">${fn:toUpperCase(board)}</a></h1>
-	<h6 id="h6_title"><a href="${pageContext.request.contextPath}"><img alt="" src="../resources/images/common/homeImg.png" id="homeImg"></a> > <a href="${pageContext.request.contextPath}/notice/noticeList">${fn:toUpperCase(board)}</a> > 
-	<a href="${pageContext.request.contextPath}/${board}/${board}View.${board}?num=${view.notice_num}">${fn:toUpperCase(board)} WRITE</a></h6>
-	</c:if>
-	
-	<c:if test="${board eq 'event'}">
-	<h1 id="h1_title"><a href="${pageContext.request.contextPath}/${board}/${board}View.${board}?num=${view.event_num}">${fn:toUpperCase(board)}</a></h1>
-	<h6 id="h6_title"><a href="${pageContext.request.contextPath}"><img alt="" src="../resources/images/common/homeImg.png" id="homeImg"></a> > <a href="${pageContext.request.contextPath}/notice/noticeList">${fn:toUpperCase(board)}</a> > 
-	<a href="${pageContext.request.contextPath}/${board}/${board}View.${board}?num=${view.event_num}">${fn:toUpperCase(board)} WRITE</a></h6>
-	</c:if>
-	</div>
-</div>
+<div class="title_wrap" style="width: 1000px;font-family: 'Nanum Gothic', sans-serif;">
+			<h6 id="h6_title" style="margin-right: 5px; margin-top: 8px;">
+				<a href="${pageContext.request.contextPath}"><img alt=""
+					src="../resources/images/common/homeImg.png" id="homeImg"></a> >
+				<a href="${pageContext.request.contextPath}/member/memberMypage">MYPAGE</a>
+				> <a href="${pageContext.request.contextPath}/member/orderlist">FAQ</a>
+				> <a href="${pageContext.request.contextPath}/member/orderlist">FAQ WRITE</a>
+			</h6>
+		</div>
 <div class="board_wrap1">
-	<form action="${board}Write" method="post" id="frm" enctype="multipart/form-data">
+	<form action="faqWrite" method="post" id="frm" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td style="margin-left: 10px; float: left;">제목 : <input type="text" name="title" placeholder="제목을 입력해주세요." class="write_ip"

@@ -74,14 +74,7 @@
 
 <div class="contents">
 	<div class="contents_wrap">
-		<!-- <div class="path">
-			<span>현재 위치</span>
-			<ol>
-				<li><a href="/">home</a></li>
-				<li title="현재 위치"></li>
-			</ol>
-		</div> -->
-		<div class="title_wrap" style="width: 1000px;">
+		<div class="title_wrap" style="width: 1000px; font-family: 'Nanum Gothic', sans-serif;">
 		<h6 id="h6_title" style="margin-right: 5px; margin-top: 8px;"><a href="${pageContext.request.contextPath}">
 		<img alt="" src="../resources/images/common/homeImg.png" id="homeImg"></a> > 
 		<a href="${pageContext.request.contextPath}/member/memberMypage">MYPAGE</a></h6>

@@ -50,5 +50,4 @@ public class NoticeDAO {
 	public int update(NoticeDTO noticeDTO) throws Exception {
 		return sqlSession.update(namespace+"update", noticeDTO);
 	}
-	
 }

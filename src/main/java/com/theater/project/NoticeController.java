@@ -32,9 +32,6 @@ public class NoticeController {
 		NoticeDTO noticeDTO = new NoticeDTO();
 		modelAndView = noticeService.selectList(listData);
 		modelAndView.addObject("num", noticeDTO.getNotice_num());
-		/*if(modelAndView != null){
-			throw new NullPointerException();
-		}  //ê°•ì œë¡? Exception ë°œìƒ*/
 		return modelAndView;
 	}
 
@@ -48,7 +45,7 @@ public class NoticeController {
 		return "board/boardView";
 	}
 
-	//insert -> form ?´?™
+	//insert -> form ?ï¿½ï¿½?ï¿½ï¿½
 	@RequestMapping(value="noticeWrite", method = RequestMethod.GET)
 	public String insert(Model model){
 		model.addAttribute("board", "notice");
@@ -68,7 +65,7 @@ public class NoticeController {
 		return "redirect:./noticeList";
 	}
 
-	//update -> form ?´?™
+	//update -> form ?ï¿½ï¿½?ï¿½ï¿½
 	@RequestMapping(value="noticeUpdate", method = RequestMethod.GET)
 	public String update(int num, Model model, ListData listData) throws Exception{
 		NoticeDTO noticeDTO = noticeService.selectOne(num);
@@ -82,9 +79,9 @@ public class NoticeController {
 	public String update(NoticeDTO noticeDTO, RedirectAttributes rd) throws Exception{
 		int result=0;
 		result = noticeService.update(noticeDTO);
-		String message = "¼öÁ¤¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù.";
-		if (result>0) {
-			message = "¼öÁ¤ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.";
+		String message="FAIL";
+		if(result>0){
+			message="SUCCESS";
 		}
 		rd.addFlashAttribute("message", message);
 		return "redirect:./noticeList";
@@ -95,9 +92,9 @@ public class NoticeController {
 	public String delete(int num, RedirectAttributes rd) throws Exception{
 		int result=0;
 		result = noticeService.delete(num);
-		String message="»èÁ¦¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù.";
+		String message="FAIL";
 		if(result>0){
-			message="»èÁ¦µÇ¾ú½À´Ï´Ù.";
+			message="SUCCESS";
 		}
 		rd.addFlashAttribute("message", message);
 		return "redirect:./noticeList";

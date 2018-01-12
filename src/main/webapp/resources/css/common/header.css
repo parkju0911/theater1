@@ -16,7 +16,9 @@ src:url('/web/font/FuturaMediumBT.TTF.woff') format('woff'),url('/web/font/Futur
 	padding: 0;
 	margin: 0;
 	padding: 0;
-	font-family: 'Nanum Gothic', sans-serif;
+	
+    font-family: "Lucida Console",Monospace;
+	/* font-family: 'Nanum Gothic', sans-serif; */
 }
 
 header {
@@ -34,19 +36,19 @@ header {
 }
 
 .header_logo {
-	float: left;
-	margin-top: -50px;
-	height: 210px;
-	width: 200px;
-	margin-left: -38px;
+	    float: left;
+    /* margin-top: -50px; */
+    height: 150px;
+    width: 260px;
+    margin-left: 60px;
 }
 
 #main_logo {
 	margin: 0 auto;
-	right: 0;
-	left: 0;
-	width: 107%;
-	margin-top: 28px;
+    right: 0;
+    left: 0;
+    width: 107%;
+    margin-top: 28px;
 }
 
 .member_wrap li {
@@ -70,7 +72,7 @@ header {
 }
 
 .mem_wrap {
-	width : 920px;
+	width : 700px;
 	height: 84px;
 	margin: 0 auto;
 	margin-right: 30px;
