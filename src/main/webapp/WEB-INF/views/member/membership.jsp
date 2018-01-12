@@ -25,6 +25,9 @@ height: auto;
     margin: 0 auto;
     padding-bottom: 50px;
 }
+.contents input{
+	font-size: 12px;
+}
 </style>
 </head>
 <link href="../resources/css/common/header.css" rel="stylesheet">
@@ -46,7 +49,7 @@ height: auto;
 			<h2>MEMBERSHIP</h2>
 		</div>
 		<form action="./memberUpdate" method="POST">
-		<div style="width: 850px; margin: 20px auto; padding: 30px 70px; border: 1px solid #e8e8e8; background: #fff; text-align: center;">
+		<div style="font-size:12px; width: 850px; margin: 20px auto; padding: 30px 70px; border: 1px solid #e8e8e8; background: #fff; text-align: center;">
 			<!-- 타이틀 영역-->
 			<div>
 				<div style="float: left; text-align: left;">
@@ -62,29 +65,28 @@ height: auto;
 			<p>	<span class="xans-member-var-name">${member.name}</span></strong> 님은 <strong class="group"> 
 			<span class="xans-member-var-group_name">${member.kind}</span>
 			<span class="myshop_benefit_ship_free_message"></span></strong> 회원입니다.</div>
-				<div>
+				<div class="contents">
 					<div style="text-align: left; padding: 15px 0; clear: both; vertical-align: middle; height: 35px;">
 						<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">아이디*</div>
 						<div style="float: left; font-size: 16px; font-weight: 300;">
-							<input type="text" id="id" name="id"value=" ${member.id}" readonly="readonly" class="member_txt">
+							<input type="text" id="id" name="id"value="${member.id}" readonly="readonly" class="member_txt">
 							<div id="id_check_msg"></div>
 						</div>
 								<div style="text-align: left; padding: 15px 0; clear: both; vertical-align: middle; height: 35px;">
 									<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">이름*</div>
 									<div style="float: left; font-size: 16px; font-weight: 300;">
-										<input type="text" id="name" name="name" value="" class="member_txt" size="10" hname="이름*" required="">
+										<input type="text" id="name" name="name" value="${member.name}" readonly="readonly" class="member_txt" hname="이름*" required="">
 									</div>
 									<div style="text-align: left; padding: 15px 0; clear: both; vertical-align: middle; height: 35px;">
 										<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">휴대폰*</div>
 										<div style="float: left; font-size: 16px; font-weight: 300;">
-											<input type="tel" name="phone" value=""
-												id="user_hphone" maxlength="13" class="member_txt"
-												onkeypress="if( (event.keyCode<48) || (event.keyCode>57) ) event.returnValue=false;">
+											<input type="tel" id="phone" name="phone" value="${member.phone}" maxlength="13" 
+						onkeypress="if( (event.keyCode<48) || (event.keyCode>57) ) event.returnValue=false;" class="member_txt">
 										</div>
 										<div style="text-align: left; padding: 15px 0; clear: both; vertical-align: middle; height: 35px;">
 											<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">이메일*</div>
 											<div style="float: left; font-size: 16px; font-weight: 300;">
-												<input type="text" id="email" name="email" value="" class="member_txt">
+												<input type="text" id="email" name="email" value="${member.email}" class="member_txt">
 											</div>
 										</div>
 									</div>
@@ -99,6 +101,18 @@ height: auto;
 												<div style="float: left; font-size: 16px; font-weight: 300;">
 													<input type="date" type="date" id="birth" name="birth" value="${user.birth}" class="member_txt" style=" font-size: 12px;">
 												</div>
+											</div>
+										</c:if>
+										<c:if test="${member.kind eq 'company'}">
+											<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">가로줄*</div>
+													<div style="float: left; font-size: 16px; font-weight: 300;">
+														<input type="number" id="row_num" name="row_num" class="member_txt" value="${company.row_num}">행 
+													</div>
+											</div>
+											<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">세로줄*</div>
+													<div style="float: left; font-size: 16px; font-weight: 300;">
+														<input type="number" id="col_num" name="col_num" class="member_txt" value="${company.col_num}">열 
+													</div>
 											</div>
 										</c:if>
 										<!-- <div style="text-align: left; padding: 15px 0; clear: both; vertical-align: middle; height: 35px;">
