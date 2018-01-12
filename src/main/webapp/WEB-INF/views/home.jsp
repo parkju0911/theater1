@@ -18,9 +18,9 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <style type="text/css">
-.member_wrap a {
+/* .member_wrap a {
    margin-top: 10px;
-}
+} */
 .push{
 	height: 0px;
 }

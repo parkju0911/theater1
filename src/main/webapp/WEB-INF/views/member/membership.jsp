@@ -46,6 +46,115 @@ height: auto;
 			<h2>MEMBERSHIP</h2>
 		</div>
 		<form action="./memberUpdate" method="POST">
+		<div style="width: 850px; margin: 20px auto; padding: 30px 70px; border: 1px solid #e8e8e8; background: #fff; text-align: center;">
+			<!-- 타이틀 영역-->
+			<div>
+				<div style="float: left; text-align: left;">
+					<span style="font-size: 24px; font-weight: 400;">TEATRO 회원정보수정</span>
+				</div>
+				<div style="font-size: 13px; font-weight: 300; text-align: right; padding-top: 15px; vertical-align: bottom;">
+					* 필수 입력항목</div>
+				<div style="border-top: 1px solid #e8e8e8; width: 100%; margin-top: 10px;"></div>
+			</div>
+			<!-- 타이틀 영역 끝-->
+			<div alt="입력필드" style="padding: 20px; overflow: hidden;">
+			<div class="o">저희 TEATRO를 이용해 주셔서 감사합니다.
+			<p>	<span class="xans-member-var-name">${member.name}</span></strong> 님은 <strong class="group"> 
+			<span class="xans-member-var-group_name">${member.kind}</span>
+			<span class="myshop_benefit_ship_free_message"></span></strong> 회원입니다.</div>
+				<div>
+					<div style="text-align: left; padding: 15px 0; clear: both; vertical-align: middle; height: 35px;">
+						<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">아이디*</div>
+						<div style="float: left; font-size: 16px; font-weight: 300;">
+							<input type="text" id="id" name="id"value=" ${member.id}" readonly="readonly" class="member_txt">
+							<div id="id_check_msg"></div>
+						</div>
+								<div style="text-align: left; padding: 15px 0; clear: both; vertical-align: middle; height: 35px;">
+									<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">이름*</div>
+									<div style="float: left; font-size: 16px; font-weight: 300;">
+										<input type="text" id="name" name="name" value="" class="member_txt" size="10" hname="이름*" required="">
+									</div>
+									<div style="text-align: left; padding: 15px 0; clear: both; vertical-align: middle; height: 35px;">
+										<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">휴대폰*</div>
+										<div style="float: left; font-size: 16px; font-weight: 300;">
+											<input type="tel" name="phone" value=""
+												id="user_hphone" maxlength="13" class="member_txt"
+												onkeypress="if( (event.keyCode<48) || (event.keyCode>57) ) event.returnValue=false;">
+										</div>
+										<div style="text-align: left; padding: 15px 0; clear: both; vertical-align: middle; height: 35px;">
+											<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">이메일*</div>
+											<div style="float: left; font-size: 16px; font-weight: 300;">
+												<input type="text" id="email" name="email" value="" class="member_txt">
+											</div>
+										</div>
+									</div>
+									<div style="text-align: left; padding:  0; clear: both; vertical-align: middle; height: 35px;">
+										<!-- <div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">
+											<br>
+										</div>
+										<div style="float: left; font-size: 16px; font-weight: 300;"></div> -->
+										<c:if test="${member.kind eq 'user'}">
+											<div id="user" style="text-align: left; padding: 15px 0; clear: both; vertical-align: middle; height: 35px;">
+												<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">생년월일*</div>
+												<div style="float: left; font-size: 16px; font-weight: 300;">
+													<input type="date" type="date" id="birth" name="birth" value="${user.birth}" class="member_txt" style=" font-size: 12px;">
+												</div>
+											</div>
+										</c:if>
+										<!-- <div style="text-align: left; padding: 15px 0; clear: both; vertical-align: middle; height: 35px;">
+											<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">회원*</div>
+											<div style="float: left; font-size: 16px; font-weight: 300;">
+												<input type="radio" name="kind" value="user" class="kind">
+												<label for="user_prefix_0" style="cursor: hand; font-weight: normal; font-size: 14px;">개인회원</label>
+												&nbsp;
+												<input type="radio" name="kind" value="company" class="kind">
+												<label for="user_prefix_1" style="cursor: hand; font-weight: normal; font-size: 14px;">회사회원</label>
+												&nbsp;
+											</div>
+											<div id="user" style="text-align: left; padding: 15px 0; clear: both; vertical-align: middle; height: 35px;">
+												<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">생년월일*</div>
+												<div style="float: left; font-size: 16px; font-weight: 300;">
+													<input type="date" name="birth" class="member_txt" style=" font-size: 12px;">
+												</div>
+											</div>
+											
+											<div id="company" style="text-align: left; padding: 15px 0; clear: both; vertical-align: middle; height: 35px;">
+												<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">사업자등록번호*</div>
+												<div style="float: left; font-size: 16px; font-weight: 300;">
+													<input type="number" name="company_num" class="member_txt">
+												</div>
+												<div style="text-align: left; padding: 15px 0; clear: both; vertical-align: middle; height: 35px;">
+													<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">가로줄*</div>
+													<div style="float: left; font-size: 16px; font-weight: 300;">
+														<input type="number" name="row_num" class="member_txt">
+													</div>
+													<div style="text-align: left; padding: 15px 0; clear: both; vertical-align: middle; height: 35px;">
+														<div style="float: left; font-size: 16px; font-weight: 500; width: 170px;">세로줄*</div>
+														<div style="float: left; font-size: 16px; font-weight: 300;">
+															<input type="number" name="col_num" class="member_txt">
+														</div>
+													</div>
+												</div>
+											</div>
+										</div> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				</form>
+			</div>
+			<div style="border-top: 1px solid #e8e8e8; width: 100%;"></div>
+			
+			<div alt="가입버튼" style="text-align: center; margin: 40px 0 40px 0;">
+				<input type="button" value="가입완료" id="join" style="width: 300px; height: 55px; border: none; background: #ffc108; color: #fff; font-size: 18px; font-weight: 400; margin-top: 15px;">
+			</div>
+		
+		
+		
+		<!-- ================================================================ -->
+		
 			<input type="hidden" name="kind" value="${member.kind}">
 			<div class="xans-element- xans-myshop xans-myshop-asyncbenefit">
 				<div class="infoWrap ">
