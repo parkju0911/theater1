@@ -60,15 +60,15 @@
   	</delete>
   	
   	<!-- 회원정보수정 -->
-  	<update id="memberUpdate" parameterType="String">
+  	<update id="memberUpdate" parameterType="com.theater.member.MemberDTO">
   		update member set phone=#{phone}, email=#{email} where id=#{id}
   	</update>
   	
-  	<update id="userUpdate" parameterType="String">
+  	<update id="userUpdate" parameterType="com.theater.member.UserDTO">
   		update user_info set birth=#{birth} where id=#{id}
   	</update>
   	
-  	<update id="companyUpdate" parameterType="String">
+  	<update id="companyUpdate" parameterType="com.theater.member.CompanyDTO">
   		update company_info set company_num=#{company_num}, row_num=#{row_num}, col_num=#{col_num} where id=#{id}
   	</update>
   	

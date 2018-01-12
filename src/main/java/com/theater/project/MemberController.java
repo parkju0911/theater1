@@ -244,15 +244,20 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value="memberUpdate", method=RequestMethod.GET)
-	public String memberUpdate(RedirectAttributes attributes, String id, HttpSession session){
+	@RequestMapping(value="memberUpdate", method=RequestMethod.POST)
+	public ModelAndView memberUpdate(ModelAndView modelAndView, MemberDTO memberDTO, UserDTO userDTO, CompanyDTO companyDTO){
 		int result = 0;
 		try {
-			result = memberService.memberUpdate(id);
-			if (session.getAttribute("user") != null) {
-				result = memberService.userUpdate(id);
-			} else if (session.getAttribute("company") != null) {
-				result = memberService.compantUpdate(id);
+			if(memberDTO != null){
+				result = memberService.memberUpdate(memberDTO);
+				if (memberDTO.getKind().equals("user")) {
+					result = memberService.userUpdate(userDTO);
+				} else if (memberDTO.getKind().equals("company")) {
+					result = memberService.companyUpdate(companyDTO);
+				}
+				/*session.setAttribute("member", memberDTO);
+				session.setAttribute("user", userDTO);
+				session.setAttribute("company", companyDTO);*/
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -262,8 +267,12 @@ public class MemberController {
 		if (result>0) {
 			message = "SUCCESS";
 		}
-		attributes.addFlashAttribute("message", message);
-		return "redirect:./memberMypage";
+		modelAndView.addObject("member", memberDTO);
+		modelAndView.addObject("user", userDTO);
+		modelAndView.addObject("company", companyDTO);
+		modelAndView.addObject("message", message);
+		modelAndView.setViewName("member/membership");
+		return modelAndView;
 	}
 
 }
