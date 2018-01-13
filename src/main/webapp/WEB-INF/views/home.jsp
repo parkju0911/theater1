@@ -10,7 +10,7 @@
 <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../resources/SE2/js/HuskyEZCreator.js"></script>
+<script type="text/javascript" src="./resources/SE2/js/HuskyEZCreator.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
    <title>Home</title>
 <link href="./resources/css/common/header.css" rel="stylesheet">
@@ -66,7 +66,26 @@ td, select {
     text-align: left;
     line-height: 20px;
 }
-
+#slidebox {
+		position:relative;
+		width:800px;
+		height:500px;
+		overflow:hidden;
+		white-space:nowrap;
+		border:1px solid #000;
+	}
+	#slidebox ul#slider {
+		list-style:none;
+		margin:0;
+		padding:0;
+	}
+	#slidebox ul li {
+		position:absolute;
+	}
+	#slidebox ul li img {
+		width:800px;
+		height:500px;
+	}
 </style>
 </head>
 <script type="text/javascript">
@@ -80,16 +99,25 @@ td, select {
 
 
 	<div class="w3-content w3-display-container" style="max-width: 800px;">
-
-		<img class="mySlides" src="./resources/images/home/sliderImg10.png"
-			style="width: 100%"> <img class="mySlides"
-			src="./resources/images/home/sliderImg9.png" style="width: 100%">
-		<img class="mySlides" src="./resources/images/home/sliderImg8.png"
-			style="width: 100%"> <img class="mySlides"
-			src="./resources/images/home/sliderImg7.png" style="width: 100%">
-		<img class="mySlides" src="./resources/images/home/sliderImg6.png"
-			style="width: 100%">
-
+		<div id="slidebox">
+			<ul id="slider">
+				<li>
+					<img class="mySlides" src="./resources/images/home/sliderImg10.png">
+				</li>
+				<li>
+					<img class="mySlides" src="./resources/images/home/sliderImg9.png">
+				</li>
+				<li>
+					<img class="mySlides" src="./resources/images/home/sliderImg8.png">
+				</li>
+				<li>
+					<img class="mySlides" src="./resources/images/home/sliderImg7.png">
+				</li>
+				<li>
+					<img class="mySlides" src="./resources/images/home/sliderImg6.png">
+				</li>
+			</ul>
+		</div>
 		<div
 			class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle"
 			style="width: 100%">
@@ -107,35 +135,91 @@ td, select {
 				onclick="currentDiv(5)"></span>
 		</div>
 	</div>
+	
+<script type='text/javascript'>
+	var x = 800;
+	var slider = document.getElementById("slider");
+	var slideArray = slider.getElementsByTagName("li");
+	var slideMax = slideArray.length - 1;
+	var curSlideNo = 0;
 
-	<script>
-var slideIndex = 1;
-showDivs(slideIndex);
+	for (i = 0; i <= slideMax; i++) {
+		if (i == curSlideNo)
+			slideArray[i].style.right = 0;
+		else
+			slideArray[i].style.right = -x + "px";
+	}
 
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
+	slider.addEventListener('click', function() {
+		changeSlide();
+	}, false);
 
-function currentDiv(n) {
-  showDivs(slideIndex = n);
-}
+	var aniStart = false;
+	var next = 1;
+	var changeSlide = function() {
+		if (aniStart === true)
+			return;
+		next = curSlideNo + 1;
+		if (next > slideMax)
+			next = 0;
+		aniStart = true;
+		sliding();
+	}
 
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("demo");
-  if (n > x.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-     dots[i].className = dots[i].className.replace(" w3-white", "");
-  }
-  x[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " w3-white";
-}
+	function sliding() {
+		var curX = parseInt(slideArray[curSlideNo].style.right, 10);
+		var nextX = parseInt(slideArray[next].style.right, 10);
+		var newCurX = curX + 10;
+		var newNextX = nextX + 10;
+		if (newCurX >= x) {
+			slideArray[curSlideNo].style.right = -x + "px";
+			slideArray[next].style.right = 0;
+			curSlideNo = curSlideNo + 1;
+			if (curSlideNo > slideMax)
+				curSlideNo = 0;
+			aniStart = false;
+			return;
+		}
+		slideArray[curSlideNo].style.right = newCurX + "px";
+		slideArray[next].style.right = newNextX + "px";
+		setTimeout(function() {
+			sliding();
+		}, 20);
+	}
+	setInterval(changeSlide, 7000);
 </script>
+<!-- <script>
+	var slideIndex = 1;
+	showDivs(slideIndex);
+
+	function plusDivs(n) {
+		showDivs(slideIndex += n);
+	}
+
+	function currentDiv(n) {
+		showDivs(slideIndex = n);
+	}
+
+	function showDivs(n) {
+		var i;
+		var x = document.getElementsByClassName("mySlides");
+		var dots = document.getElementsByClassName("demo");
+		if (n > x.length) {
+			slideIndex = 1
+		}
+		if (n < 1) {
+			slideIndex = x.length
+		}
+		for (i = 0; i < x.length; i++) {
+			x[i].style.display = "none";
+		}
+		for (i = 0; i < dots.length; i++) {
+			dots[i].className = dots[i].className.replace(" w3-white", "");
+		}
+		x[slideIndex - 1].style.display = "block";
+		dots[slideIndex - 1].className += " w3-white";
+	}
+</script> -->
 
 	<a href="drama/dramaList">Drama List</a>
 	<a href="./notice/noticeList">Go Notice</a>
@@ -143,7 +227,6 @@ function showDivs(n) {
 	<a href="./drama/chatform">chatting</a>
 	<a href="./point/pointList">pointList</a>
 	<a href="./point/pointCheck">pointCheck</a>
-
 
 <script type="text/javascript">
 	$(function(){
@@ -189,19 +272,6 @@ function showDivs(n) {
 						src="./resources/images/home/btn_more.png"
 						style="margin: 0 0 11px 10px;">
 					</a>
-					<%-- 
-					
-					<c:forEach items="${list}" var="dto">
-					<ul>
-						<li><div class="main_notice_txt ellip">
-						<img src="./resources/images/home/icon_box.png" style="padding: 0 4px 1px 0;">
-						<a href="./notice/noticeView.notice?num=${dto.notice_num}">${dto.title}</a>
-						</div>
-						
-					</ul>
-					</c:forEach>
-					 --%>
-					
 					<table width="100%" cellpadding="0" cellspacing="0" border="0">
 						<c:forEach begin="0" end="1" var = "i">
 							<tbody>
