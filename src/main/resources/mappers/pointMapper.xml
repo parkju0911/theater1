@@ -29,37 +29,27 @@
   	</insert>
 
    <select id="selectList" resultType="com.theater.point.PointDTO"  parameterType="java.util.HashMap"  >
-	 	 select * from 
+	 	 select * from
   		(select rownum R, P.* from 
-  		(select * from point) P)
-  		where R between 1 and 10
-
-	
+		(select * from point where id=#{id} order by reg_date desc)P) 
+  		where R between #{startRow} and #{lastRow} 
    </select>
    
    <select id="selectOne" resultType="com.theater.point.PointDTO" parameterType="com.theater.point.PointDTO">
-   select * from point where point_num=#{point_num}
-   
+   		select * from point where point_num=#{point_num}
    </select>
 
   	
   	<select id="totalCount" parameterType="com.theater.util.RowNum" resultType="int">
   		select count(*) from point
-  		
-  		<!-- select nvl(count(num),0) from notice -->
   	</select>
   	
   <update id="updatePoint" parameterType="com.theater.point.PointDTO">
-  update point set point=#{point} where id=#{id}
-  
+  		update point set point=#{point} where id=#{id}
   </update>
 
-
-
-
-  <insert id="pointcheck">
-<!--   insert into point values(point_seq.nextval, #{id},'적립','20',(select nvl(total_point, 0) from point)+#{point}, '출석체크', sysdate) -->
-insert into point values(point_num.nextval, #{id},'적립',3,#{total_point},'출석체크',sysdate)
+  <insert id="pointcheck"  parameterType="java.util.HashMap" >
+	insert into point values(point_num.nextval, #{id},'적립',3,#{total_point},'출석체크',sysdate)
   </insert>
   
    </mapper>
