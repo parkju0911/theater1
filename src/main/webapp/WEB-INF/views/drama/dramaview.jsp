@@ -46,6 +46,7 @@
 		});
 		//후기 전체 보기 클릭시 후기 리스트 출력
 		$("#reviewlist_all").click(function() {
+			
 			$("#review_list").load("./reviewlist?drama_num="+${view.drama_num})
 		});
 		
@@ -93,9 +94,12 @@ A:VISITED {
 
 			<input type="hidden" name="drama_num" value="${view.drama_num}">
 
-
+	<!--   이미지 가져오기 -->
 			<div id="drama_image">
-				<img src="../resources/images/drama_1.jpg">
+				<img src="../resources/upload/${view.fileNames}">
+
+
+				">  
 			</div>
 			
 			<div id="drama_info_form">
@@ -196,7 +200,7 @@ A:VISITED {
 
 			<ul class="nav nav-tabs"  style="width: 830px; margin: 0 auto;" >
 				<li class="active" id="menu_info"><a data-toggle="tab" href="#menu0" id="info">안내</a></li>
-				<li class="menu_li"><a data-toggle="tab" href="#menu1" id="review">후기(${total })</a></li>
+				<li class="menu_li"><a data-toggle="tab" href="#menu1" id="review" >후기(${total })</a></li>
 				<li class="menu_li"><a data-toggle="tab" href="#menu2" id="qna">Q&A</a></li>
 				<li class="menu_li"><a data-toggle="tab" href="#menu3" id="refund">환불규정</a></li>
 			</ul>

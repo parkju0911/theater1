@@ -162,6 +162,10 @@ public class DramaDAO  {
 		int result = sqlSession.insert(namespace+"review_insert", reviewDTO);
 		return result;
 	}
+/*	public List<DramaDTO> review_insert_select()throws Exception{
+		
+		return sqlSession.selectList(namespace+"review_insert");
+	}*/
 	//연극리뷰 이미지 번호
 	public int review_file_num(ReviewDTO reviewDTO)throws Exception{
 		return sqlSession.insert(namespace+"review_file_num", reviewDTO);
@@ -169,5 +173,9 @@ public class DramaDAO  {
 	//연극리뷰 업데이트(수정)
 	public int review_update(ReviewDTO reviewDTO)throws Exception{
 		return sqlSession.update(namespace+"review_update", reviewDTO);
+	}
+	//연극리뷰 삭제
+	public int review_delete(int review_num)throws Exception{
+		return sqlSession.delete(namespace+"review_delete", review_num);
 	}
 }

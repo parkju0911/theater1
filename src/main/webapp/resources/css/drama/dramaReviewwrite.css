@@ -59,3 +59,11 @@
 	text-decoration: none;
 	list-style: none;
 }
+#select_drama{
+	    margin-right: 50px;
+	    margin-left: -150px;
+	
+}
+.option_height{
+	height: 30px;
+}

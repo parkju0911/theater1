@@ -125,11 +125,24 @@ input {
 
 	<form id="frm" action="dramaReviewwrite" method="post" enctype="multipart/form-data">
 		<table>
+		
 			<tr>
-				<td><input type="text" name="title" placeholder="제목을 입력해주세요."></td>
-				<td>작성자<input type="text" name="id" placeholder="${member.id }" value="${member.id}"></td>
+				<td><select id="select_drama" style="height: 30px;">
+							<optgroup label="공연을 선택하여주세요">
+								<option class="option_height">리뷰 작성하실 공연을 선택하여주세요</option>
+				
+						<c:forEach items="${list}" var="drama">
+							<option class="option_height"  name="drama_num"  value="${drama.drama_num}" title="${drama.drama_num }">${drama.title }</option>
+				
+						</c:forEach>
+							</optgroup>
+				
+					</select><input type="text" name="title" placeholder="제목을 입력해주세요."></td>
+				<td>작성자<input type="text" name="id" placeholder="${member.id }" value="${member.id}" readonly="readonly"></td>
 
 			</tr>
+			
+			
 			<tr>
 				<td class="content" colspan="2">
 				<textarea id="contents"name="contents">
@@ -147,24 +160,12 @@ input {
 					</ul>
 				
 				</textarea>
-		<!-- 			<div id="star_form">
-				<ul class="choice-rating">
-		<li><label for="rating5"><span class="rating"><span style="width:100%;height: 50px;">별5</span></span>
-			<input type="radio" name="star_pt" value="5" class="radio" id="rating5" style="width: 50px;"></label></li>
-		<li><label for="rating4"><span class="rating"><span style="width:80%;height: 50px;">별4</span></span></label>
-			<input type="radio" name="star_pt" value="4" class="radio" id="rating4" style="width: 50px;"></li>
-		<li><label for="rating3"><span class="rating"><span style="width:60%;height: 50px;">별3</span></span></label>
-			<input type="radio" name="star_pt" value="3" class="radio" id="rating3" style="width: 50px;"></li>
-		<li><label for="rating2"><span class="rating"><span style="width:40%;height: 50px;">별2</span></span></label>
-			<input type="radio" name="star_pt" value="2" class="radio" id="rating2" style="width: 50px;"></li>
-		<li><label for="rating1"><span class="rating"><span style="width:20%;height: 50px;">별1</span></span></label>
-			<input type="radio" name="star_pt" value="1" class="radio" id="rating1" style="width: 50px;"></li>
-		</ul>	
-		
-		</div>
-				 -->
+	
 				
 				</td>
+			</tr>
+			<tr>
+			<td><input type="file" name="reviewwrite"></td>
 			</tr>
 		</table>
 		

@@ -88,24 +88,43 @@
 					
 			<table id="qna_box">
 				<c:forEach items="${qnalist}"  var="list">
-				
-					<tr>
-						<td><div id="member_qna1">
-								${list.id } ${list.reg_date }<a href="##"  class="write_reply" id="${list.qna_viewnum }" title="${list.qna_viewnum }">
+						
+						<tr>
+							<td><div id="member_qna1">${list.qna_viewnum } ${list.id } ${list.reg_date }
+																			<a href="##"  class="write_reply" id="${list.qna_viewnum }" title="${list.qna_viewnum }">
 																			<img alt="" src="../resources/images/starpoint/btn_write_reply.png"></a>
-																			
 																			<a href="qna_delete?qna_viewnum=${list.qna_viewnum }" class="del_reply" onclick="del()"><img alt="" src="../resources/images/starpoint/btn_del_reply.png"></a>
-																		
-																			</div></td>
-					</tr>
+							</div></td>
+						</tr>
+					
 					<tr>
-						<td><div id="member_qna2"> ${list.contents }</div></td>
+							<td><div id="member_qna2">
+										
+						
+										 ${list.contents }</div>
+										 
+								
+										 
+										 
+										 </td>
 					</tr>
+						<c:catch>
+										<c:forEach begin="1" end="${list.depth }">
+						
+										<img src="../resources/images/starpoint/reply_icon.png">
+				
+										</c:forEach>
+								</c:catch>		 
+					
 					<tr>
+			
+								
 <!--------------답글------------->		
 						<td class="${list.qna_viewnum }" id="reply_form">
-							<form action="drama/qnalist" method="post" style="float: left;">
-								
+							<form action="qnareply"  method="post" style="float: left;">
+									
+									<input type="hidden"  name="drama_num" value="${drama_num}" >
+									
 								<textarea  name="contents" style="width: 400px; height: 50px; margin-left: 30px;"></textarea>
 								<button style="width: 70px; height: 50px; margin-left: 10px; float: right;">답변하기</button> 
 							

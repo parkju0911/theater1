@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -42,6 +43,7 @@ public class DramaService {
 		return dramaDAO.selectSeat(drama_num, date_num);
 	}
 	public DramaDTO selectOne(int drama_num) throws Exception{
+
 		return dramaDAO.selectOne(drama_num);
 	}
 	
@@ -136,6 +138,7 @@ public class DramaService {
 		RowNum rowNum = listData.makeRow();
 		Pager pager = listData.makePage(dramaDAO.totalcount_review(rowNum));
 		List<ReviewDTO> reviewlist = dramaDAO.dramaReviewList(rowNum);
+		
 		mv.addObject("pager", pager);
 		mv.addObject("review", reviewlist);
 		mv.setViewName("drama/dramaReview");
@@ -149,31 +152,48 @@ public class DramaService {
 	//공연리뷰 작성(insert)
 	@Transactional
 	public int review_insert(ReviewDTO reviewDTO ,  HttpSession session , MultipartHttpServletRequest Ms)throws Exception{
+		System.out.println("service 앞");
+		int file_num = fileDAO.review_file_num();
+		System.out.println("insert 뒤");
 		int result = dramaDAO.review_insert(reviewDTO);
 		
-		int file_num = dramaDAO.review_file_num(reviewDTO);
 		MultipartFile  file  = Ms.getFile("reviewwrite"); 
 		List<FileDTO> names = new ArrayList<FileDTO>();
 	
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("num", reviewDTO.getReview_num());
+		map.put("review_num", reviewDTO.getReview_num());
 		map.put("title", reviewDTO.getTitle());
 		map.put("contents", reviewDTO.getContents());
-		
-		
+
 			String name = fileSaver.fileSave(file, session, "upload");
 			FileDTO fileDTO = new FileDTO();
 			fileDTO.setFile_num(reviewDTO.getReview_num());
 			fileDTO.setFile_name(name);
 			fileDTO.setFile_route(file.getOriginalFilename());
 			names.add(fileDTO);
+			fileDAO.insert(fileDTO);
 		
 		return result;
 	}
+	/*//공연리뷰 작성시 drama select
+	public ModelAndView review_insert_select()throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		List<DramaDTO> ar = dramaDAO.review_insert_select();
+		mv.addObject("dramalist", ar);
+		return mv;
+	}*/
+	//공연리뷰 수정
 	public int review_update(ReviewDTO reviewDTO)throws Exception{
 		int result = dramaDAO.review_update(reviewDTO);
 		return result;
 	}
+	//공연리뷰 삭제
+	public int review_delete(int review_num)throws Exception{
+		int result = dramaDAO.review_delete(review_num);
+		return result;
+	}
+	
 	//광 
 	
 	
