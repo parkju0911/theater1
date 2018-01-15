@@ -78,7 +78,7 @@ border-top: 2px solid #5d4137;
 		
 		<form action="./memberUpdate" method="POST">
 		<input type="hidden" name="kind" value="${member.kind}">
-		<div style="font-size:12px; width: 850px; margin: 20px auto; padding: 30px 70px; border: 1px solid #e8e8e8; background: #fff; text-align: center;">
+		<div style="font-size:12px; width: 850px; margin: 20px auto; padding: 30px 70px; border: 1px solid #e8e8e8; background: #fff; text-align: center; padding: 108px; padding-top: 47px;padding-bottom: 55px;">
 			<!-- 타이틀 영역-->
 			<div>
 				<div style="float: left; text-align: left;">
@@ -90,7 +90,7 @@ border-top: 2px solid #5d4137;
 			</div>
 			<!-- 타이틀 영역 끝-->
 			<div alt="입력필드" style="padding: 20px; overflow: hidden;padding-bottom: 64px;">
-			<div class="o">저희 TEATRO를 이용해 주셔서 감사합니다.
+			<div class="o" style="padding: 7px;">저희 TEATRO를 이용해 주셔서 감사합니다.
 			<p>	<span class="xans-member-var-name">${member.name}</span></strong> 님은 <strong class="group"> 
 			<span class="xans-member-var-group_name" style="font-weight: normal; ">${member.kind}</span>
 			<span class="myshop_benefit_ship_free_message"></span></strong> 회원입니다.</div>
@@ -148,12 +148,12 @@ border-top: 2px solid #5d4137;
 					</div>
 					<div style="border-top: 1px solid #e8e8e8; width: 100%;"></div>
 					<div alt="가입버튼"
-						style="text-align: center; margin: 30px 0 30px 0; font-family: 'Nanum Gothic', sans-serif;">
+						style="text-align: center; margin: 30px 0 30px 0; font-family: 'Nanum Gothic', sans-serif;      margin-top: 4px;  padding: 11px;">
 						<!-- <input type="submit" id="update" value="수정" id="join" style="width: 300px; height: 55px; border: none; background: #ffc108; color: #fff; font-size: 18px; font-weight: 400; margin-top: 15px;"> -->
 						<input type="submit" id="update" value="수정"
-							style="border-radius: 7px; width: 300px; height: 55px; border: none; background: #ffc108; color: #fff; font-size: 18px; font-weight: 400; margin-top: 15px;">
+							style="float: right; border-radius: 7px; width: 95px; height: 47px; border: none; background: #ffc108; color: #fff; font-size: 18px; font-weight: 400; margin-top: 15px;">
 						<div
-							style="width: 300px; height: 55px; margin: 0 auto; border: none; background: #c7c7c7; margin-top: 15px; border-radius: 7px;">
+							style="    width: 95px; height: 47px; float: left; margin: 0 auto; border: none; background: #c7c7c7; margin-top: 15px; border-radius: 7px;">
 							<a href="./memberDelete?id=${member.id}"
 								onclick="if(!confirm('정말로 탈퇴하시겠습니까?')){return false;}"
 								style="height: auto; color: #fff; font-size: 18px; font-weight: 400; vertical-align: middle;">

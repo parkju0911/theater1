@@ -10,6 +10,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="../resources/css/common/header.css" rel="stylesheet">
 <link href="../resources/css/drama/dramaList.css" rel="stylesheet">
+<script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
+<script type="text/javascript" src="../resources/SE2/js/HuskyEZCreator.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script type="text/javascript">
 	$(function() {
 		var message = '${message}';
@@ -28,6 +31,11 @@
 		});
 	});
 </script>
+<style type="text/css">
+.right a{
+	color:black;
+}
+</style>
 <title>Insert title here</title>
 </head>
 <body>

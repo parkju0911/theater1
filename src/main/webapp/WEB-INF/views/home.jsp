@@ -65,10 +65,11 @@ td, select {
 }
 #slidebox {
 		position:relative;
-		width:800px;
-		height:500px;
+		width: 690px;
+    height: 518px;
 		overflow:hidden;
 		white-space:nowrap;
+		    MARGIN: 0 AUTO;
 	}
 	#slidebox ul#slider {
 		list-style:none;
@@ -77,10 +78,11 @@ td, select {
 	}
 	#slidebox ul li {
 		position:absolute;
+		MARGIN-TOP: 128PX;
 	}
 	#slidebox ul li img {
-		width:800px;
-		height:500px;
+		width: 689PX;
+    height: 390PX;
 	}
 </style>
 </head>
@@ -94,43 +96,25 @@ td, select {
 	<c:import url="./temp/header.jsp"></c:import>
 
 
-	<div class="w3-content w3-display-container" style="max-width: 1100px;
-    background-image: url(./resources/images/home/main0.png);
-    width: 100%;
-    height: 700px;">
+	<div class="w3-content w3-display-container" style="max-width: 1000px;    background-image: url(./resources/images/home/MAINBG.png);    width: 100%;    height: 650px;    MARGIN: 0 AUTO;">
 			<div id="slidebox">
 			<ul id="slider">
-				<!-- <li>
-					<img class="mySlides" src="./resources/images/home/sliderImg10.png">
+				<li>
+					<img class="mySlides" src="./resources/images/home/main1.jpg">
 				</li>
 				<li>
-					<img class="mySlides" src="./resources/images/home/sliderImg9.png">
+					<img class="mySlides" src="./resources/images/home/main2.jpg">
 				</li>
 				<li>
-					<img class="mySlides" src="./resources/images/home/sliderImg8.png">
+					<img class="mySlides" src="./resources/images/home/main3.jpg">
 				</li>
 				<li>
-					<img class="mySlides" src="./resources/images/home/sliderImg7.png">
+					<img class="mySlides" src="./resources/images/home/main4.jpg">
 				</li>
 				<li>
-					<img class="mySlides" src="./resources/images/home/sliderImg6.png">
-				</li> -->
+					<img class="mySlides" src="./resources/images/home/main5.jpg">
+				</li>
 			</ul>
-		</div>
-		<div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle"
-			style="width: 100%">
-			<div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
-			<div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
-			<span class="w3-badge demo w3-border w3-transparent w3-hover-white"
-				onclick="currentDiv(1)"></span> <span
-				class="w3-badge demo w3-border w3-transparent w3-hover-white"
-				onclick="currentDiv(2)"></span> <span
-				class="w3-badge demo w3-border w3-transparent w3-hover-white"
-				onclick="currentDiv(3)"></span> <span
-				class="w3-badge demo w3-border w3-transparent w3-hover-white"
-				onclick="currentDiv(4)"></span> <span
-				class="w3-badge demo w3-border w3-transparent w3-hover-white"
-				onclick="currentDiv(5)"></span>
 		</div>
 	</div>
 	
@@ -184,7 +168,7 @@ td, select {
 			sliding();
 		}, 20);
 	}
-	setInterval(changeSlide, 7000);
+	setInterval(changeSlide, 6000);
 </script>
 <!-- <script>
 	var slideIndex = 1;
