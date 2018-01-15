@@ -1,14 +1,20 @@
 package com.theater.project;
 
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -29,6 +35,39 @@ public class DramaController {
 	public DramaService dramaService;
 	@Inject
 	public MemberService memberService;
+	
+	
+	
+@RequestMapping(value="checkCookie", method=RequestMethod.GET)
+	public String testCookie(HttpServletResponse response) throws Exception{
+	Cookie setCookie = new Cookie("name", URLEncoder.encode("dfdf", "UTF-8")); // 쿠키 생성
+/*	Cookie cookie = new Cookie(name, URLEncoder.encode(value, "UTF-8"));*/
+	
+	setCookie.setMaxAge(60*60*24); // 기간을 하루로 지정
+	response.addCookie(setCookie);
+return "sss";
+	}
+	
+	@RequestMapping(value="chkRecent", produces = "application/json; charset=utf8", method=RequestMethod.GET)
+	@ResponseBody
+	public String[] testCookie(HttpServletRequest request) throws Exception{
+		Cookie[] getCookie = request.getCookies();
+		/*String value = URLDecoder.decode(cookie.getValue(), "UTF-8");
+		[출처] 쿠키 값에 한글 값을 세팅하여 넘길시 발생 하는 에러|작성자 제이홀릭*/
+		String value="";
+		String [] values=null;
+			for(int i=0; i<getCookie.length; i++){
+				Cookie c = getCookie[i];
+				String name = c.getName(); // 쿠키 이름 가져오기
+				if(name.equals("title")){
+					
+					value = URLDecoder.decode(c.getValue(),"UTF-8"); // 쿠키 값 가져오기
+					values=value.split(",");
+					
+				}
+			}
+			return values;
+	}
 	
 	//리뷰 리스트 , 별점,별점 평균점수
 	@RequestMapping(value="reviewlist")
@@ -95,7 +134,8 @@ public class DramaController {
 	}
 	//Drama View
 	@RequestMapping(value="dramaview")
-	public ModelAndView selectOne(int drama_num, ModelAndView mv,RedirectAttributes rd) throws Exception{
+	public ModelAndView selectOne(int drama_num, ModelAndView mv,RedirectAttributes rd,HttpServletRequest request, HttpServletResponse response) throws Exception{
+	
 		//공연 정보가져오기
 		DramaDTO dramaDTO = dramaService.selectOne(drama_num);
 		//해당 공연의 날짜 정보 가져오기
@@ -105,6 +145,32 @@ public class DramaController {
 			mv.addObject("view", dramaDTO);
 			mv.addObject("list", ar);
 			mv.setViewName("drama/dramaview");
+			
+			Cookie[] getCookies=request.getCookies();
+			String value=URLEncoder.encode(dramaDTO.getTitle(), "UTF-8");
+			String result="";
+			for(Cookie c:getCookies){
+				if(c.getName().equals("title")){
+					String [] ar2=URLDecoder.decode(c.getValue(), "UTF-8").split(",");
+					//ddd, 2
+					for(int i=0;i<ar2.length;i++){
+						System.out.println("1111111111111:n     "+value);
+						System.out.println("2222222222222:    "+ar2[i]);
+						if(URLDecoder.decode(ar2[i], "UTF-8").equals(value)){
+							continue;
+						}else {
+							result=result+ar2[i]+",";
+						}
+					}//for
+					
+					result=result+dramaDTO.getTitle();
+					value=result;
+					
+				}//if
+			}//for
+			Cookie c=new Cookie("title", URLEncoder.encode(value, "UTF-8"));
+			
+			response.addCookie(c);
 		}else {
 			rd.addFlashAttribute("message", "잘못된 접근방식 입니다.");
 			mv.setViewName("Redirect:../");

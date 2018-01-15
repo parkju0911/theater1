@@ -178,13 +178,13 @@ display:inline-block;
 
 
 <script type="text/javascript">
-//
+/* //
 // recent item    
 var Cpage;   // 현재 페이지 
-var pagingSize = 4;   // 원하는 페이지 사이즈로 조정하세용 
+var pagingSize = 4;   // 원하는 페이지 사이즈로 조정
 function chkRecent(a){
 var itemID = getCookie("itemID");
-$("#right_zzim ul").html('');    // 일단 Ul 내용 지우기... 
+$("#right_zzim ul").html('');    //Ul 내용 지우기
 if(itemID)
 	var totcount = itemID.split('&').length-1;   //
 	var totpage = Math.ceil(totcount / pagingSize) *1;
@@ -201,10 +201,10 @@ if(itemID)
 		if(thisItem){
 			var itemId = thisItem.split(':')[0];
 			/* var itemImg = thisItem.split(':')[1];	
-			<img src="http://www.xxx.com/images/s'+itemImg+'"  width="75" border=1>*/
-			$("#right_zzim ul").append('<li><a href="/_detail.php?id='+itemId+'" target="_top"></a><div class="detail"><a href="javascript:removeRecentItem(\''+thisItem+'\')" class="btn_delete">삭제</a></div></li>')
+			<img src="http://www.xxx.com/images/s'+itemImg+'"  width="75" border=1>
+			$("#right_zzim ul").append('<li><a href="/_detail.php?id='+itemId+'" target="_top"></a><div class="detail"><a href="javascript:removeRecentItem(\''+thisItem+'\')" class="btn_delete">삭제</a></div></li>')*/
 
-		}
+/* 		}
 	}		
 	$("#paging").show();
 }
@@ -236,15 +236,34 @@ function updateRecentPage(totcount,Cpage){  //
 }
 
 
-$(".btn_next").on('click',function(){
-chkRecent(Cpage + 1);
-});
-$(".btn_prev").on('click',function(){
-chkRecent(Cpage - 1);
-});
 
+ */ 
 
 	$(function() {
+	         $.ajax({
+	                type: 'GET',
+	                url: '../drama/chkRecent',
+	                success: function(data){
+	                	$(data).each(function(){
+	                		var d=this;
+	                		$("#d").append("<li>"+d+"</li>");
+	                	
+	                	});
+	                }
+	                		
+	         });
+	     
+
+			
+		
+	
+	$(".btn_next").on('click',function(){
+		chkRecent(Cpage + 1);
+		});
+		$(".btn_prev").on('click',function(){
+		chkRecent(Cpage - 1);
+		});
+		
 		var message = '${message}';
 		if(message != '') {
 			alert(message);
@@ -386,7 +405,7 @@ chkRecent(Cpage - 1);
 
 		<div  class="recTit">최근본상품 <span id=recentCnt></span></div>
 
-			<ul></ul>    <!-- 본 상품이 뿌려질 부분  -->
+			<ul id="d"></ul>    <!-- 본 상품이 뿌려질 부분  -->
 
 		<div id="paging"><a class="btn_prev" style="cursor:pointer" >이전</a><span  id="currentPage"></span><span id="totalPageCount"></span><a class="btn_next" style="cursor:pointer" >다음</a></div>
 

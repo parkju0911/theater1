@@ -53,7 +53,7 @@
 		$("#fileAdd").click(function() {
 			count++;
 			index++;
-			if(index <= 5) {
+			if(index <= 1) {
 				var box = document.createElement("DIV");
 				
 				var span = document.createElement("SPAN");
@@ -74,7 +74,7 @@
 			    
 			    $("#filebox").append(box);
 			} else {
-				alert("5개까지만 추가할 수 있습니다.");
+				alert("파일은 1개만 등록 가능합니다.");
 				index = 5;
 			}
 		});
