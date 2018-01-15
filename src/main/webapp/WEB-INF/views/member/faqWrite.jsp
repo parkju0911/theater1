@@ -54,53 +54,7 @@ td {
 	float: right;
     margin-right: 106px;
 }
-
-.fileSec {
-	margin: 1% 24%;
-}
-
-#add {
-	width: 135px;
-}
-
-#delete {
-	width: 135px;
-}
-.#smart_editor2 .se2_input_wysiwyg{
-	min-height: 400px;
-}
 </style>
-<script type="text/javascript" src="../resources/SE2/js/HuskyEZCreator.js"></script>
-<script type="text/javascript">
-	$(function() {
-		//SmartEditor start
-		//전역변수선언
-		var editor_object = [];
-
-		nhn.husky.EZCreator.createInIFrame({
-			oAppRef : editor_object,
-			//textarea ID
-			elPlaceHolder : "contents",
-			sSkinURI : "../resources/SE2/SmartEditor2Skin.html",
-			htParams : {
-				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-				bUseToolbar : true,
-				// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-				bUseVerticalResizer : true,
-				// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-				bUseModeChanger : true,
-			}
-		});
-
-		//전송버튼 클릭이벤트
-		$("#savebutton").click(
-				function() {
-					//id가 smarteditor인 textarea에 에디터에서 대입
-					editor_object.getById["contents"].exec("UPDATE_CONTENTS_FIELD", []);
-					$("#frm").submit();
-		});
-	});
-</script>
 <link href="../resources/css/board/boardHeader.css" rel="stylesheet">
 <link href="../resources/css/common/header.css" rel="stylesheet">
 </head>
@@ -116,12 +70,14 @@ td {
 			</h6>
 		</div>
 <div class="board_wrap1">
-	<form action="faqWrite" method="post" id="frm" enctype="multipart/form-data">
+	<form action="faqWrite" method="post" id="frm">
 		<table>
 			<tr>
-				<td style="margin-left: 10px; float: left;">제목 : <input type="text" name="title" placeholder="제목을 입력해주세요." class="write_ip"
+				<td style="margin-left: 10px; float: left;">제목 : 
+					<input type="text" name="title" placeholder="제목을 입력해주세요." class="write_ip"
 				 style="width: 500px; border: none; border-bottom: 1px solid lightgray; border-radius:0px;"></td>
-				<td style="float: right; margin-right: 50px; padding-bottom: 20px;">작성자 : <input type="text" value="${member.id}" placeholder="글쓴이를 입력해주세요." class="write_ip" readonly="readonly"
+				<td style="float: right; margin-right: 50px; padding-bottom: 20px;">작성자 : 
+					<input type="text" name="id" value="${member.id}" class="write_ip" readonly="readonly"
 				 style="width: 150px; border: none; border-bottom: 1px solid lightgray; border-radius:0px;"></td>
 			</tr>
 			<tr>
@@ -130,7 +86,7 @@ td {
 				</td>
 			</tr>
 		</table>		
-		<input type="button" id="savebutton" value="write" class="btn btn-default">
+		<input type="submit" id="savebutton" value="write" class="btn btn-default">
 	</form>
 	</div>
 <c:import url="../temp/footer.jsp"></c:import>

@@ -8,7 +8,7 @@
   	<resultMap type="DramaListDTO" id="dramalistDTO"/>
  	<resultMap type="CompanyDTO" id="companyDTO"/>
   	<resultMap type="ReviewDTO" id="reviewDTO"/>
-  	<resultMap type="QnaDTO" id="qnaDTO"/>
+  	<resultMap type="FaqDTO" id="faqDTO"/>
   	<resultMap type="Qna_viewDTO" id="qna_viewDTO"/>
   	<resultMap type="SeatDTO" id="seatDTO"/>
   	<resultMap type="DramaDTO" id="dramaDTO">
