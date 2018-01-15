@@ -94,7 +94,8 @@ $(function(){
 						select_seat : arr.toString(),
 						drama_date : $('#date').val(),
 						drama_time : $('#time').val(),
-						ticket_numbers : ${seat.ticket_numbers}
+						ticket_numbers : ${seat.ticket_numbers},
+						price : ${drama.price}
 					});
 					
 					$(location).attr('href', 'dramaview?drama_num='+'${drama.drama_num}');

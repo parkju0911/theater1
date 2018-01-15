@@ -1,0 +1,116 @@
+@charset "UTF-8";
+* {
+   list-style: none;
+   text-decoration: none;
+}
+.orderListArea{
+	height: auto;
+    width: 1000px;
+    margin: 0 auto;
+    padding-top: 5px;
+}
+
+.orderListArea .title {
+    position: relative;
+    height: 38px;
+    margin: 0;
+    padding: 0 0 0 0;
+    border-bottom: 0;
+    line-height: 38px;
+    width: 1000px;
+}
+
+.orderListArea .title {
+    position: relative;
+    height: 38px;
+    margin: 0;
+    padding: 0 0 0 0;
+    border-bottom: 0;
+    line-height: 38px;
+}
+.title h3 {
+    display: inline-block;
+    vertical-align: middle;
+    color: #353535;
+    font-size: 12px;
+}
+.orderListArea .title + .ec-base-table table {
+    margin: 0;
+}
+.ec-base-table.typeList table {
+    border-top-color: #e7e7e7;
+    border-left: 0;
+    border-right: 0;
+}
+
+.ec-base-table table {
+    position: relative;
+    margin: 10px 0 0;
+    border: 1px solid #e7e7e7;
+    border-top-color: #fff;
+    color: #fff;
+    font-size: 11px;
+    line-height: 1.5;
+}
+table {
+    width: 100%;
+    border: 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+caption {
+    display: none;
+}
+
+.ec-base-table th:first-child {
+    border-left: 0;
+}
+.ec-base-table thead th {
+    padding: 12px 0 11px;
+    border-bottom: 1px solid #e7e7e7;
+    color: #5d4137;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+}
+th, td {
+    border: 0;
+    vertical-align: top;
+}
+.ec-base-table .right {
+    text-align: right;
+}
+.ec-base-table.typeList tfoot td {
+    padding: 11px 12px 12px;
+    background: #fbfbfb;
+}
+.ec-base-table.typeList td {
+    padding: 13px 10px 12px;
+}
+.ec-base-table td {
+    padding: 11px 10px 10px;
+    border-top: 1px solid #e7e7e7;
+    color: #353535;
+    vertical-align: middle;    
+    text-align: center;
+}
+}
+.xans-order-form .ec-base-table tfoot td .gLeft {
+    float: left;
+    margin: 6px 0 0;
+}
+
+.txtInfo {
+    color: #707070;
+}
+
+.title_wrap{
+    border-top: 2px solid #5d4137;
+    padding-top: 8px;
+}
+.buyImage{
+	width: auto;
+	height: 200px;
+	padding-bottom: 8px;
+}

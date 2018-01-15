@@ -1,6 +1,5 @@
 package com.theater.point;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,9 +8,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
-
 import org.springframework.web.servlet.ModelAndView;
-
 
 import com.theater.util.ListData;
 import com.theater.util.Pager;
@@ -25,13 +22,12 @@ public class PointService {
 	private PointDAO pointDAO;
 	
 
-	public ModelAndView selectList(ListData listData) throws Exception {
+	public ModelAndView selectList(ListData listData,String id) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		RowNum rowNum = listData.makeRow();
 		Pager pager = listData.makePage(pointDAO.totalCount(rowNum));
-		PointDTO pointDTO=new PointDTO();
 		
-		List<PointDTO> ar = pointDAO.selectList(rowNum);
+		List<PointDTO> ar = pointDAO.selectList(id,rowNum);
 		
 		mv.addObject("id","iu");
 		mv.addObject("pager", pager);
@@ -55,27 +51,14 @@ public class PointService {
 		int result=pointDAO.updatePoint(pointDTO);
 		return result;
 	}
-	public int  attendCheck (PointDTO pointDTO, HttpSession session)throws Exception{//출석체크
-		
-	
-		
-		
+	public int  attendCheck (PointDTO pointDTO, HttpSession session,String id)throws Exception {
+		//출석체크
 		Map<String, Object> map = new HashMap<String, Object>();
-		
-		
-	
-		map.put("point_num",pointDTO.getPoint_num());
-		map.put("id", "iu");
-		map.put("history","적립");
-		map.put("point", 3);
-		map.put("total_point",pointDTO.getTotal_point());
-		map.put("kind","출석체크");
-		map.put("reg_date",pointDTO.getReg_date());
-	
-		int	result=pointDAO.attendCheck(map);
-	
-		
 
+		map.put("point_num",pointDTO.getPoint_num());
+		
+		int	result=pointDAO.attendCheck(pointDTO, id);
+		
 		return result;
 	}
 	
