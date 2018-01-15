@@ -1,6 +1,5 @@
 package com.theater.point;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,9 +8,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
-
 import org.springframework.web.servlet.ModelAndView;
-
 
 import com.theater.util.ListData;
 import com.theater.util.Pager;
@@ -29,7 +26,6 @@ public class PointService {
 		ModelAndView mv = new ModelAndView();
 		RowNum rowNum = listData.makeRow();
 		Pager pager = listData.makePage(pointDAO.totalCount(rowNum));
-		PointDTO pointDTO=new PointDTO();
 		
 		List<PointDTO> ar = pointDAO.selectList(rowNum);
 		

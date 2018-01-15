@@ -17,7 +17,16 @@
   		<result property="reg_date" column="reg_date"/>
   	
   	</resultMap> -->
-  
+  	<!-- selectSeat관련 -->
+  	<select id="searchPoint_num" resultType="int">
+  		select point_num.nextval from dual
+  	</select>
+  	<select id="totalPointList" parameterType="String" resultType="com.theater.point.PointDTO">
+  		select * from point where id=#{id} order by point_num desc
+  	</select>
+  	<insert id="insertPoint_seat" parameterType="com.theater.point.PointDTO">
+  		insert into point values(#{point_num},#{id},'연극 예매',#{point}, #{total_point}, '적립', sysdate)
+  	</insert>
 
    <select id="selectList" resultType="com.theater.point.PointDTO" parameterType="com.theater.util.RowNum" >
 		select * from

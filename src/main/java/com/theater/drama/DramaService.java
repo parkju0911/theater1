@@ -15,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.theater.file.FileDAO;
 import com.theater.file.FileDTO;
 import com.theater.member.MemberDTO;
+import com.theater.point.PointDAO;
+import com.theater.point.PointDTO;
 import com.theater.qna.Qna_viewDTO;
 import com.theater.review.ReviewDTO;
 import com.theater.util.FileSaver;
@@ -31,14 +33,35 @@ public class DramaService {
 	private FileSaver fileSaver;
 	@Inject
 	private FileDAO fileDAO;
+	@Inject
+	private PointDAO pointDAO;
 	
-	/*1-10수정*/
-	public int insertBuy(SeatDTO seatDTO, MemberDTO memberDTO) throws Exception{
+	//orderlist 관련 01-15
+	public List<OrderListDTO> orderList(MemberDTO memberDTO) throws Exception{
+		return dramaDAO.orderList(memberDTO.getId());
+	}
+	//=============
+	/*1-15수정*/
+	@Transactional
+	public int insertBuy(SeatDTO seatDTO, MemberDTO memberDTO, int price) throws Exception{
 		seatDTO.setBuy_num(dramaDAO.buyNum());
 		seatDTO.setDate_num(dramaDAO.search_dateNum(seatDTO.getDrama_num(), seatDTO.getDrama_date().toString(), seatDTO.getDrama_time()));
 		seatDTO.setId(memberDTO.getId());
-
-		return dramaDAO.insertSeat(seatDTO);
+		
+		int point_num = pointDAO.searchPoint_num();
+		int totalPoint = pointDAO.totalPoint(memberDTO.getId());
+		//point 테이블 추가
+		PointDTO pointDTO = new PointDTO();
+		pointDTO.setId(memberDTO.getId());
+		pointDTO.setPoint_num(point_num);
+		pointDTO.setPoint((int)((price*seatDTO.getTicket_numbers())*0.01));
+		pointDTO.setTotal_point(totalPoint);
+		int result = pointDAO.insertPoint_seat(pointDTO);
+		
+		//seat테이블에 추가
+		seatDTO.setPoint_num(point_num);
+		result = dramaDAO.insertSeat(seatDTO);
+		return result;
 	}
 	public int search_dateNum(int drama_num, String drama_date, String drama_time) throws Exception{
 		return dramaDAO.search_dateNum(drama_num, drama_date, drama_time);

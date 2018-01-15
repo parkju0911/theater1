@@ -1,5 +1,7 @@
 package com.theater.project;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.theater.drama.DramaService;
+import com.theater.drama.OrderListDTO;
 import com.theater.email.EmailDTO;
 import com.theater.member.CompanyDTO;
 import com.theater.member.MemberDTO;
@@ -28,7 +32,8 @@ public class MemberController {
 
 	@Inject
 	private MemberService memberService;
-
+	@Inject
+	private DramaService dramaService;
 	/*@Inject
 	private EmailSender emailSender;*/
 
@@ -202,9 +207,20 @@ public class MemberController {
 		return "member/mypoint";
 	}
 
+	/*01-15 수정*/
 	@RequestMapping(value="orderlist", method=RequestMethod.GET)
-	public String orderlist(){
-		return "member/orderlist";
+	public ModelAndView orderlist(RedirectAttributes ra, HttpSession session,ModelAndView mv) throws Exception{
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		if(memberDTO==null) {
+			ra.addFlashAttribute("result","잘못된 접근 방식입니다.");
+			mv.setViewName("redirect:../");
+		}else {
+			List<OrderListDTO> orderList = dramaService.orderList(memberDTO);
+			
+			mv.addObject("orderList", orderList);
+			mv.setViewName("member/orderlist");
+		}
+		return mv;
 	}
 	@RequestMapping(value="faq", method=RequestMethod.GET)
 	public String faq(){
