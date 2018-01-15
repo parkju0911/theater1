@@ -20,12 +20,13 @@ import com.theater.drama.DramaDTO;
 import com.theater.drama.DramaListDTO;
 import com.theater.drama.DramaService;
 import com.theater.drama.SeatDTO;
-
+import com.theater.file.FileDTO;
 import com.theater.member.CompanyDTO;
 import com.theater.member.MemberDTO;
 import com.theater.member.MemberService;
 import com.theater.qna.Qna_viewDTO;
 import com.theater.review.ReviewDTO;
+import com.theater.util.FileSaver;
 import com.theater.util.ListData;
 
 @Controller
@@ -135,17 +136,19 @@ public class DramaController {
 	}
 	//Drama View
 	@RequestMapping(value="dramaview")
-	public ModelAndView selectOne(int drama_num, ModelAndView mv,RedirectAttributes rd) throws Exception{
+	public ModelAndView selectOne(int drama_num , ModelAndView mv,RedirectAttributes rd) throws Exception{
 		//공연 정보가져오기
 		DramaDTO dramaDTO = dramaService.selectOne(drama_num);
+		int file_num = dramaDTO.getFile_num();
 		//해당 공연의 날짜 정보 가져오기
 		List<DramaListDTO> ar = dramaService.dramaList(drama_num);
 		//후기(합계) 숫자 표시
 		int totalcount =dramaService.totalcount(drama_num);
 		
+		 FileDTO fileDTO = dramaService.selectFile(file_num);
 		 
 		//연극 리뷰 최신꺼 보여주기 안됨 대기
-	/*	ReviewDTO selectOne_review= dramaService.selectOne_review(drama_num);*/
+	ReviewDTO selectOne_review= dramaService.selectOne_review(drama_num);
 		
 		List<ReviewDTO> ar_review = dramaService.selectList_review(drama_num);
 		
@@ -154,7 +157,7 @@ public class DramaController {
 			mv.addObject("list", ar);
 			mv.addObject("review", ar_review);
 			mv.addObject("total", totalcount); 
-		
+			mv.addObject("file", fileDTO);
 			/*mv.addObject("reviewOne", selectOne_review);*/
 			mv.setViewName("drama/dramaview");
 		}else {
@@ -239,8 +242,10 @@ public class DramaController {
 	//공연 리뷰 selectOne Page
 	@RequestMapping(value="dramaReviewview")
 		public ModelAndView dramaReviewview(ModelAndView mv, int review_num)throws Exception{
-		
 		ReviewDTO reviewDTO= dramaService.review_selectOne(review_num);
+		int file_num= reviewDTO.getFileNum();
+		FileDTO fileDTO = dramaService.selectFile(file_num);
+		mv.addObject("file", fileDTO);
 		mv.addObject("selectOne", reviewDTO);
 		mv.setViewName("drama/dramaReviewview");
 		

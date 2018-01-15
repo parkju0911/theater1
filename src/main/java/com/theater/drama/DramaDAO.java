@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.theater.file.FileDTO;
 import com.theater.member.MemberDTO;
 import com.theater.qna.Qna_viewDTO;
 import com.theater.review.ReviewDTO;
@@ -186,5 +187,9 @@ public class DramaDAO  {
 	//연극리뷰 삭제
 	public int review_delete(int review_num)throws Exception{
 		return sqlSession.delete(namespace+"review_delete", review_num);
+	}
+	//drama selectOne 파일 가져오기
+	public FileDTO selectFile(int file_num)throws Exception{
+		return sqlSession.selectOne(namespace+"selectFile", file_num);
 	}
 }

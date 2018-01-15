@@ -21,8 +21,6 @@ public class FileDAO {
 		return sqlSession.selectOne(NAMESPACE+"selectTest3");
 	}
 	
-	
-	
 	public FileDTO test() throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"selectTest", 1);
 	}
@@ -42,7 +40,7 @@ public class FileDAO {
 		return sqlSession.delete(NAMESPACE+"review_file_num");
 	}
 	public int selectOne(int file_num)throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"selectList", file_num );
+		return sqlSession.selectOne(NAMESPACE+"selectOne", file_num );
 	}
 	
 }

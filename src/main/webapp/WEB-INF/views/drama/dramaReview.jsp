@@ -63,7 +63,9 @@ $(function(){
 	<c:forEach items="${review}" var="list">
 	<div class="list_box">
 		<div class="box_left">
-			이미지 불러오는 곳
+			<c:forEach items="${list}" var="dto">
+					<img alt="" src="${pageContext.request.contextPath}/resources/upload/${dto.file_name}">
+			</c:forEach>
 		</div>
 			<div class="box_right">
 			

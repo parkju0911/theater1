@@ -85,5 +85,7 @@
     <select id="review_file_num" parameterType="int">
   		select file_num.nextval from dual	
   	</select>	
-	
+	<select id="selectOne" parameterType="int">
+	select *from file_table where file_num=#{file_num}
+	</select>
   </mapper>

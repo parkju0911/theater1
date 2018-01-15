@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.javassist.expr.NewArray;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -51,8 +52,11 @@ public class DramaService {
 		return dramaDAO.selectSeat(drama_num, date_num);
 	}
 	public DramaDTO selectOne(int drama_num) throws Exception{
-
+		
 		return dramaDAO.selectOne(drama_num);
+	}
+	public FileDTO selectFile(int file_num)throws Exception{
+		return dramaDAO.selectFile(file_num);
 	}
 	
 	public List<DramaListDTO> timeList(int drama_num, String drama_date) throws Exception{
@@ -146,7 +150,8 @@ public class DramaService {
 		RowNum rowNum = listData.makeRow();
 		Pager pager = listData.makePage(dramaDAO.totalcount_review(rowNum));
 		List<ReviewDTO> reviewlist = dramaDAO.dramaReviewList(rowNum);
-		
+	
+	
 		mv.addObject("pager", pager);
 		mv.addObject("review", reviewlist);
 		mv.setViewName("drama/dramaReview");
