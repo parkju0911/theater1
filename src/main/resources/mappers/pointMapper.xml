@@ -28,8 +28,8 @@
   		insert into point values(#{point_num},#{id},'연극 예매',#{point}, #{total_point}, '적립', sysdate)
   	</insert>
 
-   <select id="selectList" resultType="com.theater.point.PointDTO" parameterType="com.theater.util.RowNum" >
-		select * from
+   <select id="selectList" resultType="com.theater.point.PointDTO"  parameterType="java.util.HashMap"  >
+	 	 select * from 
   		(select rownum R, P.* from 
   		(select * from point) P)
   		where R between 1 and 10
