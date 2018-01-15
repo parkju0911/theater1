@@ -26,6 +26,7 @@
 	margin-bottom: 5px;
     margin-top: 5px;
     font-weight: 700;
+    font-family: sans-serif;
 }
 @use postcss-color-function;
 @use postcss-nested;
@@ -90,8 +91,8 @@
 <c:import url="../temp/header.jsp"></c:import>
 
 
-	<div class="container">
-		<div class="title_wrap" style="width: 1000px; font-family: 'Nanum Gothic', sans-serif;">
+	<div class="container" style="width: 935px; margin: 0 auto;">
+		<div class="title_wrap" style="width: 1000px; border-top: 2px solid #5d4137; padding-top: 8px;font-family: 'Nanum Gothic', sans-serif;">
 			<h6 id="h6_title" style="margin-right: 5px; margin-top: 8px;">
 				<a href="${pageContext.request.contextPath}"><img alt=""
 					src="../resources/images/common/homeImg.png" id="homeImg"></a> >
@@ -99,8 +100,8 @@
 				> <a href="${pageContext.request.contextPath}/member/orderlist">Q&A</a>
 			</h6>
 		</div>
-		<h2>Q&A</h2>
-		<p>
+		<h2 style="font: 40px/41px 'fMdBT'">Q&A</h2>
+		<p style="font-family: 'Nanum Gothic', sans-serif;    padding-bottom: 17px;">
 			자주 문의되는 질문들은 FAQ에서 확인할 수 있으며,<br> 그 외 개인적으로 운영자에게 묻고 싶은 질문은 1:1
 			Q&A 게시판을 이용해주세요.
 		</p>
@@ -115,7 +116,7 @@
 			<div id="faq" class="tab-pane fade in active">
 				<h3>자주 묻는 질문</h3>
 				<div class="faq_content">
-					<ul class="faq_mainlist">
+					<ul class="faq_mainlist" style="    font-family: inherit;">
 						<li>Q. 티켓은 어떻게 사용하죠?</li>
 						<li>Q. 티켓을 환불/취소하고 싶어요!</li>
 						<li>Q. 구매 후 영수증은 어떻게 발급받나요?</li>
@@ -129,9 +130,8 @@
 									</form>
 							</div>	
 							
-					<div class="board_wrap1">
 						
-						<div class="list_wrap">
+						<div class="list_wrap" style="padding-top: 17px;">
 
 							<div class="tbh">
 								<table class="table table-hover">
@@ -184,7 +184,7 @@
 										</c:if>
 
 									<c:if test="${member ne null}">
-										<a href="faqWrite" class="btn"
+										<a href="faqWrite?id=${member.id}" class="btn"
 											style="margin: 0 auto; ">WRITE</a>
 									</c:if>
 
@@ -194,7 +194,6 @@
 								
 							</div>
 						</div>
-					</div>
 				</div>
 				</div>
 

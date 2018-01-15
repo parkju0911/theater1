@@ -30,7 +30,7 @@ header {
 }
 
 .header_wrap {
-	width: 1125px;
+	width: 1100px;
 	height: 150px;
 	margin: 0 auto;
 }
@@ -180,7 +180,7 @@ input::-moz-placeholder {
 
 /*  */
 .main_menu {
-	width: 1125px;
+	width: auto;
 	height: 28px;
 	margin: 0 auto;
 	margin-top: 25px;
