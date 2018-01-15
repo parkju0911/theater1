@@ -8,22 +8,22 @@
    <mapper namespace="pointMapper">	
 
 <resultMap type="PointDTO" id="pointResult">
-  		<id property="point_num" column="point_num"/>
+  		 <id property="point_num" column="point_num"/>
   		<result property="id" column="id"/>
   		<result property="history" column="history"/>
   		<result property="point" column="point"/>
   		<result property="total_point" column="total_point"/>
   		<result property="kind" column="kind"/>
-  		<result property="reg_date" column="reg_date"/>
+  		<result property="reg_date" column="reg_date"/> 
   	
   	</resultMap> 
 
-   <select id="selectList" resultType="com.theater.point.PointDTO" parameterType="java.util.Map"  >
-	 	select * from
+   <select id="selectList" resultType="com.theater.point.PointDTO"  parameterType="java.util.HashMap"  >
+	 	 select * from
   		(select rownum R, P.* from 
-  		(select*from point order by reg_date desc)P)
-  		<!-- (select * from point where id=#{id} order by reg_date desc)P)  -->
-  		where R between 1 and 10
+  		<!-- (select*from point order by reg_date desc)P) -->
+		(select * from point where id=#{id} order by reg_date desc)P) 
+  		where R between #{startRow} and #{lastRow} 
 
 
    </select>
@@ -46,7 +46,7 @@
   </update>
 
 
-  <insert id="pointcheck"  parameterType="java.util.Map" >
+  <insert id="pointcheck"  parameterType="java.util.HashMap" >
 	<!--   insert into point values(point_seq.nextval, #{id},'적립','20',(select nvl(total_point, 0) from point)+#{point}, '출석체크', sysdate) -->
 	insert into point values(point_num.nextval, #{id},'적립',3,#{total_point},'출석체크',sysdate)
   </insert>

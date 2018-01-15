@@ -21,16 +21,23 @@
 	font-size:13px;
 	text-align: center;
 	height: 44px;
-	width:220px;
+	width:300px;
 	line-height: 22px;
+	margin-bottom: 30px;
 }
 .total_point{
 	font-size:13px;
 	text-align: center;
 	height: 44px;
-	width:220px;
+	width:300px;
 	line-height: 22px;
 	
+}
+
+.h2_head {
+    font-size: 2.5em;
+    font-weight: normal;
+
 }
 table{
  border-collapse: collapse;

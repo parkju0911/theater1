@@ -14,7 +14,12 @@
 }
 </style>
 <script type="text/javascript">
+/* $(".list").click(function (){
 	
+	document.frm.curPage.value=cur;
+	
+	document.frm.submit();
+}); */
 </script>
 <link href="../resources/css/common/header.css" rel="stylesheet">
 <link href="../resources/css/point/point.css" rel="stylesheet">
@@ -25,11 +30,15 @@
 	<section class="contentss">
 	<div class="contens_point">
 	<div class="contens_head">
-	<h1>${point}list Page</h1>
+	
+
+	
+	
+	
 
 
 
-	<h2>${id} point page</h2>
+	<p class="h2_head">${member.id} Point Page</p>
 
 </div>
 
@@ -114,6 +123,13 @@
 	</div>
 	</div>
 </section>
+
+
+	
+
+
+
+
 	<c:import url="../temp/footer.jsp"></c:import>
 
 </body>
