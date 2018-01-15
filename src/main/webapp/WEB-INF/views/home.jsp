@@ -18,9 +18,6 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <style type="text/css">
-/* .member_wrap a {
-   margin-top: 10px;
-} */
 .push{
 	height: 0px;
 }
@@ -72,7 +69,6 @@ td, select {
 		height:500px;
 		overflow:hidden;
 		white-space:nowrap;
-		border:1px solid #000;
 	}
 	#slidebox ul#slider {
 		list-style:none;
@@ -98,10 +94,13 @@ td, select {
 	<c:import url="./temp/header.jsp"></c:import>
 
 
-	<div class="w3-content w3-display-container" style="max-width: 800px;">
-		<div id="slidebox">
+	<div class="w3-content w3-display-container" style="max-width: 1100px;
+    background-image: url(./resources/images/home/main0.png);
+    width: 100%;
+    height: 700px;">
+			<div id="slidebox">
 			<ul id="slider">
-				<li>
+				<!-- <li>
 					<img class="mySlides" src="./resources/images/home/sliderImg10.png">
 				</li>
 				<li>
@@ -115,7 +114,7 @@ td, select {
 				</li>
 				<li>
 					<img class="mySlides" src="./resources/images/home/sliderImg6.png">
-				</li>
+				</li> -->
 			</ul>
 		</div>
 		<div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle"
