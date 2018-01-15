@@ -37,14 +37,12 @@ public class FileDAO {
 
 	public int searchFile_num() throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"searchFileNum");
-
-	
-
 	}
-
-
-	/*public int insert(FileDTO fileDTO) throws Exception {
-		return sqlSession.insert(NAMESPACE+"insert", fileDTO);
-	}*/
-
+	public int review_file_num()throws Exception{
+		return sqlSession.delete(NAMESPACE+"review_file_num");
+	}
+	public int selectOne(int file_num)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"selectList", file_num );
+	}
+	
 }

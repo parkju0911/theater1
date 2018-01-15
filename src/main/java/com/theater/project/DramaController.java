@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -18,6 +20,7 @@ import com.theater.drama.DramaDTO;
 import com.theater.drama.DramaListDTO;
 import com.theater.drama.DramaService;
 import com.theater.drama.SeatDTO;
+
 import com.theater.member.CompanyDTO;
 import com.theater.member.MemberDTO;
 import com.theater.member.MemberService;
@@ -140,6 +143,7 @@ public class DramaController {
 		//후기(합계) 숫자 표시
 		int totalcount =dramaService.totalcount(drama_num);
 		
+		 
 		//연극 리뷰 최신꺼 보여주기 안됨 대기
 	/*	ReviewDTO selectOne_review= dramaService.selectOne_review(drama_num);*/
 		
@@ -150,6 +154,7 @@ public class DramaController {
 			mv.addObject("list", ar);
 			mv.addObject("review", ar_review);
 			mv.addObject("total", totalcount); 
+		
 			/*mv.addObject("reviewOne", selectOne_review);*/
 			mv.setViewName("drama/dramaview");
 		}else {
@@ -176,46 +181,62 @@ public class DramaController {
 	}
 	//qna list page & write form(Get)
 	@RequestMapping(value="qnalist" , method=RequestMethod.GET)
-	public ModelAndView selectList_qna( ModelAndView mv , ListData listData)throws Exception{
-				
-		mv = dramaService.selectList_qna(listData);
-				
+	public ModelAndView selectList_qna( ModelAndView mv , ListData listData, int drama_num)throws Exception{
+				System.out.println("drama_num : "+drama_num);
+		mv.addObject("drama_num", drama_num);
+		mv = dramaService.selectList_qna(listData, drama_num);
 		return mv;
 						
 	}
 	//qna list page & write form(Post)
 	@RequestMapping(value="qnawrite" , method=RequestMethod.POST)
-	public String selectList_qna( ModelAndView mv , HttpSession session , ListData listData , Qna_viewDTO qna_viewDTO , RedirectAttributes rd)throws Exception{
+	public String selectList_qna(HttpSession session , Qna_viewDTO qna_viewDTO , RedirectAttributes rd)throws Exception{
 		int result=0;
+		
+		System.out.println("들어옴");
+		System.out.println("drama_num(dto) : "+qna_viewDTO.getDrama_num());
 		result = dramaService.qna_insert(qna_viewDTO, session);
-			
 		String message="등록실패";
 		if(result>0){
 			message="등록완료";
 		}
 		rd.addFlashAttribute("message", message);
-		return "redirect:./dramaview";
+		return "redirect:./dramaview?drama_num="+qna_viewDTO.getDrama_num();
 					
 	}
+	//qna reply
+	@RequestMapping(value="qnareply" , method=RequestMethod.POST)
+	public String qna_reply(HttpSession session , Qna_viewDTO qna_viewDTO) throws Exception{
+		int result=0;
+		result = dramaService.qna_reply(qna_viewDTO, session);
+		
+		System.out.println("drama_num:"+qna_viewDTO.getDrama_num());
+		
+		return "redirect:./dramaview?drama_num="+qna_viewDTO.getDrama_num();
+	
+	}
 	//qna delete 
-	@RequestMapping(value="qnalist")
-	public String delete_qnaview(int qna_viewnum ,RedirectAttributes rd , HttpSession session)throws Exception{
+	@RequestMapping(value="qna_delete")
+	public String delete_qnaview(int qna_viewnum ,RedirectAttributes rd , HttpSession session , Qna_viewDTO qna_viewDTO)throws Exception{
 		int	result = 0;
+		qna_viewDTO = dramaService.delete_drama_num(qna_viewnum);
 		result = dramaService.delete_qnaview(qna_viewnum, session);
-			
+		System.out.println("qna_viewDTO drama_num:" +qna_viewDTO.getDrama_num());
 		String message="삭제 실패";
 		if(result>0){
 			message="삭제 성공";	
 		}
 		rd.addFlashAttribute("message", message);
-		return "redirect:./dramaview";
+		return "redirect:./dramaview?drama_num="+qna_viewDTO.getDrama_num();
 	}
+	//공연 리뷰 page
 	@RequestMapping(value="dramaReview")
 	public ModelAndView dramaReviewList(ModelAndView mv , ListData listData)throws Exception{
 		
 		mv = dramaService.dramaReviewList(listData);
 		return mv;
 	}
+	//공연 리뷰 selectOne Page
 	@RequestMapping(value="dramaReviewview")
 		public ModelAndView dramaReviewview(ModelAndView mv, int review_num)throws Exception{
 		
@@ -225,12 +246,65 @@ public class DramaController {
 		
 		return mv;
 	}
+	//공연 리뷰 insert-->form 이동
+	@RequestMapping(value="dramaReviewwrite" , method=RequestMethod.GET)
+	public  ModelAndView dramaReviewwrite(ListData listData)throws Exception{
+		
+		ModelAndView mv = null;
+		mv = dramaService.selectList(listData);
+		mv.setViewName("drama/dramaReviewwrite");
+		
+		return mv;
+	}
+
+	
+	
+	//공연 리뷰 insert-->DB 처리
+	@RequestMapping(value="dramaReviewwrite" , method=RequestMethod.POST)
+	public String dramaReviewwrite(RedirectAttributes rd , ReviewDTO reviewDTO , HttpSession session , MultipartHttpServletRequest Ms , Model model , DramaDTO dramaDTO)throws Exception{
+		int result = 0;
+		
+		result = dramaService.review_insert(reviewDTO, session, Ms);
+		
+		model.addAttribute("session", session);
+		String message="DB오류.";
+			if(result>0){
+				message="등록되었습니다.";
+			}
+				rd.addFlashAttribute("message", message);
+		return "redirect:./dramaReview";
+	}
+	//공연 업데이트(수정) form 이동
+	@RequestMapping(value="dramaReviewupdate" , method=RequestMethod.GET)
+	public String dramaReviewupdate(ReviewDTO reviewDTO , Model model)throws Exception{
+		
+		model.addAttribute("dto", reviewDTO);
+		return "drama/dramaReviewupdate";
+	}
+	//공연 삭제
+	@RequestMapping(value="dramaReviewdelete")
+	public String dramaReviewdelete(int review_num , RedirectAttributes rd) throws Exception{
+		int result = 0;
+		result = dramaService.review_delete(review_num);
+			
+		return "redirect:./dramaReview";
+	}
+	
 	//selectList
 	@RequestMapping(value="dramaList")
 	public ModelAndView selectList(ListData listData) throws Exception {
 		ModelAndView mv = null;
 		mv = dramaService.selectList(listData);
 		mv.setViewName("drama/list");
+		
+		return mv;
+	}//selectList
+	@RequestMapping(value="dramaReviewwrite")
+	public ModelAndView selectList2(ListData listData) throws Exception {
+		System.out.println("컨트롤");
+		ModelAndView mv = null;
+		mv = dramaService.selectList(listData);
+		mv.setViewName("drama/dramaReviewwrite");
 		
 		return mv;
 	}

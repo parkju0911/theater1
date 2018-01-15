@@ -1,5 +1,6 @@
 package com.theater.drama;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,11 +10,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.theater.file.FileDAO;
 import com.theater.file.FileDTO;
+import com.theater.file.FileListDTO;
 import com.theater.member.MemberDTO;
 import com.theater.qna.Qna_viewDTO;
 import com.theater.review.ReviewDTO;
@@ -47,6 +51,7 @@ public class DramaService {
 		return dramaDAO.selectSeat(drama_num, date_num);
 	}
 	public DramaDTO selectOne(int drama_num) throws Exception{
+
 		return dramaDAO.selectOne(drama_num);
 	}
 	
@@ -83,7 +88,7 @@ public class DramaService {
 		return totalstar;
 	}
 	//qna 리스트
-	public ModelAndView selectList_qna(ListData listData)throws Exception{
+	public ModelAndView selectList_qna(ListData listData, int drama_num)throws Exception{
 		ModelAndView model = new ModelAndView();
 		RowNum rowNum = listData.makeRow();
 		Pager pager = listData.makePage(dramaDAO.totalcount_qna(rowNum));
@@ -91,6 +96,7 @@ public class DramaService {
 		model.addObject("pager", pager);
 		model.addObject("qnalist", qnalist);
 		model.setViewName("drama/qnalist");
+		model.addObject("drama_num", drama_num);
 		
 		return model;
 	}
@@ -107,8 +113,20 @@ public class DramaService {
 	}
 	//qna write
 	public int qna_insert(Qna_viewDTO qna_viewDTO , HttpSession session)throws Exception{
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		qna_viewDTO.setId(memberDTO.getId());
+		System.out.println("ID : "+qna_viewDTO.getId());
+		System.out.println("drama_num(serviceDTO) : "+qna_viewDTO.getDrama_num());
+		System.out.println("contents : "+qna_viewDTO.getContents());
 		int result = dramaDAO.qna_insert(qna_viewDTO);
 		
+		return result;
+	}
+	//qna_reply
+	public int qna_reply(Qna_viewDTO qna_viewDTO , HttpSession session)throws Exception{
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		qna_viewDTO.setId(memberDTO.getId());
+		int result = dramaDAO.qna_reply(qna_viewDTO);
 		return result;
 	}
 	//qna 글 삭제
@@ -116,12 +134,19 @@ public class DramaService {
 		int result = dramaDAO.delete_qnaview(qna_viewnum);
 		return result;
 	}
+	//qna 글 삭제시 redirect drama_num 보내줌
+	public Qna_viewDTO delete_drama_num(int qna_viewnum)throws Exception{
+		Qna_viewDTO qna_viewDTO = dramaDAO.delete_drama_num(qna_viewnum);
+		return qna_viewDTO;
+	}
+	
 	//공연 리뷰List page
 	public ModelAndView dramaReviewList(ListData listData)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		RowNum rowNum = listData.makeRow();
 		Pager pager = listData.makePage(dramaDAO.totalcount_review(rowNum));
 		List<ReviewDTO> reviewlist = dramaDAO.dramaReviewList(rowNum);
+		
 		mv.addObject("pager", pager);
 		mv.addObject("review", reviewlist);
 		mv.setViewName("drama/dramaReview");
@@ -132,6 +157,51 @@ public class DramaService {
 	
 		return dramaDAO.review_selectOne(review_num);
 	}
+	//공연리뷰 작성(insert)
+	@Transactional
+	public int review_insert(ReviewDTO reviewDTO ,  HttpSession session , MultipartHttpServletRequest Ms)throws Exception{
+		System.out.println("service 앞");
+		int file_num = fileDAO.review_file_num();
+		System.out.println("insert 뒤");
+		int result = dramaDAO.review_insert(reviewDTO);
+		
+		MultipartFile  file  = Ms.getFile("reviewwrite"); 
+		List<FileDTO> names = new ArrayList<FileDTO>();
+	
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("review_num", reviewDTO.getReview_num());
+		map.put("title", reviewDTO.getTitle());
+		map.put("contents", reviewDTO.getContents());
+
+			String name = fileSaver.fileSave(file, session, "upload");
+			FileDTO fileDTO = new FileDTO();
+			fileDTO.setFile_num(reviewDTO.getReview_num());
+			fileDTO.setFile_name(name);
+			fileDTO.setFile_route(file.getOriginalFilename());
+			names.add(fileDTO);
+			fileDAO.insert(fileDTO);
+		
+		return result;
+	}
+	/*//공연리뷰 작성시 drama select
+	public ModelAndView review_insert_select()throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		List<DramaDTO> ar = dramaDAO.review_insert_select();
+		mv.addObject("dramalist", ar);
+		return mv;
+	}*/
+	//공연리뷰 수정
+	public int review_update(ReviewDTO reviewDTO)throws Exception{
+		int result = dramaDAO.review_update(reviewDTO);
+		return result;
+	}
+	//공연리뷰 삭제
+	public int review_delete(int review_num)throws Exception{
+		int result = dramaDAO.review_delete(review_num);
+		return result;
+	}
+	
 	//광 
 	
 	

@@ -92,10 +92,7 @@
 	color:#888;
 }
 
-/* =======
-	border: 0;
-}
->>>>>>> 578e5a9a30f8c80283cb50a1c6bc512e39c56985 */
+
 #drama_date{
 	width: 305px;
 	height: 35px;
@@ -140,7 +137,7 @@
 	margin-top: 20px;
 	background-color: white;
 	padding-bottom: 20px;
-	margin-left: 640px;
+	
 }
 .info_bar{
 	width : 100%;
@@ -270,7 +267,7 @@
 	width:150px;
 	display:inline-block;
 	height:21px;
-	background: transparent url(../images/starpoint/star_rating.png) no-repeat;
+	background: transparent url(../../images/starpoint/star_rating.png) no-repeat;
 	overflow: hidden;
 	vertical-align: middle;
 }
@@ -292,7 +289,7 @@
 #refund_info{
 	width:830px;
 	background-color:white;
-	margin-left: 640px;
+	margin:0 auto;
 	font-size: 20px;
 	font-weight: bolder;
 	line-height: 60px;
@@ -302,17 +299,18 @@
 }
 #refund_rull{
 	width:830px;
-	margin-left:640px;
 	background-color: white;
+	margin:0 auto;
+	padding-bottom: 10px;
 }
 #refund_rull p{
 	margin-left: 30px;
 }
 #refund_method{
 	width:830px;
-	margin-left: 640px;
  	background-color: white;
  	margin-top: -10px;
+ 	margin:0 auto;
 }
 #refund_method p{
 	margin-left: 30px;
@@ -352,10 +350,10 @@
 	margin-top: 20px;
 }
 #menu_info{
-	width: 208px;
+	width: 206px;
 	text-align: center;
 	font-size: 20px;
-	margin-left: 640px;
+	margin: 0 auto;
 }
 .menu_li{
 	width: 208px;
@@ -367,13 +365,13 @@
 }
 #afterview_box_list{
 	width: 830px;
-	margin-left: 640px;
 	background-color: white;
+	margin: 0 auto;
 }
 #qna_listform{
 	width:830px;
-	margin-left:632px;
 	background-color: white;
+	margin: 0 auto;
 }
 #qna_text{
 	margin-left: 30px;
@@ -443,7 +441,7 @@
 #ticket_top{
 	width: 830px;
 	height: 40px;
-	margin-left: 640px;
+	margin: 0 auto;
 	margin-top: 10px;
 }
 #ticket_top p{
@@ -453,7 +451,7 @@
 #ticket_review{
 	width: 830px;
 	height: 120px;
-	margin-left: 640px;
+	margin: 0 auto;
 	margin-bottom: 30px;
 	background-color: white;
 }

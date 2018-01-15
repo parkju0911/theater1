@@ -82,5 +82,8 @@
   		select * from file_table where file_num=#{file_num}
   	</select>
     
+    <select id="review_file_num" parameterType="int">
+  		select file_num.nextval from dual	
+  	</select>	
 	
   </mapper>

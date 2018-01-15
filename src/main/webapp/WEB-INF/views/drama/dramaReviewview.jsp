@@ -9,6 +9,17 @@
 <link href="../resources/css/common/header.css" rel="stylesheet">
 <title>Insert title here</title>
 </head>
+<script type="text/javascript">
+
+function del() {
+	var con = confirm("삭제하겠습니까?(복구되지않습니다)")
+	if(con==false){
+		window.location.reload();
+	}
+} 
+		
+
+</script>
 <body>
 		<!-- header -->
 	<c:import url="../temp/header.jsp"></c:import>
@@ -46,7 +57,7 @@
 				<div id="option_form">
 						<a href="./dramaReview">List</a>
 						<a href="./dramaReviewupdate?review_num=${selectOne.review_num}">Update</a>
-						<a href="./dramaReviewdelete?review_num=${selectOne.review_num }">Delete</a>
+						<a href="./dramaReviewdelete?review_num=${selectOne.review_num }" onclick="del()">Delete</a>
 				</div>
 			</div>
 	</div>

@@ -42,7 +42,7 @@ $(function(){
 	<p id="top_line"></p>
 	<section id="Review_main">
 	<div id="top_text">
-		<div id="text">☆공연 리뷰 페이지☆ </div><button id="review_write"><a href="qnawrite">작성하기</a></button>
+		<div id="text">☆공연 리뷰 페이지☆ </div><a href="./dramaReviewwrite">작성하기</a>
 		
 				<div id="search_box_top">
 					<form action="./${board}List" method="get" name="frm">
