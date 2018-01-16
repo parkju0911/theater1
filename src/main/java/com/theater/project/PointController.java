@@ -36,7 +36,7 @@ public class PointController {
 	private PointDTO pointDTO;*/
 	
 	@RequestMapping(value="pointList")
-	public ModelAndView selectList(Map<String, String> map, ModelAndView mv, ListData listData,PointDTO pointDTO,Model model,HttpSession session) throws Exception{
+	public ModelAndView selectList(Map<String, String> map,ModelAndView mv, ListData listData,PointDTO pointDTO,Model model,RedirectAttributes rd ,HttpSession session) throws Exception{
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		String id = memberDTO.getId();
 		
@@ -55,9 +55,28 @@ public class PointController {
 
 	
 		mv = pointService.selectList(listData, id);
+
+		
+		
+		
+			/*if(memberDTO == null) {
+				System.out.println("실패");
+				rd.addFlashAttribute("message", "로그인이 필요합니다.");
+				mv.setViewName("Redirect:../");
+			
+				
+			}else {
+				mv.setViewName("point/pointList");
+			}
+					*/
+			return mv;
+		}
+		 
+		 
+		 
+		 
 	
-		return mv;
-	}
+
 	
 	/*//selectOne
 		@RequestMapping(value="pointView")
@@ -92,15 +111,15 @@ public class PointController {
 		}
 		
 		
-		@RequestMapping(value="pointCheck",method=RequestMethod.GET)
+		@RequestMapping(value="pointList",method=RequestMethod.GET)
 		public String insert(Model model) throws Exception{
 			model.addAttribute("point", "point");
 			
-			return "point/pointCheck";
+			return "point/pointList";
 		}
 		
 		
-		@RequestMapping(value="pointCheck",method=RequestMethod.POST)
+		@RequestMapping(value="pointList",method=RequestMethod.POST)
 		public String insert(Map<String, String> map,PointDTO pointDTO, String id, HttpSession session,RedirectAttributes attributes)throws Exception{
 			MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 			 id = memberDTO.getId();
@@ -118,7 +137,7 @@ public class PointController {
 				message = "출석체크";
 					
 			}
-			
+		
 		
 			attributes.addFlashAttribute("message", message);
 			/*model.addAttribute("message", message);

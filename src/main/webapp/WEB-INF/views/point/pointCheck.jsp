@@ -27,7 +27,6 @@
 			var c = document.getElementsByClassName("attendOff");
 			var message="${message}";
 		
-	
 			 c[n].src = "../resources/images/point/attendOn.png";
 				alert(message);
 				n++; 
