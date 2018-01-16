@@ -10,7 +10,7 @@
   		<result property="file_name" column="file_name"/>
   		<result property="file_route" column="file_route"/>
   	</resultMap>
-  	
+  		
   	<resultMap type="com.theater.drama.DramaTestDTO" id="dramaTest">
   		<id property="drama_num" column="drama_num"/>
   		<result property="company_num" column="company_num"/>
@@ -57,6 +57,8 @@
   		</collection>
   	</resultMap>
   	
+  	<resultMap type="ReviewDTO" id="reviewDTO"/>
+  	
   <!-- 다중 insert  -->
   	<insert id="fileInsert" parameterType="java.util.List">
   		insert All
@@ -81,10 +83,7 @@
   	<select id="selectList" parameterType="int" resultType="FileDTO">
   		select * from file_table where file_num=#{file_num}
   	</select>
-    
-    <select id="review_file_num" parameterType="int">
-  		select file_num.nextval from dual	
-  	</select>	
+
 	<select id="selectOne" parameterType="int">
 	select *from file_table where file_num=#{file_num}
 	</select>

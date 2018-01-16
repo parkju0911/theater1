@@ -12,8 +12,9 @@
 	width: 1230px;
 	height: 40px;
 	border-bottom: 1px solid #d6d6d6;
-	font-size: 30px;
+	font-size: 20px;
 	font-weight: bolder;
+	padding-top: 20px;
 }
 #text{
 	width: 300px;
@@ -102,16 +103,15 @@
 	line-height: 50px;
 }
 #search_box_top{
-	width: 350px;
+	width: 450px;
 	height: 40px;
-	
 	float: right;
 
 }
 #search_box_bottom{
 	width: 600px;
 	height: 50px;
-	margin-left: 890px;
+	margin-left: 800px;
 }
 .select{
 	height: 30px;

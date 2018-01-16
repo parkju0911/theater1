@@ -243,7 +243,7 @@ public class DramaController {
 	@RequestMapping(value="dramaReviewview")
 		public ModelAndView dramaReviewview(ModelAndView mv, int review_num)throws Exception{
 		ReviewDTO reviewDTO= dramaService.review_selectOne(review_num);
-		int file_num= reviewDTO.getFileNum();
+		int file_num= reviewDTO.getFile_num();
 		FileDTO fileDTO = dramaService.selectFile(file_num);
 		mv.addObject("file", fileDTO);
 		mv.addObject("selectOne", reviewDTO);
@@ -269,8 +269,10 @@ public class DramaController {
 	public String dramaReviewwrite(RedirectAttributes rd , ReviewDTO reviewDTO , HttpSession session , MultipartHttpServletRequest Ms , Model model , DramaDTO dramaDTO)throws Exception{
 		int result = 0;
 		
-		result = dramaService.review_insert(reviewDTO, session, Ms);
+		System.out.println("들어옴");
 		
+		result = dramaService.review_insert(reviewDTO, session, Ms);
+	
 		model.addAttribute("session", session);
 		String message="DB오류.";
 			if(result>0){

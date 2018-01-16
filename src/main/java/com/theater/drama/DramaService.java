@@ -150,7 +150,7 @@ public class DramaService {
 		RowNum rowNum = listData.makeRow();
 		Pager pager = listData.makePage(dramaDAO.totalcount_review(rowNum));
 		List<ReviewDTO> reviewlist = dramaDAO.dramaReviewList(rowNum);
-
+		
 		mv.addObject("pager", pager);
 		mv.addObject("review", reviewlist);
 		mv.setViewName("drama/dramaReview");
@@ -164,12 +164,20 @@ public class DramaService {
 	//공연리뷰 작성(insert)
 	@Transactional
 	public int review_insert(ReviewDTO reviewDTO ,  HttpSession session , MultipartHttpServletRequest Ms)throws Exception{
-		System.out.println("service 앞");
-		int file_num = fileDAO.review_file_num();
-		System.out.println("insert 뒤");
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		reviewDTO.setId(memberDTO.getId());
+		System.out.println("ID:"+reviewDTO.getId());
+		
+		int file_num = dramaDAO.review_file_num();
+		System.out.println("file_num:"+file_num);
+		reviewDTO.setFile_num(file_num);
+		System.out.println("title"+reviewDTO.getTitle());
+		System.out.println(reviewDTO.getDrama_num());
+		System.out.println("내용:"+reviewDTO.getContents());  
+		System.out.println("별점:"+reviewDTO.getStar());
 		int result = dramaDAO.review_insert(reviewDTO);
 		
-		MultipartFile  file  = Ms.getFile("reviewwrite"); 
+		MultipartFile  file  = Ms.getFile("files"); 
 		List<FileDTO> names = new ArrayList<FileDTO>();
 	
 		Map<String, Object> map = new HashMap<String, Object>();
