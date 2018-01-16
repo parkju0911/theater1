@@ -130,7 +130,7 @@ td {
 				
 						</c:forEach>
 							</optgroup>
-								
+							
 					</select><input type="text" name="title" placeholder="제목을 입력해주세요."></td>
 				<td>작성자<input type="text" name="id" placeholder="${member.id }" value="${member.id}" readonly="readonly"></td>
 						

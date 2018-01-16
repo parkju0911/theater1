@@ -1,6 +1,7 @@
 package com.theater.drama;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -193,4 +194,17 @@ public class DramaDAO  {
 	public FileDTO selectFile(int file_num)throws Exception{
 		return sqlSession.selectOne(namespace+"selectFile", file_num);
 	}
+	//orderlist 관련 1-15
+    public List<OrderListDTO> orderList(String id) throws Exception{
+       List<OrderListDTO> orderList = sqlSession.selectList(namespace+"orderList", id);
+       List<OrderListDTO> ar = new ArrayList<OrderListDTO>();
+       for(OrderListDTO orderListDTO : orderList) {
+          orderListDTO = sqlSession.selectOne(namespace+"orderListOne", orderListDTO);
+          String file_name = sqlSession.selectOne(namespace+"orderFileName", orderListDTO.getFile_num());
+          orderListDTO.setFile_name(file_name);
+          
+          ar.add(orderListDTO);
+       }
+       return ar;
+    }
 }

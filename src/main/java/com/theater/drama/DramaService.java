@@ -266,5 +266,10 @@ public class DramaService {
 		return result;
 	}
 
+	//orderlist 관련 01-15
+	   public List<OrderListDTO> orderList(MemberDTO memberDTO) throws Exception{
+	      return dramaDAO.orderList(memberDTO.getId());
+	   }
+
 
 }
