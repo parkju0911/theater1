@@ -60,12 +60,12 @@ $(function(){
 	
 	
 	</div>
-	<c:forEach items="${review}" var="list">
+	<%-- <c:forEach items="${review}" var="list"> --%>
 	<div class="list_box">
 		<div class="box_left">
-			<c:forEach items="${list}" var="dto">
-					<img alt="" src="${pageContext.request.contextPath}/resources/upload/${dto.file_name}">
-			</c:forEach>
+		
+					이미지 불러올것<img alt="" src="##">
+		
 		</div>
 			<div class="box_right">
 			
@@ -91,7 +91,7 @@ $(function(){
 		
 	</div>
 	
-	</c:forEach>
+<%-- 	</c:forEach> --%>
 	
 	
 	
