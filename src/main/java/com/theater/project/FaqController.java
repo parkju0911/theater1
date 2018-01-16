@@ -43,19 +43,22 @@ public class FaqController {
 	@RequestMapping(value="faq", method = RequestMethod.GET)
 	public ModelAndView selectList(ListData listData) throws Exception {
 		ModelAndView modelAndView = null;
-		FaqDTO faqDTO = new FaqDTO();
 		modelAndView = faqService.selectList(listData);
-		modelAndView.addObject("num", faqDTO.getFaq_num());
 		return modelAndView;
 	}
 
 	//selectOne
 	@RequestMapping(value="faqView", method = RequestMethod.GET)
-	public String selectOne(Model model, @RequestParam(defaultValue="0", required=false) int num) throws Exception{
-		FaqDTO faqDTO = faqService.selectOne(num);
+	public String selectOne(Model model, @RequestParam(defaultValue="0", required=false) int num) {
+		FaqDTO faqDTO = null;
+		try {
+			faqDTO = faqService.selectOne(num);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		model.addAttribute("view", faqDTO);
-		model.addAttribute("num", faqDTO.getFaq_num());
-		return "member/faq";
+		return "member/faqView";
 	}
 
 	//update -> form 이동

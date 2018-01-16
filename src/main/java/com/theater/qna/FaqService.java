@@ -32,8 +32,7 @@ public class FaqService {
 	
 	 
 	public FaqDTO selectOne(int num) throws Exception {
-		FaqDTO faqDTO = faqDAO.selectOne(num);
-		return faqDTO;
+		return faqDAO.selectOne(num);
 	}
 	
 	public int update(FaqDTO faqDTO) throws Exception {

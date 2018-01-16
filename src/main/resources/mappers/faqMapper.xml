@@ -26,9 +26,6 @@
   		<if test="kind == 'title'">
   			where title like '%'||#{search}||'%'
   		</if>
-  		<if test="kind == 'contents'">
-  			where contents like '%'||#{search}||'%'
-  		</if>
   		order by faq_num desc) F)
   		where R between #{startRow} and #{lastRow}
   	</select>

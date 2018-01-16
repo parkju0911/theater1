@@ -144,9 +144,11 @@
 					</ul>
 
 					<form name="frm" action="./faq" method="get">
+						<input type="hidden" name="curPage" value="1">
+						<input type="hidden" name="kind" value="title">
 						<div class="search_wrap">
 							<div class="search__container">
-								<input class="search__input" type="text" placeholder="Search">
+								<input class="search__input" type="text" placeholder="Search"  name="search">
 							</div>
 						</div>
 					</form>
