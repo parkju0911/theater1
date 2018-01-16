@@ -20,7 +20,7 @@ public class NoticeService {
 		Pager pager = listData.makePage(totalCount);
 		modelAndView.setViewName("board/boardList");
 		modelAndView.addObject("pager", pager);	
-		modelAndView.addObject("list", noticeDAO.selectList(rowNum));
+		modelAndView.addObject("arlist", noticeDAO.selectList(rowNum));
 		modelAndView.addObject("board", "notice");
 		return modelAndView;
 	}

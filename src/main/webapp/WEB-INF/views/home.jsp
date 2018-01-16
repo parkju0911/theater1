@@ -95,7 +95,7 @@ td, select {
 <body>
 	<c:import url="./temp/header.jsp"></c:import>
 
-
+<!-- SLIDEBOX -->
 	<div class="w3-content w3-display-container" style="max-width: 1000px;    background-image: url(./resources/images/home/MAINBG.png);    width: 100%;    height: 650px;    MARGIN: 0 AUTO;">
 			<div id="slidebox">
 			<ul id="slider">
@@ -170,38 +170,102 @@ td, select {
 	}
 	setInterval(changeSlide, 6000);
 </script>
-<!-- <script>
-	var slideIndex = 1;
-	showDivs(slideIndex);
 
-	function plusDivs(n) {
-		showDivs(slideIndex += n);
-	}
+<%-- <div id="review-feed-list-wrap">
+			<div class="row unpa-card-row row-flex-height-md">
+			<c:forEach items="${list}" var="dto">
+				<c:forEach items="${requestScope.list}" var="dto">
+					<div class="col-md-4 unpa-ad-responsive-parent">
 
-	function currentDiv(n) {
-		showDivs(slideIndex = n);
-	}
+						<div class="unpa-card unpa-card-box-shadow unpa-review">
 
-	function showDivs(n) {
-		var i;
-		var x = document.getElementsByClassName("mySlides");
-		var dots = document.getElementsByClassName("demo");
-		if (n > x.length) {
-			slideIndex = 1
-		}
-		if (n < 1) {
-			slideIndex = x.length
-		}
-		for (i = 0; i < x.length; i++) {
-			x[i].style.display = "none";
-		}
-		for (i = 0; i < dots.length; i++) {
-			dots[i].className = dots[i].className.replace(" w3-white", "");
-		}
-		x[slideIndex - 1].style.display = "block";
-		dots[slideIndex - 1].className += " w3-white";
-	}
-</script> -->
+							<div class="main-section"
+								style="border-left: 1px solid #f2f2f2; border-top: 1px solid #f2f2f2; border-right: 1px solid #f2f2f2;">
+								<a class="user-info-link" href="">
+									<div class="user-info" style="display: inline-block">
+										<div class="unpa-feed-user-info-box">
+											<div class="unpa-user-block">
+												<div class="user-name unpa-tooltip" data-html="true"
+													data-toggle="tooltip" data-placement="bottom"
+													title="<i class='ion-person'></i> 267 <i class='ion-edit'></i> 40">
+													${dto.drama_num}</div>
+												<div class="user-labels" style="">
+													<span class="skin-type false ">${dto.place}</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="time">${dto.file_num}</div>
+								</a>
+								<div class="unpa-feed-card-hover-actions">
+									<span class="unpa-share-this-button"><i
+										class="unpacon-share"></i></span>
+
+								<!-- 	<div class="number-of-images">
+										<i class="glyphicon glyphicon-picture"></i> 6
+									</div> -->
+
+								</div>
+
+								<div class="main-image"
+									style="background-image: url('../resources/images/drama_1.jpg')" >
+									<div class="content">
+										<a>${dto.contents}</a>
+									</div>
+								</div>
+								<div class="review-contents">
+									<div class="product-info">
+										<div class="left">
+											<div class="product-image"
+												style="background-image: url(../resources/image/drama_1.jpg')"></div>
+										</div>
+
+
+										<div class="right">
+											<div class="brand-name-and-rating">
+												<div class="brand-name">
+													<a href="./dramaview?drama_num=${dto.drama_num}">${dto.title}</a>
+												</div>
+											</div>
+											<div class="product-name">
+												<a
+													href="">${dto.price} 원</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="sub-section"
+								style="border-left: 1px solid #f2f2f2; border-bottom: 1px solid #f2f2f2; border-right: 1px solid #f2f2f2;">
+								<div class="count-info">
+									<div class="like">
+										<a class="like-button " style="color: #b4b4b4;">
+											<div class="icon">
+											<img
+											src="${pageContext.request.contextPath}/image/review/ic_heart_xs_normal.png"></div>
+											<div class="count">${dto.heart}</div>
+										</a>
+									</div>
+									<div class="comments">
+										<img
+											src="${pageContext.request.contextPath}/image/review/ic_reply_s.png">
+										<div style="display: inline; position: relative; top: 1px;">${dto.ref}</div>
+									</div>
+
+									<div class="views">
+										<div style="display: inline; position: relative; top: 1px;">${dto.buy_hit} BUY</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+			</c:forEach>
+			</div>
+		</div> --%>
+
+
+
 
 	<a href="drama/dramaList">Drama List</a>
 	<a href="./notice/noticeList">Go Notice</a>
@@ -210,7 +274,7 @@ td, select {
 	<a href="./point/pointList">pointList</a>
 	<a href="./point/pointCheck">pointCheck</a>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	$(function(){
 		var message='${message}';
 		if(message != ''){
@@ -227,10 +291,38 @@ td, select {
 			document.frm.submit();
 		});
 	});
-</script>
+</script> -->
 
-	<div
-		style="padding: 50px 0 60px 0; margin-top: 30px; background: #eee;">
+
+
+
+
+							<%-- <c:forEach begin="0" end="4" var = "i">
+								<div class="main_drama_list">
+									<a href="./drama/dramaView.drama?num=${list[i].drama_num}" style="color: #000;">
+										<img src="./resources/images/home/icon_box.png" style="padding: 0 4px 1px 0;">
+										${list[i].title}</a>
+								</div>
+							</c:forEach> --%>
+							<table width="100%" cellpadding="0" cellspacing="0" border="0">
+						<c:forEach begin="0" end="1" var = "i">
+							<tbody>
+								<tr>
+								<td valign="top" align="center">
+									<div class="main_drama_list">
+									<a href="./drama/dramaview?drama_num=${list[i].drama_num}" style="color: #000;">
+										<img src="./resources/images/home/icon_box.png" style="padding: 0 4px 1px 0;">
+										${list[i].title}</a>
+									</div>
+								</td>
+								</tr>
+							</tbody>
+						</c:forEach>
+					</table>
+								
+							
+<!-- HOME FOOTER -->
+	<div style="padding: 50px 0 60px 0; margin-top: 30px; background: #eee;">
 		<div class="main_wrap" style="width: 960px; margin: 0 auto;">
 
 			<div class="main_cs_divide" style="text-align: center;" alt="출석체크">
@@ -260,14 +352,14 @@ td, select {
 								<tr>
 								<td valign="top" align="center">
 									<div class="main_notice_txt ellip">
-									<a href="./notice/noticeView.notice?num=${list[i].notice_num}" style="color: #000;">
+									<a href="./notice/noticeView.notice?num=${arlist[i].notice_num}" style="color: #000;">
 										<img src="./resources/images/home/icon_box.png" style="padding: 0 4px 1px 0;">
-										${list[i].title}</a>
+										${arlist[i].title}</a>
 									</div>
 								</td>
 								</tr>
 							</tbody>
-									</c:forEach>
+						</c:forEach>
 					</table>
 				</div>
 			</div>

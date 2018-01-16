@@ -25,7 +25,7 @@ public class EventService {
 		Pager pager = listData.makePage(totalCount);
 		modelAndView.setViewName("board/boardList");
 		modelAndView.addObject("pager", pager);	
-		modelAndView.addObject("list", eventDAO.selectList(rowNum));
+		modelAndView.addObject("arlist", eventDAO.selectList(rowNum));
 		modelAndView.addObject("board", "event");
 		return modelAndView;
 	}
