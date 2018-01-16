@@ -39,10 +39,9 @@
 		 > <a href="${pageContext.request.contextPath}/member/orderlist">ORDER LIST</a></h6>
 		</div> 
 		<h2 style="margin-top: 20px; font: 40px/41px 'fMdBT'; padding-bottom: 20px;">ORDER LIST</h2>
-			<!-- 기본배송 -->
+			
 			<div class="ec-base-table typeList ">
 				<table border="1">
-					<caption>기본배송</caption>
 					<thead>
 						<tr>
 							<th scope="col">구매날짜</th>

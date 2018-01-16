@@ -51,8 +51,8 @@
 		<div class="main_menu">
 			<nav>
 				<ul>
-					<li><a href="#">연극예매</a><span style="padding: 0 8px;">|</span></li>
-					<li><a href="#">예매순위</a><span style="padding: 0 8px;">|</span></li>
+					<li><a href="${pageContext.request.contextPath}/drama/dramaList">연극예매</a><span style="padding: 0 8px;">|</span></li>
+					<li><a href="${pageContext.request.contextPath}/drama/dramaList">예매순위</a><span style="padding: 0 8px;">|</span></li>
 					<li><a href="${pageContext.request.contextPath}/event/eventList">이벤트</a><span style="padding: 0 8px;">|</span></li>
 					<li><a href="${pageContext.request.contextPath}/drama/dramaReview">공연리뷰</a><span style="padding: 0 8px;">|</span></li>
 					<li><a href="${pageContext.request.contextPath}/notice/noticeList">공지사항</a></li>

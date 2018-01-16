@@ -234,7 +234,7 @@ td, select {
 		<div class="main_wrap" style="width: 960px; margin: 0 auto;">
 
 			<div class="main_cs_divide" style="text-align: center;" alt="출석체크">
-				<a href="./point/pointList"> <img
+				<a href="./point/pointCheck"> <img
 					src="./resources/images/home/btn_point.png"
 					style="padding: 8px 10px;">
 				</a> <a href="./member/faq"> <img

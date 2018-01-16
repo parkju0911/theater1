@@ -150,14 +150,14 @@ border-top: 2px solid #5d4137;
 					<div alt="가입버튼"
 						style="text-align: center; margin: 30px 0 30px 0; font-family: 'Nanum Gothic', sans-serif;      margin-top: 4px;  padding: 11px;">
 						<!-- <input type="submit" id="update" value="수정" id="join" style="width: 300px; height: 55px; border: none; background: #ffc108; color: #fff; font-size: 18px; font-weight: 400; margin-top: 15px;"> -->
-						<input type="submit" id="update" value="수정"
+						<input type="submit" id="update" value="저장"
 							style="float: right; border-radius: 7px; width: 95px; height: 47px; border: none; background: #ffc108; color: #fff; font-size: 18px; font-weight: 400; margin-top: 15px;">
 						<div
 							style="    width: 95px; height: 47px; float: left; margin: 0 auto; border: none; background: #c7c7c7; margin-top: 15px; border-radius: 7px;">
 							<a href="./memberDelete?id=${member.id}"
 								onclick="if(!confirm('정말로 탈퇴하시겠습니까?')){return false;}"
 								style="height: auto; color: #fff; font-size: 18px; font-weight: 400; vertical-align: middle;">
-								<p style="padding-top: 5%; font-family: 'Nanum Gothic', sans-serif;">탈퇴</p></a>
+								<p style="padding-top: 10%; font-family: 'Nanum Gothic', sans-serif;">탈퇴</p></a>
 						</div>
 						<!-- <input type="submit" id="update" value="수정" class="btn btn-default" style="margin-top: 50px; float: right;"> -->
 						<%-- <a href="./memberDelete?id=${member.id}" class="btn btn-default" onclick="if(!confirm('정말로 탈퇴하시겠습니까?')){return false;}" style="margin-top: 50px; float: left;">탈퇴</a> --%>
