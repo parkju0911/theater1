@@ -304,21 +304,21 @@ td, select {
 										${list[i].title}</a>
 								</div>
 							</c:forEach> --%>
-							<%-- <table width="100%" cellpadding="0" cellspacing="0" border="0">
-						<c:forEach begin="0" end="1" var = "i">
+					<table width="100%" cellpadding="0" cellspacing="0" border="0">
+						<c:forEach begin="0" end="4" var = "j">
 							<tbody>
-								<tr>
-								<td valign="top" align="center">
+								<ul>
+								<li valign="top" align="center">
 									<div class="main_drama_list">
-									<a href="./drama/dramaview?drama_num=${list[i].drama_num}" style="color: #000;">
+									<a href="./drama/dramaview?drama_num=${list[j].drama_num}" style="color: #000;">
 										<img src="./resources/images/home/icon_box.png" style="padding: 0 4px 1px 0;">
-										${list[i].title}</a>
+										${list[j].title}</a>
 									</div>
-								</td>
-								</tr>
+								</li>
+								</ul>
 							</tbody>
 						</c:forEach>
-					</table> --%>
+					</table>
 								
 							
 <!-- HOME FOOTER -->
