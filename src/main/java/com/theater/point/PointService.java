@@ -29,7 +29,7 @@ public class PointService {
 		
 		List<PointDTO> ar = pointDAO.selectList(id,rowNum);
 		
-		mv.addObject("id","iu");
+		
 		mv.addObject("pager", pager);
 		mv.addObject("list", ar);
 		mv.addObject("point", "point");
