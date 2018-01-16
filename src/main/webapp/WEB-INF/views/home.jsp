@@ -304,7 +304,7 @@ td, select {
 										${list[i].title}</a>
 								</div>
 							</c:forEach> --%>
-							<table width="100%" cellpadding="0" cellspacing="0" border="0">
+							<%-- <table width="100%" cellpadding="0" cellspacing="0" border="0">
 						<c:forEach begin="0" end="1" var = "i">
 							<tbody>
 								<tr>
@@ -318,7 +318,7 @@ td, select {
 								</tr>
 							</tbody>
 						</c:forEach>
-					</table>
+					</table> --%>
 								
 							
 <!-- HOME FOOTER -->
