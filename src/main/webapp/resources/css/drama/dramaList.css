@@ -443,6 +443,10 @@ li {
    font-size: 10pt;
 
 }
+.list {
+    cursor: pointer;
+
+}
 
 ul.pagination {
 

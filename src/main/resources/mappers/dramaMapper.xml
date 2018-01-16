@@ -43,7 +43,7 @@
   		</if> 
   		
   		<if test="kind == 'contents'">
-  		where title like '%'||#{search}||'%'
+  		where contents like '%'||#{search}||'%'
   		</if>
   		order by drama_num desc) N)
   		where R between #{startRow} and #{lastRow}
@@ -96,9 +96,18 @@
   <select id="selectOne_review" parameterType="int"  resultMap="reviewDTO">
    select max(review_num) from review where drama_num=#{drama_num}
   </select>
+  
+  <select id="getDrama_num" resultType="int">
+  		select drama_num.nextval from dual
+  	</select>
+  	
+    	<select id="totalcount_list" resultType="int">
+  		select nvl(count(drama_num), 0) from drama where title like #{search}
+  	</select>
+  
  
   <!-- 후기(별점) 페이징 처리 -->
-  <select id="totalcount" parameterType="int" resultType="int">
+  <select id="totalcount"  resultType="int">
 	select COUNT(drama_num) from REVIEW where drama_num=#{drama_num}
   </select>
  

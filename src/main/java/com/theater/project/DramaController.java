@@ -28,6 +28,7 @@ import com.theater.member.CompanyDTO;
 import com.theater.member.MemberService;
 import com.theater.qna.Qna_viewDTO;
 import com.theater.util.ListData;
+import com.theater.util.RowNum;
 
 @Controller
 @RequestMapping(value="/drama/*")

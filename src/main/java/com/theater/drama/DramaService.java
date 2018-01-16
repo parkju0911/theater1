@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.theater.file.FileDAO;
 import com.theater.file.FileDTO;
 import com.theater.member.MemberDTO;
+import com.theater.notice.NoticeDTO;
 import com.theater.point.PointDAO;
 import com.theater.point.PointDTO;
 import com.theater.qna.Qna_viewDTO;
@@ -70,10 +71,10 @@ public class DramaService {
 	public List<SeatDTO> selectSeat(int drama_num, int date_num) throws Exception{
 		return dramaDAO.selectSeat(drama_num, date_num);
 	}
-	public DramaDTO selectOne(int drama_num) throws Exception{
-		int buy_hit = 0;
-		dramaDAO.hitUpdate(buy_hit);
-		return dramaDAO.selectOne(drama_num);
+	public DramaDTO selectOne(int num) throws Exception{
+		dramaDAO.hitUpdate(num);
+		DramaDTO dramaDTO = dramaDAO.selectOne(num);
+		return dramaDTO;
 	}
 	public FileDTO fileList(int file_num) throws Exception{
 		return dramaDAO.fileList(file_num);
@@ -105,6 +106,11 @@ public class DramaService {
 	//리뷰 수 합산
 	public int totalcount(int drama_num)throws Exception{
 		int totalcount = dramaDAO.totalcount(drama_num);
+		return totalcount;
+	}
+	//리스트
+	public int totalcount_list(RowNum rowNum)throws Exception{
+		int totalcount = dramaDAO.totalcount_list(rowNum);
 		return totalcount;
 	}
 	//리뷰 평점 계산
@@ -168,9 +174,9 @@ public class DramaService {
 	
 	public ModelAndView selectList(ListData listData) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		
 		RowNum rowNum = listData.makeRow();
-		Pager pager = listData.makePage(dramaDAO.totalCount(rowNum));
+		int totalCount = dramaDAO.totalcount_list(rowNum);
+		Pager pager = listData.makePage(totalCount);
 		List<DramaDTO> ar = dramaDAO.selectList(rowNum);
 		List<FileDTO> file=new ArrayList<FileDTO>();
 		for(DramaDTO dramaDTO: ar){
@@ -178,7 +184,8 @@ public class DramaService {
 			file.add(fileDTO);
 		}
 		
-		mv.addObject("list", ar).addObject("pager", pager).addObject("board", "drama").addObject("file", file);
+	
+		mv.addObject("list", dramaDAO.selectList(rowNum)).addObject("pager", pager).addObject("board", "drama").addObject("file", file);
 		
 		return mv;
 	}

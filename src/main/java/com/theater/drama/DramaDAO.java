@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+
 import com.theater.file.FileDTO;
 import com.theater.member.MemberDTO;
 import com.theater.qna.Qna_viewDTO;
@@ -22,6 +23,8 @@ public class DramaDAO  {
 	@Inject
 	private SqlSession sqlSession;
 	private static final String namespace="dramaMapper.";
+	
+
 
 	//orderlist 관련 1-15
 	public List<OrderListDTO> orderList(String id) throws Exception{
@@ -140,8 +143,11 @@ public class DramaDAO  {
 	public List<ReviewDTO> selectList_review(int drama_num)throws Exception{
 		return sqlSession.selectList(namespace+"selectList_review", drama_num);
 	}
-	public int totalcount(int drama_num)throws Exception{
-		return sqlSession.selectOne(namespace+"totalcount", drama_num);
+	public int totalcount_list(RowNum rowNum)throws Exception{
+		return sqlSession.selectOne(namespace+"totalcount", rowNum);
+	}
+	public int totalcount(int buy_num)throws Exception{
+		return sqlSession.selectOne(namespace+"totalcount", buy_num);
 	}
 	public int totalcount_qna(RowNum rowNum)throws Exception{
 		return sqlSession.selectOne(namespace+"totalcount_qna", rowNum);
@@ -171,8 +177,8 @@ public class DramaDAO  {
 		return sqlSession.selectList(namespace+"dramaReviewList", rowNum);
 	}
 
-	public int hitUpdate(int buy_hit) throws Exception {
-		return sqlSession.update(namespace+"hitUpdate", buy_hit);
+	public int hitUpdate(int num) throws Exception {
+		return sqlSession.update(namespace+"hitUpdate", num);
 	}
 	
 	public ReviewDTO review_selectOne(int review_num)throws Exception{

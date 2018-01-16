@@ -60,7 +60,12 @@
 			
 		</div>
 	</div>
-
+	
+	<c:if test="${list eq null}">
+		<h1>데이터를 가져오지 못했습니다.</h1>
+	</c:if>
+	
+<c:if test="${list ne null}">
 	<div class="container review">
 		<div id="review-feed-list-wrap">
 			<div class="row unpa-card-row row-flex-height-md">
@@ -159,7 +164,7 @@
 
 
 <div>
-
+</c:forEach>
 <div id="rightSide">
 
 	<div id="right_zzim">
@@ -182,10 +187,11 @@
 </div> 
 
 
-	</c:forEach>
+	
 </div>
 			</div>
 		</div>	
+		
 	<div class="text-center">
       <ul class="pagination">
     
@@ -200,6 +206,8 @@
 			</c:if>
 		
       </ul>
+   </c:if>
+ 
    </div>
          <%-- <c:if test="${not empty member}"> --%>
       <div class="write-btn"
@@ -209,6 +217,7 @@
       </div>
         <%--  </c:if> --%>
          </div>
+   
 
 	<!-- footer 시작 -->
 	<c:import url="../temp/footer.jsp"></c:import>
