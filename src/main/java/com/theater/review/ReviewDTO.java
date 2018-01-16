@@ -9,19 +9,25 @@ public class ReviewDTO extends MemberDTO{
 	private int review_num;
     private String title;
     private String contents;
-    private String writer;
+    private String id;
     private int star;
     private Date review_date;
-    private int fileNum;
+    private int file_num;
     private int drama_num;
 
     
-	
-	public int getFileNum() {
-		return fileNum;
+
+	public String getId() {
+		return id;
 	}
-	public void setFileNum(int fileNum) {
-		this.fileNum = fileNum;
+	public void setId(String id) {
+		this.id = id;
+	}
+	public int getFile_num() {
+	return file_num;
+	}
+public void setFile_num(int file_num) {
+	this.file_num = file_num;
 	}
 	public int getDrama_num() {
 		return drama_num;
@@ -53,12 +59,7 @@ public class ReviewDTO extends MemberDTO{
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	public String getWriter() {
-		return writer;
-	}
-	public void setWriter(String writer) {
-		this.writer = writer;
-	}
+	
 	public int getStar() {
 		return star;
 	}

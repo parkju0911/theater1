@@ -84,7 +84,7 @@ table {
 	margin: 0 auto;
 	width: 80%;
 	border: 1px solid #ddd;
-	border-collapse: collapse;
+
 }
 
 td {
@@ -93,12 +93,6 @@ td {
 	padding: 10px;
 }
 
-input {
-	padding: 3px;
-	width: 200px;
-	border-radius: 4px;
-	border: 1px solid #ddd;
-}
 
 .content textarea {
 	height: 100px;
@@ -125,49 +119,48 @@ input {
 
 	<form id="frm" action="dramaReviewwrite" method="post" enctype="multipart/form-data">
 		<table>
-		
+				
 			<tr>
 				<td><select id="select_drama" style="height: 30px;">
 							<optgroup label="공연을 선택하여주세요">
 								<option class="option_height">리뷰 작성하실 공연을 선택하여주세요</option>
 				
 						<c:forEach items="${list}" var="drama">
-							<option class="option_height"  name="drama_num"  value="${drama.drama_num}" title="${drama.drama_num }">${drama.title }</option>
+							<option class="option_height"  id="dramanum"name="drama_num"  value="${drama.drama_num}" title="${drama.drama_num }">${drama.title }</option>
 				
 						</c:forEach>
 							</optgroup>
-				
+								
 					</select><input type="text" name="title" placeholder="제목을 입력해주세요."></td>
 				<td>작성자<input type="text" name="id" placeholder="${member.id }" value="${member.id}" readonly="readonly"></td>
-
+						
 			</tr>
 			
+			<tr>
+				<td>
+				---------------------평가--------------------
+					<div id="select_1" style="width: 1500px;height: 50px;">
+					<img alt="" src="../resources/images/starpoint/star_5.png" style="height: 20px; float: left"><input type="radio"  class="radio" value="5" name="star" checked="checked"  style="float:left;">
+					<img alt="" src="../resources/images/starpoint/star_4.png" style="height: 20px; float: left"><input type="radio"  class="radio" value="4" name="star"  style="float:left;">
+					<img alt="" src="../resources/images/starpoint/star_3.png" style="height: 20px; float: left"><input type="radio"  class="radio" value="3" name="star"  style="float:left;">
+					<img alt="" src="../resources/images/starpoint/star_2.png" style="height: 20px; float: left"><input type="radio"  class="radio" value="2" name="star"  style="float:left;">
+					<img alt="" src="../resources/images/starpoint/star_1.png" style="height: 20px; float: left"><input type="radio"  class="radio" value="1" name="star"  style="float:left;">
+					</div>
+				</td>
+			</tr>
 			
 			<tr>
 				<td class="content" colspan="2">
-				<textarea id="contents"name="contents">
-				<div style="width: 800px; height: 20px;">내용을 입력해주세요.
-				</div>
-					
+				<textarea id="contents" name="contents">
 				
-				<ul class="select_form" style="width: 200px; height: 200px;float: left;">
-				------------평가------------
-					<li  style="list-style: none; margin-top: 10px;"><img alt="" src="../images/starpoint/star_5.png" style="height: 20px"><input type="radio"  class="radio" value="5" name="star" checked="checked"></li>
-					<li  style="list-style: none"><img alt="" src="../images/starpoint/star_4.png" style="height: 20px"><input type="radio"  class="radio" value="4" name="star"></li>
-					<li  style="list-style: none"><img alt="" src="../images/starpoint/star_3.png" style="height: 20px"><input type="radio"  class="radio" value="3" name="star"></li>
-					<li  style="list-style: none"><img alt="" src="../images/starpoint/star_2.png" style="height: 20px"><input type="radio"  class="radio" value="2" name="star"></li>
-					<li  style="list-style: none"><img alt="" src="../images/starpoint/star_1.png" style="height: 20px"><input type="radio"  class="radio" value="1" name="stat"></li>
-					</ul>
-				
-				</textarea>
-	
-				
+					</textarea>
+
 				</td>
 			</tr>
-			<tr>
-			<td><input type="file" name="reviewwrite"></td>
-			</tr>
-		</table>
+				<tr>
+				<td><input type="file" name="files"></td>
+				</tr>
+				</table>
 		
 	
 		<button id="write">작성하기</button>

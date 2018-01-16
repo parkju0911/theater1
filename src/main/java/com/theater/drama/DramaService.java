@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.javassist.expr.NewArray;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -51,8 +52,11 @@ public class DramaService {
 		return dramaDAO.selectSeat(drama_num, date_num);
 	}
 	public DramaDTO selectOne(int drama_num) throws Exception{
-
+		
 		return dramaDAO.selectOne(drama_num);
+	}
+	public FileDTO selectFile(int file_num)throws Exception{
+		return dramaDAO.selectFile(file_num);
 	}
 	
 	public List<DramaListDTO> timeList(int drama_num, String drama_date) throws Exception{
@@ -160,12 +164,20 @@ public class DramaService {
 	//공연리뷰 작성(insert)
 	@Transactional
 	public int review_insert(ReviewDTO reviewDTO ,  HttpSession session , MultipartHttpServletRequest Ms)throws Exception{
-		System.out.println("service 앞");
-		int file_num = fileDAO.review_file_num();
-		System.out.println("insert 뒤");
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		reviewDTO.setId(memberDTO.getId());
+		System.out.println("ID:"+reviewDTO.getId());
+		
+		int file_num = dramaDAO.review_file_num(reviewDTO);
+		System.out.println("file_num:"+file_num);
+		reviewDTO.setFile_num(file_num);
+		System.out.println("title"+reviewDTO.getTitle());
+		System.out.println(reviewDTO.getDrama_num());
+		System.out.println("내용:"+reviewDTO.getContents());  
+		System.out.println("별점:"+reviewDTO.getStar());
 		int result = dramaDAO.review_insert(reviewDTO);
 		
-		MultipartFile  file  = Ms.getFile("reviewwrite"); 
+		MultipartFile  file  = Ms.getFile("files"); 
 		List<FileDTO> names = new ArrayList<FileDTO>();
 	
 		Map<String, Object> map = new HashMap<String, Object>();

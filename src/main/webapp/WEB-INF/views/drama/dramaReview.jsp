@@ -60,10 +60,12 @@ $(function(){
 	
 	
 	</div>
-	<c:forEach items="${review}" var="list">
+	 <c:forEach items="${review}" var="list">
 	<div class="list_box">
 		<div class="box_left">
-			이미지 불러오는 곳
+		
+					이미지 불러올것<img alt="" src="##">
+		
 		</div>
 			<div class="box_right">
 			
@@ -89,7 +91,7 @@ $(function(){
 		
 	</div>
 	
-	</c:forEach>
+ 	</c:forEach> 
 	
 	
 	

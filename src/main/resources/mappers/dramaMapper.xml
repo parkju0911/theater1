@@ -201,12 +201,17 @@
   	<selectKey keyProperty="review_num" resultType="int" order="BEFORE">
   	select review_num.nextval from dual
   	</selectKey>
-  		insert into review values(#{review_num}, #{title} , #{contents}, #{id} , #{star}, #{file_num} #{drama_num} , sysdate)
+  		insert into review values(#{review_num}, #{title} , #{contents}, #{id} , #{star}, #{file_num}, #{drama_num} , sysdate)
   	</insert>
   	<!--  공연리뷰 write 에서 drama 선택 -->
   	<select id="review_insert_select" parameterType="java.util.Map"  resultType="dramaDTO">
   		select title, drama_num from drama;
   	</select>
+  	<!-- 공연리뷰 write 에서 파일 넘버 선택 -->
+  	 <select id="review_file_num" resultType="int">
+  		select file_num.nextval from dual	
+  	</select>	
+  	
   	<select id="total_seat" parameterType="int" resultType="int">
   		select (row_num * col_num) from company_info where company_num=#{company_num}
   	</select>
