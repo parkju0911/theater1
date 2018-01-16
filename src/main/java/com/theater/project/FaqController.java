@@ -43,7 +43,9 @@ public class FaqController {
 	@RequestMapping(value="faq", method = RequestMethod.GET)
 	public ModelAndView selectList(ListData listData) throws Exception {
 		ModelAndView modelAndView = null;
+		FaqDTO faqDTO = new FaqDTO();
 		modelAndView = faqService.selectList(listData);
+		modelAndView.addObject("num", faqDTO.getFaq_num());
 		return modelAndView;
 	}
 
@@ -58,6 +60,7 @@ public class FaqController {
 			e.printStackTrace();
 		}
 		model.addAttribute("view", faqDTO);
+		model.addAttribute("num", faqDTO.getFaq_num());
 		return "member/faqView";
 	}
 
@@ -74,6 +77,9 @@ public class FaqController {
 	public String update(FaqDTO faqDTO, RedirectAttributes rd) throws Exception{
 		int result=0;
 		result = faqService.update(faqDTO);
+		System.out.println(faqDTO.getTitle());
+		System.out.println(faqDTO.getId());
+		System.out.println(faqDTO.getContents());
 		String message="FAIL";
 		if(result>0){
 			message="SUCCESS";

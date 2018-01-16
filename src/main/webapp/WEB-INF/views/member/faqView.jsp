@@ -68,20 +68,20 @@ td{
 </head>
 <body>
 <c:import url="../temp/header.jsp"></c:import>
-<div class="head_line">
+<%-- <div class="head_line">
 <div class="title_wrap" style=" font-family: 'Nanum Gothic', sans-serif;">
 	<h1 id="h1_title"><a href="${pageContext.request.contextPath}/member/faqView.faq?faq_num=${view.faq_num}">FAQ</a></h1>
 	<h6 id="h6_title"><a href="${pageContext.request.contextPath}"><img alt="" src="../resources/images/common/homeImg.png" id="homeImg"></a> > <a href="${pageContext.request.contextPath}/member/faq">FAQ</a> > 
 	<a href="${pageContext.request.contextPath}/member/faqView.faq?faq_num=${view.faq_num}">${view.title}</a></h6>
 	</div>
-</div>
+</div> --%>
 <div class="board_wrap1">
 	<p class="b_title">${view.title}</p>
 	<div class="b_contents">${view.contents}</div>
 	
 	<div class="btn-group">
-	<a href="./faqUpdate?faq_num=${view.faq_num}" class="btn btn-default">수정</a>
-	<a href="./faqDelete?faq_num=${view.faq_num}" class="btn btn-default" onclick="if(!confirm('정말로 삭제하시겠습니까?')){return false;}">삭제</a>
+	<a href="./faqUpdate?num=${view.faq_num}" class="btn btn-default">수정</a>
+	<a href="./faqDelete?num=${view.faq_num}" class="btn btn-default" onclick="if(!confirm('정말로 삭제하시겠습니까?')){return false;}">삭제</a>
 	</div>
 	
 	<a href="./faq" id="list_btn" class="btn btn-default">목록</a>

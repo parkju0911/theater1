@@ -162,7 +162,7 @@
 								<c:forEach items="${list}" var="dto">
 									<tr>
 										<td>${dto.faq_num}</td>
-										<td><a href="./faqView?faq_num=${dto.faq_num}">${dto.title}</a></td>
+										<td><a href="./faqView?num=${dto.faq_num}">${dto.title}</a></td>
 									</tr>
 								</c:forEach>
 							</table>
