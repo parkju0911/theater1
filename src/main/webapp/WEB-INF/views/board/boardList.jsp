@@ -106,7 +106,7 @@
 			<td class="td-main">DATE</td>
 			<td class="td-main">HIT</td>
 		</tr>
-		<c:forEach items="${list}" var="dto">
+		<c:forEach items="${arlist}" var="dto">
 		
 		
 		<c:if test="${board eq 'notice'}">
