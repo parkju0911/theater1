@@ -51,11 +51,17 @@ public class FaqController {
 
 	//selectOne
 	@RequestMapping(value="faqView", method = RequestMethod.GET)
-	public String selectOne(Model model, @RequestParam(defaultValue="0", required=false) int num) throws Exception{
-		FaqDTO faqDTO = faqService.selectOne(num);
+	public String selectOne(Model model, @RequestParam(defaultValue="0", required=false) int num) {
+		FaqDTO faqDTO = null;
+		try {
+			faqDTO = faqService.selectOne(num);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		model.addAttribute("view", faqDTO);
 		model.addAttribute("num", faqDTO.getFaq_num());
-		return "member/faq";
+		return "member/faqView";
 	}
 
 	//update -> form 이동
@@ -71,6 +77,9 @@ public class FaqController {
 	public String update(FaqDTO faqDTO, RedirectAttributes rd) throws Exception{
 		int result=0;
 		result = faqService.update(faqDTO);
+		System.out.println(faqDTO.getTitle());
+		System.out.println(faqDTO.getId());
+		System.out.println(faqDTO.getContents());
 		String message="FAIL";
 		if(result>0){
 			message="SUCCESS";
