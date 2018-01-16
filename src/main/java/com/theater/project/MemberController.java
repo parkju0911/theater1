@@ -222,19 +222,10 @@ public class MemberController {
 		}
 		return mv;
 	}
-	@RequestMapping(value="faq", method=RequestMethod.GET)
-	public String faq(){
-		return "member/faq";
-	}
 	
 	@RequestMapping(value="myboard", method=RequestMethod.GET)
 	public String myboard(){
 		return "member/myboard";
-	}
-	
-	@RequestMapping(value="qna", method=RequestMethod.GET)
-	public String qna(){
-		return "member/qna";
 	}
 	
 	@RequestMapping(value="memberDelete", method=RequestMethod.GET)

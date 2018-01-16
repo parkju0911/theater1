@@ -3,9 +3,46 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="faqMapper">
-  
+  	
+  	<resultMap type="FaqDTO" id="faqResult">
+  		<id property="faq_num" column="faq_num"/>
+  		<result property="id" column="id"/>
+  		<result property="title" column="title"/>
+  		<result property="contents" column="contents"/>
+  	</resultMap>
+  	
   	<insert id="insert" parameterType="com.theater.qna.FaqDTO">
 		insert into faq values(qna_num.nextval, #{id}, #{title}, #{contents})
   	</insert>
+  	
+  	<select id="selectOne" parameterType="java.lang.Integer" resultMap="faqResult">
+  		select * from faq where faq_num=#{faq_num}
+  	</select>
+  	
+  	<select id="selectList" parameterType="com.theater.util.RowNum" resultType="com.theater.qna.FaqDTO">
+  		select * from
+  		(select rownum R, F.* from
+  		(select * from faq 
+  		<if test="kind == 'title'">
+  			where title like '%'||#{search}||'%'
+  		</if>
+  		<if test="kind == 'contents'">
+  			where contents like '%'||#{search}||'%'
+  		</if>
+  		order by faq_num desc) F)
+  		where R between #{startRow} and #{lastRow}
+  	</select>
+  	
+  	<select id="totalCount" resultType="int">
+  		select nvl(count(faq_num), 0) from faq where title like #{search}
+  	</select>
+  	
+  	<delete id="delete" parameterType="java.lang.Integer">
+  		delete faq where faq_num=#{faq_num}
+  	</delete>
+  	
+  	<update id="update" parameterType="com.theater.qna.FaqDTO">
+  		update faq set title=#{title}, contents=#{contents} where faq_num=#{faq_num}
+  	</update>
   	
   </mapper>
