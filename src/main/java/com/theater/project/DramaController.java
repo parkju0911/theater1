@@ -2,6 +2,7 @@ package com.theater.project;
 
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -135,42 +136,52 @@ return "sss";
 	//Drama View
 	@RequestMapping(value="dramaview")
 	public ModelAndView selectOne(int drama_num, ModelAndView mv,RedirectAttributes rd,HttpServletRequest request, HttpServletResponse response) throws Exception{
-	
 		//공연 정보가져오기
 		DramaDTO dramaDTO = dramaService.selectOne(drama_num);
 		//해당 공연의 날짜 정보 가져오기
 		List<DramaListDTO> ar = dramaService.dramaList(drama_num);
 				
 		if(dramaDTO != null) {
+			
+			//중복제거
+			String [] strings=null;
+			boolean check=true;
+			boolean newCheck=true;
+			String result="";
+			Cookie [] cookies = request.getCookies();
+			for (Cookie cookie : cookies) {
+				
+				if(cookie.getName().equals("title")){
+					strings = cookie.getValue().split(",");
+					for(String s : strings){
+						if(s.equals(String.valueOf(dramaDTO.getDrama_num()))){
+							check=false;
+						}
+					}
+					if(check){
+						//중복데이터 X
+						result=cookie.getValue();
+						result=result+","+dramaDTO.getDrama_num();
+						Cookie c = new Cookie("title", result);
+						response.addCookie(c);
+					}
+					newCheck=false;
+					break;
+				
+				}
+				//if
+				
+			}//for
+			
+			if(newCheck){
+				Cookie c = new Cookie("title", String.valueOf(dramaDTO.getDrama_num()));
+				response.addCookie(c);
+			}
+			//쿠키 파싱후 추가
+			//중복제거 끝
 			mv.addObject("view", dramaDTO);
 			mv.addObject("list", ar);
 			mv.setViewName("drama/dramaview");
-			
-			Cookie[] getCookies=request.getCookies();
-			String value=URLEncoder.encode(dramaDTO.getTitle(), "UTF-8");
-			String result="";
-			for(Cookie c:getCookies){
-				if(c.getName().equals("title")){
-					String [] ar2=URLDecoder.decode(c.getValue(), "UTF-8").split(",");
-					//ddd, 2
-					for(int i=0;i<ar2.length;i++){
-						System.out.println("1111111111111:n     "+value);
-						System.out.println("2222222222222:    "+ar2[i]);
-						if(URLDecoder.decode(ar2[i], "UTF-8").equals(value)){
-							continue;
-						}else {
-							result=result+ar2[i]+",";
-						}
-					}//for
-					
-					result=result+dramaDTO.getTitle();
-					value=result;
-					
-				}//if
-			}//for
-			Cookie c=new Cookie("title", URLEncoder.encode(value, "UTF-8"));
-			
-			response.addCookie(c);
 		}else {
 			rd.addFlashAttribute("message", "잘못된 접근방식 입니다.");
 			mv.setViewName("Redirect:../");
@@ -237,11 +248,27 @@ return "sss";
 		
 	//selectList
 	@RequestMapping(value="dramaList")
-	public ModelAndView selectList(ListData listData) throws Exception {
+	public ModelAndView selectList(ListData listData, HttpServletRequest request) throws Exception {
 		ModelAndView mv = null;
 		mv = dramaService.selectList(listData);
 		mv.setViewName("drama/list");
 	
+		Cookie [] cookies = request.getCookies();
+		List<DramaDTO> ar = new ArrayList<DramaDTO>();
+		for (Cookie cookie : cookies) {
+			cookie.setMaxAge(60*60*24);
+			if(cookie.getName().equals("title")){
+				String [] strings = cookie.getValue().split(",");
+				for (String string : strings) {
+					
+					DramaDTO dramaDTO=dramaService.selectOne(Integer.parseInt(string));
+					ar.add(dramaDTO);
+				}
+				mv.addObject("title", ar);
+				
+			}
+		}
+		
 		return mv;
 	}
 	
