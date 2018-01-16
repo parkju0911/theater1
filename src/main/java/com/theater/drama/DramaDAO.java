@@ -172,10 +172,7 @@ public class DramaDAO  {
 		int result = sqlSession.insert(namespace+"review_insert", reviewDTO);
 		return result;
 	}
-	//연극리뷰 작성시 파일넘버(시퀀스번호 올려주는거)
-	public int review_file_num()throws Exception{
-		return sqlSession.selectOne(namespace+"review_file_num");
-	}
+
 /*	public List<DramaDTO> review_insert_select()throws Exception{
 		
 		return sqlSession.selectList(namespace+"review_insert");

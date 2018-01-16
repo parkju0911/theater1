@@ -268,8 +268,7 @@ public class DramaController {
 	@RequestMapping(value="dramaReviewwrite" , method=RequestMethod.POST)
 	public String dramaReviewwrite(RedirectAttributes rd , ReviewDTO reviewDTO , HttpSession session , MultipartHttpServletRequest Ms , Model model , DramaDTO dramaDTO)throws Exception{
 		int result = 0;
-		
-		System.out.println("들어옴");
+
 		
 		result = dramaService.review_insert(reviewDTO, session, Ms);
 	

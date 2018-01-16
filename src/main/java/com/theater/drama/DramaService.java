@@ -168,7 +168,7 @@ public class DramaService {
 		reviewDTO.setId(memberDTO.getId());
 		System.out.println("ID:"+reviewDTO.getId());
 		
-		int file_num = dramaDAO.review_file_num();
+		int file_num = dramaDAO.review_file_num(reviewDTO);
 		System.out.println("file_num:"+file_num);
 		reviewDTO.setFile_num(file_num);
 		System.out.println("title"+reviewDTO.getTitle());
