@@ -1,33 +1,82 @@
 package com.theater.project;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
+import java.util.Map;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.theater.util.ListData;
-
+import com.theater.member.MemberDTO;
+import com.theater.member.MemberService;
 import com.theater.point.*;
 
 @Controller
 @RequestMapping(value="/point/*")
+@SessionAttributes("id")
+
 public class PointController {
 
 	@Inject
 	private PointService pointService;
+	@Inject
+	private MemberService memberService;
+/*	@Autowired
+	private PointDTO pointDTO;*/
 	
 	@RequestMapping(value="pointList")
-	public ModelAndView selectList(ModelAndView mv, ListData listData) throws Exception{
+	public ModelAndView selectList(Map<String, String> map,ModelAndView mv, ListData listData,PointDTO pointDTO,Model model,RedirectAttributes rd ,HttpSession session) throws Exception{
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		String id = memberDTO.getId();
+		
+		/*MemberDTO memberDTO=new MemberDTO();*/
+		
+		/*String id = map.get(session.getAttribute(memberDTO.getId()));*/
+	/*	session.getAttribute(id);
+		System.out.println(id);
+		model.addAttribute("id", id);*/
+
+		memberDTO=memberService.login(memberDTO);
+		
+		session.setAttribute("id",memberDTO.getId());
+	
+		map.put("id",memberDTO.getId());
+
+	
+		mv = pointService.selectList(listData, id);
+
+		
+		
+		
+			/*if(memberDTO == null) {
+				System.out.println("실패");
+				rd.addFlashAttribute("message", "로그인이 필요합니다.");
+				mv.setViewName("Redirect:../");
 			
-		mv = pointService.selectList(listData);
-			
-		return mv;
-	}
+				
+			}else {
+				mv.setViewName("point/pointList");
+			}
+					*/
+			return mv;
+		}
+		 
+		 
+		 
+		 
+	
+
 	
 	/*//selectOne
 		@RequestMapping(value="pointView")
@@ -62,27 +111,37 @@ public class PointController {
 		}
 		
 		
-		@RequestMapping(value="pointCheck",method=RequestMethod.GET)
+		@RequestMapping(value="pointList",method=RequestMethod.GET)
 		public String insert(Model model) throws Exception{
 			model.addAttribute("point", "point");
 			
-			return "point/pointCheck";
+			return "point/pointList";
 		}
 		
 		
-		@RequestMapping(value="pointCheck",method=RequestMethod.POST)
-		public String insert(PointDTO PointDTO, Model model, HttpSession session)throws Exception{
-			System.out.println("here");
+		@RequestMapping(value="pointList",method=RequestMethod.POST)
+		public String insert(Map<String, String> map,PointDTO pointDTO, String id, HttpSession session,RedirectAttributes attributes)throws Exception{
+			MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+			 id = memberDTO.getId();
+			memberDTO=memberService.login(memberDTO);
+			
+			session.setAttribute("id",memberDTO.getId());
+		
+			map.put("id",memberDTO.getId());
+
 			int result = 0;
-			result=pointService.attendCheck(PointDTO, session);
-			 
+			result=pointService.attendCheck(pointDTO, session, id);
+		
 			String message = "이미출석했습니다.";
 			if(result > 0) {
-				message = "출석체크"
-						+ "";
+				message = "출석체크";
+					
 			}
-			model.addAttribute("message", message);
-			model.addAttribute("path","../point/pointCheck");
+		
+		
+			attributes.addFlashAttribute("message", message);
+			/*model.addAttribute("message", message);
+			model.addAttribute("path","../point/pointCheck");*/
 			return "redirect:./pointList";
 		}
 		

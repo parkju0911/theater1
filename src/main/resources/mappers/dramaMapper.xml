@@ -8,9 +8,10 @@
   	<resultMap type="DramaListDTO" id="dramalistDTO"/>
  	<resultMap type="CompanyDTO" id="companyDTO"/>
   	<resultMap type="ReviewDTO" id="reviewDTO"/>
-  	<resultMap type="QnaDTO" id="qnaDTO"/>
+  	<resultMap type="FaqDTO" id="faqDTO"/>
   	<resultMap type="Qna_viewDTO" id="qna_viewDTO"/>
   	<resultMap type="SeatDTO" id="seatDTO"/>
+  	<resultMap type="FileDTO" id="fileDTO"/>
   	<resultMap type="DramaDTO" id="dramaDTO">
   		<id property="drama_num" column="drama_num"/>
   		<result property="company_num" column="company_num"/>
@@ -54,6 +55,15 @@
 			#{title}, #{contents}, #{place}, #{price}, 0, #{file_num}
 		)  	
   	</insert> 
+  	<select id="fileList" parameterType="int" resultType="com.theater.file.FileDTO">
+  		select * from file_table where file_num=#{file_num}
+  	</select> 
+  	
+  	<update id="hitUpdate" parameterType="int">
+  		update drama set buy_hit=buy_hit+1 where drama_num=#{drama_num}
+  	</update>
+  
+  	
  	<!-- 공연 선택 view page -->
  	<resultMap type="dramaDTO" id="dramaviewResult">
  		<id property="drama_num" column="drama_num"/>
@@ -214,10 +224,19 @@
   		select buy_num.nextval from dual
   	</select>
   	<insert id="insertSeat" parameterMap="seatDTO">
-  		insert into seat values(#{buy_num}, #{drama_num}, #{date_num}, #{id}, #{select_seat}, #{ticket_numbers})
+  		insert into seat values(#{buy_num}, #{drama_num}, #{date_num}, #{id}, #{select_seat}, #{ticket_numbers}, #{point_num}, sysdate)
   	</insert>
-  	<insert id="insertBuy_List" parameterMap="seatDTO">
-  		insert into buy_list values(#{buy_num}, #{id}, #{drama_num}, sysdate)
-  	</insert>
+  	<!-- orderList 관련 -->
+  	<select id="orderList" parameterType="String" resultType="com.theater.drama.OrderListDTO">
+  		select * from seat where id=#{id}
+  	</select>
+  	<select id="orderListOne" parameterType="com.theater.drama.OrderListDTO" resultType="com.theater.drama.OrderListDTO">
+  		select s.*, dr.contents, dr.price, dr.file_num, da.drama_date, da.drama_time, p.point, p.kind 
+  		from drama dr, date_list da, point p, seat s 
+  		where s.buy_num=${buy_num} and dr.drama_num=#{drama_num} and da.date_num=#{date_num} and p.point_num=#{point_num}
+  	</select>
+  	<select id="orderFileName" parameterType="int" resultType="String">
+  		select file_name from file_table where file_num=#{file_num}
+  	</select>
   </mapper><!-- xml과 동일한 이름으로 한다. -->
   

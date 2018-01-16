@@ -87,7 +87,7 @@
 				<tr>
 					<td><a href="${pageContext.request.contextPath}/member/orderlist"><img alt="" src="../resources/images/member/order.png" id="myImg"></a></td>
 					<td><a href="${pageContext.request.contextPath}/member/membership"><img alt="" src="../resources/images/member/membership.png" id="myImg"></a></td>					
-					<td><a href="${pageContext.request.contextPath}/member/mypoint"><img alt="" src="../resources/images/member/point.png" id="myImg"></a></td>
+					<td><a href="${pageContext.request.contextPath}/point/pointList"><img alt="" src="../resources/images/member/point.png" id="myImg"></a></td>
 				</tr>
 				<tr>
 					<td><a href="${pageContext.request.contextPath}/member/myboard"><img alt="" src="../resources/images/member/board.png" id="myImg"></a></td>

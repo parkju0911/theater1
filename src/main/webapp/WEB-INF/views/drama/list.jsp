@@ -1,3 +1,4 @@
+<%@page import="java.net.URLDecoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -10,8 +11,20 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="../resources/css/common/header.css" rel="stylesheet">
 <link href="../resources/css/drama/dramaList.css" rel="stylesheet">
+
+
 <script type="text/javascript">
+
+
 	$(function() {
+
+	/* $(".btn_next").click(function(){
+		chkRecent(Cpage + 1);
+		});
+		$(".btn_prev").click(function(){
+		chkRecent(Cpage - 1);
+		}); */
+		
 		var message = '${message}';
 		if(message != '') {
 			alert(message);
@@ -51,7 +64,8 @@
 	<div class="container review">
 		<div id="review-feed-list-wrap">
 			<div class="row unpa-card-row row-flex-height-md">
-			<c:forEach items="${list}" var="dto">
+			<c:forEach items="${list}" var="dto" varStatus="i">
+
 				<%-- <c:forEach items="${requestScope.list}" var="dto"> --%>
 					<div class="col-md-4 unpa-ad-responsive-parent">
 
@@ -85,8 +99,9 @@
 
 								</div>
 
+
 								<div class="main-image"
-									style="background-image: url('../resources/images/drama_1.jpg')" >
+									style="background-image: url('../resources/upload/${file[i.index].file_name}')" >
 									<div class="content">
 										<a>${dto.contents}</a>
 									</div>
@@ -94,6 +109,7 @@
 								<div class="review-contents">
 									<div class="product-info">
 										<div class="left">
+										
 											<div class="product-image"
 												style="background-image: url(../resources/image/drama_1.jpg')"></div>
 										</div>
@@ -138,11 +154,38 @@
 							</div>
 						</div>
 					</div>
-			</c:forEach>
-			</div>
-		</div>
-	
+		
+			
 
+
+<div>
+
+<div id="rightSide">
+
+	<div id="right_zzim">
+
+		<div  class="recTit">최근본상품 <span id=recentCnt></span></div>
+
+			<ul id="d"><!-- 본 상품이 뿌려질 부분  -->
+				<c:catch>
+					<c:forEach items="${title}" var="t" varStatus="i">
+						<li>${t.title}</li>
+						<li><img id="zzim_img" alt="" src=../resources/upload/${file[i.index].file_name}></li>
+					</c:forEach>
+				</c:catch>
+			</ul>    
+
+		<!-- <div id="paging"><a class="btn_prev" style="cursor:pointer" >이전</a><span  id="currentPage"></span><span id="totalPageCount"></span><a class="btn_next" style="cursor:pointer" >다음</a></div> -->
+
+	</div>
+
+</div> 
+
+
+	</c:forEach>
+</div>
+			</div>
+		</div>	
 	<div class="text-center">
       <ul class="pagination">
     
