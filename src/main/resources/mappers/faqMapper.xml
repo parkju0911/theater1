@@ -31,7 +31,7 @@
   	</select>
   	
   	<select id="totalCount" resultType="int">
-  		select nvl(count(faq_num), 0) from faq where title like #{search}
+  		select nvl(count(faq_num), 0) from faq where title like '%'||#{search}||'%'
   	</select>
   	
   	<delete id="delete" parameterType="java.lang.Integer">
