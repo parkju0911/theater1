@@ -37,9 +37,7 @@ public class EventDAO {
 	}
 		
 	public int insert(EventDTO eventDTO) throws Exception {
-		System.out.println("Before : "+eventDTO.getEvent_num());
 		int result = sqlSession.insert(namespace+"insert", eventDTO);
-		System.out.println("After : "+eventDTO.getEvent_num());
 		return result;
 	}
 	
