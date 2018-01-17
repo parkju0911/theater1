@@ -140,10 +140,7 @@
 	select * from review where review_num=#{review_num}
 </select>
 
-<!-- 리뷰 update -->
-<update id="review_update" parameterType="reviewDTO">
-	update review set title=#{title} , contents=#{contents} , star=#{star}
-</update>
+
 <!--  qna write -->
 	<insert id="qna_insert" parameterType="qna_viewDTO">
 	<selectKey keyProperty="qna_viewnum"  resultType="int" order="BEFORE">
@@ -179,7 +176,7 @@
   	<select id="delete_drama_num" parameterType="int" resultType="qna_viewDTO">
   	select *from qna_view where qna_viewnum=#{qna_viewnum} 
   	</select>
-  	<!-- 공연리뷰 -->
+  	<!-- 공연리뷰 리스트 -->
   	<select id="dramaReviewList" parameterType="com.theater.util.RowNum" resultType="reviewDTO">
   		select * from
   		(select rownum r, N.* from
@@ -201,7 +198,7 @@
   	<selectKey keyProperty="review_num" resultType="int" order="BEFORE">
   	select review_num.nextval from dual
   	</selectKey>
-  		insert into review values(#{review_num}, #{title} , #{contents}, #{id} , #{star}, #{file_num}, #{drama_num} , sysdate)
+  		insert into review values(#{review_num}, #{title} , #{contents}, #{id} , #{star}, #{file_num}, #{drama_num}, sysdate)
   	</insert>
   	<!--  공연리뷰 write 에서 drama 선택 -->
   	<select id="review_insert_select" parameterType="java.util.Map"  resultType="dramaDTO">
@@ -211,7 +208,10 @@
   	 <select id="review_file_num" resultType="int">
   		select file_num.nextval from dual	
   	</select>	
-  	
+  	<!-- 공연리뷰 update -->
+  		<update id="review_update" parameterType="reviewDTO">
+  			update review set title=#{title} , contents=#{contents} , file_num=#{file_num}
+  		</update>
   	<select id="total_seat" parameterType="int" resultType="int">
   		select (row_num * col_num) from company_info where company_num=#{company_num}
   	</select>

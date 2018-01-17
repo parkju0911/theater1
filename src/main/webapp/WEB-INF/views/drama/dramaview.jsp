@@ -22,7 +22,7 @@
 <script type="text/javascript">
 
 
-checkCookie();
+/* checkCookie(); */
 	$(function() {
 			
 

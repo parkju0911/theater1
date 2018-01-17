@@ -180,7 +180,7 @@ public class DramaDAO  {
 	}*/
 	//연극리뷰 이미지 번호
 	public int review_file_num(ReviewDTO reviewDTO)throws Exception{
-		return sqlSession.insert(namespace+"review_file_num", reviewDTO);
+		return sqlSession.selectOne(namespace+"review_file_num", reviewDTO);
 	}
 	//연극리뷰 업데이트(수정)
 	public int review_update(ReviewDTO reviewDTO)throws Exception{

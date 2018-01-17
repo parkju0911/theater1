@@ -172,10 +172,11 @@ public class DramaService {
 		System.out.println("file_num:"+file_num);
 		reviewDTO.setFile_num(file_num);
 		System.out.println("title"+reviewDTO.getTitle());
-		System.out.println(reviewDTO.getDrama_num());
-		System.out.println("내용:"+reviewDTO.getContents());  
+		System.out.println("drama_num:"+reviewDTO.getDrama_num());
+		System.out.println("내용:"+reviewDTO.getContents()); 
 		System.out.println("별점:"+reviewDTO.getStar());
-		int result = dramaDAO.review_insert(reviewDTO);
+		
+	
 		
 		MultipartFile  file  = Ms.getFile("files"); 
 		List<FileDTO> names = new ArrayList<FileDTO>();
@@ -187,12 +188,14 @@ public class DramaService {
 
 			String name = fileSaver.fileSave(file, session, "upload");
 			FileDTO fileDTO = new FileDTO();
-			fileDTO.setFile_num(reviewDTO.getReview_num());
+			fileDTO.setFile_num(file_num);
 			fileDTO.setFile_name(name);
 			fileDTO.setFile_route(file.getOriginalFilename());
 			names.add(fileDTO);
 			fileDAO.insert(fileDTO);
 		
+			int result = dramaDAO.review_insert(reviewDTO);
+			
 		return result;
 	}
 	/*//공연리뷰 작성시 drama select

@@ -144,8 +144,8 @@ input {
 
 			</tr>
 			<tr>
-				<td class="content" colspan="2"><textarea id="contents"
-						name="contents">${view.contents }</textarea></td>
+				<td class="content" colspan="2">
+				<textarea id="contents" name="contents">${view.contents }</textarea></td>
 			</tr>
 					
 			<c:forEach items="${view.ar}" var="file">

@@ -287,6 +287,14 @@ public class DramaController {
 		model.addAttribute("dto", reviewDTO);
 		return "drama/dramaReviewupdate";
 	}
+	//공연 업데이트(수정) post
+	@RequestMapping(value="dramaReviewupdate" , method=RequestMethod.POST)
+	public String dramaReviewupdate(ReviewDTO reviewDTO , ModelAndView mv)throws Exception{
+		
+		
+		
+		return "redirect:./dramaReview";
+	}
 	//공연 삭제
 	@RequestMapping(value="dramaReviewdelete")
 	public String dramaReviewdelete(int review_num , RedirectAttributes rd) throws Exception{

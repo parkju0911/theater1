@@ -13,6 +13,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="../resources/SE2/js/HuskyEZCreator.js"></script>
 <script type="text/javascript">
+
 	$(function() {
 		//SmartEditor start 
 		var editor_object = [];
@@ -71,6 +72,7 @@
 			index--;
 		});
 
+	
 	});
 </script>
 
@@ -121,16 +123,17 @@ td {
 		<table>
 				
 			<tr>
-				<td><select id="select_drama" style="height: 30px;">
+				<td><select id="select_drama" style="height: 30px;"name="drama_num">
 							<optgroup label="공연을 선택하여주세요">
 								<option class="option_height">리뷰 작성하실 공연을 선택하여주세요</option>
 				
 						<c:forEach items="${list}" var="drama">
-							<option class="option_height"  id="dramanum"name="drama_num"  value="${drama.drama_num}" title="${drama.drama_num }">${drama.title }</option>
-				
+							<option class="option_height"  id="drama"  value="${drama.drama_num}" title="${drama.drama_num }">${drama.title }</option>
+							
+									
 						</c:forEach>
 							</optgroup>
-							
+									
 					</select><input type="text" name="title" placeholder="제목을 입력해주세요."></td>
 				<td>작성자<input type="text" name="id" placeholder="${member.id }" value="${member.id}" readonly="readonly"></td>
 						
@@ -151,6 +154,7 @@ td {
 			
 			<tr>
 				<td class="content" colspan="2">
+				<!-- <input type="text"  name="contents"> -->
 				<textarea id="contents" name="contents">
 				
 					</textarea>
@@ -163,9 +167,9 @@ td {
 				</table>
 		
 	
-		<button id="write">작성하기</button>
+		<input type="button"  id="savebutton" value="작성하기" style="width: 100px;height: 50px;float: right; margin-right: 210px;">
 	</form>
-		<button id="cancel"><a href="./dramaReview">취소</a></button>
+		<button id="cancel"><a href="./dramaReview">취소</a></button> 
 	
 	<!-- footer  -->
 	<c:import url="../temp/footer.jsp"></c:import>
