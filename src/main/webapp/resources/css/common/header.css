@@ -50,8 +50,9 @@ body{
 	margin: 0 auto;
     right: 0;
     left: 0;
-    width: 107%;
-    margin-top: 28px;
+    width: 132%;
+    margin-top: 17px;
+    margin-left: -49px;
 }
 
 .member_wrap li {

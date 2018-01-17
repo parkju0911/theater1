@@ -315,8 +315,8 @@ td, select {
 							 --%>
 				<div class="mainDramaList" style="margin: 0 auto;    width: 1300px;   overflow: overlay;    padding: 50px;">
 				<c:forEach begin="0" end="3" var = "j">
+					<a href="./drama/dramaview?drama_num=${list[j].drama_num}">
 					<div class="col-md-4 unpa-ad-responsive-parent"  style="width: 300px;">
-
 						<div class="unpa-card unpa-card-box-shadow unpa-review" style="background-color: whitesmoke; border: 0px;">
 							<div class="main-section"
 								style="border-left: 1px solid #f2f2f2;border-right: 1px solid #f2f2f2;">
@@ -345,12 +345,13 @@ td, select {
 
 								</div>
 
-
-								<div class="main-image">
+					<a href="./drama/dramaview?drama_num=${list[j].drama_num}">
+								<div class="main-image"
+									style="background-image: url('./resources/upload/${file[j].file_name}')" >
 									<div class="content">
-										<a>${list[j].contents}</a>
+										${list[j].contents}
 									</div>
-								</div>
+								</div></a>
 								<div class="review-contents">
 									<div class="product-info" style="min-height: 60px;">
 										<!-- <div class="left">
@@ -372,6 +373,7 @@ td, select {
 							</div>
 						</div>
 					</div>	
+					</a>
 				</c:forEach>
 				</div>
 					
