@@ -34,11 +34,11 @@
 			</div>
 			<div style="padding-top: 30px;">
 				<input type="text" name="id" value="아이디" onfocus="this.value='';"
-					style="color: #aaa; background: #fff; border: 1px solid #ccc; font-size: 14px; height: 45px; width: 388px; padding-left: 10px;">
+					style="color: #aaa;background-color: #fffffb; border: 1px solid #ccc; font-size: 14px; height: 45px; width: 388px; padding-left: 10px;">
 			</div>
 			<div style="padding-top: 10px;">
 				<input type="password" name="pw" value="비밀번호" onfocus="this.value='';"
-					style="color: #aaa; background: #fff; border: 1px solid #ccc; font-size: 14px; height: 45px; width: 388px; padding-left: 10px;">
+					style="color: #aaa; background-color: #fffffb; border: 1px solid #ccc; font-size: 14px; height: 45px; width: 388px; padding-left: 10px;">
 			</div>
 
 			<div style="padding-top: 10px;">
