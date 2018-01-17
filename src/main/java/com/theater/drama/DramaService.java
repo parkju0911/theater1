@@ -8,18 +8,17 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.javassist.expr.NewArray;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.theater.file.FileDAO;
 import com.theater.file.FileDTO;
-import com.theater.file.FileListDTO;
 import com.theater.member.MemberDTO;
+import com.theater.notice.NoticeDTO;
+import com.theater.point.PointDAO;
+import com.theater.point.PointDTO;
 import com.theater.qna.Qna_viewDTO;
 import com.theater.review.ReviewDTO;
 import com.theater.util.FileSaver;
@@ -36,14 +35,35 @@ public class DramaService {
 	private FileSaver fileSaver;
 	@Inject
 	private FileDAO fileDAO;
+	@Inject
+	private PointDAO pointDAO;
 	
-	/*1-10수정*/
-	public int insertBuy(SeatDTO seatDTO, MemberDTO memberDTO) throws Exception{
+	//orderlist 관련 01-15
+	public List<OrderListDTO> orderList(MemberDTO memberDTO) throws Exception{
+		return dramaDAO.orderList(memberDTO.getId());
+	}
+	//=============
+	/*1-15수정*/
+	@Transactional
+	public int insertBuy(SeatDTO seatDTO, MemberDTO memberDTO, int price) throws Exception{
 		seatDTO.setBuy_num(dramaDAO.buyNum());
 		seatDTO.setDate_num(dramaDAO.search_dateNum(seatDTO.getDrama_num(), seatDTO.getDrama_date().toString(), seatDTO.getDrama_time()));
 		seatDTO.setId(memberDTO.getId());
-
-		return dramaDAO.insertSeat(seatDTO);
+		
+		int point_num = pointDAO.searchPoint_num();
+		int totalPoint = pointDAO.totalPoint(memberDTO.getId());
+		//point 테이블 추가
+		PointDTO pointDTO = new PointDTO();
+		pointDTO.setId(memberDTO.getId());
+		pointDTO.setPoint_num(point_num);
+		pointDTO.setPoint((int)((price*seatDTO.getTicket_numbers())*0.01));
+		pointDTO.setTotal_point(totalPoint);
+		int result = pointDAO.insertPoint_seat(pointDTO);
+		
+		//seat테이블에 추가
+		seatDTO.setPoint_num(point_num);
+		result = dramaDAO.insertSeat(seatDTO);
+		return result;
 	}
 	public int search_dateNum(int drama_num, String drama_date, String drama_time) throws Exception{
 		return dramaDAO.search_dateNum(drama_num, drama_date, drama_time);
@@ -51,13 +71,15 @@ public class DramaService {
 	public List<SeatDTO> selectSeat(int drama_num, int date_num) throws Exception{
 		return dramaDAO.selectSeat(drama_num, date_num);
 	}
-	public DramaDTO selectOne(int drama_num) throws Exception{
-		
-		return dramaDAO.selectOne(drama_num);
+	public DramaDTO selectOne(int num) throws Exception{
+		dramaDAO.hitUpdate(num);
+		DramaDTO dramaDTO = dramaDAO.selectOne(num);
+		return dramaDTO;
 	}
-	public FileDTO selectFile(int file_num)throws Exception{
-		return dramaDAO.selectFile(file_num);
+	public FileDTO fileList(int file_num) throws Exception{
+		return dramaDAO.fileList(file_num);
 	}
+
 	
 	public List<DramaListDTO> timeList(int drama_num, String drama_date) throws Exception{
 		return dramaDAO.timeList(drama_num, drama_date);
@@ -86,13 +108,18 @@ public class DramaService {
 		int totalcount = dramaDAO.totalcount(drama_num);
 		return totalcount;
 	}
+	//리스트
+	public int totalcount_list(RowNum rowNum)throws Exception{
+		int totalcount = dramaDAO.totalcount_list(rowNum);
+		return totalcount;
+	}
 	//리뷰 평점 계산
 	public int review_avg(int drama_num)throws Exception{
 		int totalstar = dramaDAO.review_avg(drama_num);
 		return totalstar;
 	}
 	//qna 리스트
-	public ModelAndView selectList_qna(ListData listData, int drama_num)throws Exception{
+	public ModelAndView selectList_qna(ListData listData)throws Exception{
 		ModelAndView model = new ModelAndView();
 		RowNum rowNum = listData.makeRow();
 		Pager pager = listData.makePage(dramaDAO.totalcount_qna(rowNum));
@@ -100,7 +127,6 @@ public class DramaService {
 		model.addObject("pager", pager);
 		model.addObject("qnalist", qnalist);
 		model.setViewName("drama/qnalist");
-		model.addObject("drama_num", drama_num);
 		
 		return model;
 	}
@@ -117,20 +143,8 @@ public class DramaService {
 	}
 	//qna write
 	public int qna_insert(Qna_viewDTO qna_viewDTO , HttpSession session)throws Exception{
-		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-		qna_viewDTO.setId(memberDTO.getId());
-		System.out.println("ID : "+qna_viewDTO.getId());
-		System.out.println("drama_num(serviceDTO) : "+qna_viewDTO.getDrama_num());
-		System.out.println("contents : "+qna_viewDTO.getContents());
 		int result = dramaDAO.qna_insert(qna_viewDTO);
 		
-		return result;
-	}
-	//qna_reply
-	public int qna_reply(Qna_viewDTO qna_viewDTO , HttpSession session)throws Exception{
-		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-		qna_viewDTO.setId(memberDTO.getId());
-		int result = dramaDAO.qna_reply(qna_viewDTO);
 		return result;
 	}
 	//qna 글 삭제
@@ -138,19 +152,12 @@ public class DramaService {
 		int result = dramaDAO.delete_qnaview(qna_viewnum);
 		return result;
 	}
-	//qna 글 삭제시 redirect drama_num 보내줌
-	public Qna_viewDTO delete_drama_num(int qna_viewnum)throws Exception{
-		Qna_viewDTO qna_viewDTO = dramaDAO.delete_drama_num(qna_viewnum);
-		return qna_viewDTO;
-	}
-	
 	//공연 리뷰List page
 	public ModelAndView dramaReviewList(ListData listData)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		RowNum rowNum = listData.makeRow();
 		Pager pager = listData.makePage(dramaDAO.totalcount_review(rowNum));
 		List<ReviewDTO> reviewlist = dramaDAO.dramaReviewList(rowNum);
-		
 		mv.addObject("pager", pager);
 		mv.addObject("review", reviewlist);
 		mv.setViewName("drama/dramaReview");
@@ -161,71 +168,24 @@ public class DramaService {
 	
 		return dramaDAO.review_selectOne(review_num);
 	}
-	//공연리뷰 작성(insert)
-	@Transactional
-	public int review_insert(ReviewDTO reviewDTO ,  HttpSession session , MultipartHttpServletRequest Ms)throws Exception{
-		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-		reviewDTO.setId(memberDTO.getId());
-		System.out.println("ID:"+reviewDTO.getId());
-		
-		int file_num = dramaDAO.review_file_num(reviewDTO);
-		System.out.println("file_num:"+file_num);
-		reviewDTO.setFile_num(file_num);
-		System.out.println("title"+reviewDTO.getTitle());
-		System.out.println(reviewDTO.getDrama_num());
-		System.out.println("내용:"+reviewDTO.getContents());  
-		System.out.println("별점:"+reviewDTO.getStar());
-		int result = dramaDAO.review_insert(reviewDTO);
-		
-		MultipartFile  file  = Ms.getFile("files"); 
-		List<FileDTO> names = new ArrayList<FileDTO>();
-	
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("review_num", reviewDTO.getReview_num());
-		map.put("title", reviewDTO.getTitle());
-		map.put("contents", reviewDTO.getContents());
-
-			String name = fileSaver.fileSave(file, session, "upload");
-			FileDTO fileDTO = new FileDTO();
-			fileDTO.setFile_num(reviewDTO.getReview_num());
-			fileDTO.setFile_name(name);
-			fileDTO.setFile_route(file.getOriginalFilename());
-			names.add(fileDTO);
-			fileDAO.insert(fileDTO);
-		
-		return result;
-	}
-	/*//공연리뷰 작성시 drama select
-	public ModelAndView review_insert_select()throws Exception{
-		ModelAndView mv = new ModelAndView();
-		
-		List<DramaDTO> ar = dramaDAO.review_insert_select();
-		mv.addObject("dramalist", ar);
-		return mv;
-	}*/
-	//공연리뷰 수정
-	public int review_update(ReviewDTO reviewDTO)throws Exception{
-		int result = dramaDAO.review_update(reviewDTO);
-		return result;
-	}
-	//공연리뷰 삭제
-	public int review_delete(int review_num)throws Exception{
-		int result = dramaDAO.review_delete(review_num);
-		return result;
-	}
-	
 	//광 
 	
 	
 	
 	public ModelAndView selectList(ListData listData) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		
 		RowNum rowNum = listData.makeRow();
-		Pager pager = listData.makePage(dramaDAO.totalCount(rowNum));
+		int totalCount = dramaDAO.totalcount_list(rowNum);
+		Pager pager = listData.makePage(totalCount);
 		List<DramaDTO> ar = dramaDAO.selectList(rowNum);
+		List<FileDTO> file=new ArrayList<FileDTO>();
+		for(DramaDTO dramaDTO: ar){
+			FileDTO fileDTO=dramaDAO.fileList(dramaDTO.getFile_num());
+			file.add(fileDTO);
+		}
 		
-		mv.addObject("list", ar).addObject("pager", pager).addObject("board", "drama");
+	
+		mv.addObject("list", dramaDAO.selectList(rowNum)).addObject("pager", pager).addObject("board", "drama").addObject("file", file);
 		
 		return mv;
 	}
@@ -265,11 +225,7 @@ public class DramaService {
 		
 		return result;
 	}
-
-	//orderlist 관련 01-15
-	   public List<OrderListDTO> orderList(MemberDTO memberDTO) throws Exception{
-	      return dramaDAO.orderList(memberDTO.getId());
-	   }
+	
 
 
 }
