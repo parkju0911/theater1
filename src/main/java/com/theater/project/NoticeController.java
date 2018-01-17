@@ -1,19 +1,14 @@
 package com.theater.project;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.theater.file.FileDTO;
-import com.theater.file.FileListDTO;
 import com.theater.notice.NoticeDTO;
 import com.theater.notice.NoticeService;
 import com.theater.util.ListData;
@@ -45,7 +40,7 @@ public class NoticeController {
 		return "board/boardView";
 	}
 
-	//insert -> form ?��?��
+	//insert -> form 이동
 	@RequestMapping(value="noticeWrite", method = RequestMethod.GET)
 	public String insert(Model model){
 		model.addAttribute("board", "notice");
@@ -65,7 +60,7 @@ public class NoticeController {
 		return "redirect:./noticeList";
 	}
 
-	//update -> form ?��?��
+	//update -> form 이동
 	@RequestMapping(value="noticeUpdate", method = RequestMethod.GET)
 	public String update(int num, Model model, ListData listData) throws Exception{
 		NoticeDTO noticeDTO = noticeService.selectOne(num);

@@ -29,7 +29,7 @@ public class EventController {
 		modelAndView.addObject("num", eventDTO.getEvent_num());
 		/*if(modelAndView != null){
 			throw new NullPointerException();
-		}  //ê°•ì œë¡? Exception ë°œìƒ*/
+		}  //ê°•ì œï¿½? Exception ë°œìƒ*/
 		return modelAndView;
 	}
 
@@ -43,7 +43,7 @@ public class EventController {
 		return "board/boardView";
 	}
 
-	//insert -> form ?´?™
+	//insert -> form ì´ë™
 	@RequestMapping(value="eventWrite", method = RequestMethod.GET)
 	public String insert(Model model){
 		model.addAttribute("board", "event");
@@ -66,39 +66,39 @@ public class EventController {
 		return "redirect:./eventList";
 	}
 
-	//update -> form ?´?™
-		@RequestMapping(value="eventUpdate", method = RequestMethod.GET)
-		public String update(int num, Model model, ListData listData) throws Exception{
-			EventDTO eventDTO = eventService.selectOne(num);
-			model.addAttribute("view", eventDTO);
-			model.addAttribute("board", "event");
-			return "board/boardUpdate";
-		}
+	//update -> form ì´ë™
+	@RequestMapping(value="eventUpdate", method = RequestMethod.GET)
+	public String update(int num, Model model, ListData listData) throws Exception{
+		EventDTO eventDTO = eventService.selectOne(num);
+		model.addAttribute("view", eventDTO);
+		model.addAttribute("board", "event");
+		return "board/boardUpdate";
+	}
 
-		//update -> DB ì²˜ë¦¬
-		@RequestMapping(value="eventUpdate", method = RequestMethod.POST)
-		public String update(EventDTO eventDTO, RedirectAttributes rd) throws Exception{
-			int result=0;
-			result = eventService.update(eventDTO);
-			String message = "¼öÁ¤¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù.";
-			if (result>0) {
-				message = "¼öÁ¤ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.";
-			}
-			rd.addFlashAttribute("message", message);
-			return "redirect:./eventList";
+	//update -> DB ì²˜ë¦¬
+	@RequestMapping(value="eventUpdate", method = RequestMethod.POST)
+	public String update(EventDTO eventDTO, RedirectAttributes rd) throws Exception{
+		int result=0;
+		result = eventService.update(eventDTO);
+		String message = "FAIL";
+		if (result>0) {
+			message = "SUCCESS";
 		}
+		rd.addFlashAttribute("message", message);
+		return "redirect:./eventList";
+	}
 
-		//delete
-		@RequestMapping(value="eventDelete")
-		public String delete(int num, RedirectAttributes rd) throws Exception{
-			int result=0;
-			result = eventService.delete(num);
-			String message="»èÁ¦¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù.";
-			if(result>0){
-				message="»èÁ¦µÇ¾ú½À´Ï´Ù.";
-			}
-			rd.addFlashAttribute("message", message);
-			return "redirect:./eventList";
+	//delete
+	@RequestMapping(value="eventDelete")
+	public String delete(int num, RedirectAttributes rd) throws Exception{
+		int result=0;
+		result = eventService.delete(num);
+		String message="FAIL";
+		if(result>0){
+			message="SUCCESS";
 		}
+		rd.addFlashAttribute("message", message);
+		return "redirect:./eventList";
+	}
 
 }
