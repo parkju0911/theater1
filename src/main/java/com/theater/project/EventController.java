@@ -80,9 +80,9 @@ public class EventController {
 	public String update(EventDTO eventDTO, RedirectAttributes rd) throws Exception{
 		int result=0;
 		result = eventService.update(eventDTO);
-		String message = "������ �����Ͽ����ϴ�.";
+		String message = "FAIL";
 		if (result>0) {
-			message = "������ �Ϸ�Ǿ����ϴ�.";
+			message = "SUCCESS";
 		}
 		rd.addFlashAttribute("message", message);
 		return "redirect:./eventList";
@@ -93,9 +93,9 @@ public class EventController {
 	public String delete(int num, RedirectAttributes rd) throws Exception{
 		int result=0;
 		result = eventService.delete(num);
-		String message="������ �����Ͽ����ϴ�.";
+		String message="FAIL";
 		if(result>0){
-			message="�����Ǿ����ϴ�.";
+			message="SUCCESS";
 		}
 		rd.addFlashAttribute("message", message);
 		return "redirect:./eventList";
