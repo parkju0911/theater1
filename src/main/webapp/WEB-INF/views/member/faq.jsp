@@ -114,9 +114,8 @@
 	<c:import url="../temp/header.jsp"></c:import>
 
 
-	<div class="container" style="width: 935px; margin: 0 auto;">
 		<div class="title_wrap"
-			style="width: 1000px; border-top: 2px solid #5d4137; padding-top: 8px; font-family: 'Nanum Gothic', sans-serif;">
+			style="width: 1000px; margin: 0 auto; border-top: 2px solid #5d4137; padding-top: 8px; font-family: 'Nanum Gothic', sans-serif;">
 			<h6 id="h6_title" style="margin-right: 5px; margin-top: 8px;">
 				<a href="${pageContext.request.contextPath}"><img alt=""
 					src="../resources/images/common/homeImg.png" id="homeImg"></a> >
@@ -124,6 +123,7 @@
 				> <a href="${pageContext.request.contextPath}/member/orderlist">Q&A</a>
 			</h6>
 		</div>
+	<div class="container" style="width: 935px; margin: 0 auto;">
 		<h2 style="font: 40px/41px 'fMdBT'">Q&A</h2>
 		<p
 			style="font-family: 'Nanum Gothic', sans-serif; padding-bottom: 17px;">
@@ -158,7 +158,7 @@
 						<div class="tbh">
 							<table class="table table-hover">
 								<tr style="background-color: #fffffb;">
-									<td class="td-main" size="10" >NO</td>
+									<td class="td-main">NO</td>
 									<td id="tb_title" class="td-main">TITLE</td>
 								</tr>
 								<c:forEach items="${list}" var="dto">

@@ -75,8 +75,13 @@ td{
 	<a href="${pageContext.request.contextPath}/member/faqView.faq?faq_num=${view.faq_num}">${view.title}</a></h6>
 	</div>
 </div> --%>
-<div class="board_wrap1">
-	<p class="b_title">${view.title}</p>
+<div class="title_wrap"
+			style="width: 950px; margin: 0 auto; padding-top: 8px; font-family: 'Nanum Gothic', sans-serif;">
+			<h6 id="h6_title"><a href="${pageContext.request.contextPath}"><img alt="" src="../resources/images/common/homeImg.png" id="homeImg"></a> > <a href="${pageContext.request.contextPath}/member/faq">FAQ</a> > 
+	<a href="${pageContext.request.contextPath}/member/faqView.faq?faq_num=${view.faq_num}">${view.title}</a></h6>
+	</div>
+<div class="board_wrap1" style="width: 850px;">
+	<p class="b_title" style="background-color: #fffffb;">${view.title}</p>
 	<div class="b_contents">${view.contents}</div>
 	
 	<div class="btn-group">
