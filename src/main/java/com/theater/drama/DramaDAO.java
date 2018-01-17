@@ -144,7 +144,7 @@ public class DramaDAO  {
 		return sqlSession.selectList(namespace+"selectList_review", drama_num);
 	}
 	public int totalcount_list(RowNum rowNum)throws Exception{
-		return sqlSession.selectOne(namespace+"totalcount", rowNum);
+		return sqlSession.selectOne(namespace+"totalcount_list", rowNum);
 	}
 	public int totalcount(int buy_num)throws Exception{
 		return sqlSession.selectOne(namespace+"totalcount", buy_num);

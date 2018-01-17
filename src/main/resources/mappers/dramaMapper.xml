@@ -12,26 +12,18 @@
   	<resultMap type="Qna_viewDTO" id="qna_viewDTO"/>
   	<resultMap type="SeatDTO" id="seatDTO"/>
   	<resultMap type="FileDTO" id="fileDTO"/>
-  	<resultMap type="DramaDTO" id="dramaDTO">
+  	<resultMap type="DramaDTO" id="dramaDTO">	
   		<id property="drama_num" column="drama_num"/>
   		<result property="company_num" column="company_num"/>
   		<result property="title" column="title"/>
-  		<result property="contents" column="contents"/>
+  		<result property="contents" column="contents"/>		
   		<result property="place" column="place"/>
   		<result property="price" column="price"/>
   		<result property="buy_hit" column="buy_hit"/>
   		<result property="file_num" column="file_num"/>
   	</resultMap>
-  	<select id="totalCount" resultType="int">
-		select nvl(count(drama_num), 0) from drama
-		<if test="kind == 'title'">
-			where title like #{search}
-		</if>
-	
-		<if test="kind == 'contents'">
-			where contents like #{search}
-		</if>
-  	</select>
+  	
+  	
   
   	<select id="selectList" parameterType="java.util.Map" resultType="DramaDTO">
   		select * from
@@ -102,8 +94,8 @@
   	</select>
   	
     	<select id="totalcount_list" resultType="int">
-  		select nvl(count(drama_num), 0) from drama where title like #{search}
-  	</select>
+  		select nvl(count(drama_num),0) from drama
+  </select>
   
  
   <!-- 후기(별점) 페이징 처리 -->
