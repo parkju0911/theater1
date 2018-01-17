@@ -37,9 +37,7 @@ public class NoticeDAO {
 	}
 		
 	public int insert(NoticeDTO noticeDTO) throws Exception {
-		System.out.println("Before : "+noticeDTO.getNotice_num());
 		int result = sqlSession.insert(namespace+"insert", noticeDTO);
-		System.out.println("After : "+noticeDTO.getNotice_num());
 		return result;
 	}
 	

@@ -12,10 +12,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="./resources/SE2/js/HuskyEZCreator.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-   <title>Home</title>
 <link href="./resources/css/common/header.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="./resources/css/drama/dramaList.css" rel="stylesheet">
+   <title>Home</title>
 
 <style type="text/css">
 .push{
@@ -266,14 +267,6 @@ td, select {
 
 
 
-
-	<a href="drama/dramaList">Drama List</a>
-	<a href="./notice/noticeList">Go Notice</a>
-	<a href="./qna/qnaList">Go Qna</a>
-	<a href="./drama/chatform">chatting</a>
-	<a href="./point/pointList">pointList</a>
-	<a href="./point/pointCheck">pointCheck</a>
-
 <!-- <script type="text/javascript">
 	$(function(){
 		var message='${message}';
@@ -304,23 +297,94 @@ td, select {
 										${list[i].title}</a>
 								</div>
 							</c:forEach> --%>
-							<%-- <table width="100%" cellpadding="0" cellspacing="0" border="0">
-						<c:forEach begin="0" end="1" var = "i">
+					<%-- <table width="100%" cellpadding="0" cellspacing="0" border="0">
+						<c:forEach begin="0" end="4" var = "j">
 							<tbody>
-								<tr>
-								<td valign="top" align="center">
+								<ul>
+								<li valign="top" align="center">
 									<div class="main_drama_list">
-									<a href="./drama/dramaview?drama_num=${list[i].drama_num}" style="color: #000;">
+									<a href="./drama/dramaview?drama_num=${list[j].drama_num}" style="color: #000;">
 										<img src="./resources/images/home/icon_box.png" style="padding: 0 4px 1px 0;">
-										${list[i].title}</a>
+										${list[j].title}</a>
 									</div>
-								</td>
-								</tr>
+								</li>
+								</ul>
 							</tbody>
 						</c:forEach>
-					</table> --%>
-								
-							
+					</table>
+							 --%>
+				<div class="mainDramaList" style="margin: 0 auto;    width: 1300px;   overflow: overlay;    padding: 50px;">
+				<c:forEach begin="0" end="3" var = "j">
+					<a href="./drama/dramaview?drama_num=${list[j].drama_num}">
+					<div class="col-md-4 unpa-ad-responsive-parent"  style="width: 300px;">
+						<div class="unpa-card unpa-card-box-shadow unpa-review" style="background-color: whitesmoke; border: 0px;">
+							<div class="main-section"
+								style="border-left: 1px solid #f2f2f2;border-right: 1px solid #f2f2f2;">
+								<a class="user-info-link" href="">
+									<div class="user-info" style="display: inline-block; ">
+										<div class="unpa-feed-user-info-box">
+											<div class="unpa-user-block">
+												<%-- <div class="user-name unpa-tooltip" data-html="true" data-toggle="tooltip" data-placement="bottom"
+													title="<i class='ion-person'></i> 267 <i class='ion-edit'></i> 40">
+													${list[j].drama_num}</div> --%>
+												<div class="user-labels" style="margin-top: 5px;">
+													<span class="skin-type false ">${list[j].place}</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="time">${list[j].file_num}</div>
+								</a>
+								<div class="unpa-feed-card-hover-actions">
+									<span class="unpa-share-this-button"><i
+										class="unpacon-share"></i></span>
+
+								<!-- 	<div class="number-of-images">
+										<i class="glyphicon glyphicon-picture"></i> 6
+									</div> -->
+
+								</div>
+
+					<a href="./drama/dramaview?drama_num=${list[j].drama_num}">
+								<div class="main-image"
+									style="background-image: url('./resources/upload/${file[j].file_name}')" >
+									<div class="content">
+										${list[j].contents}
+									</div>
+								</div></a>
+								<div class="review-contents">
+									<div class="product-info" style="min-height: 60px;">
+										<!-- <div class="left">
+										
+											<div class="product-image"
+												style="background-image: url(./resources/images/drama_1.jpg')"></div>
+										</div> -->
+
+
+										<div class="right" style="margin-left: 10px;">
+											<div class="brand-name-and-rating">
+												<div class="brand-name" style="    font-size: 15px;">
+													<a href="./drama/dramaview?drama_num=${list[j].drama_num}">${list[j].title}</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>	
+					</a>
+				</c:forEach>
+				</div>
+					
+
+
+	<a href="drama/dramaList">Drama List</a>
+	<a href="./notice/noticeList">Go Notice</a>
+	<a href="./qna/qnaList">Go Qna</a>
+	<a href="./drama/chatform">chatting</a>
+	<a href="./point/pointList">pointList</a>
+	<a href="./point/pointCheck">pointCheck</a>		
 <!-- HOME FOOTER -->
 	<div style="padding: 50px 0 60px 0; margin-top: 30px; background: #eee;">
 		<div class="main_wrap" style="width: 960px; margin: 0 auto;">

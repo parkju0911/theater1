@@ -108,23 +108,31 @@ input{
 <div class="board_wrap1">
 	
 	<form action="${board}Update" method="post" id="frm" enctype="multipart/form-data">
+		<c:if test="${board eq 'notice'}">
+			<input type="hidden" name="${board}_num" value="${view.notice_num}">
+		</c:if>
+		<c:if test="${board eq 'event'}">
+			<input type="hidden" name="${board}_num" value="${view.event_num}">
+		</c:if>
+		<input type="hidden" name="reg_date" value="${view.reg_date}">
+		<input type="hidden" name="hit" value="${view.hit}">
 		<table>
-		<tr>
-			<td style="margin-left: 10px; float: left;">제목 : <input type="text" name="title" placeholder="제목을 입력해주세요." class="write_ip"
-				 style="width: 500px; border: none; border-bottom: 1px solid lightgray; border-radius:0px;" value="${view.title}"></td>
-				<td style="float: right; margin-right: 50px; padding-bottom: 20px;">작성자 : <input type="text" value="${member.id}" placeholder="글쓴이를 입력해주세요." class="write_ip" readonly="readonly"
-				 style="width: 150px; border: none; border-bottom: 1px solid lightgray; border-radius:0px;"></td>
-			<%-- <td><input type="text" name="title" value="${view.title}"></td> --%>
-			<%-- <td><input type="text" name="writer" value="${view.writer}"></td> --%>
+			<tr>
+				<td style="margin-left: 10px; float: left;">제목 : <input type="text" name="title" placeholder="제목을 입력해주세요." class="write_ip"
+				 	style="width: 500px; border: none; border-bottom: 1px solid lightgray; border-radius:0px;" value="${view.title}"></td>
+					<td style="float: right; margin-right: 50px; padding-bottom: 20px;">작성자 : <input type="text" value="${member.id}" placeholder="글쓴이를 입력해주세요." class="write_ip" readonly="readonly"
+				 	style="width: 150px; border: none; border-bottom: 1px solid lightgray; border-radius:0px;"></td>
+					<%-- <td><input type="text" name="title" value="${view.title}"></td> --%>
+					<%-- <td><input type="text" name="writer" value="${view.writer}"></td> --%>
 			
-		</tr>
-		<tr>
-			<td class="content" colspan="2">
-				<textarea id="contents" name="contents" draggable="false">${view.contents}</textarea>
-			</td>
-		</tr>
-	</table>	
-	<input type="button" id="savebutton" value="update" class="btn btn-default">
+			</tr>
+			<tr>
+				<td class="content" colspan="2">
+					<textarea id="contents" name="contents" draggable="false">${view.contents}</textarea>
+				</td>
+			</tr>
+		</table>	
+		<input type="button" id="savebutton" value="update" class="btn btn-default">
 	</form>
 	</div>
 <c:import url="../temp/footer.jsp"></c:import>

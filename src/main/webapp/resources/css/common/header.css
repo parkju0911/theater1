@@ -30,7 +30,7 @@ header {
 }
 
 body{
-	background-color: #fffff04a;
+	background-color: #fffff06e;
 }
 
 .header_wrap {
@@ -50,8 +50,9 @@ body{
 	margin: 0 auto;
     right: 0;
     left: 0;
-    width: 107%;
-    margin-top: 28px;
+    width: 132%;
+    margin-top: 17px;
+    margin-left: -49px;
 }
 
 .member_wrap li {
@@ -157,6 +158,8 @@ input::-moz-placeholder {
 	float: left;
 	position: absolute;
 	height: 30px;
+	background-color: #fffffb;
+    border: 1px solid #795548;
 }
 
 .search_bar {

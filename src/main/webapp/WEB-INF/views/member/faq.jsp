@@ -25,6 +25,7 @@
 	border: 2px solid #795548;
 	padding: 12px;
 	padding-left: 20px;
+    background-color: #fffffb;	
 }
 
 .faq_mainlist li {
@@ -52,6 +53,7 @@
 
 .search__input {
 	width: 93%;
+	height:42px;
 	margin-left: 3%;
 	padding: 12px 24px;
 	background-color: transparent;
@@ -112,9 +114,8 @@
 	<c:import url="../temp/header.jsp"></c:import>
 
 
-	<div class="container" style="width: 935px; margin: 0 auto;">
 		<div class="title_wrap"
-			style="width: 1000px; border-top: 2px solid #5d4137; padding-top: 8px; font-family: 'Nanum Gothic', sans-serif;">
+			style="width: 1000px; margin: 0 auto; border-top: 2px solid #5d4137; padding-top: 8px; font-family: 'Nanum Gothic', sans-serif;">
 			<h6 id="h6_title" style="margin-right: 5px; margin-top: 8px;">
 				<a href="${pageContext.request.contextPath}"><img alt=""
 					src="../resources/images/common/homeImg.png" id="homeImg"></a> >
@@ -122,6 +123,7 @@
 				> <a href="${pageContext.request.contextPath}/member/orderlist">Q&A</a>
 			</h6>
 		</div>
+	<div class="container" style="width: 935px; margin: 0 auto;">
 		<h2 style="font: 40px/41px 'fMdBT'">Q&A</h2>
 		<p
 			style="font-family: 'Nanum Gothic', sans-serif; padding-bottom: 17px;">
@@ -135,7 +137,7 @@
 		</ul>
 		<div class="tab-content">
 			<div id="faq" class="tab-pane fade in active">
-				<h3>자주 묻는 질문</h3>
+				<h3 style="font-family: 'Nanum Gothic', sans-serif;">자주 묻는 질문</h3>
 				<div class="faq_content">
 					<ul class="faq_mainlist" style="font-family: inherit;">
 						<li>Q. 티켓은 어떻게 사용하죠?</li>
@@ -155,7 +157,7 @@
 					<div class="list_wrap" style="padding-top: 17px;">
 						<div class="tbh">
 							<table class="table table-hover">
-								<tr>
+								<tr style="background-color: #fffffb;">
 									<td class="td-main">NO</td>
 									<td id="tb_title" class="td-main">TITLE</td>
 								</tr>
