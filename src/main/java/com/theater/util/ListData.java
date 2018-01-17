@@ -11,7 +11,7 @@ public class ListData {
 		curPage=1;
 		kind="title";
 		search="";
-		this.perPage=5;
+		this.perPage=6;
 	}
 	
 	//row
@@ -27,7 +27,7 @@ public class ListData {
 	//page
 	public Pager makePage(int totalCount){
 		Pager pager = new Pager();
-		int perBlock=5;
+		int perBlock=6;
 		int totalPage=0;
 		//1. totalCount로 totalPage계산
 		if(totalCount%perPage==0){

@@ -34,10 +34,7 @@
 			var cur = $(this).attr("title");
 			var s = '${pager.search}';
 			var t = '${pager.kind}';
-			document.frm.curPage.value=cur;
-			document.frm.search.value=s;
-			document.frm.kind.value=t;
-			document.frm.submit();
+			location.href="dramaList?curPage="+cur;
 		});
 	});
 </script>
@@ -60,7 +57,12 @@
 			
 		</div>
 	</div>
-
+	
+	<c:if test="${list eq null}">
+		<h1>데이터를 가져오지 못했습니다.</h1>
+	</c:if>
+	
+<c:if test="${list ne null}">
 	<div class="container review">
 		<div id="review-feed-list-wrap">
 			<div class="row unpa-card-row row-flex-height-md">
@@ -77,10 +79,10 @@
 									<div class="user-info" style="display: inline-block">
 										<div class="unpa-feed-user-info-box">
 											<div class="unpa-user-block">
-												<div class="user-name unpa-tooltip" data-html="true"
+												<%-- <div class="user-name unpa-tooltip" data-html="true"
 													data-toggle="tooltip" data-placement="bottom"
 													title="<i class='ion-person'></i> 267 <i class='ion-edit'></i> 40">
-													${dto.drama_num}</div>
+													${dto.drama_num}</div> --%>
 												<div class="user-labels" style="">
 													<span class="skin-type false ">${dto.place}</span>
 												</div>
@@ -159,7 +161,7 @@
 
 
 <div>
-
+</c:forEach>
 <div id="rightSide">
 
 	<div id="right_zzim">
@@ -182,10 +184,11 @@
 </div> 
 
 
-	</c:forEach>
+	
 </div>
 			</div>
 		</div>	
+		
 	<div class="text-center">
       <ul class="pagination">
     
@@ -200,6 +203,8 @@
 			</c:if>
 		
       </ul>
+   </c:if>
+ 
    </div>
          <%-- <c:if test="${not empty member}"> --%>
       <div class="write-btn"
@@ -209,6 +214,7 @@
       </div>
         <%--  </c:if> --%>
          </div>
+   
 
 	<!-- footer 시작 -->
 	<c:import url="../temp/footer.jsp"></c:import>
