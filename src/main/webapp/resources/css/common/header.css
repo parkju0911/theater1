@@ -30,7 +30,7 @@ header {
 }
 
 body{
-	background-color: #fffff04a;
+	background-color: #fffff06e;
 }
 
 .header_wrap {
@@ -157,6 +157,8 @@ input::-moz-placeholder {
 	float: left;
 	position: absolute;
 	height: 30px;
+	background-color: #fffff8;
+    border: 1px solid #795548;
 }
 
 .search_bar {
