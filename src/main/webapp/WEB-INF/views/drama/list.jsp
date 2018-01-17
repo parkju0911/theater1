@@ -34,10 +34,7 @@
 			var cur = $(this).attr("title");
 			var s = '${pager.search}';
 			var t = '${pager.kind}';
-			document.frm.curPage.value=cur;
-			document.frm.search.value=s;
-			document.frm.kind.value=t;
-			document.frm.submit();
+			location.href="dramaList?curPage="+cur;
 		});
 	});
 </script>
@@ -82,10 +79,10 @@
 									<div class="user-info" style="display: inline-block">
 										<div class="unpa-feed-user-info-box">
 											<div class="unpa-user-block">
-												<div class="user-name unpa-tooltip" data-html="true"
+												<%-- <div class="user-name unpa-tooltip" data-html="true"
 													data-toggle="tooltip" data-placement="bottom"
 													title="<i class='ion-person'></i> 267 <i class='ion-edit'></i> 40">
-													${dto.drama_num}</div>
+													${dto.drama_num}</div> --%>
 												<div class="user-labels" style="">
 													<span class="skin-type false ">${dto.place}</span>
 												</div>

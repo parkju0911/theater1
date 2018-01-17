@@ -251,9 +251,10 @@ return "sss";
 	@RequestMapping(value="dramaList")
 	public ModelAndView selectList(ListData listData, HttpServletRequest request) throws Exception {
 		ModelAndView mv = null;
+		DramaDTO dramaDTO=new DramaDTO();
 		mv = dramaService.selectList(listData);
 		mv.setViewName("drama/list");
-	
+		mv.addObject("num", dramaDTO.getDrama_num());
 		Cookie [] cookies = request.getCookies();
 		List<DramaDTO> ar = new ArrayList<DramaDTO>();
 		for (Cookie cookie : cookies) {
@@ -262,7 +263,7 @@ return "sss";
 				String [] strings = cookie.getValue().split(",");
 				for (String string : strings) {
 					
-					DramaDTO dramaDTO=dramaService.selectOne(Integer.parseInt(string));
+					dramaDTO=dramaService.selectOne(Integer.parseInt(string));
 					ar.add(dramaDTO);
 				}
 				mv.addObject("title", ar);
