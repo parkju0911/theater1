@@ -168,6 +168,65 @@ public class DramaService {
 	
 		return dramaDAO.review_selectOne(review_num);
 	}
+<<<<<<< HEAD
+=======
+	//공연리뷰 작성(insert)
+	@Transactional
+	public int review_insert(ReviewDTO reviewDTO ,  HttpSession session , MultipartHttpServletRequest Ms)throws Exception{
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		reviewDTO.setId(memberDTO.getId());
+		System.out.println("ID:"+reviewDTO.getId());
+		
+		int file_num = dramaDAO.review_file_num(reviewDTO);
+		System.out.println("file_num:"+file_num);
+		reviewDTO.setFile_num(file_num);
+		System.out.println("title"+reviewDTO.getTitle());
+		System.out.println("drama_num:"+reviewDTO.getDrama_num());
+		System.out.println("내용:"+reviewDTO.getContents()); 
+		System.out.println("별점:"+reviewDTO.getStar());
+		System.out.println("리뷰인서트");
+	
+		
+		MultipartFile  file  = Ms.getFile("files"); 
+		List<FileDTO> names = new ArrayList<FileDTO>();
+	
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("review_num", reviewDTO.getReview_num());
+		map.put("title", reviewDTO.getTitle());
+		map.put("contents", reviewDTO.getContents());
+
+			String name = fileSaver.fileSave(file, session, "upload");
+			FileDTO fileDTO = new FileDTO();
+			fileDTO.setFile_num(file_num);
+			fileDTO.setFile_name(name);
+			fileDTO.setFile_route(file.getOriginalFilename());
+			names.add(fileDTO);
+			fileDAO.insert(fileDTO);
+		
+			int result = dramaDAO.review_insert(reviewDTO);
+			
+		return result;
+	}
+	/*//공연리뷰 작성시 drama select
+	public ModelAndView review_insert_select()throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		List<DramaDTO> ar = dramaDAO.review_insert_select();
+		mv.addObject("dramalist", ar);
+		return mv;
+	}*/
+	//공연리뷰 수정
+	public int review_update(ReviewDTO reviewDTO)throws Exception{
+		int result = dramaDAO.review_update(reviewDTO);
+		return result;
+	}
+	//공연리뷰 삭제
+	public int review_delete(int review_num)throws Exception{
+		int result = dramaDAO.review_delete(review_num);
+		return result;
+	}
+	
+>>>>>>> 0116-yk
 	//광 
 	
 	
