@@ -25,6 +25,7 @@
 	border: 2px solid #795548;
 	padding: 12px;
 	padding-left: 20px;
+    background-color: #fffffb;	
 }
 
 .faq_mainlist li {
@@ -52,6 +53,7 @@
 
 .search__input {
 	width: 93%;
+	height:42px;
 	margin-left: 3%;
 	padding: 12px 24px;
 	background-color: transparent;
@@ -135,7 +137,7 @@
 		</ul>
 		<div class="tab-content">
 			<div id="faq" class="tab-pane fade in active">
-				<h3>자주 묻는 질문</h3>
+				<h3 style="font-family: 'Nanum Gothic', sans-serif;">자주 묻는 질문</h3>
 				<div class="faq_content">
 					<ul class="faq_mainlist" style="font-family: inherit;">
 						<li>Q. 티켓은 어떻게 사용하죠?</li>
@@ -155,8 +157,8 @@
 					<div class="list_wrap" style="padding-top: 17px;">
 						<div class="tbh">
 							<table class="table table-hover">
-								<tr>
-									<td class="td-main">NO</td>
+								<tr style="background-color: #fffffb;">
+									<td class="td-main" size="10" >NO</td>
 									<td id="tb_title" class="td-main">TITLE</td>
 								</tr>
 								<c:forEach items="${list}" var="dto">

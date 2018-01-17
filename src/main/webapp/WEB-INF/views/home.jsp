@@ -324,10 +324,10 @@ td, select {
 									<div class="user-info" style="display: inline-block; ">
 										<div class="unpa-feed-user-info-box">
 											<div class="unpa-user-block">
-												<div class="user-name unpa-tooltip" data-html="true" data-toggle="tooltip" data-placement="bottom"
+												<%-- <div class="user-name unpa-tooltip" data-html="true" data-toggle="tooltip" data-placement="bottom"
 													title="<i class='ion-person'></i> 267 <i class='ion-edit'></i> 40">
-													${list[j].drama_num}</div>
-												<div class="user-labels" style="margin-left: 28px;  margin-top: -20px;">
+													${list[j].drama_num}</div> --%>
+												<div class="user-labels" style="margin-top: 5px;">
 													<span class="skin-type false ">${list[j].place}</span>
 												</div>
 											</div>
@@ -346,7 +346,7 @@ td, select {
 								</div>
 
 
-								<div class="main-image" style="background-image: url('./resources/upload/${file[j.index].file_name}')" >
+								<div class="main-image">
 									<div class="content">
 										<a>${list[j].contents}</a>
 									</div>
