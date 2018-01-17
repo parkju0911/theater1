@@ -76,6 +76,7 @@ td {
 	</div>
 	<div class="board_wrap1">
 		<form action="faqUpdate" method="post" id="frm">
+			<input type="hidden" name="faq_num" value="${view.faq_num}">
 			<table>
 				<tr>
 					<td style="margin-left: 10px; float: left;">제목 : <input
