@@ -175,7 +175,7 @@ public class DramaService {
 		System.out.println("drama_num:"+reviewDTO.getDrama_num());
 		System.out.println("내용:"+reviewDTO.getContents()); 
 		System.out.println("별점:"+reviewDTO.getStar());
-		
+		System.out.println("리뷰인서트");
 	
 		
 		MultipartFile  file  = Ms.getFile("files"); 
