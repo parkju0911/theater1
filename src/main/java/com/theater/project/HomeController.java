@@ -26,18 +26,11 @@ public class HomeController {
 	public ModelAndView home() throws Exception{
 		ListData listData = new ListData();
 		listData.setCurPage(1);
-		ModelAndView mv =noticeService.selectList(listData);
+		ModelAndView mv =dramaService.selectList(listData);
+		noticeService.selectList(listData, mv);
 		mv.setViewName("home");
 		return mv;
 	}
 	
-	@RequestMapping(value = "/")
-	public ModelAndView home1() throws Exception{
-		ListData listData = new ListData();
-		listData.setCurPage(1);
-		ModelAndView mv =dramaService.selectList(listData);
-		mv.setViewName("home");
-		return mv;
-	}
 	
 }

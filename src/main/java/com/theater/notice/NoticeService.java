@@ -13,8 +13,8 @@ public class NoticeService {
 	@Inject
 	private NoticeDAO noticeDAO;
 
-	public ModelAndView selectList(ListData listData) throws Exception {
-		ModelAndView modelAndView = new ModelAndView();
+	public void selectList(ListData listData, ModelAndView modelAndView) throws Exception {
+		/*ModelAndView modelAndView = new ModelAndView();*/
 		RowNum rowNum = listData.makeRow();
 		int totalCount = noticeDAO.totalCount(rowNum);
 		Pager pager = listData.makePage(totalCount);
@@ -22,7 +22,7 @@ public class NoticeService {
 		modelAndView.addObject("pager", pager);	
 		modelAndView.addObject("arlist", noticeDAO.selectList(rowNum));
 		modelAndView.addObject("board", "notice");
-		return modelAndView;
+		/*return modelAndView;*/ 
 	}
 	
 	 

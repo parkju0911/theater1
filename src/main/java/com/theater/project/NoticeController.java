@@ -28,9 +28,9 @@ public class NoticeController {
 	//selectList
 	@RequestMapping(value="noticeList")
 	public ModelAndView selectList(ListData listData) throws Exception {
-		ModelAndView modelAndView = null;
+		ModelAndView modelAndView = new ModelAndView();
 		NoticeDTO noticeDTO = new NoticeDTO();
-		modelAndView = noticeService.selectList(listData);
+		noticeService.selectList(listData, modelAndView);
 		modelAndView.addObject("num", noticeDTO.getNotice_num());
 		return modelAndView;
 	}
