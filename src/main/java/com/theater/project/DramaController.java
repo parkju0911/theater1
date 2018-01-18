@@ -335,11 +335,13 @@ return "sss";
 	public ModelAndView selectList(ListData listData, HttpServletRequest request) throws Exception {
 		ModelAndView mv = null;
 		DramaDTO dramaDTO=new DramaDTO();
+		FileDTO fileDTO=new FileDTO();
 		mv = dramaService.selectList(listData);
 		mv.setViewName("drama/list");
 		mv.addObject("num", dramaDTO.getDrama_num());
 		Cookie [] cookies = request.getCookies();
 		List<DramaDTO> ar = new ArrayList<DramaDTO>();
+		List<FileDTO> ar1=new ArrayList<FileDTO>();
 		for (Cookie cookie : cookies) {
 			cookie.setMaxAge(60*60*24);
 			if(cookie.getName().equals("title")){
@@ -348,8 +350,12 @@ return "sss";
 					
 					dramaDTO=dramaService.selectOne(Integer.parseInt(string));
 					ar.add(dramaDTO);
+					ar1.add(dramaService.fileList(dramaDTO));
 				}
+			
 				mv.addObject("title", ar);
+				mv.addObject("fileimage",ar1);
+				
 				
 			}
 		}
@@ -360,14 +366,15 @@ return "sss";
 	
 	//Drama_file list
 		@RequestMapping(value="dramaFile")
-		public ModelAndView drama_file(FileDTO fileDTO, ModelAndView mv) throws Exception{
-			//해당 날짜 공연시간 가져오기
-			/*List<FileDTO> ar = dramaService.fileList(fileDTO.getFile_num(), fileDTO.getFile_name());
+		public ModelAndView filelist(FileDTO fileDTO, ModelAndView mv) throws Exception{
+	
+			List<FileDTO> ar =new ArrayList<FileDTO>();
+			
 				
 			mv.addObject("file", ar);
 			mv.addObject("view", fileDTO);
-			mv.setViewName("drama/drama_file");*/
-				
+			mv.setViewName("drama/drama_file");
+			
 			return mv;
 		}
 		

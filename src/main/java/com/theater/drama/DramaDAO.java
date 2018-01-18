@@ -56,6 +56,7 @@ public class DramaDAO  {
 
 		return sqlSession.selectList(namespace+"timeList", map);
 	}
+	
 	public FileDTO fileList(int file_num) throws Exception{
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("file_num", file_num);

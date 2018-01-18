@@ -245,6 +245,10 @@ public class DramaService {
 	//광 
 	
 	
+	public FileDTO fileList(DramaDTO dramaDTO) throws Exception {
+	
+		return dramaDAO.fileList(dramaDTO.getFile_num());
+	}
 	
 	public ModelAndView selectList(ListData listData) throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -257,9 +261,15 @@ public class DramaService {
 			FileDTO fileDTO=dramaDAO.fileList(dramaDTO.getFile_num());
 			file.add(fileDTO);
 		}
+		List<FileDTO> file1=new ArrayList<FileDTO>();
+		for(DramaDTO dramaDTO: ar){
+			FileDTO fileDTO=dramaDAO.fileList(dramaDTO.getFile_num());
+			file1.add(fileDTO);
+		}
+		mv.addObject("file1",file1);
 		
 	
-		mv.addObject("list", dramaDAO.selectList(rowNum)).addObject("pager", pager).addObject("board", "drama").addObject("file", file);
+		mv.addObject("list", dramaDAO.selectList(rowNum)).addObject("pager", pager).addObject("board", "drama").addObject("file", file).addObject("file1",file1);
 		
 		return mv;
 	}

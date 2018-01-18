@@ -176,8 +176,10 @@
 				<c:catch>
 					<c:forEach items="${title}" var="t" varStatus="i">
 						<li>${t.title}</li>
-						<li><img id="zzim_img" alt="" src=../resources/upload/${file[i.index].file_name}></li>
-					</c:forEach>
+				
+					
+						<li><img id="zzim_img" alt="" src=../resources/upload/${fileimage[i.index].file_name}></li>
+							</c:forEach>
 				</c:catch>
 			</ul>    
 
