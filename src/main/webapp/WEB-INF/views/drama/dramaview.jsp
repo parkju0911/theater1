@@ -111,10 +111,10 @@ A:VISITED {
 			<div id="drama_info_form">
 				<div id="drama_info">
 					<div id="title">
-						<span class="skin-type">${view.place}</span>
+						<span class="skin-type">${view.address}</span>
 						<h3>${view.title}</h3>
 						
-						<div id="content">${view.contents}</div>
+						<div id="content">${view.simple}</div>
 					</div>
 
 					<input id="price"type="text" name="price" value="${view.price}원" readonly="readonly">
