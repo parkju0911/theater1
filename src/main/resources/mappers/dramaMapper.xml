@@ -106,7 +106,7 @@
   
  
   <!-- 후기(별점) 페이징 처리 -->
-  <select id="totalcount"  resultType="int">
+  <select id="totalcount_page"  resultType="int">
 	select COUNT(drama_num) from REVIEW where drama_num=#{drama_num}
   </select>
  

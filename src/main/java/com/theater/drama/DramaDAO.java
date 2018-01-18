@@ -184,7 +184,47 @@ public class DramaDAO  {
 	public ReviewDTO review_selectOne(int review_num)throws Exception{
 		return sqlSession.selectOne(namespace+"review_selectOne", review_num);
 	}
-	public int totalcount(int drama_num)throws Exception{
-		return sqlSession.selectOne(namespace+"totalcount", drama_num);
+	public int totalcount_page(int drama_num)throws Exception{
+		return sqlSession.selectOne(namespace+"totalcount_page", drama_num);
 	}
+	//dramaview page qna_delete(qna_viewnum을 넘겨줘야 redirec로 page 이동
+		public Qna_viewDTO delete_drama_num(int qna_viewnum)throws Exception{
+			return sqlSession.selectOne(namespace+"delete_drama_num", qna_viewnum);
+		}
+
+		//dramaview page qna_reply
+		public int qna_reply(Qna_viewDTO qna_viewDTO)throws Exception{
+			return sqlSession.insert(namespace+"qna_reply", qna_viewDTO);
+		}
+		//dramaview page qna_reply step update
+		public int stepUpdate(Qna_viewDTO qna_viewDTO)throws Exception{
+			return sqlSession.update(namespace+"stepUpdate", qna_viewDTO);
+		}
+		//연극리뷰 작성
+		public int review_insert(ReviewDTO reviewDTO)throws Exception{
+			int result = sqlSession.insert(namespace+"review_insert", reviewDTO);
+			return result;
+		}
+/*	public List<DramaDTO> review_insert_select()throws Exception{
+		
+		return sqlSession.selectList(namespace+"review_insert");
+	}*/
+		//연극리뷰 이미지 번호
+		public int review_file_num(ReviewDTO reviewDTO)throws Exception{
+			return sqlSession.selectOne(namespace+"review_file_num", reviewDTO);
+		}
+		//연극리뷰 업데이트(수정)
+		public int review_update(ReviewDTO reviewDTO)throws Exception{
+			return sqlSession.update(namespace+"review_update", reviewDTO);
+		}
+		//연극리뷰 삭제
+		public int review_delete(int review_num)throws Exception{
+			return sqlSession.delete(namespace+"review_delete", review_num);
+		}
+
+		//drama selectOne 파일 가져오기
+		public FileDTO selectFile(int file_num)throws Exception{
+			return sqlSession.selectOne(namespace+"selectFile", file_num);
+		}
+		
 }

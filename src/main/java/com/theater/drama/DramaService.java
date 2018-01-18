@@ -77,6 +77,9 @@ public class DramaService {
 		DramaDTO dramaDTO = dramaDAO.selectOne(num);
 		return dramaDTO;
 	}
+	public FileDTO selectFile(int file_num)throws Exception{
+		return dramaDAO.selectFile(file_num);
+	}
 	public FileDTO fileList(int file_num) throws Exception{
 		return dramaDAO.fileList(file_num);
 	}
@@ -106,7 +109,7 @@ public class DramaService {
 	}
 	//리뷰 수 합산
 	public int totalcount(int drama_num)throws Exception{
-		int totalcount = dramaDAO.totalcount(drama_num);
+		int totalcount = dramaDAO.totalcount_page(drama_num);
 		return totalcount;
 	}
 	//리스트
@@ -153,6 +156,18 @@ public class DramaService {
 		int result = dramaDAO.delete_qnaview(qna_viewnum);
 		return result;
 	}
+	//qna_reply
+		public int qna_reply(Qna_viewDTO qna_viewDTO , HttpSession session)throws Exception{
+			MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+			qna_viewDTO.setId(memberDTO.getId());
+			int result = dramaDAO.qna_reply(qna_viewDTO);
+			return result;
+		}
+		//qna 글 삭제시 redirect drama_num 보내줌
+		public Qna_viewDTO delete_drama_num(int qna_viewnum)throws Exception{
+			Qna_viewDTO qna_viewDTO = dramaDAO.delete_drama_num(qna_viewnum);
+			return qna_viewDTO;
+		}
 	//공연 리뷰List page
 	public ModelAndView dramaReviewList(ListData listData)throws Exception{
 		ModelAndView mv = new ModelAndView();
