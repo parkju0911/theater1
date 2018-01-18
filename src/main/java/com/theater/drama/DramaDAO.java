@@ -184,4 +184,7 @@ public class DramaDAO  {
 	public ReviewDTO review_selectOne(int review_num)throws Exception{
 		return sqlSession.selectOne(namespace+"review_selectOne", review_num);
 	}
+	public int totalcount(int drama_num)throws Exception{
+		return sqlSession.selectOne(namespace+"totalcount", drama_num);
+	}
 }

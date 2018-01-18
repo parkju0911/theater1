@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.theater.file.FileDAO;
@@ -168,8 +169,7 @@ public class DramaService {
 	
 		return dramaDAO.review_selectOne(review_num);
 	}
-<<<<<<< HEAD
-=======
+
 	//공연리뷰 작성(insert)
 	@Transactional
 	public int review_insert(ReviewDTO reviewDTO ,  HttpSession session , MultipartHttpServletRequest Ms)throws Exception{
@@ -226,7 +226,7 @@ public class DramaService {
 		return result;
 	}
 	
->>>>>>> 0116-yk
+
 	//광 
 	
 	
