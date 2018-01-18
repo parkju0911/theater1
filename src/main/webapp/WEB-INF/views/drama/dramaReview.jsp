@@ -1,14 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../resources/SE2/js/HuskyEZCreator.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
+<script src="../resources/SE2/js/HuskyEZCreator.js"></script>
 <link href="../resources/css/drama/dramaReview.css" rel="stylesheet">
 <link href="../resources/css/common/header.css" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="../resources/css/board/boardHeader.css" rel="stylesheet">
 <script type="text/javascript">
 $(function(){
 	
@@ -39,10 +48,18 @@ $(function(){
 		<!-- header -->
 	<c:import url="../temp/header.jsp"></c:import>
 	<!-- header end -->
-	<p id="top_line"></p>
+	<!-- <p id="top_line"></p> -->
 	<section id="Review_main">
+	
+	<div class="title_wrap" style="border-top: 2px solid #5d4137; padding-top: 8px;width: 1000px;font-family: 'Nanum Gothic', sans-serif; ">
+		<h6 id="h6_title" style="margin-right: 5px; margin-top: 8px;">
+		<a href="${pageContext.request.contextPath}"><img alt="" src="../resources/images/common/homeImg.png" id="homeImg"></a> > 
+		<a href="${pageContext.request.contextPath}/drama/dramaReview">REVIEW</a></h6>
+		</div> 
+		<h2 style="margin-top: 20px; font: 40px/41px 'fMdBT'; padding-bottom: 20px; width: 900px; margin: 0 auto;">REVIEW</h2>
+		
 	<div id="top_text">
-		<div id="text">☆공연 리뷰 페이지☆ </div><a href="./dramaReviewwrite">작성하기</a>
+		<!-- <div id="text">☆공연 리뷰 페이지☆ </div><a href="./dramaReviewwrite">작성하기</a> -->
 		
 				<div id="search_box_top">
 					<form action="./${board}List" method="get" name="frm">
@@ -62,6 +79,7 @@ $(function(){
 	</div>
 	 <c:forEach items="${review}" var="list">
 	<div class="list_box">
+	<a href="./dramaReviewview?review_num=${list.review_num }">
 		<div class="box_left">
 		
 					이미지 불러올것<img alt="" src="##">
@@ -69,26 +87,30 @@ $(function(){
 		</div>
 			<div class="box_right">
 			
-				<div id="review_title">${list.title }</div>
+				<p class="review_date">${list.review_date }</p>
+				<div id="review_contents"><a href="./dramaReviewview?review_num=${list.review_num }">
+				<p id="review_title">${list.title }</p>
+				<p class="review_con">${list.contents }</p>
+<%-- 				<p>${list.title}</p> --%>
+				</a></div>
 			
-				<div id="review_contents"><a href="./dramaReviewview?review_num=${list.review_num }">${list.contents }</a></div>
 			<c:if test="${list.star==5 }">
-				<div class="review_date_star">작성일:${list.review_date }   별점:<img alt="" src="../resources/images/starpoint/star_5.png" style="height: 12px"></div>
+				<div class="review_star">별점:<img alt="" src="../resources/images/starpoint/star_5.png" style="height: 12px"></div>
 			</c:if>
 					<c:if test="${list.star==4 }">
-					<div class="review_date_star">작성일:${list.review_date }   별점:<img alt="" src="../resources/images/starpoint/star_4.png" style="height: 12px"></div>
+						<div class="review_star">별점: <img alt="" src="../resources/images/starpoint/star_4.png" style="height: 12px"></div>
 					</c:if>
 						<c:if test="${list.star==3 }">
-							<div class="review_date_star">작성일:${list.review_date }   별점:<img alt="" src="../resources/images/starpoint/star_3.png" style="height: 12px"></div>
+							<div class="review_star">별점: <img alt="" src="../resources/images/starpoint/star_3.png" style="height: 12px"></div>
 						</c:if>
 							<c:if test="${list.star==2 }">
-								<div class="review_date_star">작성일:${list.review_date }   별점:<img alt="" src="../resources/images/starpoint/star_2.png" style="height: 12px"></div>
+								<div class="review_star">별점: <img alt="" src="../resources/images/starpoint/star_2.png" style="height: 12px"></div>
 							</c:if>
 								<c:if test="${list.star==1}">
-									<div class="review_date_star">작성일:${list.review_date }   별점:<img alt="" src="../resources/images/starpoint/star_1.png" style="height: 12px"></div>
+									<div class="review_star">별점: <img alt="" src="../resources/images/starpoint/star_1.png" style="height: 12px"></div>
 								</c:if>
 			</div>
-		
+			</a>		
 	</div>
 	
  	</c:forEach> 

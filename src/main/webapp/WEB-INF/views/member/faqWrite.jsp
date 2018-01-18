@@ -73,16 +73,17 @@ td {
 	<form action="faqWrite" method="post" id="frm">
 		<table>
 			<tr>
-				<td style="margin-left: 10px; float: left;">제목 : 
+				<td style="margin-left: 26px; float: left;">제목 : 
 					<input type="text" name="title" placeholder="제목을 입력해주세요." class="write_ip"
-				 style="width: 500px; border: none; border-bottom: 1px solid lightgray; border-radius:0px;"></td>
-				<td style="float: right; margin-right: 50px; padding-bottom: 20px;">작성자 : 
+				 style="width: 500px; border: none; border-bottom: 1px solid lightgray;background-color: unset; border-radius:0px;"></td>
+				<td style="float: right; margin-right: 50px; padding-bottom: 20px; width: 161px;">작성자 : 
 					<input type="text" name="id" value="${member.id}" class="write_ip" readonly="readonly"
-				 style="width: 150px; border: none; border-bottom: 1px solid lightgray; border-radius:0px;"></td>
+				 style="width: 90px; border: none; border-bottom: 1px ; border-radius:0px;background-color: unset;"></td>
 			</tr>
 			<tr>
 				<td class="content" colspan="2">
-					<textarea id="contents" name="contents" draggable="false">내용을 입력해주세요.</textarea>
+					<textarea id="contents" name="contents" draggable="false"
+					style="    min-height: 400px;   width: 850px;">내용을 입력해주세요.</textarea>
 				</td>
 			</tr>
 		</table>		

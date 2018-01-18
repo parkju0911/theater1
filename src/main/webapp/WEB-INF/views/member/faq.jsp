@@ -26,6 +26,7 @@
 	padding: 12px;
 	padding-left: 20px;
     background-color: #fffffb;	
+    border-radius: 14px;
 }
 
 .faq_mainlist li {
@@ -61,7 +62,7 @@
 	font-size: 14px;
 	line-height: 18px;
 	color: #575756;
-	background-color: transparent;
+	background-color: #fffffb45;
 	background-image: url(http://mihaeltomic.com/codepen/input-search/ic_search_black_24px.svg);
 	background-repeat: no-repeat;
 	background-size: 18px 18px;
@@ -154,17 +155,17 @@
 							</div>
 						</div>
 					</form>
-					<div class="list_wrap" style="padding-top: 17px;">
+					<div class="list_wrap" style="padding-top: 17px; text-align: center;">
 						<div class="tbh">
 							<table class="table table-hover">
 								<tr style="background-color: #fffffb;">
 									<td class="td-main">NO</td>
-									<td id="tb_title" class="td-main">TITLE</td>
+									<td id="tb_title" class="td-main" style="width: 804px;">TITLE</td>
 								</tr>
 								<c:forEach items="${list}" var="dto">
 									<tr>
 										<td>${dto.faq_num}</td>
-										<td><a href="./faqView?num=${dto.faq_num}">${dto.title}</a></td>
+										<td style="text-align: left;"><a href="./faqView?num=${dto.faq_num}">${dto.title}</a></td>
 									</tr>
 								</c:forEach>
 							</table>
@@ -181,7 +182,7 @@
 								</c:if>
 							</div>
 							<c:if test="${member ne null}">
-								<a href="faqWrite?id=${member.id}" class="btn" style="margin: 0 auto;">WRITE</a>
+								<a href="faqWrite?id=${member.id}" class="btn" style="margin: 0 auto;margin-top: -46px; float: right; background-color: #fffffb; border: 1px solid #7955485e; font-family:'Lucida Console',Monospace;">WRITE</a>
 							</c:if>
 						</div>
 					</div>

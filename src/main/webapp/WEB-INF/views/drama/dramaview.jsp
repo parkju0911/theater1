@@ -102,7 +102,7 @@ A:VISITED {
 
 	<!--   이미지 가져오기 -->
 			<div id="drama_image">
-				<img src="${pageContext.request.contextPath}/resources/upload/${file.file_name}" style="width: 100%";height="100%";>
+				<img src="../resources/upload/${file.file_name}" style="width: 100%";height="100%";>
 
 
 			
