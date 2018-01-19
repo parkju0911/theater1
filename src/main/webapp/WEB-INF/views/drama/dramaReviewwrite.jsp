@@ -175,16 +175,16 @@ td {
 				</td>
 			</tr>
 		</table>
-		<input type="button" id="savebutton" value="write" class="btn btn-default">
+		<!-- <input type="button" id="savebutton" value="write" class="btn btn-default"> -->
 	</form>
+		<input type="button"  id="savebutton" value="작성하기" style="width: 100px;height: 50px;float: right; margin-right: 210px;">
+	</form>
+		<button id="cancel"><a href="./dramaReview">취소</a></button> 
 	</div>
 
 				</table>
 		
 	
-		<input type="button"  id="savebutton" value="작성하기" style="width: 100px;height: 50px;float: right; margin-right: 210px;">
-	</form>
-		<button id="cancel"><a href="./dramaReview">취소</a></button> 
 	</div>
 	<!-- footer  -->
 	<c:import url="../temp/footer.jsp"></c:import>
