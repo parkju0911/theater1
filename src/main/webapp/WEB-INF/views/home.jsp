@@ -19,6 +19,25 @@
    <title>Home</title>
 
 <style type="text/css">
+header{
+    background-image: url(./resources/images/home/headerImg.jpg);
+    height: 541px;
+    width: 100%;    
+    background-size: cover;
+    background-position-y: -189px;
+   /*  padding-bottom: 50px; */
+    /* background-repeat-x: no-repeat; */
+    /* background-position: center; */
+}
+nav li a {
+    text-shadow: #fffffb66 0px 2px, #fffffb6b 2px 0px, #fffffb69 -2px 0px, #fffffb69 0px -2px, #fffffb57 -1.4px -1.4px, #fffffb47 1.4px 1.4px, #fffffb54 1.4px -1.4px, #fffffb40 -1.4px 1.4px;
+}
+.search_bar{
+margin-right: 25px;
+    width: 214px;
+    }
+.member_wrap a{
+}
 .push{
 	height: 0px;
 }
@@ -94,10 +113,10 @@ td, select {
    }
 </script>
 <body>
-	<c:import url="./temp/header.jsp"></c:import>
-
+<c:import url="./temp/header.jsp"></c:import>
+<div style="height: 60px;"></div>
 <!-- SLIDEBOX -->
-	<div class="w3-content w3-display-container" style="max-width: 1000px;    background-image: url(./resources/images/home/MAINBG.png);    width: 100%;    height: 650px;    MARGIN: 0 AUTO;">
+	<div class="w3-content w3-display-container" style="max-width: 1000px;  background-image: url(./resources/images/home/MAINBG.png);    width: 100%;    height: 650px;    MARGIN: 0 AUTO;">
 			<div id="slidebox">
 			<ul id="slider">
 				<li>
