@@ -238,9 +238,35 @@ public class DramaService {
 		return mv;
 	}*/
 	//공연리뷰 수정
-	public int review_update(ReviewDTO reviewDTO)throws Exception{
-		int result = dramaDAO.review_update(reviewDTO);
+	public int review_update(ReviewDTO reviewDTO , MultipartHttpServletRequest Ms , HttpSession session)throws Exception{
+		MemberDTO memberDTO =  (MemberDTO)session.getAttribute("member");
+		int file_num = dramaDAO.review_file_num(reviewDTO);
+		System.out.println("file_num:"+reviewDTO.getFile_num());
+		
+		MultipartFile  file  = Ms.getFile("files"); 
+		List<FileDTO> names = new ArrayList<FileDTO>();
+		System.out.println("names:"+names);
+		if(names==null){
+			reviewDTO.getFile_num();
+		}
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("review_num", reviewDTO.getReview_num());
+		map.put("title", reviewDTO.getTitle());
+		map.put("contents", reviewDTO.getContents());
+		
+			reviewDTO.setFile_num(file_num);
+			String name = fileSaver.fileSave(file, session, "upload");
+			FileDTO fileDTO = new FileDTO();
+			fileDTO.setFile_num(file_num);
+			fileDTO.setFile_name(name);
+			fileDTO.setFile_route(file.getOriginalFilename());
+			names.add(fileDTO);
+			fileDAO.insert(fileDTO);
+		
+			int result = dramaDAO.review_update(reviewDTO);
+		
 		return result;
+	
 	}
 	//공연리뷰 삭제
 	public int review_delete(int review_num)throws Exception{

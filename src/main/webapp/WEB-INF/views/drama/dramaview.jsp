@@ -20,12 +20,7 @@
 
 
 <script type="text/javascript">
-
-function member_confirm() {
 	
-	
-}
-
 	$(function() {
 			
 
@@ -60,6 +55,12 @@ function member_confirm() {
 		});
 		
 		$("#btn_buy").click(function(){
+			if(${member eq  null}){
+				alert("로그인 하신 후에 사용해주세요");
+				 location.href="../member/memberLogin"; 	
+				 $("#section_info").prop("action", "../member/memberLogin");
+			}else{
+		
 			var drama_date = $("#drama_date").val();
 			var drama_time = $("#drama_time").val();
 			var drama_ticket = $("#drama_ticket").val();
@@ -68,6 +69,8 @@ function member_confirm() {
 			}else{
 				$("#section_info").prop("action", "./selectSeat");
 				document.frm.submit();
+			}
+				
 			}
 		});
 		
@@ -138,7 +141,10 @@ A:VISITED {
 				</select>
 							
 				<div class="drama_time"></div>
-				<button id="btn_buy" onclick="member_confirm()" ></button>
+		
+    			
+								<button id="btn_buy" ></button>
+			 
 
 			</div>
 		</form>

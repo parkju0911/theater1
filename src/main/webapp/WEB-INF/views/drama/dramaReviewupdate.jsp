@@ -117,14 +117,15 @@ td {
 	<!-- header -->
 	<c:import url="../temp/header.jsp"></c:import>
 	<!-- header end -->
-	<h1>Review Write </h1>
+	<h1>Update Write </h1>
 
-	<form id="frm" action="dramaReviewwrite" method="post" enctype="multipart/form-data">
+	<form id="frm" action="dramaReviewupdate" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="review_num" value="${dto.review_num }">
 		<table>
-				
+					
 			<tr>
 				<td>
-					<input type="text" name="title" placeholder="제목을 입력해주세요." style="width: 250px; height: 20px;"></td>
+					<input type="text" name="title" value="${dto.title}" style="width: 250px; height: 20px;"></td>
 				<td>작성자<input type="text" name="id" placeholder="${member.id }" value="${member.id}" readonly="readonly"></td>
 						
 			</tr>
@@ -144,15 +145,15 @@ td {
 			
 			<tr>
 				<td class="content" colspan="2">
-				<!-- <input type="text"  name="contents"> -->
-				<textarea id="contents" name="contents">
 				
+				<textarea id="contents" name="contents">
+						${dto.contents }
 					</textarea>
 
 				</td>
 			</tr>
 				<tr>
-				<td><input type="file" name="files"></td>
+				<td><input type="file" name="files" value=""></td>
 				</tr>
 				</table>
 		
