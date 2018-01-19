@@ -18,7 +18,6 @@
 <link href="../resources/css/drama/dramaReview.css" rel="stylesheet">
 <link href="../resources/css/common/header.css" rel="stylesheet">
 <link href="../resources/css/board/boardHeader.css" rel="stylesheet">
-<script src="./temp/review_search.jsp"></script>
 <script src="text/javascript">
 
 $(function(){
@@ -44,127 +43,114 @@ $(function(){
 	.list {
 		cursor: pointer;
 	}
-	
-	
-	.sb-search {
-	position: relative;
-	margin-top: 10px;
-	width: 0%;
-	min-width: 60px;
-	height: 60px;
-	float: right;
-	overflow: hidden;
-
-	-webkit-transition: width 0.3s;
-	-moz-transition: width 0.3s;
-	transition: width 0.3s;
-
-	-webkit-backface-visibility: hidden;
-}
-.sb-search-input {
-	position: absolute;
-	top: 0;
-	right: 0;
-	border: none;
-	outline: none;
-	background: #fff;
-	width: 100%;
-	height: 60px;
-	margin: 0;
-	z-index: 10;
-	padding: 20px 65px 20px 20px;
-	font-family: inherit;
-	font-size: 20px;
-	color: #2c3e50;
-}
-
-input[type="search"].sb-search-input {
-	-webkit-appearance: none;
-	-webkit-border-radius: 0px;
-}
-.sb-search-input::-webkit-input-placeholder {
-	color: #efb480;
-}
-
-.sb-search-input:-moz-placeholder {
-	color: #efb480;
-}
-
-.sb-search-input::-moz-placeholder {
-	color: #efb480;
-}
-
-.sb-search-input:-ms-input-placeholder {
-	color: #efb480;
-}
-.sb-icon-search,
-.sb-search-submit  {
-	width: 60px;
-	height: 60px;
-	display: block;
-	position: absolute;
-	right: 0;
-	top: 0;
-	padding: 0;
-	margin: 0;
-	line-height: 60px;
-	text-align: center;
-	cursor: pointer;
-}
-.sb-search-submit {
-	background: #fff; /* IE needs this */
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; /* IE 8 */
-    filter: alpha(opacity=0); /* IE 5-7 */
-    opacity: 0;
-	color: transparent;
-	border: none;
-	outline: none;
-	z-index: -1;
-}
-.sb-icon-search {
-	color: #fff;
-	background: #e67e22;
-	z-index: 90;
-	font-size: 22px;
-	font-family: 'icomoon';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	-webkit-font-smoothing: antialiased;
-}
-
-.sb-icon-search:before {
-	content: "\e000";
-}
-@font-face {
-	font-family: 'icomoon';
-	src:url('../fonts/icomoon/icomoon.eot');
-	src:url('../fonts/icomoon/icomoon.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/icomoon/icomoon.woff') format('woff'),
-		url('../fonts/icomoon/icomoon.ttf') format('truetype'),
-		url('../fonts/icomoon/icomoon.svg#icomoon') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-.sb-search.sb-search-open,
-.no-js .sb-search {
-	width: 100%;
-}
-.sb-search.sb-search-open .sb-icon-search,
-.no-js .sb-search .sb-icon-search {
-	background: #da6d0d;
-	color: #fff;
-	z-index: 11;
-}
-.sb-search.sb-search-open .sb-search-submit,
-.no-js .sb-search .sb-search-submit {
-	z-index: 90;
-}
+		
+.form-wrapper {
+        width: 450px;
+        padding: 15px;
+        margin: 150px auto 50px auto;
+        background: #444;
+        background: rgba(0,0,0,.2);
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        -moz-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+        -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+        box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+    }
+    
+    .form-wrapper input {
+   	       width: 170px;
+    	height: 30px;
+        padding: 10px 5px;
+        float: left;    
+        font: 14px  'lucida sans', 'trebuchet MS', 'Tahoma';
+        border: 0;
+        background: #eee;
+        -moz-border-radius: 3px 0 0 3px;
+        -webkit-border-radius: 3px 0 0 3px;
+        border-radius: 3px 0 0 3px;      
+    }
+    
+    .form-wrapper input:focus {
+        outline: 0;
+        background: #fff;
+        -moz-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+        -webkit-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+        box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+    }
+    
+    .form-wrapper input::-webkit-input-placeholder {
+       color: #999;
+       font-weight: normal;
+       font-style: italic;
+    }
+    
+    .form-wrapper input:-moz-placeholder {
+        color: #999;
+        font-weight: normal;
+        font-style: italic;
+    }
+    
+    .form-wrapper input:-ms-input-placeholder {
+        color: #999;
+        font-weight: normal;
+        font-style: italic;
+    }    
+    
+    .form-wrapper button {
+		overflow: visible;
+        position: relative;
+        float: right;
+        border: 0;
+        padding: 0;
+        cursor: pointer;
+           height: 30px;
+    width: 80px;
+    font: bold 14px/31px 'lucida sans', 'trebuchet MS', 'Tahoma';
+        color: #fff;
+        text-transform: uppercase;
+        background: #ffa034;
+        -moz-border-radius: 0 3px 3px 0;
+        -webkit-border-radius: 0 3px 3px 0;
+        border-radius: 0 3px 3px 0;      
+        text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+    }   
+      
+    .form-wrapper button:hover{		
+        background: #f3860a;
+    }	
+      
+    .form-wrapper button:active,
+    .form-wrapper button:focus{   
+        background: #f3860a;    
+    }
+    
+    .form-wrapper button:before {
+        content: '';
+        position: absolute;
+        border-width: 8px 8px 8px 0;
+        border-style: solid solid solid none;
+        border-color: transparent #ffa034 transparent;
+        top: 7px;
+        left: -6px;
+    }
+    
+    .form-wrapper button:hover:before{
+        border-right-color: #f3860a ;
+    }
+    
+    .form-wrapper button:focus:before{
+        border-right-color: #f3860a ;
+    }    
+    
+    .form-wrapper button::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
 </style>
 </head>
 <body>
+<%-- <c:import url="../temp/review_search.jsp"></c:import> --%>
 		<!-- header -->
 	<c:import url="../temp/header.jsp"></c:import>
 	<!-- header end -->
@@ -179,39 +165,25 @@ input[type="search"].sb-search-input {
 		<h2 style="margin-top: 20px; font: 40px/41px 'fMdBT'; padding-bottom: 20px; width: 900px; margin: 0 auto;">REVIEW</h2>
 		
 	<div id="top_text">
-		<!-- <div id="text">☆공연 리뷰 페이지☆ </div><a href="./dramaReviewwrite">작성하기</a> -->
-		
+		<!-- <a href="./dramaReviewwrite">작성하기</a> -->
 				<div id="search_box_top" class="sb-search">
-					<form action="./${board}List" method="get" name="frm">
-			
-						<input class="sb-search-input" placeholder="Enter your search term..." type="search" value="" name="search" id="search">
-						<input class="sb-search-submit" type="submit" value="">
-						<span class="sb-icon-search"></span>
-						
-						<!-- <input type="hidden" value="1"  name="curPage">
-							<select name="kind" class="select">
-								<option>Title</option>
-								<option>Writer</option>
-								<option>Contents</option>
-							</select>
-								<input type="text" name="search" class="search">
-									<button class="search_form">검색</button> -->
+					<form name="frm" action="./dramaReview" method="get" class="form-wrapper cf" style="width: 250px;height: auto;">
+					<!-- <input type="hidden" name="kind" value="title"> -->
+						<input type="text" placeholder="내용 검색" required>
+						<button type="submit">Search</button>
 					</form>
-	
 				</div>
 	
 	
 	</div>
-	 <c:forEach items="${review}" var="list">
+	<c:forEach items="${review}" var="list" varStatus="i">
 	<div class="list_box">
 	<a href="./dramaReviewview?review_num=${list.review_num }">
 		<div class="box_left">
-		
-					이미지 불러올것<img alt="" src="##">
-		
+			 <img alt="" src="${pageContext.request.contextPath}/resources/upload/${file[i.index].file_name}"style="width: 280px; height: 280px;">
 		</div>
 			<div class="box_right">
-			
+				<p id="writer">작성자: ${list.id }</p>
 				<p class="review_date">${list.review_date }</p>
 				<div id="review_contents"><a href="./dramaReviewview?review_num=${list.review_num }">
 				<p id="review_title">${list.title }</p>
@@ -219,10 +191,10 @@ input[type="search"].sb-search-input {
 <%-- 				<p>${list.title}</p> --%>
 				</a>
 				<c:if test="${member.id eq list.id}">
-				<div class="btnGroup">
+				<div class="btnGroup" id="updel">
 				<ul>
-				<li><a href="./dramaReviewUpdate?review_num=${list.review_num }"><img alt="" src="../resources/images/review/update-btn.png"></a></li>
-				<li><a href="./dramaReviewDelete?review_num=${list.review_num }"><img alt="" src="../resources/images/review/delete-btn.png"></a></li>
+				<li><a href="./dramaReviewupdate?review_num=${list.review_num}"><img alt="" src="../resources/images/review/update-btn.png"></a></li>
+				<li><a href="./dramaReviewdelete?review_num=${list.review_num }" onclick="del()"><img alt="" src="../resources/images/review/delete-btn.png"></a></li>
 				</ul>
 				</div>
 				</c:if>
@@ -262,11 +234,13 @@ input[type="search"].sb-search-input {
 				<c:if test="${pager.curBlock lt pager.totalBlock}">
 					<span class="list" title="${pager.lastNum+1}">[다음]</span>
 				</c:if>
-			</div>
-	
-
 		<div id="search_box_bottom">
-		<form action="./${board}List" method="get" name="frm">
+		<form name="frm" action="./dramaReview" method="get" class="form-wrapper cf" style="width: 250px;height: auto;">
+					<input type="hidden" name="kind" value="title">
+						<input type="text" placeholder="Search here..." required>
+						<button type="submit">Search</button>
+					</form>
+		<%-- <form action="./${board}List" method="get" name="frm">
 	<input type="hidden" value="1"  name="curPage">
 		<select name="kind" class="select">
 			<option>Title</option>
@@ -274,10 +248,12 @@ input[type="search"].sb-search-input {
 			<option>Contents</option>
 		</select>
 		<input type="text" name="search" class="search">
-		<button class="search_form">검색</button>
-	</form>
+		<button class="search_form">검색</button> 
+	</form>--%>	
+	</div>
+			</div>
 	
-		</div>
+
 			</section>
 	<!-- footer  -->
 	<c:import url="../temp/footer.jsp"></c:import>
