@@ -18,5 +18,7 @@
   		<typeAlias type="com.theater.qna.FaqDTO"  alias="FaqDTO"/>
       	<typeAlias type="com.theater.qna.Qna_viewDTO" alias="qna_viewDTO"/>
        <typeAlias type="com.theater.point.PointDTO" alias="PointDTO"/>
+ 
+     <typeAlias type="com.theater.member.UserDTO" alias="UserDTO"/>
   	</typeAliases>
   </configuration>
