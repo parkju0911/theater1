@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html >
 <html>
 <head>
@@ -19,12 +20,20 @@
 }
 </style>
 <script type="text/javascript">
-/* $(".list").click(function (){
-	
-	document.frm.curPage.value=cur;
-	
-	document.frm.submit();
-}); */
+$(function() {
+		var message = '${message}';
+		if(message != '') {
+			alert(message);
+		}
+	$("#checkBtn").on("click", function() {
+
+		$("#frm").submit(); 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+	});
+
+
+
+});
 </script>
 <link href="../resources/css/common/header.css" rel="stylesheet">
 <link href="../resources/css/point/point.css" rel="stylesheet">
@@ -46,8 +55,7 @@
 		<h2 style="margin-top: 20px; font: 40px/41px 'fMdBT'; padding-bottom: 20px; width: 900px; margin: 0 auto;">MY POINT</h2>
 		</div>
 
-
-
+ 
 	<c:set var="sum" value="0" />
 	<c:forEach var="total" items="${list}">
 		<%-- <p id="point_history" > ${total.point} </p> --%>
@@ -55,10 +63,22 @@
 	</c:forEach>
 
 
+	
 
 	<p class="total_point">
 		총 포인트 : <b style="color: #ff8707;font-size: 20px;font-family: 'Nanum Gothic', sans-serif;"><c:out value="${sum}" />P</b>
 	</p>
+	
+	
+	<form action="pointCheck" method="post" id="frm">
+	<button id="checkBtn">출석체크</button>
+	</form>
+
+	
+
+
+
+
 
 	<div class="ec-base-table typeList" style="width: 920px; margin: 0 auto;">
 	<table border="1">
@@ -93,20 +113,32 @@
 
 
 
+	
 	<div class="row_num">
-		<c:if test="${pager.curBlock gt 1}">
-			<span class="list" title="${pager.startNum-1}">[이전]</span>
-		</c:if>
-		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-			<span class="list" title="${i}">${i}</span>
-		</c:forEach>
-		<c:if test="${pager.curBlock lt pager.totalBlock}">
-			<span class="list" title="${pager.lastNum+1}">[다음]</span>
-		</c:if>
-	</div>
-	</div>
-</section>
+      <ul class="pagination">
+    
+			<c:if test="${pager.curBlock gt 1}">
+				<span class="list" title="${pager.startNum-1}">[이전]</span>
+			</c:if>
+			<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+				<span class="list" title="${i}">${i}</span>
+			
+			</c:forEach>
+			<c:if test="${pager.curBlock lt pager.totalBlock}">
+				<span class="list" title="${pager.lastNum+1}">[다음]</span>
+			</c:if>
+		
+      </ul>
+   </div>
+	
 
+	
+                   </div>
+                </div>
+                
+  
+</section>
+	
 
 	
 
