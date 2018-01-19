@@ -43,110 +43,7 @@ $(function(){
 	.list {
 		cursor: pointer;
 	}
-		
-.form-wrapper {
-        width: 450px;
-        padding: 15px;
-        margin: 150px auto 50px auto;
-        background: #444;
-        background: rgba(0,0,0,.2);
-        -moz-border-radius: 10px;
-        -webkit-border-radius: 10px;
-        border-radius: 10px;
-        -moz-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
-        -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
-        box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
-    }
-    
-    .form-wrapper input {
-   	       width: 170px;
-    	height: 30px;
-        padding: 10px 5px;
-        float: left;    
-        font: 14px  'lucida sans', 'trebuchet MS', 'Tahoma';
-        border: 0;
-        background: #eee;
-        -moz-border-radius: 3px 0 0 3px;
-        -webkit-border-radius: 3px 0 0 3px;
-        border-radius: 3px 0 0 3px;      
-    }
-    
-    .form-wrapper input:focus {
-        outline: 0;
-        background: #fff;
-        -moz-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
-        -webkit-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
-        box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
-    }
-    
-    .form-wrapper input::-webkit-input-placeholder {
-       color: #999;
-       font-weight: normal;
-       font-style: italic;
-    }
-    
-    .form-wrapper input:-moz-placeholder {
-        color: #999;
-        font-weight: normal;
-        font-style: italic;
-    }
-    
-    .form-wrapper input:-ms-input-placeholder {
-        color: #999;
-        font-weight: normal;
-        font-style: italic;
-    }    
-    
-    .form-wrapper button {
-		overflow: visible;
-        position: relative;
-        float: right;
-        border: 0;
-        padding: 0;
-        cursor: pointer;
-           height: 30px;
-    width: 80px;
-    font: bold 14px/31px 'lucida sans', 'trebuchet MS', 'Tahoma';
-        color: #fff;
-        text-transform: uppercase;
-        background: #ffa034;
-        -moz-border-radius: 0 3px 3px 0;
-        -webkit-border-radius: 0 3px 3px 0;
-        border-radius: 0 3px 3px 0;      
-        text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
-    }   
-      
-    .form-wrapper button:hover{		
-        background: #f3860a;
-    }	
-      
-    .form-wrapper button:active,
-    .form-wrapper button:focus{   
-        background: #f3860a;    
-    }
-    
-    .form-wrapper button:before {
-        content: '';
-        position: absolute;
-        border-width: 8px 8px 8px 0;
-        border-style: solid solid solid none;
-        border-color: transparent #ffa034 transparent;
-        top: 7px;
-        left: -6px;
-    }
-    
-    .form-wrapper button:hover:before{
-        border-right-color: #f3860a ;
-    }
-    
-    .form-wrapper button:focus:before{
-        border-right-color: #f3860a ;
-    }    
-    
-    .form-wrapper button::-moz-focus-inner {
-        border: 0;
-        padding: 0;
-    }
+
 </style>
 </head>
 <body>
@@ -163,28 +60,32 @@ $(function(){
 		<a href="${pageContext.request.contextPath}/drama/dramaReview">REVIEW</a></h6>
 		</div> 
 		<h2 style="margin-top: 20px; font: 40px/41px 'fMdBT'; padding-bottom: 20px; width: 900px; margin: 0 auto;">REVIEW</h2>
-		
-	<div id="top_text">
-		<!-- <a href="./dramaReviewwrite">작성하기</a> -->
-				<div id="search_box_top" class="sb-search">
-					<form name="frm" action="./dramaReview" method="get" class="form-wrapper cf" style="width: 250px;height: auto;">
-					<!-- <input type="hidden" name="kind" value="title"> -->
-						<input type="text" placeholder="내용 검색" required>
+		<div class="sb-search">
+			<form name="frm" action="./dramaReview" method="get" class="form-wrapper cf" style="width: 250px;height: auto;">
+					<input type="hidden" name="kind" value="title">
+						<input type="text" placeholder="Search here..." required>
 						<button type="submit">Search</button>
 					</form>
-				</div>
+		</div>
+		<!-- <a href="./dramaReviewwrite">작성하기</a> -->
+				<!-- 
+				</div> -->
 	
 	
-	</div>
 	<c:forEach items="${review}" var="list" varStatus="i">
 	<div class="list_box">
 	<a href="./dramaReviewview?review_num=${list.review_num }">
 		<div class="box_left">
-			 <img alt="" src="${pageContext.request.contextPath}/resources/upload/${file[i.index].file_name}"style="width: 280px; height: 280px;">
+			 <img alt="" src="${pageContext.request.contextPath}/resources/upload/${file[i.index].file_name}"style="width: 230px; height: 200px;">
 		</div>
 			<div class="box_right">
-				<p id="writer">작성자: ${list.id }</p>
-				<p class="review_date">${list.review_date }</p>
+				<p class="review_date">${list.review_date }
+				<p id="writer" style="    width: 111px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 39px;
+    margin-right: -84px;">${list.id }</p></p>
 				<div id="review_contents"><a href="./dramaReviewview?review_num=${list.review_num }">
 				<p id="review_title">${list.title }</p>
 				<p class="review_con">${list.contents }</p>

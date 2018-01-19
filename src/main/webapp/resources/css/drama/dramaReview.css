@@ -61,7 +61,7 @@
 .box_left{
 	    width: 230px;
     height: 200px;
-    border: 1px #d6d6d6 solid;
+    /* border: 1px #d6d6d6 solid; */
     display: inline-block;
     float: left;
 }
@@ -91,11 +91,12 @@
 }
 #review_contents{
 	width: 100%;
-	height: 200px;
-	border-top: 1px #d6d6d6 solid;
-	border-bottom:1px #d6d6d6 solid;
-	font-size: 20px;
-	margin-left: 12px;
+    height: 200px;
+    /* border-top: 1px #d6d6d6 solid; */
+    border-bottom: 2px #d6d6d6 solid;
+    font-size: 20px;
+    margin-left: 12px;
+    margin-top: -9px;
 }
 .review_con{
 	margin: 0 0 10px;
@@ -129,6 +130,7 @@
     font-family: 'Nanum Gothic', sans-serif;
 	line-height: 43px;
 	float: right;
+	margin-top: -7px;
 }
 #paging{
 	width: 1100px;
@@ -143,7 +145,7 @@
 
 }
 #search_box_bottom{
-	width: 370px;
+	width: 381px;
 	/* height: 50px; */
 	float: right;
 	/* margin-left: 800px; */
@@ -172,3 +174,99 @@
 	font-size: 15px;
 	font-weight: bolder;
 }
+
+/* 검색 */
+.sb-search{ 
+   width: 370px;
+    float: right;
+}
+.form-wrapper input {
+   	       width: 170px;
+    	height: 30px;
+        padding: 10px 5px;
+        float: left;    
+        font: 14px  'lucida sans', 'trebuchet MS', 'Tahoma';
+        border: 0;
+        background: #eee;
+        -moz-border-radius: 3px 0 0 3px;
+        -webkit-border-radius: 3px 0 0 3px;
+        border-radius: 3px 0 0 3px;      
+    }
+    
+    .form-wrapper input:focus {
+        outline: 0;
+        background: #fff;
+        -moz-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+        -webkit-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+        box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+    }
+    
+    .form-wrapper input::-webkit-input-placeholder {
+       color: #999;
+       font-weight: normal;
+       font-style: italic;
+    }
+    
+    .form-wrapper input:-moz-placeholder {
+        color: #999;
+        font-weight: normal;
+        font-style: italic;
+    }
+    
+    .form-wrapper input:-ms-input-placeholder {
+        color: #999;
+        font-weight: normal;
+        font-style: italic;
+    }    
+    
+    .form-wrapper button {
+		overflow: visible;
+        position: relative;
+        float: right;
+        border: 0;
+        padding: 0;
+        cursor: pointer;
+           height: 30px;
+    width: 80px;
+    font: bold 14px/31px 'lucida sans', 'trebuchet MS', 'Tahoma';
+        color: #fff;
+        text-transform: uppercase;
+        background: #ffa034;
+        -moz-border-radius: 0 3px 3px 0;
+        -webkit-border-radius: 0 3px 3px 0;
+        border-radius: 0 3px 3px 0;      
+        text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+    }   
+      
+    .form-wrapper button:hover{		
+        background: #f3860a;
+    }	
+      
+    .form-wrapper button:active,
+    .form-wrapper button:focus{   
+        background: #f3860a;    
+    }
+    
+    .form-wrapper button:before {
+        content: '';
+        position: absolute;
+        border-width: 8px 8px 8px 0;
+        border-style: solid solid solid none;
+        border-color: transparent #ffa034 transparent;
+        top: 7px;
+        left: -6px;
+    }
+    
+    .form-wrapper button:hover:before{
+        border-right-color: #f3860a ;
+    }
+    
+    .form-wrapper button:focus:before{
+        border-right-color: #f3860a ;
+    }    
+    
+    .form-wrapper button::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
+
