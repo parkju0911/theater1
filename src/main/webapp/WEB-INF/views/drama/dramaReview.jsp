@@ -61,7 +61,7 @@ $(function(){
 		</div> 
 		<h2 style="margin-top: 20px; font: 40px/41px 'fMdBT'; padding-bottom: 20px; width: 900px; margin: 0 auto;">REVIEW</h2>
 		<div class="top_wrap">
-			<a href=""><img src="../resources/images/review/writeBtn.png" class="writeBtn"></a>
+			<a href="./dramaReviewwrite"><img src="../resources/images/review/writeBtn.png" class="writeBtn"></a>
 			<!-- <a herf="#"><img alt="" src="../resources/images/review/writeBtn.png"></a> -->
 		</div>
 		<div class="sb-search">
