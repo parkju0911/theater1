@@ -107,6 +107,22 @@
 	text-decoration: none;
 	list-style: none;
 }
+.btnGroup{
+	margin-right: -65px;
+    margin-top: 113px;
+}
+.btnGroup ul{
+	float: right;
+}
+.btnGroup li {
+	    list-style: none;
+    float: left;
+}
+.btnGroup img{
+	width: 31px;
+    margin-top: 5px;
+    padding: 4px;
+}
 .review_star{
 	height: 43px;
 	font-size: 13px;

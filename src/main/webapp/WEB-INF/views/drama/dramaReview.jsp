@@ -18,7 +18,9 @@
 <link href="../resources/css/drama/dramaReview.css" rel="stylesheet">
 <link href="../resources/css/common/header.css" rel="stylesheet">
 <link href="../resources/css/board/boardHeader.css" rel="stylesheet">
-<script type="text/javascript">
+<script src="./temp/review_search.jsp"></script>
+<script src="text/javascript">
+
 $(function(){
 	
 	var message='${message}';
@@ -42,6 +44,124 @@ $(function(){
 	.list {
 		cursor: pointer;
 	}
+	
+	
+	.sb-search {
+	position: relative;
+	margin-top: 10px;
+	width: 0%;
+	min-width: 60px;
+	height: 60px;
+	float: right;
+	overflow: hidden;
+
+	-webkit-transition: width 0.3s;
+	-moz-transition: width 0.3s;
+	transition: width 0.3s;
+
+	-webkit-backface-visibility: hidden;
+}
+.sb-search-input {
+	position: absolute;
+	top: 0;
+	right: 0;
+	border: none;
+	outline: none;
+	background: #fff;
+	width: 100%;
+	height: 60px;
+	margin: 0;
+	z-index: 10;
+	padding: 20px 65px 20px 20px;
+	font-family: inherit;
+	font-size: 20px;
+	color: #2c3e50;
+}
+
+input[type="search"].sb-search-input {
+	-webkit-appearance: none;
+	-webkit-border-radius: 0px;
+}
+.sb-search-input::-webkit-input-placeholder {
+	color: #efb480;
+}
+
+.sb-search-input:-moz-placeholder {
+	color: #efb480;
+}
+
+.sb-search-input::-moz-placeholder {
+	color: #efb480;
+}
+
+.sb-search-input:-ms-input-placeholder {
+	color: #efb480;
+}
+.sb-icon-search,
+.sb-search-submit  {
+	width: 60px;
+	height: 60px;
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 0;
+	margin: 0;
+	line-height: 60px;
+	text-align: center;
+	cursor: pointer;
+}
+.sb-search-submit {
+	background: #fff; /* IE needs this */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; /* IE 8 */
+    filter: alpha(opacity=0); /* IE 5-7 */
+    opacity: 0;
+	color: transparent;
+	border: none;
+	outline: none;
+	z-index: -1;
+}
+.sb-icon-search {
+	color: #fff;
+	background: #e67e22;
+	z-index: 90;
+	font-size: 22px;
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	-webkit-font-smoothing: antialiased;
+}
+
+.sb-icon-search:before {
+	content: "\e000";
+}
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon/icomoon.eot');
+	src:url('../fonts/icomoon/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/icomoon/icomoon.woff') format('woff'),
+		url('../fonts/icomoon/icomoon.ttf') format('truetype'),
+		url('../fonts/icomoon/icomoon.svg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+.sb-search.sb-search-open,
+.no-js .sb-search {
+	width: 100%;
+}
+.sb-search.sb-search-open .sb-icon-search,
+.no-js .sb-search .sb-icon-search {
+	background: #da6d0d;
+	color: #fff;
+	z-index: 11;
+}
+.sb-search.sb-search-open .sb-search-submit,
+.no-js .sb-search .sb-search-submit {
+	z-index: 90;
+}
 </style>
 </head>
 <body>
@@ -61,16 +181,21 @@ $(function(){
 	<div id="top_text">
 		<!-- <div id="text">☆공연 리뷰 페이지☆ </div><a href="./dramaReviewwrite">작성하기</a> -->
 		
-				<div id="search_box_top">
+				<div id="search_box_top" class="sb-search">
 					<form action="./${board}List" method="get" name="frm">
-						<input type="hidden" value="1"  name="curPage">
+			
+						<input class="sb-search-input" placeholder="Enter your search term..." type="search" value="" name="search" id="search">
+						<input class="sb-search-submit" type="submit" value="">
+						<span class="sb-icon-search"></span>
+						
+						<!-- <input type="hidden" value="1"  name="curPage">
 							<select name="kind" class="select">
 								<option>Title</option>
 								<option>Writer</option>
 								<option>Contents</option>
 							</select>
 								<input type="text" name="search" class="search">
-									<button class="search_form">검색</button>
+									<button class="search_form">검색</button> -->
 					</form>
 	
 				</div>
@@ -92,7 +217,16 @@ $(function(){
 				<p id="review_title">${list.title }</p>
 				<p class="review_con">${list.contents }</p>
 <%-- 				<p>${list.title}</p> --%>
-				</a></div>
+				</a>
+				<c:if test="${member.id eq list.id}">
+				<div class="btnGroup">
+				<ul>
+				<li><a href="./dramaReviewUpdate?review_num=${list.review_num }"><img alt="" src="../resources/images/review/update-btn.png"></a></li>
+				<li><a href="./dramaReviewDelete?review_num=${list.review_num }"><img alt="" src="../resources/images/review/delete-btn.png"></a></li>
+				</ul>
+				</div>
+				</c:if>
+			</div>
 			
 			<c:if test="${list.star==5 }">
 				<div class="review_star">별점:<img alt="" src="../resources/images/starpoint/star_5.png" style="height: 12px"></div>
