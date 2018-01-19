@@ -135,13 +135,14 @@ public class DramaService {
 		return model;
 	}
 	//리뷰 전체보기(별점 리스트)
-	public ModelAndView review_list(ListData listData)throws Exception{
+	public ModelAndView review_list(ListData listData , int drama_num)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		RowNum rowNum = listData.makeRow();
 		Pager pager = listData.makePage(dramaDAO.totalcount_review(rowNum));
 		List<ReviewDTO> review = dramaDAO.review_list(rowNum);
 		mv.addObject("pager", pager);
 		mv.addObject("review", review);
+		mv.addObject("drama_num", drama_num);
 		mv.setViewName("drama/reviewlist");
 		return mv;
 	}
@@ -174,9 +175,15 @@ public class DramaService {
 		RowNum rowNum = listData.makeRow();
 		Pager pager = listData.makePage(dramaDAO.totalcount_review(rowNum));
 		List<ReviewDTO> reviewlist = dramaDAO.dramaReviewList(rowNum);
+		List<FileDTO> file = new ArrayList<FileDTO>();
+		for(ReviewDTO reviewDTO: reviewlist){
+			FileDTO fileDTO = dramaDAO.fileList(reviewDTO.getFile_num());
+			file.add(fileDTO);
+		}
 		mv.addObject("pager", pager);
 		mv.addObject("review", reviewlist);
 		mv.setViewName("drama/dramaReview");
+		mv.addObject("file", file);
 		return mv;
 	}
 	//공연 리뷰 selectOne

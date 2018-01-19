@@ -106,7 +106,7 @@
             });
             // 마크 클릭시 인포윈도우 오픈
             var infowindow = new naver.maps.InfoWindow({
-                content: '<h4> [네이버 개발자센터]</h4><a href="https://developers.naver.com" target="_blank"><img src="https://developers.naver.com/inc/devcenter/images/nd_img.png"></a>'
+                content: '<h4>[Teatro]</h4><a href="##" target="_blank"><img src="../resources/images/common/teatro_logo4.png" style="width:100px;height:100px;"></a>'
             });
         });
 

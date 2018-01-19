@@ -159,3 +159,16 @@
 	width:60px;
 	height: 30px;
 }
+#updel{
+	width: 170px;
+	height: 30px;
+	margin-left: 500px;
+	margin-top: 140px;
+}
+#writer{
+	width: 150px;
+	height: 40px;
+	float: right;
+	font-size: 15px;
+	font-weight: bolder;
+}

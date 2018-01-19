@@ -38,7 +38,7 @@ function del() {
 	
 	<div id="reviewbox">
 		
-		<div id="title_box"><div id="title">${selectOne.title }</div> <div id="writer">writer: 아이디</div> <div id="date_box">	${selectOne.review_date}</div></div>	
+		<div id="title_box"><div id="title">${selectOne.title }</div> <div id="writer">writer: ${selectOne.id}</div> <div id="date_box">	${selectOne.review_date}</div></div>	
 		<div id="image_box"><img alt="" src="${pageContext.request.contextPath}/resources/upload/${file.file_name}" style="width: 400px;height: 200px;"> </div>
 		<div id="star_point">
 			<c:if test="${selectOne.star ==5}">

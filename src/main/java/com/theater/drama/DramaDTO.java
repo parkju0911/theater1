@@ -10,8 +10,23 @@ public class DramaDTO extends DramaFileDTO{
     private int price;
     private int buy_hit;
     private int file_num;
+    private String simple;
+    private String address;
     
-    public int getCompany_num() {
+    
+    public String getSimple() {
+		return simple;
+	}
+	public void setSimple(String simple) {
+		this.simple = simple;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public int getCompany_num() {
 		return company_num;
 	}
 	public void setCompany_num(int company_num) {

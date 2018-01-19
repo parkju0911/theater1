@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 $(function(){
 	
@@ -42,8 +43,11 @@ $(function(){
 		
 		<div id="point_box1">별점<span style="color:red;"></span>  <!-- 별점/후기인원수 --><span id="star_total">${avg }/5.0 (총  ${total }  명)</span></div>
 		<div id="point_box2"style="padding-top:10px;">
-			<span class="starRating"><span style="width:100%"></span>
-			</span>
+		
+			<div class="starRating">
+				<span style="width: 40%;"></span>
+			</div>
+
 		</div>
 		<div id="point_box3">실제 관객이 남긴 평균 별점입니다.</div>
 		 
@@ -60,6 +64,8 @@ $(function(){
 					</tr>
 			</c:if>
 				<c:forEach items="${review }" var="re">
+				<c:if test="${re.drama_num eq drama_num }">
+				
 				<tr>
 				<td><div id="afterview_box_a">${re.id } (${re.review_date })</div></td>
 				</tr>
@@ -83,7 +89,7 @@ $(function(){
 				</div>
 				</td>
 				</tr>
-			
+			</c:if>
 				</c:forEach>
 			</table>
 		<div id="paging">
