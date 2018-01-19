@@ -16,8 +16,7 @@
 <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
 <script src="../resources/SE2/js/HuskyEZCreator.js"></script>
 <link href="../resources/css/common/header.css" rel="stylesheet">
-<!-- <link href="../resources/css/drama/dramaReviewwrite.css" rel="stylesheet"> -->
-<link href="../resources/css/board/boardHeader.css" rel="stylesheet">
+<link href="../resources/css/drama/dramaReviewwrite.css" rel="stylesheet">
 <script type="text/javascript">
 
 	$(function() {
@@ -91,7 +90,7 @@ h1 {
 table {
 	margin: 0 auto;
 	width: 80%;
-	/* border: 1px solid #ddd; */
+	border: 1px solid #ddd;
 
 }
 
@@ -123,69 +122,60 @@ td {
 	<!-- header -->
 	<c:import url="../temp/header.jsp"></c:import>
 	<!-- header end -->
-	<div class="title_wrap" style="width: 1000px;font-family: 'Nanum Gothic', sans-serif;">
-			<h6 id="h6_title" style="margin-right: 5px; margin-top: 8px;">
-				<a href="${pageContext.request.contextPath}"><img alt=""
-					src="../resources/images/common/homeImg.png" id="homeImg"></a> >
-				<a href="${pageContext.request.contextPath}/member/memberMypage">MYPAGE</a>
-				> <a href="${pageContext.request.contextPath}/member/orderlist">FAQ</a>
-				> <a href="${pageContext.request.contextPath}/member/orderlist">FAQ WRITE</a>
-			</h6>
-		</div>
-	<div class="board_wrap1" style="font-size: 12px;">
+	<h1>Review Write </h1>
+
 	<form id="frm" action="dramaReviewwrite" method="post" enctype="multipart/form-data">
 		<table>
+				
 			<tr>
-				<td><select id="select_drama" style="width: 170px;"name="drama_num">
-						<optgroup label="관람하신 연극을 선택해주세요."><option class="option_height">연극명</option>
+				<td><select id="select_drama" style="height: 30px;"name="drama_num">
+							<optgroup label="공연을 선택하여주세요">
+								<option class="option_height">리뷰 작성하실 공연을 선택하여주세요</option>
+				
 						<c:forEach items="${list}" var="drama">
 							<option class="option_height"  id="drama"  value="${drama.drama_num}" title="${drama.drama_num }">${drama.title }</option>
+							
+									
 						</c:forEach>
 							</optgroup>
-					</select></td>
-				<td style="margin-left: 10px; float: left;">제목 : <input type="text" name="title" placeholder="제목을 입력해주세요." class="write_ip"
-				 style="width: 300px; border: none; border-bottom: 1px solid lightgray; border-radius:0px;"></td>
-				<td style="float: right; margin-right: 50px; padding-bottom: 20px;">작성자 : <input type="text" value="${member.id}" placeholder="글쓴이를 입력해주세요." class="write_ip" readonly="readonly"
-				 style="width: 150px; border: none; border-bottom: 1px solid lightgray; border-radius:0px;"></td>
-			</tr>	
+									
+					</select><input type="text" name="title" placeholder="제목을 입력해주세요."></td>
+				<td>작성자<input type="text" name="id" placeholder="${member.id }" value="${member.id}" readonly="readonly"></td>
+						
+			</tr>
+			
 			<tr>
-				<td class="content" colspan="2" style="padding: 0;">
-				<div id="select_1" style="width: 788px;height: auto;margin: 0 auto;">
-					<input type="radio"  class="radio" value="5" name="star" checked="checked"  style="float:left;">
-					<img alt="" src="../resources/images/starpoint/star_5.png" style="height: 20px; float: left;padding-left: 7px; padding-right: 26px;">
-					<input type="radio"  class="radio" value="4" name="star"  style="float:left;">
-					<img alt="" src="../resources/images/starpoint/star_4.png" style="height: 20px; float: left;padding-left: 7px; padding-right: 26px;">
-					<input type="radio"  class="radio" value="3" name="star"  style="float:left;">
-					<img alt="" src="../resources/images/starpoint/star_3.png" style="height: 20px; float: left;padding-left: 7px; padding-right: 26px;">
-					<input type="radio"  class="radio" value="2" name="star"  style="float:left;">
-					<img alt="" src="../resources/images/starpoint/star_2.png" style="height: 20px; float: left;padding-left: 7px; padding-right: 26px;">
-					<input type="radio"  class="radio" value="1" name="star"  style="float:left;">
-					<img alt="" src="../resources/images/starpoint/star_1.png" style="height: 20px; float: left;padding-left: 7px; padding-right: 26px;">
-			</div>
-			<tr>
-				<td class="content" colspan="2" style="padding-bottom:0px;">
-					<input type="file" name="files">
+				<td>
+				---------------------평가--------------------
+					<div id="select_1" style="width: 1500px;height: 50px;">
+					<img alt="" src="../resources/images/starpoint/star_5.png" style="height: 20px; float: left"><input type="radio"  class="radio" value="5" name="star" checked="checked"  style="float:left;">
+					<img alt="" src="../resources/images/starpoint/star_4.png" style="height: 20px; float: left"><input type="radio"  class="radio" value="4" name="star"  style="float:left;">
+					<img alt="" src="../resources/images/starpoint/star_3.png" style="height: 20px; float: left"><input type="radio"  class="radio" value="3" name="star"  style="float:left;">
+					<img alt="" src="../resources/images/starpoint/star_2.png" style="height: 20px; float: left"><input type="radio"  class="radio" value="2" name="star"  style="float:left;">
+					<img alt="" src="../resources/images/starpoint/star_1.png" style="height: 20px; float: left"><input type="radio"  class="radio" value="1" name="star"  style="float:left;">
+					</div>
 				</td>
 			</tr>
-				</td>
-			</tr>
+			
 			<tr>
 				<td class="content" colspan="2">
-					<textarea id="contents" name="contents" draggable="false">내용을 입력해주세요.</textarea>
+				<!-- <input type="text"  name="contents"> -->
+				<textarea id="contents" name="contents">
+				
+					</textarea>
+
 				</td>
 			</tr>
-		</table>
-		<input type="button" id="savebutton" value="write" class="btn btn-default">
-	</form>
-	</div>
-
+				<tr>
+				<td><input type="file" name="files"></td>
+				</tr>
 				</table>
 		
 	
 		<input type="button"  id="savebutton" value="작성하기" style="width: 100px;height: 50px;float: right; margin-right: 210px;">
 	</form>
 		<button id="cancel"><a href="./dramaReview">취소</a></button> 
-	</div>
+	
 	<!-- footer  -->
 	<c:import url="../temp/footer.jsp"></c:import>
 	<!-- footer end -->
