@@ -80,19 +80,13 @@ $(function(){
 		</div>
 			<div class="box_right">
 				<p class="review_date">${list.review_date }
-				<p id="writer" style="    width: 111px;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: right;
-    margin-top: 39px;
-    margin-right: -84px;">${list.id }</p></p>
+				<p id="writer" style="    width: 111px; font-size: 14px; font-weight: bold; text-align: right; margin-top: 39px;  margin-right: -84px;">${list.id }</p></p>
 				<div id="review_contents"><a href="./dramaReviewview?review_num=${list.review_num }">
 				<p id="review_title">${list.title }</p>
 				<p class="review_con">${list.contents }</p>
-<%-- 				<p>${list.title}</p> --%>
 				</a>
 				<c:if test="${member.id eq list.id}">
-				<div class="btnGroup" id="updel">
+				<div class="btnGroup">
 				<ul>
 				<li><a href="./dramaReviewupdate?review_num=${list.review_num}"><img alt="" src="../resources/images/review/update-btn.png"></a></li>
 				<li><a href="./dramaReviewdelete?review_num=${list.review_num }" onclick="del()"><img alt="" src="../resources/images/review/delete-btn.png"></a></li>
