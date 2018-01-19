@@ -16,7 +16,7 @@
   		<result property="reg_date" column="reg_date"/>
   	
   	</resultMap> 
-	<resultMap type="UserDTO" id="UserDTO"/>
+	
 
 	
 
