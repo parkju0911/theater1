@@ -456,7 +456,7 @@ td, select {
 			<div style="clear: both;"></div>
 		</div>
 	</div>
-
+<c:import url="./temp/recent.jsp"></c:import>
 	<c:import url="./temp/footer.jsp"></c:import>
 </body>
 
