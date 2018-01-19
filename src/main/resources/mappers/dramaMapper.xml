@@ -211,7 +211,7 @@
   	</select>	
   	<!-- 공연리뷰 update -->
   		<update id="review_update" parameterType="reviewDTO">
-  			update review set title=#{title} , contents=#{contents} , file_num=#{file_num}
+  			update review set title=#{title} , contents=#{contents} , file_num=#{file_num} , star=#{star} , review_date =#{sysdate} where review_num=#{review_num}
   		</update>
   	<select id="total_seat" parameterType="int" resultType="int">
   		select (row_num * col_num) from company_info where company_num=#{company_num}

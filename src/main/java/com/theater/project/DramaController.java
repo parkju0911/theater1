@@ -76,7 +76,7 @@ return "sss";
 	//리뷰 리스트 , 별점,별점 평균점수
 	@RequestMapping(value="reviewlist")
 	public ModelAndView review_list(ModelAndView mv , ListData listData , int drama_num)throws Exception{
-		mv = dramaService.review_list(listData);
+		mv = dramaService.review_list(listData , drama_num);
 		int totalcount = dramaService.totalcount(drama_num);
 		int review_avg = dramaService.review_avg(drama_num);
 		mv.addObject("total", totalcount);
@@ -143,7 +143,12 @@ return "sss";
 		DramaDTO dramaDTO = dramaService.selectOne(drama_num);
 		//해당 공연의 날짜 정보 가져오기
 		List<DramaListDTO> ar = dramaService.dramaList(drama_num);
-				
+		
+		int totalcount = dramaService.totalcount(drama_num);
+		int file_num = dramaDTO.getFile_num();
+		FileDTO fileDTO = dramaService.selectFile(file_num);
+		mv.addObject("total", totalcount);
+		List<ReviewDTO> ar_review = dramaService.selectList_review(drama_num);
 		if(dramaDTO != null) {
 			
 			//중복제거
@@ -172,9 +177,9 @@ return "sss";
 					break;
 				
 				}
-				//if
+			
 				
-			}//for
+			}
 			
 			if(newCheck){
 				Cookie c = new Cookie("title", String.valueOf(dramaDTO.getDrama_num()));
@@ -184,6 +189,8 @@ return "sss";
 			//중복제거 끝
 			mv.addObject("view", dramaDTO);
 			mv.addObject("list", ar);
+			mv.addObject("file", fileDTO);
+			mv.addObject("review", ar_review);
 			mv.setViewName("drama/dramaview");
 		}else {
 			rd.addFlashAttribute("message", "잘못된 접근방식 입니다.");
@@ -235,7 +242,7 @@ return "sss";
 			int result=0;
 			result = dramaService.qna_reply(qna_viewDTO, session);
 			
-			System.out.println("drama_num:"+qna_viewDTO.getDrama_num());
+	/*		System.out.println("drama_num:"+qna_viewDTO.getDrama_num());*/
 			
 			return "redirect:./dramaview?drama_num="+qna_viewDTO.getDrama_num();
 		
@@ -300,6 +307,8 @@ return "sss";
 		//공연 업데이트(수정) form 이동
 		@RequestMapping(value="dramaReviewupdate" , method=RequestMethod.GET)
 		public String dramaReviewupdate(ReviewDTO reviewDTO , Model model)throws Exception{
+			System.out.println("review_num:"+reviewDTO.getReview_num());
+		
 			
 			model.addAttribute("dto", reviewDTO);
 			return "drama/dramaReviewupdate";
@@ -307,6 +316,7 @@ return "sss";
 		//공연 업데이트(수정) post
 		@RequestMapping(value="dramaReviewupdate" , method=RequestMethod.POST)
 		public String dramaReviewupdate(ReviewDTO reviewDTO , ModelAndView mv)throws Exception{
+			int result= dramaService.review_update(reviewDTO);
 			
 			return "redirect:./dramaReview";
 		}

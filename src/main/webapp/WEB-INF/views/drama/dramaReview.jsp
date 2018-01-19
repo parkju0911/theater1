@@ -60,18 +60,29 @@ $(function(){
 	
 	
 	</div>
-	 <c:forEach items="${review}" var="list">
+	 <c:forEach items="${review}" var="list" varStatus="i">
 	<div class="list_box">
 		<div class="box_left">
 		
-					이미지 불러올것<img alt="" src="##">
+			<img alt="" src="${pageContext.request.contextPath}/resources/upload/${file[i.index].file_name}"style="width: 280px; height: 280px;">
 		
 		</div>
 			<div class="box_right">
 			
-				<div id="review_title">${list.title }</div>
+				<div id="review_title">${list.title }
+				 		<div id="writer">작성자: ${list.id }</div>
+				</div>
 			
-				<div id="review_contents"><a href="./dramaReviewview?review_num=${list.review_num }">${list.contents }</a></div>
+					<div id="review_contents"><a href="./dramaReviewview?review_num=${list.review_num }">${list.contents }</a>
+		
+					<c:if test="${member.id eq list.id }">
+						<div id="updel">
+						<a href="./dramaReviewupdate?review_num=${list.review_num}">Update</a>
+						<a href="./dramaReviewdelete?review_num=${list.review_num }" onclick="del()">Delete</a>
+						</div>
+					</c:if>
+				
+				</div>
 			<c:if test="${list.star==5 }">
 				<div class="review_date_star">작성일:${list.review_date }   별점:<img alt="" src="../resources/images/starpoint/star_5.png" style="height: 12px"></div>
 			</c:if>

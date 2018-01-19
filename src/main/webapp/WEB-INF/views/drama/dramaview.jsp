@@ -21,8 +21,11 @@
 
 <script type="text/javascript">
 
+function member_confirm() {
+	
+	
+}
 
-/* checkCookie(); */
 	$(function() {
 			
 
@@ -135,7 +138,7 @@ A:VISITED {
 				</select>
 							
 				<div class="drama_time"></div>
-				<button id="btn_buy" ></button>
+				<button id="btn_buy" onclick="member_confirm()" ></button>
 
 			</div>
 		</form>
@@ -147,7 +150,7 @@ A:VISITED {
 			</div>
 			<div id="afterview_box">
 				<table>
-					<c:forEach items="${review }" var="re" begin="1" end="3">
+					<c:forEach items="${review }" var="re" begin="0" end="2">
 						<tr>
 							<td><div id="afterview_box_a">${re.id }
 									(${re.review_date })</div></td>
@@ -191,7 +194,7 @@ A:VISITED {
 		</div>
 		<div id="ticket_review">
 				<c:forEach items="${review }"   var="one"  begin="1" end="1">
-				<div id="review_image"><img alt="" src=""></div>
+				<div id="review_image"><img alt="" src="${pageContext.request.contextPath}/resources/upload/${file.file_name}" style="width: 250px;height: 120px;"></div>
 				<div id="review_text">
 						<div id="review_title">${one.title }</div>
 						<div id="review_contents">${one.contents }<div id="view_go"><a href="./dramaReviewview?review_num=${one.review_num }"> ☞리뷰보러가기</a></div></div>

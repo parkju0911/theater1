@@ -6,29 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="../resources/css/common/header.css" rel="stylesheet">
+<link href="../resources/css/drama/dramaReviewwrite.css" rel="stylesheet">
 <title>Insert title here</title>
 <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="../resources/SE2/js/HuskyEZCreator.js"></script>
 <script type="text/javascript">
+
 	$(function() {
-		var index =${view.ar.size()};;
-		var count = 0;
-			//delete
-			$(".del").click(function() {
-				var fnum = $(this).attr("title");
-				$.post("../util/fileDelete",{fnum:fnum},function(data){
-				alert(data.trim());
-				
-					$("#del"+fnum).remove();
-						index--;
-				
-				});
-				
-				
-			})
-		
 		//SmartEditor start 
 		var editor_object = [];
 
@@ -63,7 +49,8 @@
 
 		//SmartEditor end
 		//CKEDITOR.replace( 'contents' );
-	
+		var index = 0;
+		var count = 0;
 		$("#add")
 				.click(
 						function() {
@@ -75,7 +62,7 @@
 								count++;
 								index++;
 							} else {
-								alert("더이상 추가할수없습니다(최대 5개)");
+								alert("Fail");
 							}
 						});
 
@@ -85,6 +72,7 @@
 			index--;
 		});
 
+	
 	});
 </script>
 
@@ -98,7 +86,7 @@ table {
 	margin: 0 auto;
 	width: 80%;
 	border: 1px solid #ddd;
-	border-collapse: collapse;
+
 }
 
 td {
@@ -107,12 +95,6 @@ td {
 	padding: 10px;
 }
 
-input {
-	padding: 3px;
-	width: 200px;
-	border-radius: 4px;
-	border: 1px solid #ddd;
-}
 
 .content textarea {
 	height: 100px;
@@ -127,49 +109,60 @@ input {
 	border-radius: 4px;
 	font-size: 17px;
 }
+
+
 </style>
 </head>
 <body>
-<!-- header -->
+	<!-- header -->
 	<c:import url="../temp/header.jsp"></c:import>
 	<!-- header end -->
-	<h1>Write Form</h1>
+	<h1>Review Write </h1>
 
-	<form id="frm" action="dramaReviewupdate" method="post" >
-		<input type="hidden" name="review_num" value="${dto.review_num }">
+	<form id="frm" action="dramaReviewwrite" method="post" enctype="multipart/form-data">
 		<table>
+				
 			<tr>
-				<td>제목<input type="text" name="title" placeholder="${dto.title}"></td>
-				<td>작성자<input type="text" name="writer" placeholder="${member.id}"  readonly="readonly"></td>
-
+				<td>
+					<input type="text" name="title" placeholder="제목을 입력해주세요." style="width: 250px; height: 20px;"></td>
+				<td>작성자<input type="text" name="id" placeholder="${member.id }" value="${member.id}" readonly="readonly"></td>
+						
 			</tr>
+			
+			<tr>
+				<td>
+				---------------------평가--------------------
+					<div id="select_1" style="width: 1500px;height: 50px;">
+					<img alt="" src="../resources/images/starpoint/star_5.png" style="height: 20px; float: left"><input type="radio"  class="radio" value="5" name="star" checked="checked"  style="float:left;">
+					<img alt="" src="../resources/images/starpoint/star_4.png" style="height: 20px; float: left"><input type="radio"  class="radio" value="4" name="star"  style="float:left;">
+					<img alt="" src="../resources/images/starpoint/star_3.png" style="height: 20px; float: left"><input type="radio"  class="radio" value="3" name="star"  style="float:left;">
+					<img alt="" src="../resources/images/starpoint/star_2.png" style="height: 20px; float: left"><input type="radio"  class="radio" value="2" name="star"  style="float:left;">
+					<img alt="" src="../resources/images/starpoint/star_1.png" style="height: 20px; float: left"><input type="radio"  class="radio" value="1" name="star"  style="float:left;">
+					</div>
+				</td>
+			</tr>
+			
 			<tr>
 				<td class="content" colspan="2">
-				<textarea id="contents" name="contents">${view.contents }</textarea></td>
-			</tr>
-					
-			<c:forEach items="${view.ar}" var="file">
-			
-				<tr id="del${file.fnum}">
-					<td class="content" colspan="2">${file.oriname}<input type="button" title="${file.fnum}" value="X" class="del"></td>
-				</tr>
+				<!-- <input type="text"  name="contents"> -->
+				<textarea id="contents" name="contents">
 				
-			
-			</c:forEach>
-		
-		
-		</table>
-	<table>
-		<td><input type="button" value="File Add" id="add">
-		<div id="files"></div></td>
+					</textarea>
 
-
-		<td><input type="button" id="savebutton" value="Write"></td>
-		</table>
+				</td>
+			</tr>
+				<tr>
+				<td><input type="file" name="files"></td>
+				</tr>
+				</table>
+		
+	
+		<input type="button"  id="savebutton" value="작성하기" style="width: 100px;height: 50px;float: right; margin-right: 210px;">
+	</form>
+		<button id="cancel"><a href="./dramaReview">취소</a></button> 
+	
 	<!-- footer  -->
 	<c:import url="../temp/footer.jsp"></c:import>
 	<!-- footer end -->
-
-	</form>
 </body>
 </html>
