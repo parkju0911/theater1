@@ -7,8 +7,13 @@
 	border-left: 1px #404040 solid;
 	border-right: 1px #404040 solid; */
 }
-#top_line{
+/* #top_line{
 	border-bottom: 1px #404040 solid;
+} */
+.top_wrap{
+	width: 900px;
+    height: 50px;
+    margin: 0 auto;
 }
 #top_text{
 	margin: 0 auto;
@@ -35,7 +40,7 @@
 	width: 890px;
     /* height: 300px; */
     margin: 0 auto;
-    margin-top: 40px;
+   /*  margin-top: 40px; */
 	
 	/* margin-left: 100px;
 	margin-top: 10px; */
@@ -177,7 +182,14 @@
 
 /* 검색 */
 .sb-search{ 
-   width: 370px;
+  width: 900px;
+    height: 50px;
+    margin: 0 auto;
+    margin-top: -36px;
+}
+.sb-search form {
+	width: 250px;
+    height: auto;
     float: right;
 }
 .form-wrapper input {
@@ -270,3 +282,23 @@
         padding: 0;
     }
 
+
+.writeBtn{
+	width: 58px;    
+    height: 49px;
+    background-size: 100%;
+    outline: none;
+    background-color: unset;
+    border: 1px none #aaaa;
+    border-radius: 6px;
+    float: right;
+    margin-top: -46px;
+}
+   .writeBtn :hover{		
+        background: #e8e8db;
+    }	
+      
+    .writeBtn:active,
+    .writeBtn:focus{   
+        background: #e8e8db;    
+    }
