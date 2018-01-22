@@ -128,7 +128,7 @@ td {
 				<td style="margin-left: 10px; float: left;">제목 : <input type="text" name="title" placeholder="제목을 입력해주세요." class="write_ip"
 				 style="width: 500px; border: none; border-bottom: 1px solid lightgray; border-radius:0px;"></td>
 				<td style="float: right; margin-right: 50px; padding-bottom: 20px;">작성자 : <input type="text" value="${member.id}" placeholder="글쓴이를 입력해주세요." class="write_ip" readonly="readonly"
-				 style="width: 150px; border: none; border-bottom: 1px solid lightgray; border-radius:0px;"></td>
+				 style="width: 150px; border: none; background-color: #fffff8;border-bottom: 1px solid lightgray; border-radius:0px;"></td>
 			</tr>
 			<tr>
 				<td class="content" colspan="2">

@@ -60,10 +60,16 @@ $(function(){
 		<a href="${pageContext.request.contextPath}/drama/dramaReview">REVIEW</a></h6>
 		</div> 
 		<h2 style="margin-top: 20px; font: 40px/41px 'fMdBT'; padding-bottom: 20px; width: 900px; margin: 0 auto;">REVIEW</h2>
+		<c:if test="${member.id ne null }">
 		<div class="top_wrap">
 			<a href="./dramaReviewwrite"><img src="../resources/images/review/writeBtn.png" class="writeBtn"></a>
 			<!-- <a herf="#"><img alt="" src="../resources/images/review/writeBtn.png"></a> -->
-		</div>
+		</div></c:if>
+		<c:if test="${member.id eq null }">
+		<div class="top_wrap">
+			<a href="./dramaReviewwrite" onclick="return false"><img src="../resources/images/review/writeBtn.png" class="writeBtn"></a>
+			<!-- <a herf="#"><img alt="" src="../resources/images/review/writeBtn.png"></a> -->
+		</div></c:if>
 		<div class="sb-search">
 			<form name="frm" action="./dramaReview" method="get" class="form-wrapper cf" style="width: 250px;height: auto;">
 					<input type="hidden" name="kind" value="title">

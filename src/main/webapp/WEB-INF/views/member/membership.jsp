@@ -78,7 +78,7 @@ border-top: 2px solid #5d4137;
 		
 		<form action="./memberUpdate" method="POST">
 		<input type="hidden" name="kind" value="${member.kind}">
-		<div style="font-size:12px; width: 850px; margin: 20px auto; padding: 30px 70px; border: 1px solid #e8e8e8; background: #fff; text-align: center; padding: 108px; padding-top: 47px;padding-bottom: 55px;">
+		<div style="font-size:12px; width: 850px; margin: 20px auto; padding: 30px 70px; border: 1px solid #e8e8e8; background: #fffffb; text-align: center; padding: 108px; padding-top: 47px;padding-bottom: 55px;">
 			<!-- 타이틀 영역-->
 			<div>
 				<div style="float: left; text-align: left;">
