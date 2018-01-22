@@ -25,6 +25,8 @@ import com.theater.member.CompanyDTO;
 import com.theater.member.MemberDTO;
 import com.theater.member.MemberService;
 import com.theater.member.UserDTO;
+import com.theater.review.ReviewDTO;
+import com.theater.util.ListData;
 
 @Controller
 @RequestMapping(value="/member/**")
@@ -224,8 +226,17 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="myboard", method=RequestMethod.GET)
-	public String myboard(){
-		return "member/myboard";
+	public ModelAndView myboard(RedirectAttributes attributes, HttpSession session, ModelAndView modelAndView, ListData listData) throws Exception {
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		if(memberDTO==null) {
+			attributes.addFlashAttribute("result","잘못된 접근 방식입니다.");
+			modelAndView.setViewName("redirect:../");
+		}else {
+			modelAndView = dramaService.dramaReviewList(listData);
+			//modelAndView.addObject("reviewList", modelAndView);
+			modelAndView.setViewName("member/myboard");
+		}
+		return modelAndView;
 	}
 	
 	@RequestMapping(value="memberDelete", method=RequestMethod.GET)
