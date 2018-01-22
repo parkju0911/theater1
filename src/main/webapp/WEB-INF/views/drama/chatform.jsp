@@ -14,6 +14,7 @@
 		nick = "상대방";
 	}
 %>
+<link href="../resources/css/drama/chatform.css" rel="stylesheet">
 
 <link href="../resources/css/common/header.css" rel="stylesheet">
 <script src="/socket.io/socket.io.js"></script>
@@ -32,14 +33,17 @@
 
 
   <!-- onkeydown을 통해서 엔터키로도 입력되도록 설정. -->
-<input id="inputMessage" type="text"
-	onkeydown="if(event.keyCode==13){send();}" />
-<input type="submit" value="send" onclick="send();" />
+
+
 <div id="messageWindow2" style="padding:10px 0;height: 20em; overflow: auto;width: 350px;
     background-color: #774e3f85; margin-top: 15px;
     
     
     "></div>
+    <input id="inputMessage" type="text"
+	onkeydown="if(event.keyCode==13){send();}" style=" width: 303px; margin: 10px 0px; font-size: 9pt;" />
+
+<input type="submit" value="send" onclick="send();" />
 
 
 	<!-- footer 시작 -->
@@ -88,6 +92,7 @@
 
 				who.style["padding"]="3px";
 				who.style["margin-left"]="3px";
+				div.style["font-size"]="9pt";
 
 				who.innerHTML = message[0];
 				document.getElementById('messageWindow2').appendChild(who);
@@ -105,6 +110,10 @@
 			div.style["border-radius"]="3px";
 			div.style["padding"]="3px";
 			div.style["margin-left"]="3px";
+			div.style["margin-bottom"]="6px";
+			div.style["font-size"]="9pt";
+			
+			
 
 			div.innerHTML = message[1];
 			document.getElementById('messageWindow2').appendChild(div);
@@ -126,8 +135,19 @@
 		var div=document.createElement('div');
 		
 		div.style["text-align"]="center";
+		div.style["width"]="auto";
+		div.style["display"]="inline-block";
+		div.style["background-color"]="rgb(255, 255, 255)";
+		div.style["padding"]="3px";
+		div.style["border-radius"]="3px";
+		div.style["margin-right"]="3px";
+		div.style["margin-bottom"]="6px";
+		div.style["font-size"]="9pt";
+		
+	 
 		
 		div.innerHTML = "운영자와의 실시간 상담이 가능합니다. ^^";
+		
 		document.getElementById('messageWindow2').appendChild(div);
 		
 		var clear=document.createElement('div');
@@ -163,6 +183,8 @@
 			div.style["padding"]="3px";
 			div.style["border-radius"]="3px";
 			div.style["margin-right"]="3px";
+			div.style["margin-bottom"]="6px";
+			div.style["font-size"]="9pt";
 
 			//div에 innerHTML로 문자 넣기
 			div.innerHTML = inputMessage.value;
