@@ -33,7 +33,7 @@
 
 
   <!-- onkeydown을 통해서 엔터키로도 입력되도록 설정. -->
-	<div style="    margin: 95px 700px;">
+	<div style="    margin: 50px 700px;">
 		<div id="graybox"
 			style="border-top-left-radius: 8px; border-top-right-radius: 8px; background-color: #c3c1c1; width: 350px; padding: 5px 3px; font-size: 9pt; text-align: center;">
 			Teatro 실시간 채팅
