@@ -135,7 +135,7 @@
 		var div=document.createElement('div');
 		
 		div.style["text-align"]="center";
-		div.style["width"]="auto";
+		div.style["width"]="260px";
 		div.style["display"]="inline-block";
 		div.style["background-color"]="rgb(255, 255, 255)";
 		div.style["padding"]="3px";
@@ -146,7 +146,8 @@
 		
 	 
 		
-		div.innerHTML = "운영자와의 실시간 상담이 가능합니다. ^^";
+		div.innerHTML = "운영자와의 실시간 상담이 가능합니다. ^^♥ 궁금한 점이 있다면 자유롭게 질문해주세요 !";
+		
 		
 		document.getElementById('messageWindow2').appendChild(div);
 		
