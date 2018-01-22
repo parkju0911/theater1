@@ -45,7 +45,7 @@ $(function(){
 		<div id="point_box2"style="padding-top:10px;">
 		
 			<div class="starRating">
-				<span style="width: 40%;"></span>
+				<span style="width: ${avg*10}%;"></span>
 			</div>
 
 		</div>

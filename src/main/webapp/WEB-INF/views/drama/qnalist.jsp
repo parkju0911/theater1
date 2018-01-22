@@ -51,8 +51,12 @@
 	});
 	function del() {
 		var con = confirm("삭제하겠습니까?(복구되지않습니다)")
-		if(con==false){
+		if(con==true){
+			document.dele
+			
 			window.location.reload();
+		}else{
+			return;
 		}
 	} 
 		
@@ -93,9 +97,14 @@
 							<td><div id="member_qna1">${list.qna_viewnum } ${list.id } ${list.reg_date }
 																			<a href="##"  class="write_reply" id="${list.qna_viewnum }" title="${list.qna_viewnum }">
 																			<c:if test="${member.id == list.id }">
+																			<!-- qna 작성 아이콘 -->
 																			<img alt="" src="../resources/images/starpoint/btn_write_reply.png"></a>
-																			<a href="qna_delete?qna_viewnum=${list.qna_viewnum }" class="del_reply" onclick="del()"><img alt="" src="../resources/images/starpoint/btn_del_reply.png"></a>
+																			<!-- qna 삭제 아이콘  -->
+																			<form name="dele" action="qna_delete?qna_viewnum=${list.qna_viewnum}" method="post">
+																			<a href="javascripｔ:del()" class="del_reply" onclick="del()">
+																			<img alt="" src="../resources/images/starpoint/btn_del_reply.png"></a>
 																			</c:if>
+																			</form>
 							</div></td>
 						</tr>
 					

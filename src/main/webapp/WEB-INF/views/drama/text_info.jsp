@@ -20,7 +20,7 @@
 		</div>
 		<p id="warning_text1">예매 전 안내 및 주의사항을 꼭 확인하세요!</p>
 	
-		<p>티켓에 따라 이용방법/환불규정이 상이합니다. <a href="#menu3" id="refund_1" style="color:red;">환불규정 바로가기 > </a></p>
+		<p>티켓에 따라 이용방법/환불규정이 상이합니다. <a data-toggle="tab" href="#refund" id="refund_1" style="color:red;">환불규정 바로가기 > </a></p>
 		</div>
 		</div>
 
