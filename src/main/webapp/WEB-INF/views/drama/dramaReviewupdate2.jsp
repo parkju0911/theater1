@@ -1,22 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+	<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../resources/SE2/js/HuskyEZCreator.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
-<script src="../resources/SE2/js/HuskyEZCreator.js"></script>
 <link href="../resources/css/common/header.css" rel="stylesheet">
 <link href="../resources/css/drama/dramaReviewwrite.css" rel="stylesheet">
+<title>Insert title here</title>
+<script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="../resources/SE2/js/HuskyEZCreator.js"></script>
 <script type="text/javascript">
 
 	$(function() {
@@ -122,24 +117,15 @@ td {
 	<!-- header -->
 	<c:import url="../temp/header.jsp"></c:import>
 	<!-- header end -->
-	<h1>Review Write </h1>
+	<h1>Update Write </h1>
 
-	<form id="frm" action="dramaReviewwrite" method="post" enctype="multipart/form-data">
+	<form id="frm" action="dramaReviewupdate" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="review_num" value="${dto.review_num }">
 		<table>
-				
+					
 			<tr>
-				<td><select id="select_drama" style="height: 30px;"name="drama_num">
-							<optgroup label="공연을 선택하여주세요">
-								<option class="option_height">리뷰 작성하실 공연을 선택하여주세요</option>
-				
-						<c:forEach items="${list}" var="drama">
-							<option class="option_height"  id="drama"  value="${drama.drama_num}" title="${drama.drama_num }">${drama.title }</option>
-							
-									
-						</c:forEach>
-							</optgroup>
-									
-					</select><input type="text" name="title" placeholder="제목을 입력해주세요."></td>
+				<td>
+					<input type="text" name="title" value="${dto.title}" style="width: 250px; height: 20px;"></td>
 				<td>작성자<input type="text" name="id" placeholder="${member.id }" value="${member.id}" readonly="readonly"></td>
 						
 			</tr>
@@ -159,15 +145,15 @@ td {
 			
 			<tr>
 				<td class="content" colspan="2">
-				<!-- <input type="text"  name="contents"> -->
-				<textarea id="contents" name="contents">
 				
+				<textarea id="contents" name="contents">
+						${dto.contents }
 					</textarea>
 
 				</td>
 			</tr>
 				<tr>
-				<td><input type="file" name="files"></td>
+				<td><input type="file" name="files" value=""></td>
 				</tr>
 				</table>
 		

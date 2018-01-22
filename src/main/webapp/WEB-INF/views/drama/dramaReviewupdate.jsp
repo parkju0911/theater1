@@ -7,10 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="../resources/css/common/header.css" rel="stylesheet">
 <link href="../resources/css/drama/dramaReviewwrite.css" rel="stylesheet">
+<link href="../resources/css/board/boardHeader.css" rel="stylesheet">
 <title>Insert title here</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../resources/SE2/js/HuskyEZCreator.js"></script>
 <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="../resources/SE2/js/HuskyEZCreator.js"></script>
 <script type="text/javascript">
 
@@ -78,6 +82,9 @@
 
 
 <style type="text/css">
+body {
+    background-color: #fffff06e;
+    }
 h1 {
 	text-align: center;
 }
@@ -117,6 +124,74 @@ td {
 	<!-- header -->
 	<c:import url="../temp/header.jsp"></c:import>
 	<!-- header end -->
+	<form id="frm" action="dramaReviewupdate" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="review_num" value="${dto.review_num }">
+	<div class="title_wrap" style="width: 980px; padding-top: 10px; padding-bottom: 6px; border-top: 1.5px solid #795548;font-family: 'Nanum Gothic', sans-serif;">
+			<h6 id="h6_title" style="margin-right: 5px; margin-top: 8px;">
+				<a href="${pageContext.request.contextPath}"><img alt=""
+					src="../resources/images/common/homeImg.png" id="homeImg"></a> >
+				<a href="${pageContext.request.contextPath}/drama/dramaReview">REVIEW</a>
+				> <a href="${pageContext.request.contextPath}/drama/dramaReviewwrite">${dto.title}</a>
+
+			</h6>
+		</div>
+	<div class="board_wrap1" style="font-size: 12px;">
+	<!-- <form id="frm" action="dramaReviewwrite" method="post" enctype="multipart/form-data"> -->
+		<table>
+			<tr>
+				<td>
+					<input type="text" id="drama" value="${drama.drama_num}" title="${drama.drama_num }">연극명 : ${drama.title }
+					<%-- <c:forEach items="${list}" var="drama">
+							<input type="text" class="option_height"  id="drama"  value="${drama.drama_num}" title="${drama.drama_num }">연극명 : ${drama.title }</option>
+						</c:forEach> --%>
+				<td style="margin-left: 10px; float: left;">제목 : 
+					<input type="text" name="title" value="${dto.title}" class="write_ip"
+					 style="width: 300px; border: none; border-bottom: 1px solid lightgray; border-radius:0px;">
+					<!-- <input type="text" name="title" placeholder="제목을 입력해주세요." class="write_ip"
+					 style="width: 300px; border: none; border-bottom: 1px solid lightgray; border-radius:0px;"> --></td>
+				<td style="float: right; margin-right: 50px; padding-bottom: 20px;">작성자 : <input type="text" value="${member.id}" class="write_ip" readonly="readonly"
+				 style="width: 150px; border: none; border-bottom: 1px solid lightgray;background-color: #fffff8; border-radius:0px;"></td>
+			</tr>	
+			<tr>
+				<td class="content" colspan="2" style="padding: 0;">
+				<div id="select_1" style="width: 788px;height: auto;margin: 0 auto;">
+					<input type="radio"  class="radio" value="5" name="star" checked="checked"  style="float:left;">
+					<img alt="" src="../resources/images/starpoint/star_5.png" style="height: 20px; float: left;padding-left: 7px; padding-right: 26px;">
+					<input type="radio"  class="radio" value="4" name="star"  style="float:left;">
+					<img alt="" src="../resources/images/starpoint/star_4.png" style="height: 20px; float: left;padding-left: 7px; padding-right: 26px;">
+					<input type="radio"  class="radio" value="3" name="star"  style="float:left;">
+					<img alt="" src="../resources/images/starpoint/star_3.png" style="height: 20px; float: left;padding-left: 7px; padding-right: 26px;">
+					<input type="radio"  class="radio" value="2" name="star"  style="float:left;">
+					<img alt="" src="../resources/images/starpoint/star_2.png" style="height: 20px; float: left;padding-left: 7px; padding-right: 26px;">
+					<input type="radio"  class="radio" value="1" name="star"  style="float:left;">
+					<img alt="" src="../resources/images/starpoint/star_1.png" style="height: 20px; float: left;padding-left: 7px; padding-right: 26px;">
+			</div>
+			<tr>
+				<td class="content" colspan="2" style="padding-bottom:0px;">
+					<input type="file" name="files">
+				</td>
+			</tr>
+			<tr>
+				<td class="content" colspan="2">
+					<textarea id="contents" name="contents" draggable="false">${dto.contents }</textarea>
+				</td>
+			</tr>
+		</table>
+		<div class="btn2" style="    width: 850px;height: 30px;margin: 0 auto;">
+			<input type="submit" id="savebutton" value="write" class="btn btn-default" style="padding: 5px 7px;border-radius: 4px;font-size: 13px;float: right; margin-right: 40px;">
+			<a href="./dramaReview" class="btn btn-default" style="padding: 5px 7px;border-radius: 4px;font-size: 13px;float: left;font-family: 'Lucida Console',Monospace;">cancel</a>
+			<!-- <input type="submit" id="savebutton" value="cancel" class="btn btn-default" style="padding: 5px 7px;border-radius: 4px;font-size: 13px;float: left;"> -->
+		</div>
+		</div>
+	</form>
+		<!-- <button id="cancel"><a href="./dramaReview">취소</a></button>
+	</div>  -->
+	
+	
+	
+	
+
+
 	<h1>Update Write </h1>
 
 	<form id="frm" action="dramaReviewupdate" method="post" enctype="multipart/form-data">
