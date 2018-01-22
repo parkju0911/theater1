@@ -40,6 +40,14 @@
   		order by drama_num desc) N)
   		where R between #{startRow} and #{lastRow}
   	</select>
+  	
+  	
+  	
+  	<!-- 공연리뷰 리스트 출력시 drama 제목 출력 -->	
+  	<select id="drama_title" parameterType="int" resultType="dramaDTO">
+  select * from drama where drama_num=#{drama_num}
+  	</select>	
+  		
   		
 	<insert id="insert" parameterType="com.theater.drama.DramaDTO">
 		insert into drama values(
@@ -147,7 +155,7 @@
 	<selectKey keyProperty="qna_viewnum"  resultType="int" order="BEFORE">
 	select qna_viewnum.nextval from dual
 	</selectKey>
-	insert into qna_view values(#{qna_viewnum},#{id}, #{drama_num} , #{contents} , sysdate ,#{qna_viewnum},0,0)
+	insert into qna_view values(#{qna_viewnum}, #{id}, #{drama_num} , #{contents} , sysdate , #{qna_viewnum},0,0)
 	</insert>
 
 <!-- 리뷰 delete -->
