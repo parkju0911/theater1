@@ -248,18 +248,20 @@ return "sss";
 		
 		}
 	//qna delete 
-	@RequestMapping(value="qnalist")
-	public String delete_qnaview(int qna_viewnum ,RedirectAttributes rd , HttpSession session)throws Exception{
+	@RequestMapping(value="qna_delete")
+	public String delete_qnaview(int qna_viewnum ,RedirectAttributes rd , HttpSession session , Qna_viewDTO qna_viewDTO)throws Exception{
 		int	result = 0;
+		qna_viewDTO=dramaService.delete_drama_num(qna_viewnum);
 		result = dramaService.delete_qnaview(qna_viewnum, session);
-			
+			System.out.println("drama_num:"+qna_viewDTO.getDrama_num());
 		String message="삭제 실패";
 		if(result>0){
 			message="삭제 성공";	
 		}
 		rd.addFlashAttribute("message", message);
-		return "redirect:./dramaview";
+		return "redirect:./dramaview?drama_num="+qna_viewDTO.getDrama_num();
 	}
+	//공연 리뷰 리스트
 	@RequestMapping(value="dramaReview")
 	public ModelAndView dramaReviewList(ModelAndView mv , ListData listData)throws Exception{
 		

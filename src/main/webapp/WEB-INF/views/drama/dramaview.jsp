@@ -46,13 +46,15 @@
 		
 		//안내에 환불 규정
 		$("#refund_1").click(function() {
-			$("#refund_list").load("./refundlist")
+			
+				$("#refund_list").load("./refundlist")
 		});
 		//후기 전체 보기 클릭시 후기 리스트 출력
 		$("#reviewlist_all").click(function() {
 			
 			$("#review_list").load("./reviewlist?drama_num="+${view.drama_num})
 		});
+		
 		
 		$("#btn_buy").click(function(){
 			if(${member eq  null}){
@@ -221,22 +223,24 @@ A:VISITED {
 				<li class="menu_li"><a data-toggle="tab" href="#menu3" id="refund">환불규정</a></li>
 			</ul>
 
-			<div class="tab-content"><!--  탭 클릭시 페이지 view -->
-				<div id="menu0" class="tab-pane fade in active">
-
-					<div id="info_text"></div>
+				<div class="tab-content"><!--  탭 클릭시 페이지 view -->
+				
+					<div id="menu0" class="tab-pane fade in active">
+						<div id="info_text"></div>
+					</div>
+						
+						<div id="menu1" class="tab-pane fade">
+							<div id="review_list"></div>
+						</div>
+								
+								<div id="menu2" class="tab-pane fade">
+									<div id="qna_list"></div>
+								</div>
+										
+										<div id="menu3" class="tab-pane fade">
+											<div id="refund_list"></div>
+										</div>
 				</div>
-				<div id="menu1" class="tab-pane fade">
-					<div id="review_list"></div>
-				</div>
-				<div id="menu2" class="tab-pane fade">
-					<div id="qna_list"></div>
-				</div>
-				<div id="menu3" class="tab-pane fade">
-
-					<div id="refund_list"></div>
-				</div>
-			</div>
 
 		</div>
 	
