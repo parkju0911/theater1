@@ -90,7 +90,7 @@ $(function(){
 				<p id="writer" style="    width: 111px; font-size: 14px; font-weight: bold; text-align: right; margin-top: 39px;  margin-right: -84px;">${list.id }</p></p>
 				<div id="review_contents"><a href="./dramaReviewview?review_num=${list.review_num }">
 				<p id="review_title">${list.title }</p>
-				<p class="review_con">${list.contents }</p>
+				<div style="font-size: 14px;"><p class="review_con">${list.contents }</p></div>
 				</a>
 				<c:if test="${member.id eq list.id}">
 				<div class="btnGroup">

@@ -60,7 +60,7 @@ function del() {
 		
 		</div>
 			
-		<div id="contents_box">${selectOne.contents }</div>
+		<div id="contents_box">${selectOne.contents}</div>
 		
 			
 			<div id="option_box">

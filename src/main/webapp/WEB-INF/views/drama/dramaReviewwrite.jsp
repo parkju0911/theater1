@@ -174,7 +174,8 @@ td {
 			</tr>
 		</table>
 		<div class="btn2" style="    width: 850px;height: 30px;margin: 0 auto;">
-			<input type="submit" id="savebutton" value="write" class="btn btn-default" style="padding: 5px 7px;border-radius: 4px;font-size: 13px;float: right; margin-right: 40px;">
+			<input type="button" id="savebutton" value="write" class="btn btn-default" style="padding: 5px 7px;border-radius: 4px;font-size: 13px;float: right; margin-right: 40px;">
+			
 			<a href="./dramaReview" class="btn btn-default" style="padding: 5px 7px;border-radius: 4px;font-size: 13px;float: left;font-family: 'Lucida Console',Monospace;">cancel</a>
 			<!-- <input type="submit" id="savebutton" value="cancel" class="btn btn-default" style="padding: 5px 7px;border-radius: 4px;font-size: 13px;float: left;"> -->
 		</div>
