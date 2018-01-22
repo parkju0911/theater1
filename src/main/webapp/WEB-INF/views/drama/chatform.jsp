@@ -33,7 +33,7 @@
 
 
   <!-- onkeydown을 통해서 엔터키로도 입력되도록 설정. -->
-	<div>
+	<div style="    margin: 95px 700px;">
 		<div id="graybox"
 			style="border-top-left-radius: 8px; border-top-right-radius: 8px; background-color: #c3c1c1; width: 350px; padding: 5px 3px; font-size: 9pt; text-align: center;">
 			Teatro 실시간 채팅
@@ -45,9 +45,9 @@
 			style="padding: 20px 3px; height: 20em; overflow: auto; width: 350px; background-color: #774e3f85;"></div>
 		<div
 			style="background-color: #b8a296; width: 356px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;">
-			<input id="inputMessage" type="text" value="  메세지를 입력해주세요..."
+			<input id="inputMessage" type="text" placeholder="  메세지를 입력해주세요..."
 				onkeydown="if(event.keyCode==13){send();}"
-				style="border-radius: 5px; border-style: none; color: #bbbbbbcf; width: 295px; margin: 13px 4px; height: 22px; font-size: 9pt;" />
+				style="border-radius: 5px; border-style: none; color: #bbbbbb; width: 295px; margin: 13px 4px; height: 22px; font-size: 9pt;" />
 
 			<input type="submit" value="" onclick="send();"
 				style="background-image: url(https://cdn.channel.io/plugin/images/send-disabled.png); height: 26px; background-color: #fff0; border: #4c3f3f00; width: 24px; background-position: 50%; background-repeat: no-repeat; background-size: 35px 38px; margin: 6px; padding: 8px;" />
