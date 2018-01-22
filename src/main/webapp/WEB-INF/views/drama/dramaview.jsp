@@ -20,7 +20,12 @@
 
 
 <script type="text/javascript">
+
+function member_confirm() {
 	
+	
+}
+
 	$(function() {
 			
 
@@ -46,8 +51,7 @@
 		
 		//안내에 환불 규정
 		$("#refund_1").click(function() {
-			
-				$("#refund_list").load("./refundlist")
+			$("#refund_list").load("./refundlist")
 		});
 		//후기 전체 보기 클릭시 후기 리스트 출력
 		$("#reviewlist_all").click(function() {
@@ -55,14 +59,7 @@
 			$("#review_list").load("./reviewlist?drama_num="+${view.drama_num})
 		});
 		
-		
 		$("#btn_buy").click(function(){
-			if(${member eq  null}){
-				alert("로그인 하신 후에 사용해주세요");
-				 location.href="../member/memberLogin"; 	
-				 $("#section_info").prop("action", "../member/memberLogin");
-			}else{
-		
 			var drama_date = $("#drama_date").val();
 			var drama_time = $("#drama_time").val();
 			var drama_ticket = $("#drama_ticket").val();
@@ -71,8 +68,6 @@
 			}else{
 				$("#section_info").prop("action", "./selectSeat");
 				document.frm.submit();
-			}
-				
 			}
 		});
 		
@@ -119,7 +114,7 @@ A:VISITED {
 			<div id="drama_info_form">
 				<div id="drama_info">
 					<div id="title">
-						<span class="skin-type">${view.address}</span>
+						<span class="skin-type">${view.place}</span>
 						<h3>${view.title}</h3>
 						
 						<div id="content">${view.simple}</div>
@@ -143,10 +138,7 @@ A:VISITED {
 				</select>
 							
 				<div class="drama_time"></div>
-		
-    			
-								<button id="btn_buy" ></button>
-			 
+				<button id="btn_buy" onclick="member_confirm()" ></button>
 
 			</div>
 		</form>
@@ -223,24 +215,22 @@ A:VISITED {
 				<li class="menu_li"><a data-toggle="tab" href="#menu3" id="refund">환불규정</a></li>
 			</ul>
 
-				<div class="tab-content"><!--  탭 클릭시 페이지 view -->
-				
-					<div id="menu0" class="tab-pane fade in active">
-						<div id="info_text"></div>
-					</div>
-						
-						<div id="menu1" class="tab-pane fade">
-							<div id="review_list"></div>
-						</div>
-								
-								<div id="menu2" class="tab-pane fade">
-									<div id="qna_list"></div>
-								</div>
-										
-										<div id="menu3" class="tab-pane fade">
-											<div id="refund_list"></div>
-										</div>
+			<div class="tab-content"><!--  탭 클릭시 페이지 view -->
+				<div id="menu0" class="tab-pane fade in active">
+
+					<div id="info_text"></div>
 				</div>
+				<div id="menu1" class="tab-pane fade">
+					<div id="review_list"></div>
+				</div>
+				<div id="menu2" class="tab-pane fade">
+					<div id="qna_list"></div>
+				</div>
+				<div id="menu3" class="tab-pane fade">
+
+					<div id="refund_list"></div>
+				</div>
+			</div>
 
 		</div>
 	

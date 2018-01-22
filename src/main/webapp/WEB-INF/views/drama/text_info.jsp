@@ -20,7 +20,7 @@
 		</div>
 		<p id="warning_text1">예매 전 안내 및 주의사항을 꼭 확인하세요!</p>
 	
-		<p>티켓에 따라 이용방법/환불규정이 상이합니다. <a data-toggle="tab" href="#refund" id="refund_1" style="color:red;">환불규정 바로가기 > </a></p>
+		<p>티켓에 따라 이용방법/환불규정이 상이합니다. <a href="#menu3" id="refund_1" style="color:red;">환불규정 바로가기 > </a></p>
 		</div>
 		</div>
 
@@ -69,9 +69,9 @@
 	<p>공연 취소/변경 발생시, 개별 연락을 드릴 수 있습니다.</p>
 
 	<p id="map_info">지도에서 미리 확인하세요</p>
-	<p>공연장: 대학로 쁘띠첼씨어터</p>
+	<p>공연장: ${view2.place }</p>
 
-	<p>주소: ${view2.place}</p>
+	<p>주소: ${view2.address}</p>
 
 	<p>주차여부: 주차불가(인근 유료주차장 이용)</p>
 
@@ -80,7 +80,7 @@
     <script type="text/javascript">
 
     	var map = new naver.maps.Map('map');
-        var myaddress = '${view2.place}';// 도로명 주소나 지번 주소만 가능 (건물명 불가!!!!)
+        var myaddress = '${view2.address}';// 도로명 주소나 지번 주소만 가능 (건물명 불가!!!!)
         naver.maps.Service.geocode({address: myaddress}, function(status, response) {
             if (status !== naver.maps.Service.Status.OK) {
                 return alert(myaddress + '의 검색 결과가 없거나 기타 네트워크 에러');

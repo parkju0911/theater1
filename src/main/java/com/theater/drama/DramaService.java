@@ -1,9 +1,11 @@
 package com.theater.drama;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -16,8 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.theater.file.FileDAO;
 import com.theater.file.FileDTO;
+import com.theater.member.MemberDAO;
 import com.theater.member.MemberDTO;
-import com.theater.notice.NoticeDTO;
 import com.theater.point.PointDAO;
 import com.theater.point.PointDTO;
 import com.theater.qna.Qna_viewDTO;
@@ -38,6 +40,8 @@ public class DramaService {
 	private FileDAO fileDAO;
 	@Inject
 	private PointDAO pointDAO;
+	@Inject
+	private MemberDAO memberDAO;
 	
 	//orderlist 관련 01-15
 	public List<OrderListDTO> orderList(MemberDTO memberDTO) throws Exception{
@@ -308,9 +312,20 @@ public class DramaService {
 	}
 
 	
-	public int insert(DramaDTO dramaDTO, HttpSession session) throws Exception {
-		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-	
+	@Transactional
+	public int insert(DramaDTO dramaDTO, HttpSession session, List<Date> dateArr, String time, MemberDTO memberDTO) throws Exception {
+		int result = 0;
+		//문자열을 배열로 파싱하기
+		List<String> timeArr = new ArrayList<String>();
+		StringTokenizer st = new StringTokenizer(time, ",");
+		
+		while(st.hasMoreTokens()) {
+			String token = st.nextToken();
+			timeArr.add(token);
+		}
+		//drama_num 구하기
+		int drama_num = dramaDAO.nextDramaNum();
+		//file 테이블에 값 넣기
 		MultipartFile[] files =((DramaDTO)dramaDTO).getFiles();
 		
 		System.out.println("NUM: "+ dramaDTO.getDrama_num());
@@ -327,19 +342,19 @@ public class DramaService {
 			fileDAO.insert(fileDTO);
 		}
 		
-		
-		int company_num =  dramaDAO.searchCompany_num(memberDTO);
+		//drama 테이블에 값 넣기
+		int company_num = memberDAO.searchCompany_num(memberDTO.getId());
+		dramaDTO.setDrama_num(drama_num);
 		dramaDTO.setCompany_num(company_num);
 		dramaDTO.setFile_num(file_num);
-		int result = dramaDAO.insert(dramaDTO);
+		result = dramaDAO.insert(dramaDTO);
 		
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("drama_num", dramaDTO.getDrama_num());
-		map.put("title", dramaDTO.getTitle());
-		map.put("contents", dramaDTO.getContents());
-		//((NoticeDTO)boardDTO).setFileNames(names);
-		
+		//date_list에 값 넣기
+		for(int i=0; i<dateArr.size(); i++) {
+			for(int j=0; j<timeArr.size(); j++) {
+				result = dramaDAO.insert_dateList(drama_num, dateArr.get(i), timeArr.get(j));
+			}
+		}
 		return result;
 	}
 	

@@ -59,9 +59,9 @@
 							<tr class="xans-record-">
 								<td>${dto.reg_date}</td>
 								<td>
-									<a href="#">
+									<a href="../drama/dramaview?drama_num=${dto.drama_num}">
 										<img src="${pageContext.request.contextPath}/resources/upload/${dto.file_name}"class="buyImage">
-										${dto.contents}
+										<br/><span>${dto.simple}</span>
 									</a>
 								</td>
 								<td>

@@ -20,7 +20,11 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE+"searchCompany", company_num);
 	}
 	
-	
+	//company_num 찾기
+	public int searchCompany_num(String id) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"searchCompany_num", id);
+	}
+		
 	//회원가입
 	public int memberJoin(MemberDTO memberDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"memberJoin", memberDTO);

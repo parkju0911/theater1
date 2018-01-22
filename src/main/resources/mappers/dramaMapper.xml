@@ -41,12 +41,18 @@
   		where R between #{startRow} and #{lastRow}
   	</select>
   		
+	<!-- write부분 -->
+  	<select id="nextDramaNum" resultType="int">
+  		select drama_num.nextval from dual
+  	</select>
+  	<insert id="date_insert" parameterType="java.util.HashMap">
+  		insert into date_list values(date_num.nextval, #{drama_num}, #{drama_date}, #{drama_time})
+  	</insert>  	
 	<insert id="insert" parameterType="com.theater.drama.DramaDTO">
-		insert into drama values(
-			drama_num.nextval,#{company_num},
-			#{title}, #{contents}, #{place}, #{price}, 0, #{file_num}
-		)  	
+		insert into drama values(#{drama_num},#{company_num},#{title}, #{contents}, #{place}, #{price}, 0, #{file_num}, #{simple}, #{address})  	
   	</insert> 
+  	<!-- wirte부분 끝 -->
+  	
   	<select id="fileList" parameterType="int" resultType="com.theater.file.FileDTO">
   		select * from file_table where file_num=#{file_num}
   	</select> 

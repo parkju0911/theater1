@@ -2,7 +2,9 @@ package com.theater.project;
 
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -26,11 +28,11 @@ import com.theater.drama.DramaService;
 import com.theater.drama.SeatDTO;
 import com.theater.file.FileDTO;
 import com.theater.member.CompanyDTO;
+import com.theater.member.MemberDTO;
 import com.theater.member.MemberService;
 import com.theater.qna.Qna_viewDTO;
 import com.theater.review.ReviewDTO;
 import com.theater.util.ListData;
-import com.theater.util.RowNum;
 
 @Controller
 @RequestMapping(value="/drama/*")
@@ -397,13 +399,20 @@ return "sss";
 			return mv;
 		}
 		
-		
 	//insert -> form 이동
 	@RequestMapping(value="dramaWrite", method=RequestMethod.GET)
-	public String insert(Model model) {
-		model.addAttribute("board", "drama");
-		
-		return "drama/dramaWrite";
+	public String insert(Model model, HttpSession session,RedirectAttributes ra) {
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		String path = null;
+		if(memberDTO==null) {
+			ra.addFlashAttribute("result","잘못된 접근 방식입니다.");
+			path = "redirect:../";
+		}else {
+			model.addAttribute("board", "drama");
+			path = "drama/dramaWrite";
+		}
+				
+		return path;
 	}
 	
 	//insert -> form 이동
@@ -415,20 +424,38 @@ return "sss";
 	}
 	
 	//insert -> DB 처리
-	@RequestMapping(value="dramaWrite", method=RequestMethod.POST)
-	public String insert(DramaDTO dramaDTO, Model model, HttpSession session) throws Exception {
-		int result = 0;
-		result = dramaService.insert(dramaDTO, session);
-		
-		String message = "Fail";
-		if(result > 0) {
-			message = "Success";
+		@RequestMapping(value="dramaWrite", method=RequestMethod.POST)
+		public String insert(DramaDTO dramaDTO, Date startDate, Date lastDate, String time, Model model, HttpSession session) throws Exception {
+			MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+			//넘어온 날짜들 for문으로 돌려 배열을 생성
+			List<Date> dateArr = new ArrayList<Date>();
+			Calendar calStart = Calendar.getInstance();
+			Calendar calLast = Calendar.getInstance();
+				
+			calStart.setTime(startDate);
+			calLast.setTime(lastDate);
+				
+			//두 date의 일수를 구함
+			int intervalDay = (int)((calLast.getTimeInMillis() - calStart.getTimeInMillis()) / 1000)/(24*60*60)+1;
+
+			for(int i=0; i<intervalDay; i++) {
+				Date date = new Date(calStart.getTimeInMillis());
+				dateArr.add(date);
+				calStart.add(Calendar.DATE,1);
+			}
+				
+			int result = 0;
+			result = dramaService.insert(dramaDTO, session, dateArr, time, memberDTO);
+				
+			String message = "Fail";
+			if(result > 0) {
+				message = "Success";
+			}
+			model.addAttribute("message", message);
+			model.addAttribute("path", "../drama/dramaList");
+				
+			return "common/message";
 		}
-		model.addAttribute("message", message);
-		model.addAttribute("path", "../drama/dramaList");
-		
-		return "common/message";
-	}
 	
 
 }

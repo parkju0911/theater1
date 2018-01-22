@@ -195,6 +195,7 @@
 			</div>
 		</div>	
 		
+	<c:if test="${!empty list}">	
 	<div class="text-center">
       <ul class="pagination">
     
@@ -209,17 +210,15 @@
 			</c:if>
 		
       </ul>
+   </div>
+   </c:if>
    </c:if>
  
+   <c:if test="${not empty member}">
+   <div class="write-btn" style="float: right; width: 84px; height: 23px;     margin-top: 60px; border-radius: 123px; background-color: #a09d9dcc;">
+   	<a href="${board}Write" style="color: white; margin: auto; padding: 20px; font-weight: 600;">WRITE</a>
    </div>
-         <%-- <c:if test="${not empty member}"> --%>
-      <div class="write-btn"
-         style="float: right; width: 84px; height: 23px;     margin-top: 60px; border-radius: 123px; background-color: #a09d9dcc;">
-            <a href="${board}Write"
-               style="color: white; margin: auto; padding: 20px; font-weight: 600;">WRITE</a>
-      </div>
-        <%--  </c:if> --%>
-         </div>
+   </c:if>
    
 
 	<!-- footer 시작 -->

@@ -10,6 +10,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
 <script src="../resources/SE2/js/HuskyEZCreator.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(function() {
 		//SmartEditor start 
@@ -32,17 +35,23 @@
 		});
 
 		//전송버튼 클릭이벤트
-		$("#write").click(
-				function() {
-					//id가 smarteditor인 textarea에 에디터에서 대입
-					editor_object.getById["contents"].exec(
-							"UPDATE_CONTENTS_FIELD", []);
-
-					// 이부분에 에디터 validation 검증
-
-					//폼 submit
-					$("#frm").submit();
-				})
+		$("#write").click(function() {
+			//id가 smarteditor인 textarea에 에디터에서 대입
+			editor_object.getById["contents"].exec("UPDATE_CONTENTS_FIELD", []);
+			// 이부분에 에디터 validation 검증
+			
+			var arr = [];
+			$(".ampm").each(function(){
+				var ampm = $(this).attr("title");
+				if($(this).attr("title")==$("#"+ampm).attr("title")){
+					arr.push($(this).val()+$("#"+ampm).val()+'시');
+				}
+			});
+			
+			$("#time").val(arr);
+			//폼 submit
+			$("#frm").submit();
+		});
 
 		//SmartEditor end
 		
@@ -79,91 +88,19 @@
 			}
 		});
 		
+		var i=1;
+		$("#timeAdd").click(function(){
+			$("#date-time").append('<p><select class="ampm" title="ampm'+i+'"><option>오전</option><option>오후</option></select> <select id="ampm'+i+'" title="ampm'+i+'"><c:forEach begin="1" end="12" var="i"><option>${i}</option></c:forEach></select></p>');
+			i++;
+		});
 	});
-
-
 </script>
-<style type="text/css">
-	.delete {
-		cursor: pointer;
-	}
-
-	* {
-    	box-sizing: border-box;
-	}
-	
-	input[type=text], select, textarea{
-	    width: 100%;
-	    padding: 12px;
-	    border: 1px solid #ccc;
-	    border-radius: 4px;
-	    box-sizing: border-box;
-	    resize: vertical;
-	}
-	
-	label {
-	    padding: 12px 12px 12px 0;
-	    display: inline-block;
-	}
-	
-	input[type=submit] {
-	    background-color: #333;
-	    border: 1px solid #333;
-	    color: white;
-	    padding: 12px 20px;
-	    border: none;
-	    border-radius: 4px;
-	    cursor: pointer;
-	    float: right;
-	}
-	
-	input[type=submit]:hover {
-	    background-color: #fff;
-	    color: black;
-	}
-	
-	.contents {
-		width: 100%;
-	}
-	
-	.container {
-		width: 1200px;
-	    margin: auto;
-	    border-radius: 5px;
-	    padding: 20px;
-	}
-	
-	.col-25 {
-	    float: left;
-	    width: 25%;
-	    margin-top: 6px;
-	}
-	
-	.col-75 {
-	    float: left;
-	    width: 75%;
-	    margin-top: 6px;
-	}
-	
-	/* Clear floats after the columns */
-	.row:after {
-	    content: "";
-	    display: table;
-	    clear: both;
-	}
-	
-	/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-	@media (max-width: 600px) {
-	    .col-25, .col-75, input[type=submit] {
-	        width: 100%;
-	        margin-top: 0;
-	    }
-	}
-</style>
+<link href="../resources/css/common/header.css" rel="stylesheet">
+<link href="../resources/css/drama/dramaWrite.css" rel="stylesheet">
 </head>
 <body>
+<c:import url="../temp/header.jsp"></c:import>
 	<div class="container">
-		<h1>${fn:toUpperCase(board)} Write Page</h1>
 		<form id="frm" action="./${board}Write" method="POST" enctype="multipart/form-data">
 			<div class="row">
 				<div class="col-25">
@@ -176,10 +113,18 @@
 
 			<div class="row">
 				<div class="col-25">
-					<label for="place">장소</label>
+					<label for="place">공연 장소</label>
 				</div>
 				<div class="col-75">
-					<input type="text" id="place" name="place">
+					<input type="text" id="place" name="place" placeholder="ex)대학로 틴틴홀">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="place">상세 장소</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="address" name="address" placeholder="건물명 포함하여 상세주소를 적어주세요">
 				</div>
 			</div>
 			<div class="row">
@@ -190,7 +135,14 @@
 					<input type="text" id="price" name="price">
 				</div>
 			</div>
-			
+			<div class="row">
+				<div class="col-25">
+					<label for="price">작품에 대한 간략한 설명</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="simple" name="simple" placeholder="ex)7년연속 예매율 1위!! 대국민 추천연극">
+				</div>
+			</div>
 		
 
 			<div class="row">
@@ -204,7 +156,28 @@
 			
 			<div class="row">
 				<div class="col-25">
-					<label for="file">파일</label>
+					<label for="contents">공연 시간</label>
+				</div>
+				<div class="col-75">
+					<input type="date" name="startDate"> ~ <input type="date" name="lastDate">
+					<div id="date-time">
+						<select class="ampm" title="ampm0">
+							<option>오전</option>
+							<option>오후</option>
+						</select>
+						<select id="ampm0"title="ampm0">
+							<c:forEach begin="1" end="12" var="i">
+								<option>${i}</option>
+							</c:forEach>
+						</select>
+						<input id="timeAdd" type="button" value="시간 추가" class="btn btn-default">
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-25">
+					<label for="file">대표 사진</label>
 				</div>
 				<div id="filebox" class="col-75">
 					<input type="button" value="File Add" id="fileAdd">
@@ -215,8 +188,9 @@
 			<div class="row">
 				<input id="write" type="submit" value="Submit">
 			</div>
+			<input type="hidden" id="time" name="time">
 		</form>
 	</div>
-
+<c:import url="../temp/footer.jsp"></c:import>
 </body>
 </html>

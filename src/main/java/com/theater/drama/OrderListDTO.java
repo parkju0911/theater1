@@ -1,7 +1,7 @@
 package com.theater.drama;
 
 public class OrderListDTO extends SeatDTO{
-	private String contents;
+	private String simple;
 	private int price;
 	private String kind; //point 적립형태 확인하기 위함
 	private int point;
@@ -20,11 +20,11 @@ public class OrderListDTO extends SeatDTO{
 	public void setFile_num(int file_num) {
 		this.file_num = file_num;
 	}
-	public String getContents() {
-		return contents;
+	public String getSimple() {
+		return simple;
 	}
-	public void setContents(String contents) {
-		this.contents = contents;
+	public void setSimple(String simple) {
+		this.simple = simple;
 	}
 	public int getPrice() {
 		return price;

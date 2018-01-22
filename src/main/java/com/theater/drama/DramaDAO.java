@@ -1,6 +1,7 @@
 package com.theater.drama;
 
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,7 +25,20 @@ public class DramaDAO  {
 	private SqlSession sqlSession;
 	private static final String namespace="dramaMapper.";
 	
-
+	//dramaWrite 관련 1-22
+	public int nextDramaNum() throws Exception{
+		return sqlSession.selectOne(namespace+"nextDramaNum");
+	}
+		
+	public int insert_dateList(int drama_num, Date drama_date, String drama_time) throws Exception{
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("drama_num", drama_num);
+		map.put("drama_date", drama_date);
+		map.put("drama_time", drama_time);
+			
+		return sqlSession.insert(namespace+"date_insert", map);
+	}
+	//------------------
 
 	//orderlist 관련 1-15
 	public List<OrderListDTO> orderList(String id) throws Exception{
