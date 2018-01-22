@@ -72,7 +72,7 @@
 }
 .box_right{
 	width: 640px;
-	height: 250px;
+	height: 200px;
 	/* border: 1px #d6d6d6 solid; */
 	float: rigth;
 	display: inline-block;
@@ -114,8 +114,8 @@
 	list-style: none;
 }
 .btnGroup{
-	margin-right: -65px;
-    margin-top: 113px;
+	    margin-right: -65px;
+    margin-top: 50px;
 }
 .btnGroup ul{
 	float: right;
@@ -135,7 +135,8 @@
     font-family: 'Nanum Gothic', sans-serif;
 	line-height: 43px;
 	float: right;
-	margin-top: -7px;
+	margin-top: -10px;
+    margin-right: -25px;
 }
 #paging{
 	width: 1100px;

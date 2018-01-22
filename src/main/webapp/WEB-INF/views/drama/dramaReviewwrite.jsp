@@ -115,7 +115,9 @@ td {
 	border-radius: 4px;
 	font-size: 17px;
 }
-
+button.se2_photo.ico_btn {
+    display: none;
+    }
 
 </style>
 </head>

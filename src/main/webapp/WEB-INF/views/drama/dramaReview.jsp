@@ -89,22 +89,23 @@ $(function(){
 				<p class="review_date">${list.review_date }
 				<p id="writer" style="    width: 111px; font-size: 14px; font-weight: bold; text-align: right; margin-top: 39px;  margin-right: -84px;">${list.id }</p></p>
 				<div id="review_contents"><a href="./dramaReviewview?review_num=${list.review_num }">
-				<p id="review_title">${list.title }</p>
-				<div style="font-size: 14px;"><p class="review_con">${list.contents }</p></div>
-				</a>
-				<c:if test="${member.id eq list.id}">
-				<div class="btnGroup">
-				<ul>
-				<li><a href="./dramaReviewupdate?review_num=${list.review_num}"><img alt="" src="../resources/images/review/update-btn.png"></a></li>
-				<li><a href="./dramaReviewdelete?review_num=${list.review_num }" onclick="del()"><img alt="" src="../resources/images/review/delete-btn.png"></a></li>
-				</ul>
+					<p id="review_title">${list.title }</p>
+					<div style="font-size: 14px;font-family: 'Nanum Gothic', sans-serif;"><p class="review_con">${list.contents }</p></div>
+					</a>
+					<c:if test="${member.id eq list.id}">
+					<div class="btnGroup">
+					<ul>
+					<li><a href="./dramaReviewupdate?review_num=${list.review_num}"><img alt="" src="../resources/images/review/update-btn.png"></a></li>
+					<li><a href="./dramaReviewdelete?review_num=${list.review_num }"  onclick="if(!confirm('정말로 삭제하시겠습니까?')){return false;}"><img alt="" src="../resources/images/review/delete-btn.png"></a></li>
+					</ul>
+					</div>
+					</c:if>
 				</div>
-				</c:if>
 			</div>
-			
-			<c:if test="${list.star==5 }">
-				<div class="review_star">별점:<img alt="" src="../resources/images/starpoint/star_5.png" style="height: 12px"></div>
-			</c:if>
+			<div class="star" style="    width: 855px;padding-top: 10px;padding-bottom: 50px;">
+				<c:if test="${list.star==5 }">
+					<div class="review_star">별점:<img alt="" src="../resources/images/starpoint/star_5.png" style="height: 12px"></div>
+				</c:if>
 					<c:if test="${list.star==4 }">
 						<div class="review_star">별점: <img alt="" src="../resources/images/starpoint/star_4.png" style="height: 12px"></div>
 					</c:if>
@@ -118,7 +119,7 @@ $(function(){
 									<div class="review_star">별점: <img alt="" src="../resources/images/starpoint/star_1.png" style="height: 12px"></div>
 								</c:if>
 			</div>
-			</a>		
+		</a>		
 	</div>
 	
  	</c:forEach> 

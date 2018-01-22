@@ -92,7 +92,7 @@ h1 {
 table {
 	margin: 0 auto;
 	width: 80%;
-	border: 1px solid #ddd;
+	/* border: 1px solid #ddd; */
 
 }
 
@@ -116,8 +116,16 @@ td {
 	border-radius: 4px;
 	font-size: 17px;
 }
+.radio {
+    width: 10px;
+    }
 
-
+#h6_title a {
+    color: #795548;
+}
+li.se2_mn.husky_seditor_ui_photo_attach
+    display: none;
+    }
 </style>
 </head>
 <body>
@@ -138,12 +146,15 @@ td {
 	<div class="board_wrap1" style="font-size: 12px;">
 	<!-- <form id="frm" action="dramaReviewwrite" method="post" enctype="multipart/form-data"> -->
 		<table>
+		<tr>
+			<td style="padding-bottom: 0;text-align: left;font-weight: 600;font-family: 'Nanum Gothic', sans-serif;font-size: 19px;">${title.title}</td>
+		</tr>
 			<tr>
-				<td>
-					<input type="text" id="drama" value="${drama.drama_num}" title="${drama.drama_num }">연극명 : ${drama.title }
+					<%-- <td>
+				<input type="text" name="title" value="${dto.title }" placeholder="${dto.title }"> --%>
 					<%-- <c:forEach items="${list}" var="drama">
-							<input type="text" class="option_height"  id="drama"  value="${drama.drama_num}" title="${drama.drama_num }">연극명 : ${drama.title }</option>
-						</c:forEach> --%>
+							<input type="text" class="option_height"  id="drama"  value="${drama.drama_num}" title="${drama.drama_num }">${result.title}
+					</c:forEach> --%>
 				<td style="margin-left: 10px; float: left;">제목 : 
 					<input type="text" name="title" value="${dto.title}" class="write_ip"
 					 style="width: 300px; border: none; border-bottom: 1px solid lightgray; border-radius:0px;">
@@ -155,20 +166,56 @@ td {
 			<tr>
 				<td class="content" colspan="2" style="padding: 0;">
 				<div id="select_1" style="width: 788px;height: auto;margin: 0 auto;">
+				
+					<c:if test="${dto.star eq 5}">
 					<input type="radio"  class="radio" value="5" name="star" checked="checked"  style="float:left;">
 					<img alt="" src="../resources/images/starpoint/star_5.png" style="height: 20px; float: left;padding-left: 7px; padding-right: 26px;">
+					</c:if>
+					<c:if test="${dto.star ne 5}">
+					<input type="radio"  class="radio" value="5" name="star" style="float:left;">
+					<img alt="" src="../resources/images/starpoint/star_5.png" style="height: 20px; float: left;padding-left: 7px; padding-right: 26px;">
+					</c:if>
+					
+					<c:if test="${dto.star eq 4}">
+					<input type="radio"  class="radio" value="4" name="star"  checked="checked" style="float:left;">
+					<img alt="" src="../resources/images/starpoint/star_4.png" style="height: 20px; float: left;padding-left: 7px; padding-right: 26px;">
+					</c:if>
+					<c:if test="${dto.star ne 4}">
 					<input type="radio"  class="radio" value="4" name="star"  style="float:left;">
 					<img alt="" src="../resources/images/starpoint/star_4.png" style="height: 20px; float: left;padding-left: 7px; padding-right: 26px;">
+					</c:if>
+					
+					<c:if test="${dto.star eq 3}">
+					<input type="radio"  class="radio" value="3" name="star"  checked="checked" style="float:left;">
+					<img alt="" src="../resources/images/starpoint/star_3.png" style="height: 20px; float: left;padding-left: 7px; padding-right: 26px;">
+					</c:if>
+					<c:if test="${dto.star ne 3}">
 					<input type="radio"  class="radio" value="3" name="star"  style="float:left;">
 					<img alt="" src="../resources/images/starpoint/star_3.png" style="height: 20px; float: left;padding-left: 7px; padding-right: 26px;">
-					<input type="radio"  class="radio" value="2" name="star"  style="float:left;">
+					</c:if>
+					
+					<c:if test="${dto.star eq 2}">
+					<input type="radio"  class="radio" value="2" name="star"  checked="checked" style="float:left;">
 					<img alt="" src="../resources/images/starpoint/star_2.png" style="height: 20px; float: left;padding-left: 7px; padding-right: 26px;">
+					</c:if>
+					<c:if test="${dto.star ne 2}">
+					<input type="radio"  class="radio" value="3" name="star"  style="float:left;">
+					<img alt="" src="../resources/images/starpoint/star_3.png" style="height: 20px; float: left;padding-left: 7px; padding-right: 26px;">
+					</c:if>
+					
+					<c:if test="${dto.star eq 1}">
+					<input type="radio"  class="radio" value="1" name="star"  checked="checked" style="float:left;">
+					<img alt="" src="../resources/images/starpoint/star_1.png" style="height: 20px; float: left;padding-left: 7px; padding-right: 26px;">
+					</c:if>
+					<c:if test="${dto.star ne 1}">
 					<input type="radio"  class="radio" value="1" name="star"  style="float:left;">
 					<img alt="" src="../resources/images/starpoint/star_1.png" style="height: 20px; float: left;padding-left: 7px; padding-right: 26px;">
+					</c:if>
+					
 			</div>
 			<tr>
 				<td class="content" colspan="2" style="padding-bottom:0px;">
-					<input type="file" name="files">
+					<input type="file" name="files" value="${file.file_route}">
 				</td>
 			</tr>
 			<tr>
@@ -178,11 +225,11 @@ td {
 			</tr>
 		</table>
 		<div class="btn2" style="    width: 850px;height: 30px;margin: 0 auto;">
-			<input type="submit" id="savebutton" value="write" class="btn btn-default" style="padding: 5px 7px;border-radius: 4px;font-size: 13px;float: right; margin-right: 40px;">
+			<input type="button" id="savebutton" value="write" class="btn btn-default">
 			<a href="./dramaReview" class="btn btn-default" style="padding: 5px 7px;border-radius: 4px;font-size: 13px;float: left;font-family: 'Lucida Console',Monospace;">cancel</a>
 			<!-- <input type="submit" id="savebutton" value="cancel" class="btn btn-default" style="padding: 5px 7px;border-radius: 4px;font-size: 13px;float: left;"> -->
 		</div>
-		</div>
+	</div>
 	</form>
 		<!-- <button id="cancel"><a href="./dramaReview">취소</a></button>
 	</div>  -->
@@ -192,7 +239,7 @@ td {
 	
 
 
-	<h1>Update Write </h1>
+	<%-- <h1>Update Write </h1>
 
 	<form id="frm" action="dramaReviewupdate" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="review_num" value="${dto.review_num }">
@@ -235,7 +282,7 @@ td {
 	
 		<input type="button"  id="savebutton" value="작성하기" style="width: 100px;height: 50px;float: right; margin-right: 210px;">
 	</form>
-		<button id="cancel"><a href="./dramaReview">취소</a></button> 
+		<button id="cancel"><a href="./dramaReview">취소</a></button>  --%>
 	
 	<!-- footer  -->
 	<c:import url="../temp/footer.jsp"></c:import>
