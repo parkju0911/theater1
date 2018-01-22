@@ -14,6 +14,7 @@
 		nick = "상대방";
 	}
 %>
+<link href="../resources/css/drama/chatform.css" rel="stylesheet">
 
 <link href="../resources/css/common/header.css" rel="stylesheet">
 <script src="/socket.io/socket.io.js"></script>
@@ -32,16 +33,28 @@
 
 
   <!-- onkeydown을 통해서 엔터키로도 입력되도록 설정. -->
-<input id="inputMessage" type="text"
-	onkeydown="if(event.keyCode==13){send();}" />
-<input type="submit" value="send" onclick="send();" />
-<div id="messageWindow2" style="padding:10px 0;height: 20em; overflow: auto;width: 350px;
-    background-color: #774e3f85; margin-top: 15px;
-    
-    
-    "></div>
+	<div style="    margin: 95px 700px;">
+		<div id="graybox"
+			style="border-top-left-radius: 8px; border-top-right-radius: 8px; background-color: #c3c1c1; width: 350px; padding: 5px 3px; font-size: 9pt; text-align: center;">
+			Teatro 실시간 채팅
+			<p
+				style="float: right; background-color: gray; border-top-right-radius: 8px; width: 22px; height: 23px; margin-top: -4px; margin-right: -3px; text-align: center; font-size: 14px;">x</p>
+		</div>
+		<!-- <div id="mmm" style="    background-color: #b8a296; width: 350px;padding: 20px 3px;text-align: center;font-family: initial;">Teatro 실시간 채팅</div> -->
+		<div id="messageWindow2"
+			style="padding: 20px 3px; height: 20em; overflow: auto; width: 350px; background-color: #774e3f85;"></div>
+		<div
+			style="background-color: #b8a296; width: 356px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;">
+			<input id="inputMessage" type="text" placeholder="  메세지를 입력해주세요..."
+				onkeydown="if(event.keyCode==13){send();}"
+				style="border-radius: 5px; border-style: none; color: #bbbbbb; width: 295px; margin: 13px 4px; height: 22px; font-size: 9pt;" />
 
+			<input type="submit" value="" onclick="send();"
+				style="background-image: url(https://cdn.channel.io/plugin/images/send-disabled.png); height: 26px; background-color: #fff0; border: #4c3f3f00; width: 24px; background-position: 50%; background-repeat: no-repeat; background-size: 35px 38px; margin: 6px; padding: 8px;" />
+		</div>
 
+	</div>
+	</div>
 	<!-- footer 시작 -->
 	<c:import url="../temp/footer.jsp"></c:import>
 	<!-- footer 끝 -->
@@ -88,6 +101,7 @@
 
 				who.style["padding"]="3px";
 				who.style["margin-left"]="3px";
+				div.style["font-size"]="9pt";
 
 				who.innerHTML = message[0];
 				document.getElementById('messageWindow2').appendChild(who);
@@ -105,6 +119,10 @@
 			div.style["border-radius"]="3px";
 			div.style["padding"]="3px";
 			div.style["margin-left"]="3px";
+			div.style["margin-bottom"]="6px";
+			div.style["font-size"]="9pt";
+			
+			
 
 			div.innerHTML = message[1];
 			document.getElementById('messageWindow2').appendChild(div);
@@ -123,11 +141,24 @@
 	function onOpen(event) {
 		
 		//접속했을 때, 내 영역에 보이는 글.
+		
 		var div=document.createElement('div');
 		
 		div.style["text-align"]="center";
+		div.style["width"]="260px";
+		div.style["display"]="inline-block";
+		div.style["background-color"]="rgb(255, 255, 255)";
+		div.style["padding"]="3px";
+		div.style["border-radius"]="3px";
+		div.style["margin-right"]="3px";
+		div.style["margin-bottom"]="6px";
+		div.style["font-size"]="9pt";
 		
-		div.innerHTML = "운영자와의 실시간 상담이 가능합니다. ^^";
+	 
+		
+		div.innerHTML = "운영자와의 실시간 상담이 가능합니다. ^^♥ 궁금한 점이 있다면 자유롭게 질문해주세요 !";
+		
+		
 		document.getElementById('messageWindow2').appendChild(div);
 		
 		var clear=document.createElement('div');
@@ -163,6 +194,8 @@
 			div.style["padding"]="3px";
 			div.style["border-radius"]="3px";
 			div.style["margin-right"]="3px";
+			div.style["margin-bottom"]="6px";
+			div.style["font-size"]="9pt";
 
 			//div에 innerHTML로 문자 넣기
 			div.innerHTML = inputMessage.value;
