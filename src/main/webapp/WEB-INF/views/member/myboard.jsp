@@ -46,9 +46,9 @@
 								<%-- ${dto.contents} --%>
 								공연리뷰
 							</td>
-							<td>
+							<td style="text-align: left; ">
 								<a href="../drama/dramaReviewview?review_num=${dto.review_num}">
-									<strong style="text-align: left; ">${dto.title}</strong>
+									<strong>${dto.title}</strong>
 								</a>
 							</td>
 							<td>${dto.review_date}</td>
