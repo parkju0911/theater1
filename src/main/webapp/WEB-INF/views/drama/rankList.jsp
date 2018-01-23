@@ -19,24 +19,25 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
 <script src="../resources/SE2/js/HuskyEZCreator.js"></script>
-<link href="../resources/css/drama/dramaReview.css" rel="stylesheet">
+<link href="../resources/css/drama/rankList.css" rel="stylesheet">
 <link href="../resources/css/common/header.css" rel="stylesheet">
 <link href="../resources/css/board/boardHeader.css" rel="stylesheet">
-<script src="text/javascript">
-	$(function() {
-
+<script type="text/javascript">
+$(function() {
 		var message = '${message}';
-		if (message != '') {
+		if(message != '') {
 			alert(message);
 		}
 
-		$(".list").click(function() {
-			var cur = $(this).attr("title");
-			var s = '${pager.search}';
-			var t = '${pager.kind}';
-			location.href="rankList?curPage="+cur;
-		});
+	$(".list").click(function() {
+		var cur = $(this).attr("title");
+		var s = '${pager.search}';
+		var t = '${pager.kind}';
+		location.href="rankList?curPage="+cur;
 	});
+
+
+});
 </script>
 <style type="text/css">
 .list {
@@ -52,7 +53,7 @@
 .starRating, .starRating span {
 	display: inline-block;
 	height: 21px;
-	background: transparent url(../../images/starpoint/star_rating.png)
+	background: transparent url(../resources/images/starpoint/star_rating.png)
 		no-repeat;
 	overflow: hidden;
 }
@@ -65,7 +66,6 @@
 	background-position: 0 -21px;
 }
 </style>
-<link href="../resources/css/drama/dramaReview.css" rel="stylesheet">
 <link href="../resources/css/board/boardHeader.css" rel="stylesheet">
 </head>
 <body>
@@ -98,7 +98,7 @@
 
 
 
-		<section id="Review_main">
+		<section id="Review_main" >
 
 
 
@@ -106,27 +106,27 @@
 
 				<div class="list_box">
 					<div class="ranking_num"
-						style="width: 40px; float: left; text-align: center; ">
+						style="width: 20px; height:25px; float: left; text-align: center; background-color: black ">
 
 						<c:choose>
 							<c:when test="${i.count==1 }">
 						<!-- 	<img alt="" src="../resources/images/point/1.png"> -->
-								<p style="font-weight: bold; font-size: 1.5em; color:#B90000;font-family: 'Nanum Gothic', sans-serif;"> 
+								<p style="font-weight:bold; text-align:center;line-height:20px; font-size:15px; color:yellow;font-family: 'Nanum Gothic', sans-serif;"> 
 									<c:out value="${i.count} " />
 								</p>
 							</c:when>
 							<c:when test="${i.count==2 }">
-								<p style="font-weight: bold; font-size: 1.5em; color: #B90000;font-family: 'Nanum Gothic', sans-serif;">
+								<p style="ffont-weight:bold; text-align:center;line-height:20px; font-size:15px; color: yellow;font-family: 'Nanum Gothic', sans-serif;">
 									<c:out value="${i.count} " />
 								</p>
 							</c:when>
 							<c:when test="${i.count==3 }">
-								<p style="font-weight: bold; font-size: 1.5em; color: #B90000;font-family: 'Nanum Gothic', sans-serif;">
+								<p style="font-weight:bold; text-align:center;line-height:20px; font-size:15px;color: yellow;font-family: 'Nanum Gothic', sans-serif;">
 									<c:out value="${i.count} " />
 								</p>
 							</c:when>
 							<c:otherwise>
-								<p style="font-weight:600;font-size: 1.5em;color:#795548; font-family: 'Nanum Gothic', sans-serif;  ">
+								<p style="font-weight:600;text-align:center;line-height:20px; font-size:15px;color:#D7AC87; font-family: 'Nanum Gothic', sans-serif;  ">
 									<c:out value="${i.count} " />
 								</p>
 							</c:otherwise>
@@ -136,54 +136,62 @@
 
 					</div>
 
-					<div class="box_left" style="height: 250px;width:260px;margin-right: 20px;">
+					<div class="box_left" style="height: 200px;width:200px;">
 
 						<img alt="이미지"
 							src="../resources/upload/${file[i.index].file_name}"
-							width="280px" height="250px">
+							width="200px" height="200px">
 
 					</div>
-					<div class="box_right" style="width: 620px; height: 250px;">
+					<div class="box_right" style="width: 500px; height: 200px;">
 
-						<div id="review_title" style="padding-left: 10px;     font-family: 'Nanum Gothic', sans-serif;">
+						<div id="review_title" class="user-labels"style="padding-left: 10px; font-family: 'Nanum Gothic', sans-serif;">
+								
 							<a href="./dramaview?drama_num=${dto.drama_num }">${dto.title}</a>
+							<%-- <span class="skin-type">${dto.place}</span> --%>
 						</div>
 
 						<div id="review_contents"
-							style="height: 150px; padding-left: 10px; padding-top: 10px;     font-family: 'Nanum Gothic', sans-serif;">${dto.simple}</div>
+							style="height: 100px; padding-left: 10px; padding-top: 10px; font-family: 'Nanum Gothic', sans-serif;">${dto.simple}</div>
 
-						<div style="float: right; line-height: 50px;    font-family: 'Nanum Gothic', sans-serif;">
-							별점<span style="color: red;"></span>
+			 	<div style="float: right; line-height: 50px;    font-family: 'Nanum Gothic', sans-serif;">
+						
+						
 							<!-- 별점/후기인원수 -->
-							<span id="star_total">${avg2[i.index]} / 5.0 (총
-								${total2[i.index]} 명)</span>
-								
-						</div>
+							<span id="star_total" style="font-size: 12px;color:	#8F6156;"> 예매율 ${dto.buy_hit*0.5}%
+							<!-- 별점 ${avg2[i.index]} / 5.0 (총
+								${total2[i.index]} 명)--></span> 
+									
+										<div class="starRating"> 
+				<span  style="width:${avg2[i.index]*10}%" ></span> 
+				
+				</div>  
+						 	
+						</div> 
+				
 					</div>
 
 				</div>
 
 			</c:forEach>
 </section>
+	<div class="text-center">
+      <ul class="pagination">
+    
+			<c:if test="${pager.curBlock gt 1}">
+				<span class="list" title="${pager.startNum-1}">[이전]</span>
+			</c:if>
+			<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+				<span class="list" title="${i}">${i}</span>
+			</c:forEach>
+			<c:if test="${pager.curBlock lt pager.totalBlock}">
+				<span class="list" title="${pager.lastNum+1}">[다음]</span>
+			</c:if>
+		
+      </ul>
 
-			<div class="text-center">
-				<ul class="pagination">
-
-					<c:if test="${pager.curBlock gt 1}">
-						<span class="list" title="${pager.startNum-1}">[이전]</span>
-					</c:if>
-					<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-						<span class="list" title="${i}">${i}</span>
-					</c:forEach>
-					<c:if test="${pager.curBlock lt pager.totalBlock}">
-						<span class="list" title="${pager.lastNum+1}">[다음]</span>
-					</c:if>
-
-				</ul>
-
-
-			</div>
-
+ 
+   </div>
 
 
 
