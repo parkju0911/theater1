@@ -8,6 +8,7 @@
 <link href="../resources/css/common/header.css" rel="stylesheet">
 <link href="../resources/css/drama/dramaReviewwrite.css" rel="stylesheet">
 <link href="../resources/css/board/boardHeader.css" rel="stylesheet">
+<link href="../resources/css/drama/smart_editor.css" rel="stylesheet">
 <title>Insert title here</title>
  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -123,9 +124,7 @@ td {
 #h6_title a {
     color: #795548;
 }
-li.se2_mn.husky_seditor_ui_photo_attach
-    display: none;
-    }
+#smart_editor2 .se2_text_tool .se2_multy .se2_photo { margin-right: 1px; display: none;}
 </style>
 </head>
 <body>

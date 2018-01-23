@@ -27,6 +27,7 @@ header{
     background-position-y: -189px;
    /*  padding-bottom: 50px; */
     /* background-repeat-x: no-repeat; */
+    
     /* background-position: center; */
 }
 nav li a {
