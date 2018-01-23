@@ -173,7 +173,8 @@ public class DramaDAO  {
 	public int totalcount_qna(RowNum rowNum)throws Exception{
 		return sqlSession.selectOne(namespace+"totalcount_qna", rowNum);
 	}
-	public int review_avg(int drama_num)throws Exception{
+	public Integer review_avg(int drama_num)throws Exception{
+	
 		return sqlSession.selectOne(namespace+"review_avg", drama_num);
 	}
 	public List<Qna_viewDTO> selectList_qna(RowNum rowNum)throws Exception{
@@ -246,6 +247,15 @@ public class DramaDAO  {
 		//drama selectOne 파일 가져오기
 		public FileDTO selectFile(int file_num)throws Exception{
 			return sqlSession.selectOne(namespace+"selectFile", file_num);
+		}
+		
+	
+		
+		public List<DramaDTO> rank_List(RowNum rowNum)throws Exception{
+			return sqlSession.selectList(namespace+"rankList", rowNum);	
+		}
+		public int review_totalcount(int drama_num)throws Exception{
+			return sqlSession.selectOne(namespace+"review_totalcount",drama_num);
 		}
 		
 }
