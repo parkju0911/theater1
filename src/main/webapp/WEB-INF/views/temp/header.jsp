@@ -40,21 +40,32 @@
 				</c:if>
 			</c:if>
 		</div>
-		<form>
-		<div class="search_bar">
+		<form name="frm" action="${pageContext.request.contextPath}/drama/dramaList" method="get">
+						<input type="hidden" name="curPage" value="1">
+						<input type="hidden" name="kind" value="title">
+			<div class="search_bar">
+		
 			 <!-- <input type="text" class="form-control" id="usr"> -->
-			<input id="s_bar" type="text" placeholder="연극 검색">
+			<input id="s_bar" name="search" type="text" placeholder="연극 검색">
 			<button>검색</button>
+						<!-- <div class="search_wrap">
+							<div class="search__container">
+								<input class="search__input" type="text" placeholder="Search"  name="search">
+							</div>
+						</div>
+					</form> -->
+		
 		</div>
 		</form>
 		<!-- 메인메뉴 -->
 		<div class="main_menu">
-			<nav>
+			<nav style="margin-top: -31px;">
 				<ul>
 					<li><a href="${pageContext.request.contextPath}/drama/dramaList">연극예매</a><span style="padding: 0 8px;">|</span></li>
 					<li><a href="${pageContext.request.contextPath}/drama/dramaList">예매순위</a><span style="padding: 0 8px;">|</span></li>
 					<li><a href="${pageContext.request.contextPath}/event/eventList">이벤트</a><span style="padding: 0 8px;">|</span></li>
 					<li><a href="${pageContext.request.contextPath}/drama/dramaReview">공연리뷰</a><span style="padding: 0 8px;">|</span></li>
+					<li><a href="${pageContext.request.contextPath}/member/faq">문의사항</a><span style="padding: 0 8px;">|</span></li>
 					<li><a href="${pageContext.request.contextPath}/notice/noticeList">공지사항</a></li>
 				</ul>
 			</nav>

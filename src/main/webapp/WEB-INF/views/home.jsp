@@ -416,7 +416,7 @@ td, select {
 				</a> <a href="./member/faq"> <img
 					src="./resources/images/home/btn_faq.png"
 					style="padding: 8px 10px;">
-				</a> <a href="member/qna"> <img
+				</a> <a href="http://192.168.20.48/project/drama/chatform"> <img
 					src="./resources/images/home/btn_chatting.png"
 					style="padding: 8px 10px;">
 				</a>

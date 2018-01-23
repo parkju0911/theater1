@@ -70,6 +70,56 @@
 	color: #795548;    
 	font-family: 'Nanum Gothic', sans-serif;
 }
+
+
+.container-1{
+  /* width: 300px; */
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
+}
+.container-1 input#search{
+  width: 250px;
+  height: 30px;
+  background: #fff9f1;
+  border: none;
+  font-size: 10pt;
+  float: right;
+  color: #63717f;
+      padding-left: 38px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+.container-1 input#search::-webkit-input-placeholder {
+   color: #65737e;
+}
+ 
+.container-1 input#search:-moz-placeholder { /* Firefox 18- */
+   color: #65737e;  
+}
+ 
+.container-1 input#search::-moz-placeholder {  /* Firefox 19+ */
+   color: #65737e;  
+}
+ 
+.container-1 input#search:-ms-input-placeholder {  
+   color: #65737e;  
+}
+.container-1 .icon{
+  position: absolute;
+  top: 50%;
+ 	margin-left: 8px;
+    margin-top: 4px;
+  z-index: 1;
+  /* color: #4f5b66;
+background: #fff9f1;
+  background-image: url("./resources/images/home/search-xxl.png"); */
+}
+.container-1 input#search:hover, .container-1 input#search:focus, .container-1 input#search:active{
+    outline:none;
+    background: #ffffff;
+  }
 </style>
 <link href="../resources/css/common/header.css" rel="stylesheet">
 <link href="../resources/css/board/boardHeader.css" rel="stylesheet">
@@ -84,20 +134,22 @@
 </div>
 <div class="board_wrap1">
 	<div class="list_wrap">
-	
-	<div class="search_wrap">
-	<form name="frm" action="./${board}List" method="get">
-		<input type="hidden" name="curPage" value="1">
-		<select name="kind">
-			<option>Title</option>
-			<option>Writer</option>
-			<option>Contents</option>
-		</select>
-		<input type="text" name="search">
-		<button>검색</button>
-	</form>
-	</div>
-	<div class="tbh">
+
+			<div class="search_wrap">
+				<div class="box">
+					<div class="container-1">
+						<form name="frm" action="./${board}List" method="get">
+							<input type="hidden" name="curPage" value="1"> <input type="hidden" name="kind" value="title">
+								<span class="icon"><i class="fa fa-search">
+								<img style="width: 21px; height: auto;" alt=""
+									src="../resources/images/home/search-xxl.png"> </i></span> 
+								<input type="text" id="search"name="search" placeholder="Search..." />
+						<!-- 	<input type="text" name="search" placeholder="Search..." >	<button>검색</button> -->
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="tbh">
 	<table class="table table-hover">
 		<tr>
 			<td class="td-main">NO</td>
