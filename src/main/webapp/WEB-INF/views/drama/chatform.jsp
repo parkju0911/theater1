@@ -26,14 +26,12 @@
 </head>
 
 <body>
-<!-- Header 시작 -->
-	<c:import url="../temp/header.jsp"></c:import>
-	<!-- Header 끝 -->
+
 
 
 
   <!-- onkeydown을 통해서 엔터키로도 입력되도록 설정. -->
-	<div style="    margin: 50px 700px;">
+	<div>
 		<div id="graybox"
 			style="border-top-left-radius: 8px; border-top-right-radius: 8px; background-color: #c3c1c1; width: 350px; padding: 5px 3px; font-size: 9pt; text-align: center;">
 			Teatro 실시간 채팅
@@ -55,9 +53,7 @@
 
 	</div>
 	</div>
-	<!-- footer 시작 -->
-	<c:import url="../temp/footer.jsp"></c:import>
-	<!-- footer 끝 -->
+
 
 </body>
 <script type="text/javascript">

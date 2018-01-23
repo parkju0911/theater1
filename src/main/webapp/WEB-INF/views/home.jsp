@@ -112,6 +112,30 @@ td, select {
       alert('${result}');
    }
 </script>
+
+<script type="text/javascript">
+
+
+
+function popupOpen(){
+
+	var popUrl = "./drama/chatform";	//팝업창에 출력될 페이지 URL
+
+	var popOption = "width=360, height=440, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+
+		window.open(popUrl,"",popOption);
+
+	}
+
+
+
+</script>
+
+
+
+
+
+
 <body>
 <c:import url="./temp/header.jsp"></c:import>
 <div style="height: 60px;"></div>
@@ -401,7 +425,7 @@ td, select {
 	<a href="drama/dramaList">Drama List</a>
 	<a href="./notice/noticeList">Go Notice</a>
 	<a href="./qna/qnaList">Go Qna</a>
-	<a href="./drama/chatform">chatting</a>
+	<a href="javascript:popupOpen();" > chatting! </a>
 	<a href="./point/pointList">pointList</a>
 	<a href="./point/pointCheck">pointCheck</a>		
 <!-- HOME FOOTER -->
@@ -415,7 +439,7 @@ td, select {
 				</a> <a href="./member/faq"> <img
 					src="./resources/images/home/btn_faq.png"
 					style="padding: 8px 10px;">
-				</a> <a href="member/qna"> <img
+				</a> <a href="javascript:popupOpen();"> <img
 					src="./resources/images/home/btn_chatting.png"
 					style="padding: 8px 10px;">
 				</a>
@@ -456,7 +480,7 @@ td, select {
 			<div style="clear: both;"></div>
 		</div>
 	</div>
-<c:import url="./temp/recent.jsp"></c:import>
+s
 	<c:import url="./temp/footer.jsp"></c:import>
 </body>
 
