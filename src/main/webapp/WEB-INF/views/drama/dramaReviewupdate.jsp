@@ -111,6 +111,7 @@ td {
 }
 
 
+
 </style>
 </head>
 <body>
@@ -120,6 +121,7 @@ td {
 	<h1>Update Write </h1>
 
 	<form id="frm" action="dramaReviewupdate" method="post" enctype="multipart/form-data">
+		<input type="text" name="drama_title" value="${title.title }" placeholder="${title.title }">
 		<input type="hidden" name="review_num" value="${dto.review_num }">
 		<table>
 					

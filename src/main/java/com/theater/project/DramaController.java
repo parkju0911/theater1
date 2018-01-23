@@ -216,28 +216,30 @@ return "sss";
 		return "drama/text_info";
 	}
 	//qna list page & write form(Get)
-	@RequestMapping(value="qnalist" , method=RequestMethod.GET)
-	public ModelAndView selectList_qna( ModelAndView mv , ListData listData)throws Exception{
-				
-		mv = dramaService.selectList_qna(listData);
-				
-		return mv;
-						
-	}
-	//qna list page & write form(Post)
-	@RequestMapping(value="qnawrite" , method=RequestMethod.POST)
-	public String selectList_qna( ModelAndView mv , HttpSession session , ListData listData , Qna_viewDTO qna_viewDTO , RedirectAttributes rd)throws Exception{
-		int result=0;
-		result = dramaService.qna_insert(qna_viewDTO, session);
-			
-		String message="등록실패";
-		if(result>0){
-			message="등록완료";
+		@RequestMapping(value="qnalist" , method=RequestMethod.GET)
+		public ModelAndView selectList_qna( ModelAndView mv , ListData listData, int drama_num)throws Exception{
+					System.out.println("drama_num : "+drama_num);
+			mv.addObject("drama_num", drama_num);
+			mv = dramaService.selectList_qna(listData, drama_num);
+			return mv;
+							
 		}
-		rd.addFlashAttribute("message", message);
-		return "redirect:./dramaview";
-					
-	}
+		//qna list page & write form(Post)
+		@RequestMapping(value="qnawrite" , method=RequestMethod.POST)
+		public String selectList_qna(HttpSession session , Qna_viewDTO qna_viewDTO , RedirectAttributes rd)throws Exception{
+			int result=0;
+			
+			System.out.println("들어옴");
+			System.out.println("drama_num(dto) : "+qna_viewDTO.getDrama_num());
+			result = dramaService.qna_insert(qna_viewDTO, session);
+			String message="등록실패";
+			if(result>0){
+				message="등록완료";
+			}
+			rd.addFlashAttribute("message", message);
+			return "redirect:./dramaview?drama_num="+qna_viewDTO.getDrama_num();
+						
+		}
 	//qna reply
 		@RequestMapping(value="qnareply" , method=RequestMethod.POST)
 		public String qna_reply(HttpSession session , Qna_viewDTO qna_viewDTO) throws Exception{
@@ -313,16 +315,19 @@ return "sss";
 				public String dramaReviewupdate(ReviewDTO reviewDTO , Model model)throws Exception{
 					int review_num = reviewDTO.getReview_num();
 					ReviewDTO result = dramaService.review_selectOne(review_num);
+					int drama_num = result.getDrama_num();
+					DramaDTO drama_title = dramaService.selectOne_view(drama_num);
 					System.out.println("file_num:"+reviewDTO.getFile_num());
 					model.addAttribute("dto", result);
+					model.addAttribute("title", drama_title);
 					return "drama/dramaReviewupdate";
 				}
 				//공연 업데이트(수정) post
 				@RequestMapping(value="dramaReviewupdate" , method=RequestMethod.POST)
-				public String dramaReviewupdate(ReviewDTO reviewDTO , ModelAndView mv , MultipartHttpServletRequest Ms , HttpSession session ,RedirectAttributes rd  )throws Exception{
+				public String dramaReviewupdate(ReviewDTO reviewDTO , ModelAndView mv , MultipartHttpServletRequest Ms , HttpSession session ,RedirectAttributes rd, ListData listData  )throws Exception{
 					System.out.println("review_num2: "+reviewDTO.getReview_num());
 					int result= dramaService.review_update(reviewDTO , Ms, session);
-					
+				
 					String message="DB오류.";
 					if(result>0){
 						message="등록되었습니다.";

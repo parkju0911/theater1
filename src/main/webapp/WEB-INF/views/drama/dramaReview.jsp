@@ -89,6 +89,9 @@ $(function(){
 				<p class="review_date">${list.review_date }
 				<p id="writer" style="    width: 111px; font-size: 14px; font-weight: bold; text-align: right; margin-top: 39px;  margin-right: -84px;">${list.id }</p></p>
 				<div id="review_contents"><a href="./dramaReviewview?review_num=${list.review_num }">
+				<%-- <c:forEach items="${title }" var="Title" varStatus="i">
+				<p id="drama_title">${Title.title }</p>
+				</c:forEach> --%>
 				<p id="review_title">${list.title }</p>
 				<div style="font-size: 14px;"><p class="review_con">${list.contents }</p></div>
 				</a>

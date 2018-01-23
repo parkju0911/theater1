@@ -51,12 +51,10 @@
 	});
 	function del() {
 		var con = confirm("삭제하겠습니까?(복구되지않습니다)")
-		if(con==true){
-			document.dele
-			
-			window.location.reload();
-		}else{
+		if(!confirm("삭제하겠습니까?")){
 			return;
+		}else{
+			
 		}
 	} 
 		
@@ -76,6 +74,7 @@
 								<div id="qna_textbox">
 	
 								<input type="hidden"  name="drama_num" value="${drama_num}" >
+								<input type="hidden" name="id" value="${member.id }">
 								<textarea style="width:530px; height: 70px; border: 1px solid #e6e6e6; font-size: 13px; color:#000;" name="contents"></textarea>
 										
 								</div>
@@ -100,11 +99,12 @@
 																			<!-- qna 작성 아이콘 -->
 																			<img alt="" src="../resources/images/starpoint/btn_write_reply.png"></a>
 																			<!-- qna 삭제 아이콘  -->
-																			<form name="dele" action="qna_delete?qna_viewnum=${list.qna_viewnum}" method="post">
-																			<a href="javascripｔ:del()" class="del_reply" onclick="del()">
+																		<%-- 	<form name="dele" action="qna_delete?qna_viewnum=${list.qna_viewnum}" method="post"> --%>
+																			
+																			<a href="qna_delete?qna_viewnum=${list.qna_viewnum}" class="del_reply" onclick="del()" >
 																			<img alt="" src="../resources/images/starpoint/btn_del_reply.png"></a>
 																			</c:if>
-																			</form>
+																			<!-- </form> -->
 							</div></td>
 						</tr>
 					

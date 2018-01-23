@@ -81,6 +81,11 @@ public class DramaService {
 		DramaDTO dramaDTO = dramaDAO.selectOne(num);
 		return dramaDTO;
 	}
+	public DramaDTO selectOne_view(int drama_num)throws Exception{
+		DramaDTO dramaDTO = dramaDAO.selectOne(drama_num);
+		return dramaDTO;
+		
+	}
 	public FileDTO selectFile(int file_num)throws Exception{
 		return dramaDAO.selectFile(file_num);
 	}
@@ -127,7 +132,7 @@ public class DramaService {
 		return totalstar;
 	}
 	//qna 리스트
-	public ModelAndView selectList_qna(ListData listData)throws Exception{
+	public ModelAndView selectList_qna(ListData listData, int drama_num)throws Exception{
 		ModelAndView model = new ModelAndView();
 		RowNum rowNum = listData.makeRow();
 		Pager pager = listData.makePage(dramaDAO.totalcount_qna(rowNum));
@@ -135,6 +140,7 @@ public class DramaService {
 		model.addObject("pager", pager);
 		model.addObject("qnalist", qnalist);
 		model.setViewName("drama/qnalist");
+		model.addObject("drama_num", drama_num);
 		
 		return model;
 	}
@@ -151,11 +157,16 @@ public class DramaService {
 		return mv;
 	}
 	//qna write
-	public int qna_insert(Qna_viewDTO qna_viewDTO , HttpSession session)throws Exception{
-		int result = dramaDAO.qna_insert(qna_viewDTO);
-		
-		return result;
-	}
+		public int qna_insert(Qna_viewDTO qna_viewDTO , HttpSession session)throws Exception{
+			MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+			qna_viewDTO.setId(memberDTO.getId());
+			System.out.println("ID : "+qna_viewDTO.getId());
+			System.out.println("drama_num(serviceDTO) : "+qna_viewDTO.getDrama_num());
+			System.out.println("contents : "+qna_viewDTO.getContents());
+			int result = dramaDAO.qna_insert(qna_viewDTO);
+			
+			return result;
+		}
 	//qna 글 삭제
 	public int delete_qnaview(int qna_viewnum , HttpSession session)throws Exception{
 		int result = dramaDAO.delete_qnaview(qna_viewnum);
@@ -180,14 +191,22 @@ public class DramaService {
 		Pager pager = listData.makePage(dramaDAO.totalcount_review(rowNum));
 		List<ReviewDTO> reviewlist = dramaDAO.dramaReviewList(rowNum);
 		List<FileDTO> file = new ArrayList<FileDTO>();
+		List<DramaDTO> title=new ArrayList<DramaDTO>();
+	
 		for(ReviewDTO reviewDTO: reviewlist){
+			int drama_num = reviewDTO.getDrama_num();
+			DramaDTO dramaDTO = dramaDAO.drama_title(drama_num);
+			
 			FileDTO fileDTO = dramaDAO.fileList(reviewDTO.getFile_num());
 			file.add(fileDTO);
+			title.add(dramaDTO);
+			
 		}
 		mv.addObject("pager", pager);
 		mv.addObject("review", reviewlist);
 		mv.setViewName("drama/dramaReview");
 		mv.addObject("file", file);
+		mv.addObject("title", title);
 		return mv;
 	}
 	//공연 리뷰 selectOne

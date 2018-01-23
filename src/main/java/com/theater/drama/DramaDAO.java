@@ -136,7 +136,13 @@ public class DramaDAO  {
 
 		return sqlSession.selectList(namespace+ "selectList", map);
 	}
+	public DramaDTO drama_title(int drama_num) throws Exception {
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("drama_num", drama_num);
 
+		return sqlSession.selectOne(namespace+ "drama_title", map);
+	}
 	//안되서 일단 리스트로 해놓음 변경할것
 	public ReviewDTO selectOne_review(int drama_num)throws Exception{
 		return sqlSession.selectOne(namespace+"selectOne_review", drama_num);
