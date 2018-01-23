@@ -30,7 +30,12 @@ $(function() {
 		$("#frm").submit(); 
                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 	});
-
+	$(".list").click(function() {
+		var cur = $(this).attr("title");
+		var s = '${pager.search}';
+		var t = '${pager.kind}';
+		location.href="pointList?curPage="+cur;
+	});
 
 
 });

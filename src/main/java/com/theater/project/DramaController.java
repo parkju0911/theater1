@@ -411,5 +411,16 @@ return "sss";
 		return "common/message";
 	}
 	
+	//예매순위
+	@RequestMapping(value="rankList")
+	public ModelAndView rank(ModelAndView mv , DramaDTO dramaDTO , ListData listData)throws Exception{
 
+		
+		mv = dramaService.rank_List(listData);
+		
+	
+		return mv;
+	}
+	
+	
 }

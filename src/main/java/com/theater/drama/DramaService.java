@@ -310,6 +310,38 @@ public class DramaService {
 		return result;
 	}
 	
-
+	//예매순위
+		public ModelAndView rank_List(ListData listData) throws Exception {	
+			ModelAndView mv = new ModelAndView();
+			RowNum rowNum = listData.makeRow();
+			Pager pager = listData.makePage(dramaDAO.totalcount_review(rowNum));
+			List<DramaDTO> ranklist = dramaDAO.rank_List(rowNum);
+			List<Integer> arg = new ArrayList<Integer>();
+			List<Integer>tot=new ArrayList<Integer>();
+			 List<FileDTO> file = new ArrayList<FileDTO>();
+			  for(DramaDTO dramaDTO: ranklist){
+			         FileDTO fileDTO = dramaDAO.fileList(dramaDTO.getFile_num());
+			         file.add(fileDTO);
+			         System.out.println(dramaDTO.getDrama_num());
+			         Integer review_avg = dramaDAO.review_avg(dramaDTO.getDrama_num());
+			         if(review_avg==null){
+			        	 review_avg=0;
+			         }
+			         System.out.println("review_avg"+review_avg);
+			         arg.add(review_avg);
+			         int totalcount = dramaDAO.review_totalcount(dramaDTO.getDrama_num());
+			         tot.add(totalcount);
+			      }
+		mv.addObject("total2",tot);
+			mv.addObject("avg2",arg);
+			mv.addObject("pager", pager);
+			mv.addObject("rank", ranklist);
+			mv.setViewName("drama/rankList");
+			 mv.addObject("file", file);
+			return mv;
+			
+		
+	}
+		 
 
 }
