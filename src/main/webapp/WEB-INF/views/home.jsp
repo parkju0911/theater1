@@ -481,7 +481,6 @@ function popupOpen(){
 			<div style="clear: both;"></div>
 		</div>
 	</div>
-s
 	<c:import url="./temp/footer.jsp"></c:import>
 </body>
 
