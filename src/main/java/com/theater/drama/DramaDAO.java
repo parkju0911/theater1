@@ -179,6 +179,9 @@ public class DramaDAO  {
 	public List<Qna_viewDTO> selectList_qna(RowNum rowNum)throws Exception{
 		return sqlSession.selectList(namespace+"selectList_qna", rowNum);		
 	}
+	public Qna_viewDTO selectOne_qna(int qna_viewnum)throws Exception{
+		return sqlSession.selectOne(namespace+"selectOne_qna", qna_viewnum);
+	}
 	public List<ReviewDTO> review_list(RowNum rowNum)throws Exception{
 		return sqlSession.selectList(namespace+"review_list", rowNum);
 	}
@@ -208,7 +211,7 @@ public class DramaDAO  {
 	public int totalcount_page(int drama_num)throws Exception{
 		return sqlSession.selectOne(namespace+"totalcount_page", drama_num);
 	}
-	//dramaview page qna_delete(qna_viewnum을 넘겨줘야 redirec로 page 이동
+	//dramaview page qna_delete(qna_viewnum을 넘겨줘야 redirect로 page 이동
 		public Qna_viewDTO delete_drama_num(int qna_viewnum)throws Exception{
 			return sqlSession.selectOne(namespace+"delete_drama_num", qna_viewnum);
 		}

@@ -218,7 +218,7 @@ return "sss";
 	//qna list page & write form(Get)
 		@RequestMapping(value="qnalist" , method=RequestMethod.GET)
 		public ModelAndView selectList_qna( ModelAndView mv , ListData listData, int drama_num)throws Exception{
-					System.out.println("drama_num : "+drama_num);
+					/*System.out.println("drama_num : "+drama_num);*/
 			mv.addObject("drama_num", drama_num);
 			mv = dramaService.selectList_qna(listData, drama_num);
 			return mv;
@@ -244,6 +244,7 @@ return "sss";
 		@RequestMapping(value="qnareply" , method=RequestMethod.POST)
 		public String qna_reply(HttpSession session , Qna_viewDTO qna_viewDTO) throws Exception{
 			int result=0;
+			System.out.println("qna_viewnum:"+qna_viewDTO.getQna_viewnum());
 			result = dramaService.qna_reply(qna_viewDTO, session);
 			
 	/*		System.out.println("drama_num:"+qna_viewDTO.getDrama_num());*/

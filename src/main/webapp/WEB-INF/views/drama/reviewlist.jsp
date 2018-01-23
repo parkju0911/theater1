@@ -39,23 +39,24 @@ $(function(){
 		
 		
 			<div id="afterview_list">
-		<div id="point_box">
+					<div id="point_box">
 		
-		<div id="point_box1">별점<span style="color:red;"></span>  <!-- 별점/후기인원수 --><span id="star_total">${avg }/5.0 (총  ${total }  명)</span></div>
-		<div id="point_box2"style="padding-top:10px;">
+				<div id="point_box1">별점<span style="color:red;"></span>  <!-- 별점/후기인원수 --><span id="star_total">${avg }/5.0 (총  ${total }  명)</span></div>
+					<div id="point_box2"style="padding-top:10px;">
 		
-			<div class="starRating">
-				<span style="width: ${avg*10}%;"></span>
-			</div>
+						<div class="starRating">
+							<span style="width: ${avg*10}%;"></span>
+						</div>
 
-		</div>
+					</div>
 		<div id="point_box3">실제 관객이 남긴 평균 별점입니다.</div>
 		 
 		
 		
 		
+				</div>
 		</div>
-		</div>
+		
 		<div id="afterview_box_list">
 			<table>
 			<c:if test="${review == null }">

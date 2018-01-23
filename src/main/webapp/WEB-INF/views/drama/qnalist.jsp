@@ -51,7 +51,7 @@
 	});
 	function del() {
 		var con = confirm("삭제하겠습니까?(복구되지않습니다)")
-		if(!confirm("삭제하겠습니까?")){
+		if(!con("삭제하겠습니까?")){
 			return;
 		}else{
 			
@@ -91,41 +91,48 @@
 					
 			<table id="qna_box">
 				<c:forEach items="${qnalist}"  var="list">
-						
-						<tr>
-							<td><div id="member_qna1">${list.qna_viewnum } ${list.id } ${list.reg_date }
+			<%-- 	<c:if test="${list.drama_num eq drama_num }">
+							 --%>
+								<tr>
+									<td>
+											
+											
+											<div id="member_qna1">
+											 		
+																
+																				<c:catch>
+														<c:forEach begin="1" end="${list.depth }">
+														<img src="../resources/images/starpoint/reply_icon.png">
+														</c:forEach>
+													</c:catch>		
+																	
+											 								${list.qna_viewnum } ${list.id } ${list.reg_date }
 																			<a href="##"  class="write_reply" id="${list.qna_viewnum }" title="${list.qna_viewnum }">
+																			
 																			<c:if test="${member.id == list.id }">
 																			<!-- qna 작성 아이콘 -->
 																			<img alt="" src="../resources/images/starpoint/btn_write_reply.png"></a>
 																			<!-- qna 삭제 아이콘  -->
 																		<%-- 	<form name="dele" action="qna_delete?qna_viewnum=${list.qna_viewnum}" method="post"> --%>
-																			
 																			<a href="qna_delete?qna_viewnum=${list.qna_viewnum}" class="del_reply" onclick="del()" >
 																			<img alt="" src="../resources/images/starpoint/btn_del_reply.png"></a>
 																			</c:if>
 																			<!-- </form> -->
-							</div></td>
-						</tr>
-					
-					<tr>
-							<td><div id="member_qna2">
-										
-						
-										 ${list.contents }</div>
-										 
+																			<p>${list.contents }</p>
+																	
+											</div>
+											
 								
 										 
-										 
-										 </td>
-					</tr>
-						<c:catch>
-										<c:forEach begin="1" end="${list.depth }">
-						
-										<img src="../resources/images/starpoint/reply_icon.png">
+									</td>
+							</tr>
+					
 				
-										</c:forEach>
-								</c:catch>		 
+					
+					
+							
+								
+					
 					
 					<tr>
 			
@@ -133,7 +140,7 @@
 <!--------------답글------------->		
 						<td class="${list.qna_viewnum }" id="reply_form">
 							<form action="qnareply"  method="post" style="float: left;">
-									
+									<input type="hidden" name="qna_viewnum" value="${list.qna_viewnum }">
 									<input type="hidden"  name="drama_num" value="${drama_num}" >
 									
 								<textarea  name="contents" style="width: 400px; height: 50px; margin-left: 30px;"></textarea>
@@ -142,9 +149,12 @@
 							</form>  
 						</td>
 					</tr>
+					
+							
+				
 				</c:forEach>
+				
 			</table>
-		
 		``	<div id="paging">
 				<c:if test="${pager.curBlock gt 1}">
 					<span class="list" title="${pager.startNum-1}">[이전]</span>

@@ -193,9 +193,14 @@ A:VISITED {
 		<p>연극 리뷰</p>
 		</div>
 		<div id="ticket_review">
+		<c:if test="${review eq null }">
+						<p>아직 작성된 리뷰가 없습니다.</p>
+						</c:if>
 				<c:forEach items="${review }"   var="one"  begin="1" end="1">
+			
 				<div id="review_image"><img alt="" src="${pageContext.request.contextPath}/resources/upload/${file.file_name}" style="width: 250px;height: 120px;"></div>
 				<div id="review_text">
+						
 						<div id="review_title">${one.title }</div>
 						<div id="review_contents">${one.contents }<div id="view_go"><a href="./dramaReviewview?review_num=${one.review_num }"> ☞리뷰보러가기</a></div></div>
 					
