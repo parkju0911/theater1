@@ -16,6 +16,7 @@
 <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
 <script src="../resources/SE2/js/HuskyEZCreator.js"></script>
 <link href="../resources/css/common/header.css" rel="stylesheet">
+<!-- <link href="../resources/css/drama/smart_editor.css" rel="stylesheet"> -->
 <!-- <link href="../resources/css/drama/dramaReviewwrite.css" rel="stylesheet"> -->
 <link href="../resources/css/board/boardHeader.css" rel="stylesheet">
 <script type="text/javascript">
@@ -116,7 +117,7 @@ td {
 	font-size: 17px;
 }
 
-
+#smart_editor2 .se2_text_tool .se2_multy .se2_photo { margin-right: 1px; display: none;}
 </style>
 </head>
 <body>
