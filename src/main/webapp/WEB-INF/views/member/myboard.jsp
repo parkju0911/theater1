@@ -30,8 +30,8 @@
 	</div> 
 	<h2 style="margin-top: 20px; font: 40px/41px 'fMdBT'; padding-bottom: 20px;">MY BOARD</h2>
 	<div class="ec-base-table typeList ">
-		<table border="1">
-			<thead>
+		<table border="1" style="background-color: unset;">
+			<thead style="background-color: #fffffb;">
 				<tr>
 					<th scope="col">게시판</th>
 					<th scope="col" style="width: 691px;">제목</th>
@@ -41,7 +41,7 @@
 			<tbody class="xans-element- xans-order xans-order-normallist center">
 				<c:forEach items="${review}" var="dto">
 					<c:if test="${member.id == dto.id}">
-						<tr class="xans-record-">
+						<tr class="xans-record-"style="background-color: #ffffff00;">
 							<td>
 								<%-- ${dto.contents} --%>
 								공연리뷰
