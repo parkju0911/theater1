@@ -36,8 +36,7 @@ $(function(){
 </style>
 </head>
 <body>
-		
-		
+	
 			<div id="afterview_list">
 					<div id="point_box">
 		
@@ -59,7 +58,7 @@ $(function(){
 		
 		<div id="afterview_box_list">
 			<table>
-			<c:if test="${review == null }">
+			<c:if test="${empty review }">
 					<tr>
 					<td><div id="afterview_box_a">아직 등록된 후기/별점이 없습니다.</div></td>
 					</tr>

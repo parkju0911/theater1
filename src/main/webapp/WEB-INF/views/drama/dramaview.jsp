@@ -150,7 +150,11 @@ A:VISITED {
 			</div>
 			<div id="afterview_box">
 				<table>
+						<c:if test="${empty review }">
+						<div class=review_null><p>	아직 등록된 후기/별점이 없습니다.</p></div>
+						</c:if>
 					<c:forEach items="${review }" var="re" begin="0" end="2">
+						
 						<tr>
 							<td><div id="afterview_box_a">${re.id }
 									(${re.review_date })</div></td>
@@ -179,12 +183,14 @@ A:VISITED {
 				</c:if>
 								</div></td>
 						</tr>
-
+					
 					</c:forEach>
 				</table>
+				<c:if test="${!empty review }">
 				<div id="afterview_total">
 					<a data-toggle="tab" href="#menu1" id="reviewlist_all">후기 전체보기></a>
 				</div>
+				</c:if>
 			</div>
 
 
@@ -193,9 +199,9 @@ A:VISITED {
 		<p>연극 리뷰</p>
 		</div>
 		<div id="ticket_review">
-		<c:if test="${review eq null }">
-						<p>아직 작성된 리뷰가 없습니다.</p>
-						</c:if>
+		<c:if test="${empty review }">
+						<div class="review_null"><p>아직 작성된 리뷰가 없습니다.</p></div>
+			</c:if>
 				<c:forEach items="${review }"   var="one"  begin="1" end="1">
 			
 				<div id="review_image"><img alt="" src="${pageContext.request.contextPath}/resources/upload/${file.file_name}" style="width: 250px;height: 120px;"></div>
@@ -207,6 +213,7 @@ A:VISITED {
 				</div>
 				
 				</c:forEach>
+			
 	</div>
 			
 

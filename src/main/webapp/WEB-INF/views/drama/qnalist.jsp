@@ -91,25 +91,24 @@
 					
 			<table id="qna_box">
 				<c:forEach items="${qnalist}"  var="list">
-			<%-- 	<c:if test="${list.drama_num eq drama_num }">
-							 --%>
+				<c:if test="${list.drama_num eq drama_num }">
+				
 								<tr>
 									<td>
 											
 											
 											<div id="member_qna1">
-											 		
-																
-																				<c:catch>
+														
+														<c:catch>
 														<c:forEach begin="1" end="${list.depth }">
 														<img src="../resources/images/starpoint/reply_icon.png">
 														</c:forEach>
-													</c:catch>		
+														</c:catch>		
 																	
 											 								${list.qna_viewnum } ${list.id } ${list.reg_date }
-																			<a href="##"  class="write_reply" id="${list.qna_viewnum }" title="${list.qna_viewnum }">
 																			
 																			<c:if test="${member.id == list.id }">
+																			<a href="##"  class="write_reply" id="${list.qna_viewnum }" title="${list.qna_viewnum }">
 																			<!-- qna 작성 아이콘 -->
 																			<img alt="" src="../resources/images/starpoint/btn_write_reply.png"></a>
 																			<!-- qna 삭제 아이콘  -->
@@ -151,11 +150,11 @@
 					</tr>
 					
 							
-				
+					</c:if>
 				</c:forEach>
 				
 			</table>
-		``	<div id="paging">
+		``		<div id="paging">
 				<c:if test="${pager.curBlock gt 1}">
 					<span class="list" title="${pager.startNum-1}">[이전]</span>
 				</c:if>

@@ -459,6 +459,15 @@
 	margin-bottom: 30px;
 	background-color: white;
 }
+.review_null{
+	padding-left:30px;
+	width: 300px;
+	height: 100px;
+	margin: 0 auto;
+	line-height: 120px;
+	font-size: 15px;
+	font-weight: bolder;
+}
 #review_image{
 	width: 250px;
 	height: 120px;
