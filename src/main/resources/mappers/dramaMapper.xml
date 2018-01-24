@@ -259,5 +259,17 @@
   	<select id="orderFileName" parameterType="int" resultType="String">
   		select file_name from file_table where file_num=#{file_num}
   	</select>
+  		<!-- 예매순위 -->
+	<select id="rankList" parameterType="com.theater.util.RowNum"
+		resultMap="dramaDTO">
+		select * from
+		(select rownum r, N.* from
+		(select * from drama order by buy_hit desc) N)
+		where r between #{startRow} and #{lastRow}
+	</select>
+<select id="review_totalcount" parameterType="int" resultType="java.lang.Integer">
+select nvl(count(review_num), 0) from review where drama_num=#{drama_num}
+
+</select>
   </mapper><!-- xml과 동일한 이름으로 한다. -->
   
