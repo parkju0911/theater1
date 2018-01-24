@@ -143,7 +143,7 @@ background: #fff9f1;
 								<span class="icon"><i class="fa fa-search">
 								<img style="width: 21px; height: auto;" alt=""
 									src="../resources/images/home/search-xxl.png"> </i></span> 
-								<input type="text" id="search"name="search" placeholder="Search..." />
+								<input type="text" id="search" name="search" placeholder="Search..." />
 						<!-- 	<input type="text" name="search" placeholder="Search..." >	<button>검색</button> -->
 						</form>
 					</div>
