@@ -23,10 +23,10 @@
 			var cur=$(this).attr("title");
 			var s='${pager.search}';
 			var t='${pager.kind}';
-			document.frm.curPage.value=cur;
-			document.frm.search.value=s;
-			document.frm.kind.value=t;
-			document.frm.submit();
+			$("#curPage").val(cur);
+			$("#search").val(s);
+			$("#kind").val(t);
+			$("#frm").submit();
 		});
 	});
 </script>
@@ -138,8 +138,9 @@ background: #fff9f1;
 			<div class="search_wrap">
 				<div class="box">
 					<div class="container-1">
-						<form name="frm" action="./${board}List" method="get">
-							<input type="hidden" name="curPage" value="1"> <input type="hidden" name="kind" value="title">
+						<form name="frm" action="./${board}List" method="get" id="frm">
+							<input type="hidden" name="curPage" value="1" id="curPage">
+							<input type="hidden" name="kind" value="title" id="kind">
 								<span class="icon"><i class="fa fa-search">
 								<img style="width: 21px; height: auto;" alt=""
 									src="../resources/images/home/search-xxl.png"> </i></span> 
