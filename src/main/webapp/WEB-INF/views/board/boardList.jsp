@@ -24,9 +24,9 @@
 			var s='${pager.search}';
 			var t='${pager.kind}';
 			$("#curPage").val(cur);
-		$("#search").val(s);
-		$("#kind").val(t);
-		$("#frm").submit();
+			$("#search").val(s);
+			$("#kind").val(t);
+			$("#frm").submit();
 		});
 	});
 </script>
