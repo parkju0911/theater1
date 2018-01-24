@@ -117,7 +117,17 @@
 		});
 	});
 	
-	
+	function popupOpen(){
+
+		var popUrl = "http://192.168.20.48/project/drama/chatform";	//팝업창에 출력될 페이지 URL
+
+		var popOption = "width=360, height=440, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+
+			window.open(popUrl,"",popOption);
+
+		}
+
+
 	$(function(){
 		  $("#chat").on({
 		   mouseenter: function(){
@@ -157,7 +167,7 @@
 				<a  class="chat" href="http://192.168.20.48/project/drama/chatform"></a>
 			</div> -->
 			<div class="chatting_icon" style="width: 900px;">
-				<a href="http://192.168.20.48/project/drama/chatform"><img id="chat" style=" margin-top: -91px; width: 85px;height: auto;float: right;margin-right: 19px;" alt="" src="../resources/images/common/chatting1.png"></a>			
+				<a href="javascript:popupOpen();"><img id="chat" style=" margin-top: -91px; width: 85px;height: auto;float: right;margin-right: 19px;" alt="" src="../resources/images/common/chatting1.png"></a>			
 			</div>
 		<!-- <ul class="nav nav-tabs">
 			<li class="active"><a data-toggle="tab" href="#faq">FAQ</a></li>

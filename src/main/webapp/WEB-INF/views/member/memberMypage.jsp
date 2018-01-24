@@ -64,6 +64,18 @@
 	if(result != ""){
 		alert('${result}');
 	}
+	
+
+	
+	function popupOpen(){
+
+		var popUrl = "http://192.168.20.48/project/drama/chatform";	//팝업창에 출력될 페이지 URL
+
+		var popOption = "width=360, height=440, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+
+			window.open(popUrl,"",popOption);
+
+		}
 </script>
 </head>
 <link href="../resources/css/common/header.css" rel="stylesheet">
@@ -93,7 +105,7 @@
 				<tr>
 					<td><a href="${pageContext.request.contextPath}/member/myboard"><img alt="" src="../resources/images/member/board.png" id="myImg"></a></td>
 					<td><a href="${pageContext.request.contextPath}/member/faq"><img alt="" src="../resources/images/member/faq.png" id="myImg"></a></td>
-					<td><a href="http://192.168.20.48/project/drama/chatform"><img alt="" src="../resources/images/member/qna.png" id="myImg"></a></td>
+					<td><a href="javascript:popupOpen();"><img alt="" src="../resources/images/member/qna.png" id="myImg"></a></td>
 				</tr>
 			</table>
 		<div class="help">
@@ -131,7 +143,7 @@
 				</tr>
 				<tr>
 					<td><a href="${pageContext.request.contextPath}/member/faq"><img alt="" src="../resources/images/member/faq.png" id="myImg"></a></td>
-					<td><a href="http://192.168.20.48/project/drama/chatform"><img alt="" src="../resources/images/member/qna.png" id="myImg"></a></td>
+					<td><a href="javascript:popupOpen();"><img alt="" src="../resources/images/member/qna.png" id="myImg"></a></td>
 				</tr>
 			</table>
 		<div class="help">
