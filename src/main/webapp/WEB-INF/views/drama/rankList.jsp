@@ -19,7 +19,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
 <script src="../resources/SE2/js/HuskyEZCreator.js"></script>
-<link href="../resources/css/drama/rankList.css" rel="stylesheet">
+
 <link href="../resources/css/common/header.css" rel="stylesheet">
 <link href="../resources/css/board/boardHeader.css" rel="stylesheet">
 <script type="text/javascript">
@@ -67,6 +67,7 @@ $(function() {
 }
 </style>
 <link href="../resources/css/board/boardHeader.css" rel="stylesheet">
+<link href="../resources/css/drama/rankList.css" rel="stylesheet">
 </head>
 <body>
 
@@ -74,7 +75,7 @@ $(function() {
 	<c:import url="../temp/header.jsp"></c:import>
 	<!-- header end -->
 	<!-- <p id="top_line"></p> -->
-	<section id="Review_main">
+
 
 		<div class="title_wrap"
 			style="border-top: 2px solid #5d4137; padding-top: 8px; width: 1000px; font-family: 'Nanum Gothic', sans-serif;">
@@ -100,8 +101,9 @@ $(function() {
 
 		<section id="Review_main" >
 
+	<div id="rank_main">
 
-
+	<div class="rankMain_wrap">
 			<c:forEach items="${rank}" var="dto" varStatus="i">
 
 				<div class="list_box">
@@ -136,14 +138,14 @@ $(function() {
 
 					</div>
 
-					<div class="box_left" style="height: 200px;width:200px;">
+					<div class="box_left" >
 
 						<img alt="이미지"
 							src="../resources/upload/${file[i.index].file_name}"
-							width="200px" height="200px">
+							width="100px" height="125px">
 
 					</div>
-					<div class="box_right" style="width: 500px; height: 200px;">
+					<div class="box_right" >
 
 						<div id="review_title" class="user-labels"style="padding-left: 10px; font-family: 'Nanum Gothic', sans-serif;">
 								
@@ -152,9 +154,9 @@ $(function() {
 						</div>
 
 						<div id="review_contents"
-							style="height: 100px; padding-left: 10px; padding-top: 10px; font-family: 'Nanum Gothic', sans-serif;">${dto.simple}</div>
+							style=" padding-left: 10px; padding-top: 10px; font-family: 'Nanum Gothic', sans-serif;">${dto.simple}</div>
 
-			 	<div style="float: right; line-height: 50px;    font-family: 'Nanum Gothic', sans-serif;">
+			 	<div style="float: right; line-height: 25px;    font-family: 'Nanum Gothic', sans-serif;">
 						
 						
 							<!-- 별점/후기인원수 -->
@@ -174,6 +176,8 @@ $(function() {
 				</div>
 
 			</c:forEach>
+			</div>
+			</div>
 </section>
 	<div class="text-center">
       <ul class="pagination">
