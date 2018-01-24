@@ -89,8 +89,8 @@ function del() {
 			<h6 id="h6_title"><a href="${pageContext.request.contextPath}"><img alt="" src="../resources/images/common/homeImg.png" id="homeImg"></a> > <a href="${pageContext.request.contextPath}/drama/dramaReview">Review</a> > 
 	<a href="${pageContext.request.contextPath}/drama/dramaReviewview?review_num=${selectOne.review_num}">${selectOne.title}</a></h6>
 	</div>
-<div class="board_wrap1" style="width: 850px;">
-	<p style="padding: 0;font-size: 18px;font-weight: 550;padding-left: 10px;color: #795548;">공연명<%-- ${selectOne.drama_title} --%></p>
+<div class="board_wrap1" style="width: 850px;"><img style="    width: 23px;" alt="" src="../resources/images/review/pointing.png">
+	<p style="padding: 0;font-size: 18px;font-weight: 550;padding-left: 10px;color: #795548;padding-left: 30px; margin-top: -22px; line-height: initial; color: #473e37; font-family: 'Nanum Gothic', sans-serif;">공연명<%-- ${selectOne.drama_title} --%></p>
 	<p class="b_title" style="background-color: #fffffb;">${selectOne.title}
 			<c:if test="${selectOne.star ==5}">
 				<img alt="" src="../resources/images/starpoint/star_5.png" style="height: 20px;float: right; margin-right: -122px; float: right;">

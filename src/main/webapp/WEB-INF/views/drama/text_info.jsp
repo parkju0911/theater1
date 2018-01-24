@@ -43,9 +43,7 @@
 	<p>티켓배부: 현장수령 (공연 1시간 전부터 공연장 앞 매표소 배부)</p>
 
 	<p>티켓교환: 문자/마이티켓 제시 및 본인확인 후 발권</p>
-
-	<p>좌석배정: 타예매처 지정석 제외 후 매표소 선착순 배정(앞→뒤, 중앙→사이드)</p>
-
+	
 	<p>입장시간: 공연 시작 10분 전 부터 입장 가능</p>
 
 </div>
@@ -53,10 +51,8 @@
  <div id="info_three">
  
 	<p style="font-weight: bolder;">주의사항</p>
-
-	<p style="color:red";>※타임티켓은 비지정석 예매입니다. 상단 좌석배정 방식을 확인하세요!</p>
-
-	<p style="color:red";>※당일 관람티켓 취소/환불/변경 불가 - 신중히 구매해주세요.</p>
+	
+	<p style="color:red; ">※당일 관람티켓 취소/환불/변경 불가 - 신중히 구매해주세요.</p>
 
 	<p>공연 시작 후 입장 불가, 공연 중 퇴장 시 재입장 불가</p>
 
@@ -70,8 +66,7 @@
 
 	<p id="map_info">지도에서 미리 확인하세요</p>
 
-	<p>${view2.place }: 대학로 쁘띠첼씨어터</p>
-
+	<p>장소명: ${view2.place}</p>
 
 	<p>주소: ${view2.address}</p>
 
@@ -116,6 +111,11 @@
       </script>
 		
 		</div><!-- info three close -->
+		
+		
+		<div id="info_three" style="margin-top: 30px;">
+			<p>${view2.contents}</p>
+		</div>
 		
 		</div>
 </body>

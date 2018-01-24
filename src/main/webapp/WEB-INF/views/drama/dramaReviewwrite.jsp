@@ -116,8 +116,8 @@ td {
 	border-radius: 4px;
 	font-size: 17px;
 }
-
-#smart_editor2 .se2_text_tool .se2_multy .se2_photo { margin-right: 1px; display: none;}
+#se2_tool > div > ul.se2_multy > li > button {
+display: none;}
 </style>
 </head>
 <body>

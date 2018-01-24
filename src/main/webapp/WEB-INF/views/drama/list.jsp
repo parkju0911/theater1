@@ -65,7 +65,7 @@
 	<c:if test="${list eq null}">
 		<h1>데이터를 가져오지 못했습니다.</h1>
 	</c:if>
-	
+<div>
 <c:if test="${list ne null}">
 	<div class="container review">
 		<div id="review-feed-list-wrap">
@@ -164,7 +164,6 @@
 			
 
 
-<div>
 </c:forEach>
 <div id="rightSide">
 
@@ -195,8 +194,8 @@
 			</div>
 		</div>	
 		
-	<c:if test="${!empty list}">	
 	<div class="text-center">
+	<c:if test="${!empty list}">	
       <ul class="pagination">
     
 			<c:if test="${pager.curBlock gt 1}">
@@ -210,16 +209,16 @@
 			</c:if>
 		
       </ul>
-   </div>
    </c:if>
-   </c:if>
- 
-   <c:if test="${not empty member}">
+   <c:if test="${member.kind eq 'company'}">
    <div class="write-btn" style="float: right; width: 84px; height: 23px;     margin-top: 60px; border-radius: 123px; background-color: #a09d9dcc;">
    	<a href="${board}Write" style="color: white; margin: auto; padding: 20px; font-weight: 600;">WRITE</a>
    </div>
    </c:if>
-   
+   </div>
+   </c:if>
+ 
+   </div>
 
 	<!-- footer 시작 -->
 	<c:import url="../temp/footer.jsp"></c:import>

@@ -120,7 +120,7 @@ td, select {
 
 function popupOpen(){
 
-	var popUrl = "./drama/chatform";	//팝업창에 출력될 페이지 URL
+	var popUrl = "http://192.168.20.48/project/drama/chatform";	//팝업창에 출력될 페이지 URL
 
 	var popOption = "width=360, height=440, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
 
@@ -215,148 +215,6 @@ function popupOpen(){
 	}
 	setInterval(changeSlide, 6000);
 </script>
-
-<%-- <div id="review-feed-list-wrap">
-			<div class="row unpa-card-row row-flex-height-md">
-			<c:forEach items="${list}" var="dto">
-				<c:forEach items="${requestScope.list}" var="dto">
-					<div class="col-md-4 unpa-ad-responsive-parent">
-
-						<div class="unpa-card unpa-card-box-shadow unpa-review">
-
-							<div class="main-section"
-								style="border-left: 1px solid #f2f2f2; border-top: 1px solid #f2f2f2; border-right: 1px solid #f2f2f2;">
-								<a class="user-info-link" href="">
-									<div class="user-info" style="display: inline-block">
-										<div class="unpa-feed-user-info-box">
-											<div class="unpa-user-block">
-												<div class="user-name unpa-tooltip" data-html="true"
-													data-toggle="tooltip" data-placement="bottom"
-													title="<i class='ion-person'></i> 267 <i class='ion-edit'></i> 40">
-													${dto.drama_num}</div>
-												<div class="user-labels" style="">
-													<span class="skin-type false ">${dto.place}</span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="time">${dto.file_num}</div>
-								</a>
-								<div class="unpa-feed-card-hover-actions">
-									<span class="unpa-share-this-button"><i
-										class="unpacon-share"></i></span>
-
-								<!-- 	<div class="number-of-images">
-										<i class="glyphicon glyphicon-picture"></i> 6
-									</div> -->
-
-								</div>
-
-								<div class="main-image"
-									style="background-image: url('../resources/images/drama_1.jpg')" >
-									<div class="content">
-										<a>${dto.contents}</a>
-									</div>
-								</div>
-								<div class="review-contents">
-									<div class="product-info">
-										<div class="left">
-											<div class="product-image"
-												style="background-image: url(../resources/image/drama_1.jpg')"></div>
-										</div>
-
-
-										<div class="right">
-											<div class="brand-name-and-rating">
-												<div class="brand-name">
-													<a href="./dramaview?drama_num=${dto.drama_num}">${dto.title}</a>
-												</div>
-											</div>
-											<div class="product-name">
-												<a
-													href="">${dto.price} 원</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="sub-section"
-								style="border-left: 1px solid #f2f2f2; border-bottom: 1px solid #f2f2f2; border-right: 1px solid #f2f2f2;">
-								<div class="count-info">
-									<div class="like">
-										<a class="like-button " style="color: #b4b4b4;">
-											<div class="icon">
-											<img
-											src="${pageContext.request.contextPath}/image/review/ic_heart_xs_normal.png"></div>
-											<div class="count">${dto.heart}</div>
-										</a>
-									</div>
-									<div class="comments">
-										<img
-											src="${pageContext.request.contextPath}/image/review/ic_reply_s.png">
-										<div style="display: inline; position: relative; top: 1px;">${dto.ref}</div>
-									</div>
-
-									<div class="views">
-										<div style="display: inline; position: relative; top: 1px;">${dto.buy_hit} BUY</div>
-
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-			</c:forEach>
-			</div>
-		</div> --%>
-
-
-
-<!-- <script type="text/javascript">
-	$(function(){
-		var message='${message}';
-		if(message != ''){
-			alert(message);
-		}
-		
-		$(".list").click(function (){
-			var cur=$(this).attr("title");
-			var s='${pager.search}';
-			var t='${pager.kind}';
-			document.frm.curPage.value=cur;
-			document.frm.search.value=s;
-			document.frm.kind.value=t;
-			document.frm.submit();
-		});
-	});
-</script> -->
-
-
-
-
-
-							<%-- <c:forEach begin="0" end="4" var = "i">
-								<div class="main_drama_list">
-									<a href="./drama/dramaView.drama?num=${list[i].drama_num}" style="color: #000;">
-										<img src="./resources/images/home/icon_box.png" style="padding: 0 4px 1px 0;">
-										${list[i].title}</a>
-								</div>
-							</c:forEach> --%>
-					<%-- <table width="100%" cellpadding="0" cellspacing="0" border="0">
-						<c:forEach begin="0" end="4" var = "j">
-							<tbody>
-								<ul>
-								<li valign="top" align="center">
-									<div class="main_drama_list">
-									<a href="./drama/dramaview?drama_num=${list[j].drama_num}" style="color: #000;">
-										<img src="./resources/images/home/icon_box.png" style="padding: 0 4px 1px 0;">
-										${list[j].title}</a>
-									</div>
-								</li>
-								</ul>
-							</tbody>
-						</c:forEach>
-					</table>
-							 --%>
 				<div class="mainDramaList" style="margin: 0 auto;    width: 1300px;   overflow: overlay;    padding: 50px;">
 				<c:forEach begin="0" end="3" var = "j">
 					<a href="./drama/dramaview?drama_num=${list[j].drama_num}">
@@ -368,9 +226,6 @@ function popupOpen(){
 									<div class="user-info" style="display: inline-block; ">
 										<div class="unpa-feed-user-info-box">
 											<div class="unpa-user-block">
-												<%-- <div class="user-name unpa-tooltip" data-html="true" data-toggle="tooltip" data-placement="bottom"
-													title="<i class='ion-person'></i> 267 <i class='ion-edit'></i> 40">
-													${list[j].drama_num}</div> --%>
 												<div class="user-labels" style="margin-top: 5px;">
 													<span class="skin-type false ">${list[j].place}</span>
 												</div>
@@ -382,10 +237,6 @@ function popupOpen(){
 								<div class="unpa-feed-card-hover-actions">
 									<span class="unpa-share-this-button"><i
 										class="unpacon-share"></i></span>
-
-								<!-- 	<div class="number-of-images">
-										<i class="glyphicon glyphicon-picture"></i> 6
-									</div> -->
 
 								</div>
 
