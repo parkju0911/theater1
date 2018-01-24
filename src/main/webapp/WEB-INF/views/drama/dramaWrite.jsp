@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../resources/SE2/js/HuskyEZCreator.js"></script>
+
 <script type="text/javascript">
 	$(function() {
 		//SmartEditor start 
@@ -90,82 +92,171 @@
 		
 		var i=1;
 		$("#timeAdd").click(function(){
-			$("#date-time").append('<p><select class="ampm" title="ampm'+i+'"><option>오전</option><option>오후</option></select> <select id="ampm'+i+'" title="ampm'+i+'"><c:forEach begin="1" end="12" var="i"><option>${i}</option></c:forEach></select></p>');
+			$("#date-time").append('<p><select class="ampm" style="float: left; margin-top: 7px; margin-right: 30px; color: #b39f98; font-size: 8pt; border: none; border-bottom: 1px solid lightgray;" title="ampm'+i+'"><option>오전</option><option>오후</option></select> <select id="ampm'+i+'" title="ampm'+i+'" style="margin-top: 7px; margin-right: 30px; color: #b39f98; font-size: 8pt; border: none; border-bottom: 1px solid lightgray;"><c:forEach begin="1" end="12" var="i"><option>${i}</option></c:forEach></select></p>');
 			i++;
 		});
 	});
 </script>
+<style type="text/css">
+h1 {
+	text-align: center;
+}
+
+table {
+	margin: 0 auto;
+	width: 1000px;
+	/* border: 1px solid #ddd; */
+	border-collapse: collapse;
+}
+
+td {
+	height: 25px;
+	text-align: center;
+	padding: 10px;
+	font-size: 10.5px;
+	color: #50382f;    
+	padding-top: 20px;
+}
+
+.write_ip {
+	padding: 3px;
+	width: 200px;
+	border-radius: 4px;
+	border: 1px solid #ddd;
+}
+
+.content textarea {
+	height: 100px;
+	width: 95%;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	color: gray;
+}
+
+.btn {
+	padding: 5px 7px;
+	border-radius: 4px;
+	font-size: 13px;
+	float: right;
+    margin-right: 106px;
+}
+
+.fileSec {
+	margin: 1% 24%;
+}
+
+#add {
+	width: 135px;
+}
+
+#delete {
+	width: 135px;
+}
+.#smart_editor2 .se2_input_wysiwyg{
+	min-height: 400px;
+}
+:-ms-input-placeholder {
+  color: red;
+}
+</style>
+<link href="../resources/css/board/boardHeader.css" rel="stylesheet">
 <link href="../resources/css/common/header.css" rel="stylesheet">
-<link href="../resources/css/drama/dramaWrite.css" rel="stylesheet">
+
 </head>
 <body>
 <c:import url="../temp/header.jsp"></c:import>
-	<div class="container">
-		<form id="frm" action="./${board}Write" method="POST" enctype="multipart/form-data">
-			<div class="row">
-				<div class="col-25">
-					<label for="title">제목</label>
-				</div>
-				<div class="col-75">
-					<input type="text" id="title" name="title">
-				</div>
-			</div>
 
-			<div class="row">
-				<div class="col-25">
-					<label for="place">공연 장소</label>
-				</div>
-				<div class="col-75">
-					<input type="text" id="place" name="place" placeholder="ex)대학로 틴틴홀">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="place">상세 장소</label>
-				</div>
-				<div class="col-75">
-					<input type="text" id="address" name="address" placeholder="건물명 포함하여 상세주소를 적어주세요">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="price">가격</label>
-				</div>
-				<div class="col-75">
-					<input type="text" id="price" name="price">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="price">작품에 대한 간략한 설명</label>
-				</div>
-				<div class="col-75">
-					<input type="text" id="simple" name="simple" placeholder="ex)7년연속 예매율 1위!! 대국민 추천연극">
-				</div>
-			</div>
+
+
+<div class="head_line">
+
+</div>
+<div class="title_wrap" style=" font-family: 'Nanum Gothic', sans-serif;">
+	<c:if test="${board eq 'drama'}">
+
+	<h6 id="h6_title" style="margin-top: 30px;"><a href="${pageContext.request.contextPath}"><img alt="" src="../resources/images/common/homeImg.png" id="homeImg"></a> > <a href="${pageContext.request.contextPath}/drama/dramaList">${fn:toUpperCase(board)}</a> > 
+	<a href="${pageContext.request.contextPath}/${board}/${board}View.${board}?num=${view.drama_num}">${fn:toUpperCase(board)} WRITE</a></h6>
+	</c:if>
+	
+	</div>
+<div class="board_wrap1">
+	<form action="${board}Write" method="post" id="frm" enctype="multipart/form-data">
+		<table>
+			<tr>
+				<td style="margin-left: 10px; float: left;">제목 : 
+				<input type="text" name="title" placeholder="제목을 입력해주세요." class="write_ip"
+				 style="width: 500px; border: none; border-bottom: 1px solid lightgray; border-radius:0px;">
+				 </td>
+				<td style="float: right; margin-right: 50px; padding-bottom: 20px;">작성자 : 
+				<input type="text" value="${member.id}" placeholder="글쓴이를 입력해주세요." class="write_ip" readonly="readonly"
+				 style="width: 150px; border: none; background-color: #fffff8;border-bottom: 1px solid lightgray; border-radius:0px;">
+				 </td>
+				 <td style="margin-left: 10px; float: left;">공연장소 : 
+				<input type="text" id="place" name="place" placeholder="ex)대학로 틴틴홀" class="write_ip"
+				 style="width: 500px; border: none; border-bottom: 1px solid lightgray; border-radius:0px;">
+				 </td>
+				 <td style="margin-left: 10px; float: left;">상세장소 : 
+				<input type="text" id="address" name="address" placeholder="건물명 포함하여 상세주소를 적어주세요" class="write_ip"
+				 style="width: 500px; border: none; border-bottom: 1px solid lightgray; border-radius:0px;">
+				 </td>
+				 <td style="margin-left: 10px; float: left;">가격 : 
+				<input type="text" id="price" name="price" placeholder="ex)5000" class="write_ip"
+				 style="width: 500px; border: none; border-bottom: 1px solid lightgray; border-radius:0px;">
+				 </td>
+				 <td style="margin-left: 10px; float: left;">작품에 대한 간략한 설명 : 
+				<input type="text" id="simple" name="simple" placeholder="ex)7년연속 예매율 1위!! 대국민 추천연극" class="write_ip"
+				 style="width: 500px; border: none; border-bottom: 1px solid lightgray; border-radius:0px;">
+				 </td>
+			</tr>
+			<tr>
+				<td class="content" colspan="2">
+					<textarea id="contents" name="contents" draggable="false">내용을 입력해주세요.</textarea>
+				</td>
+			</tr>
+		</table>		
 		
-
-			<div class="row">
+		<div style="margin-left: 80px;">
+		<div class="row">
 				<div class="col-25">
-					<label for="contents">내용</label>
+				<table>
+				<tr>
+				<td style="float: left;
+    margin-left: -30px;
+    margin-bottom: 10px;">공연 시간:</td>
+				</tr>
+				</table>
+					
 				</div>
 				<div class="col-75">
-					<textarea id="contents" name="contents"></textarea>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-25">
-					<label for="contents">공연 시간</label>
-				</div>
-				<div class="col-75">
-					<input type="date" name="startDate"> ~ <input type="date" name="lastDate">
-					<div id="date-time">
-						<select class="ampm" title="ampm0">
+					<input type="date" name="startDate" class="write_ip" style="border: none;
+    border-bottom: 1px solid lightgray;
+    border-radius: 0px;
+    color: #c09f98;
+    font-size: 8pt;
+    width: 150px;"> ~ <input type="date" name="lastDate" class="write_ip" style="border: none;
+    border-bottom: 1px solid lightgray;
+    border-radius: 0px;
+    color: #c09f98;
+    font-size: 8pt;
+    width: 150px;">
+					<div id="date-time" style="    margin-top: 10px;">
+						<select class="ampm" title="ampm0" style="float: left;
+    margin-top: 7px;
+    margin-right: 30px;
+    color: #b39f98;
+    font-size: 8pt;
+    border: none;
+    border-bottom: 1px solid lightgray;">
 							<option>오전</option>
 							<option>오후</option>
 						</select>
-						<select id="ampm0"title="ampm0">
+						<select id="ampm0"title="ampm0" style="
+    margin-top: 7px;
+    margin-right: 30px;
+    color: #b39f98;
+    font-size: 8pt;
+    border: none;
+    border-bottom: 1px solid lightgray;">
 							<c:forEach begin="1" end="12" var="i">
 								<option>${i}</option>
 							</c:forEach>
@@ -175,22 +266,32 @@
 				</div>
 			</div>
 			
-			<div class="row">
+			<div class="row" style="    margin-bottom: 10px;">
 				<div class="col-25">
-					<label for="file">대표 사진</label>
+					<table>
+				<tr>
+				<td style="float: left;
+    margin-left: -30px;
+    margin-bottom: 10px;">대표 사진:</td>
+				</tr>
+				</table>
 				</div>
 				<div id="filebox" class="col-75">
-					<input type="button" value="File Add" id="fileAdd">
+					<input class="btn btn-default" type="button" value="File Add" id="fileAdd" class="btn btn-default">
 				</div>
+			</div>
 			</div>
 
 
 			<div class="row">
-				<input id="write" type="submit" value="Submit">
+				<input id="write" type="submit" value="Submit" class="btn btn-default">
 			</div>
 			<input type="hidden" id="time" name="time">
-		</form>
+			
+		
+	</form>
 	</div>
+
 <c:import url="../temp/footer.jsp"></c:import>
 </body>
 </html>
