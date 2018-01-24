@@ -110,10 +110,10 @@
 			var cur=$(this).attr("title");
 			var s='${pager.search}';
 			var t='${pager.kind}';
-			document.frm.curPage.value=cur;
-			document.frm.search.value=s;
-			document.frm.kind.value=t;
-			document.frm.submit();
+			$("#curPage").val(cur);
+			$("#search").val(s);
+			$("#kind").val(t);
+			$("#frm").submit();
 		});
 	});
 	
@@ -183,12 +183,12 @@
 						<li>Q. 구매 후 영수증은 어떻게 발급받나요?</li>
 					</ul>
 
-					<form name="frm" action="./faq" method="get">
-						<input type="hidden" name="curPage" value="1">
-						<input type="hidden" name="kind" value="title">
+					<form name="frm" action="./faq" method="get" ide="frm">
+						<input type="hidden" name="curPage" value="1" id="curPage">
+						<input type="hidden" name="kind" value="title" id="kind">
 						<div class="search_wrap">
 							<div class="search__container">
-								<input class="search__input" type="text" placeholder="Search"  name="search">
+								<input class="search__input" type="text" placeholder="Search" name="search" id="search">
 							</div>
 						</div>
 					</form>
