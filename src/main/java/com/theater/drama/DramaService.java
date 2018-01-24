@@ -177,15 +177,21 @@ public class DramaService {
 			String contents = qna_viewDTO.getContents();
 			int qna_viewnum =qna_viewDTO.getQna_viewnum();
 			qna_viewDTO =dramaDAO.selectOne_qna(qna_viewnum);
-			
+		
 			qna_viewDTO.setRef(qna_viewnum);
 			qna_viewDTO.setContents(contents);
+			qna_viewDTO.setDepth(qna_viewDTO.getDepth());
 			
 			MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 			qna_viewDTO.setId(memberDTO.getId());
 		
-			 dramaDAO.stepUpdate(qna_viewDTO);
+			
 			int result = dramaDAO.qna_reply(qna_viewDTO);
+			return result;
+		}
+		//qna_reply step update
+		public int stepUpdate(Qna_viewDTO qna_viewDTO)throws Exception{
+			int result = dramaDAO.stepUpdate(qna_viewDTO);
 			return result;
 		}
 		//qna 글 삭제시 redirect drama_num 보내줌

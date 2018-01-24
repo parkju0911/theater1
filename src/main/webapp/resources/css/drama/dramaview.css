@@ -13,7 +13,7 @@
 }
 #drama_image{
 	width : 460px;
-	height : 400px;
+	height : 350px;
 	display: inline-block;
 	background-color: white;
 	padding:20px;
@@ -228,6 +228,7 @@
 	width: 650px;
 	height: 100px;
 	margin-left: 100px;
+	line-height: 30px;
 }
 #images_noti{
 	margin-left:30px;
@@ -454,7 +455,7 @@
 }
 #ticket_review{
 	width: 830px;
-	height: 120px;
+	height: 150px;
 	margin: 0 auto;
 	margin-bottom: 30px;
 	background-color: white;
@@ -470,7 +471,7 @@
 }
 #review_image{
 	width: 250px;
-	height: 120px;
+	height: 150px;
 	float: left;
 }
 #review_text{
@@ -488,7 +489,7 @@
 }
 #review_contents{
 	width: 580px;
-	height: 70px;
+	height: 100px;
 	font-size: 20px;
 	text-overflow: ellipsis;
 }
@@ -506,12 +507,16 @@
 	height: 20px;
 	border: 1px red solid;
 }
-#member_qnareply{
-	width: 200px;
-	height: 
-}
 #image_contents{
 		width:750px;
 		margin: 0 auto;
-	
+}
+#dele{
+	display: inline-block;
+}
+#del_image{
+	width:13px;
+	height:13px;
+	background: transparent url(../../images/starpoint/btn_del_reply.png) no-repeat;
+	float: left;
 }

@@ -21,27 +21,22 @@
 
 <script type="text/javascript">
 
-function member_confirm() {
-	
-	
-}
-
 	$(function() {
 			
 
 		//안내 리스트 출력
 		$("#info").click(function() {
-			$("#info_text").load("./text_info?drama_num="+${view.drama_num})
+			$("#info_text").load("./text_info?drama_num="+${view.drama_num});
 		});
 		
 		//후기 리스트 출력
 		$("#review").click(function() {
-			$("#review_list").load("./reviewlist?drama_num="+${view.drama_num})
+			$("#review_list").load("./reviewlist?drama_num="+${view.drama_num});
 		});
 		
 		//문의사항 리스트 출력
 		$("#qna").click(function() {
-			$("#qna_list").load("./qnalist?drama_num="+${view.drama_num})
+			$("#qna_list").load("./qnalist?drama_num="+${view.drama_num});
 		});
 		
 		//환불규정
@@ -51,15 +46,22 @@ function member_confirm() {
 		
 		//안내에 환불 규정
 		$("#refund_1").click(function() {
+			
 			$("#refund_list").load("./refundlist")
 		});
 		//후기 전체 보기 클릭시 후기 리스트 출력
 		$("#reviewlist_all").click(function() {
 			
-			$("#review_list").load("./reviewlist?drama_num="+${view.drama_num})
+			$("#review_list").load("./reviewlist?drama_num="+${view.drama_num});
 		});
 		
 		$("#btn_buy").click(function(){
+			if(${member eq  null}){
+				alert("로그인 하신 후에 사용해주세요");
+				
+				 $("#section_info").prop("action", "../member/memberLogin"); 
+			}else{
+		
 			var drama_date = $("#drama_date").val();
 			var drama_time = $("#drama_time").val();
 			var drama_ticket = $("#drama_ticket").val();
@@ -68,6 +70,8 @@ function member_confirm() {
 			}else{
 				$("#section_info").prop("action", "./selectSeat");
 				document.frm.submit();
+			}
+				
 			}
 		});
 		
@@ -82,7 +86,9 @@ function member_confirm() {
 });
 	
 $(document).ready(function() {
-
+	$("refund").trigger("click");
+	$("#qna").trigger("click");
+	$("#review").trigger("click");
 	 $("#info").trigger("click");
 
 	} );
@@ -106,9 +112,6 @@ A:VISITED {
 	<!--   이미지 가져오기 -->
 			<div id="drama_image">
 				<img src="../resources/upload/${file.file_name}" style="width: 100%";height="100%";>
-
-
-			
 			</div>
 			
 			<div id="drama_info_form">
@@ -132,13 +135,12 @@ A:VISITED {
 					 		<fmt:parseDate value='${dto.drama_date}'  var='dto_date'  pattern="yyyy-MM-dd"  scope="page"/>
 							<option class="select_date"><fmt:formatDate value="${dto_date}" pattern="yyyy-MM-dd"/></option>
 
-
 						</c:forEach>
 					</optgroup>
 				</select>
 							
 				<div class="drama_time"></div>
-				<button id="btn_buy" onclick="member_confirm()" ></button>
+				<button id="btn_buy"></button>
 
 			</div>
 		</form>
@@ -204,7 +206,7 @@ A:VISITED {
 			</c:if>
 				<c:forEach items="${review }"   var="one"  begin="1" end="1">
 			
-				<div id="review_image"><img alt="" src="${pageContext.request.contextPath}/resources/upload/${file.file_name}" style="width: 250px;height: 120px;"></div>
+				<div id="review_image"><img alt="" src="${pageContext.request.contextPath}/resources/upload/${file.file_name}" style="width: 250px;height: 150px;"></div>
 				<div id="review_text">
 						
 						<div id="review_title">${one.title }</div>
@@ -246,9 +248,6 @@ A:VISITED {
 
 		</div>
 	
-
-
-
 
 
 	</section>

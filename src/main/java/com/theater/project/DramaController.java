@@ -228,9 +228,7 @@ return "sss";
 		@RequestMapping(value="qnawrite" , method=RequestMethod.POST)
 		public String selectList_qna(HttpSession session , Qna_viewDTO qna_viewDTO , RedirectAttributes rd)throws Exception{
 			int result=0;
-			
-			System.out.println("들어옴");
-			System.out.println("drama_num(dto) : "+qna_viewDTO.getDrama_num());
+		
 			result = dramaService.qna_insert(qna_viewDTO, session);
 			String message="등록실패";
 			if(result>0){
@@ -244,10 +242,11 @@ return "sss";
 		@RequestMapping(value="qnareply" , method=RequestMethod.POST)
 		public String qna_reply(HttpSession session , Qna_viewDTO qna_viewDTO) throws Exception{
 			int result=0;
+			int stepup = dramaService.stepUpdate(qna_viewDTO);
 			System.out.println("qna_viewnum:"+qna_viewDTO.getQna_viewnum());
 			result = dramaService.qna_reply(qna_viewDTO, session);
-			
-	/*		System.out.println("drama_num:"+qna_viewDTO.getDrama_num());*/
+				
+			System.out.println("reply 컨트롤러");
 			
 			return "redirect:./dramaview?drama_num="+qna_viewDTO.getDrama_num();
 		
@@ -256,9 +255,9 @@ return "sss";
 	@RequestMapping(value="qna_delete")
 	public String delete_qnaview(int qna_viewnum ,RedirectAttributes rd , HttpSession session , Qna_viewDTO qna_viewDTO)throws Exception{
 		int	result = 0;
+	
 		qna_viewDTO=dramaService.delete_drama_num(qna_viewnum);
 		result = dramaService.delete_qnaview(qna_viewnum, session);
-			System.out.println("drama_num:"+qna_viewDTO.getDrama_num());
 		String message="삭제 실패";
 		if(result>0){
 			message="삭제 성공";	
