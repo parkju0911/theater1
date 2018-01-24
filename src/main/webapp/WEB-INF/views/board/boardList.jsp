@@ -157,7 +157,8 @@
 		</c:if>
 	</div>
 	
-	<c:if test="${member ne null}">
+	
+	<c:if test="${member.id eq 'user'}">
 	<a href="${board}Write" class="btn btn-default" style="float: right; margin-right: 10px;">WRITE</a>
 	</c:if>
 	</div>			

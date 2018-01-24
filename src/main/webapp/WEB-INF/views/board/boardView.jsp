@@ -108,7 +108,7 @@ td{
 	<%-- <c:forEach items="${view.fileNames}" var="file">
 		<a href="../file/fileDown?file_name=${view.file_name}&file_route=${view.file_route}">${view.file_route}</a>
 	</c:forEach> --%>
-	
+	<c:if test="${member.id eq 'user'}">
 	<c:if test="${board eq 'notice'}">
 	<div class="btn-group">
 	<a href="./${board}Update?num=${view.notice_num}" class="btn btn-default">수정</a>
@@ -121,7 +121,7 @@ td{
 	<a href="./${board}Update?num=${view.event_num}" class="btn btn-default">수정</a>
 	<a href="./${board}Delete?num=${view.event_num}" class="btn btn-default" onclick="if(!confirm('정말로 삭제하시겠습니까?')){return false;}">삭제</a>
 	</div>
-	
+	</c:if>
 	</c:if>
 	<a href="./${board}List" id="list_btn" class="btn btn-default">목록</a>
 	</div>
