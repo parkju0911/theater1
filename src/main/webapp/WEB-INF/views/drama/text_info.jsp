@@ -66,8 +66,7 @@
 
 	<p id="map_info">지도에서 미리 확인하세요</p>
 
-	<p>장소명: ${view2.place }</p>
-
+	<p>장소명: ${view2.place}</p>
 
 	<p>주소: ${view2.address}</p>
 
@@ -112,6 +111,11 @@
       </script>
 		
 		</div><!-- info three close -->
+		
+		
+		<div id="info_three" style="margin-top: 30px;">
+			<p>${view2.contents}</p>
+		</div>
 		
 		</div>
 </body>
