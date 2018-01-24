@@ -26,17 +26,17 @@
 
 		//안내 리스트 출력
 		$("#info").click(function() {
-			$("#info_text").load("./text_info?drama_num="+${view.drama_num});
+			$("#info_text").load("./text_info?drama_num="+${view.drama_num})
 		});
 		
 		//후기 리스트 출력
 		$("#review").click(function() {
-			$("#review_list").load("./reviewlist?drama_num="+${view.drama_num});
+			$("#review_list").load("./reviewlist?drama_num="+${view.drama_num})
 		});
 		
 		//문의사항 리스트 출력
 		$("#qna").click(function() {
-			$("#qna_list").load("./qnalist?drama_num="+${view.drama_num});
+			$("#qna_list").load("./qnalist?drama_num="+${view.drama_num})
 		});
 		
 		//환불규정
@@ -52,7 +52,7 @@
 		//후기 전체 보기 클릭시 후기 리스트 출력
 		$("#reviewlist_all").click(function() {
 			
-			$("#review_list").load("./reviewlist?drama_num="+${view.drama_num});
+			$("#review_list").load("./reviewlist?drama_num="+${view.drama_num})
 		});
 		
 		$("#btn_buy").click(function(){
