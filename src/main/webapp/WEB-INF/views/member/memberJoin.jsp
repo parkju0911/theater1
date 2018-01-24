@@ -71,7 +71,7 @@
 </script>
 <script type="text/javascript">
 	function checkForm(theForm) {
-		if (frm.chkok.checked != true) {
+		if (!$("#chkok").prop("checked")) {
 			alert("이용약관 및 개인정보취급방침에 동의하셔야 가입이 가능합니다.");
 			return false;
 		}
