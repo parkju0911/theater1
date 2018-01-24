@@ -92,7 +92,7 @@
 		<a href="${pageContext.request.contextPath}/member/memberMypage">MYPAGE</a></h6>
 		</div>
 		<h2 style="margin-top: -3px; font: 40px/41px 'fMdBT';">MYPAGE</h2>
-		<p style="padding-bottom: 50px;font-size: 11px;font-family: 'Nanum Gothic', sans-serif;">${member.id} 회원님, 항상 TEATRO를 사랑해 주셔서 감사합니다 =)</p>
+		<p style="padding-bottom: 50px;font-size: 11px;font-family: 'Nanum Gothic', sans-serif;"> ♥ ${member.id} 회원님, 항상 TEATRO를 사랑해 주셔서 감사합니다 =)</p>
 		
 		<div class="mypage_wrap">
 		<c:if test="${member.kind eq 'user'}">
