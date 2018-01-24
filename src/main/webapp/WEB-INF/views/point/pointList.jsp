@@ -39,6 +39,17 @@ $(function() {
 
 
 });
+$(function(){
+	  $("#check").on({
+	   mouseenter: function(){
+	    $(this).attr('src','../resources/images/point/POINT2.png');
+	  },
+	  mouseleave: function(){
+	    $(this).attr('src','../resources/images/point/POINT1.png');
+	  }
+	  });
+	  
+	});
 </script>
 <link href="../resources/css/common/header.css" rel="stylesheet">
 <link href="../resources/css/point/point.css" rel="stylesheet">
@@ -76,7 +87,7 @@ $(function() {
 	
 	
 	<form action="pointCheck" method="post" id="frm">
-	<button id="checkBtn">출석체크</button>
+		<!-- <button style="width:80px; border: none;background: snow;"> --><a id="checkBtn"><img id="check" alt="" src="../resources/images/point/POINT1.png"></a> 
 	</form>
 
 	

@@ -89,6 +89,15 @@
 .list {
 	cursor: pointer;
 }
+/* .chat{
+	display: inline-block;
+	width: 85px;
+	height: 85px;
+	background: transparent url("../resources/images/common/chatting btn.png") no-repeat 0 0;
+}
+.chat:hover{
+	background-position: 0 -85px;
+} */
 </style>
 <script type="text/javascript">
 	$(function(){
@@ -107,6 +116,19 @@
 			document.frm.submit();
 		});
 	});
+	
+	
+	$(function(){
+		  $("#chat").on({
+		   mouseenter: function(){
+		    $(this).attr('src','../resources/images/common/chatting1-hover.png');
+		  },
+		  mouseleave: function(){
+		    $(this).attr('src','../resources/images/common/chatting1.png');
+		  }
+		  });
+		  
+		});
 </script>
 <link href="../resources/css/common/header.css" rel="stylesheet">
 <link href="../resources/css/board/boardHeader.css" rel="stylesheet">
@@ -120,22 +142,27 @@
 			<h6 id="h6_title" style="margin-right: 5px; margin-top: 8px;">
 				<a href="${pageContext.request.contextPath}"><img alt=""
 					src="../resources/images/common/homeImg.png" id="homeImg"></a> >
+				<c:if test="${member.id ne null}">
 				<a href="${pageContext.request.contextPath}/member/memberMypage">MYPAGE</a>
-				> <a href="${pageContext.request.contextPath}/member/orderlist">Q&A</a>
+				> </c:if><a href="${pageContext.request.contextPath}/member/faq">Q&A</a>
 			</h6>
 		</div>
 	<div class="container" style="width: 935px; margin: 0 auto;">
 		<h2 style="font: 40px/41px 'fMdBT'">Q&A</h2>
 		<p
 			style="font-family: 'Nanum Gothic', sans-serif; padding-bottom: 17px;">
-			자주 문의되는 질문들은 FAQ에서 확인할 수 있으며,<br> 그 외 개인적으로 운영자에게 묻고 싶은 질문은 1:1
-			Q&A 게시판을 이용해주세요.
+			자주 문의되는 질문들은 FAQ에서 확인할 수 있으며,<br> 그 외 개인적으로 운영자에게 묻고 싶은 질문은 1:1 실시간 채팅을 이용해주세요.
 		</p>
-
-		<ul class="nav nav-tabs">
+			<!-- <div>
+				<a  class="chat" href="http://192.168.20.48/project/drama/chatform"></a>
+			</div> -->
+			<div class="chatting_icon" style="width: 900px;">
+				<a href="http://192.168.20.48/project/drama/chatform"><img id="chat" style=" margin-top: -91px; width: 85px;height: auto;float: right;margin-right: 19px;" alt="" src="../resources/images/common/chatting1.png"></a>			
+			</div>
+		<!-- <ul class="nav nav-tabs">
 			<li class="active"><a data-toggle="tab" href="#faq">FAQ</a></li>
 			<li><a data-toggle="tab" href="#qna">1:1 Q&A</a></li>
-		</ul>
+		</ul> -->
 		<div class="tab-content">
 			<div id="faq" class="tab-pane fade in active">
 				<h3 style="font-family: 'Nanum Gothic', sans-serif;">자주 묻는 질문</h3>
@@ -188,11 +215,11 @@
 					</div>
 				</div>
 			</div>
-			<div id="qna" class="tab-pane fade">
+			<!-- <div id="qna" class="tab-pane fade">
 				<h3>1:1 QA</h3>
 				<p>Sed ut perspiciatis unde omnis iste natus error sit
 					voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-			</div>
+			</div> -->
 		</div>
 
 	</div>

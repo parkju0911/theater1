@@ -79,10 +79,11 @@
 		<img alt="" src="../resources/images/common/homeImg.png" id="homeImg"></a> > 
 		<a href="${pageContext.request.contextPath}/member/memberMypage">MYPAGE</a></h6>
 		</div>
-		<h2 style="margin-top: -3px; font: 40px/41px 'fMdBT'; padding-bottom: 50px;">MYPAGE</h2>
-		
+		<h2 style="margin-top: -3px; font: 40px/41px 'fMdBT';">MYPAGE</h2>
+		<p style="padding-bottom: 50px;font-size: 11px;font-family: 'Nanum Gothic', sans-serif;">${member.id} 회원님, 항상 TEATRO를 사랑해 주셔서 감사합니다 =)</p>
 		
 		<div class="mypage_wrap">
+		<c:if test="${member.kind eq 'user'}">
 			<table>
 				<tr>
 					<td><a href="${pageContext.request.contextPath}/member/orderlist"><img alt="" src="../resources/images/member/order.png" id="myImg"></a></td>
@@ -92,10 +93,9 @@
 				<tr>
 					<td><a href="${pageContext.request.contextPath}/member/myboard"><img alt="" src="../resources/images/member/board.png" id="myImg"></a></td>
 					<td><a href="${pageContext.request.contextPath}/member/faq"><img alt="" src="../resources/images/member/faq.png" id="myImg"></a></td>
-					<td><a href="${pageContext.request.contextPath}/member/qna"><img alt="" src="../resources/images/member/qna.png" id="myImg"></a></td>
+					<td><a href="http://192.168.20.48/project/drama/chatform"><img alt="" src="../resources/images/member/qna.png" id="myImg"></a></td>
 				</tr>
 			</table>
-			
 		<div class="help">
 		    <ul>
 			    <li><h6>예매 내역</h6></li>
@@ -119,9 +119,40 @@
 		    </ul>
 		    <ul>
 			    <li><h6>1:1 Q&A</h6></li>
-				<li>FAQ이외에 회원님이 글을 작성하여 운영자에게 질문할 수 있는 게시판입니다.</li>
+				<li>FAQ이외에 질문들을 운영자와의 실시간 채팅을 통하여 질문할 수 있습니다.</li>
 		    </ul>
 		</div>
+		</c:if>
+		<c:if test="${member.kind eq 'company'}">
+			<table>
+				<tr>
+					<td><a href="${pageContext.request.contextPath}/member/membership"><img alt="" src="../resources/images/member/membership.png" id="myImg"></a></td>	
+					<td><a href="${pageContext.request.contextPath}/member/myboard"><img alt="" src="../resources/images/member/board.png" id="myImg"></a></td>
+				</tr>
+				<tr>
+					<td><a href="${pageContext.request.contextPath}/member/faq"><img alt="" src="../resources/images/member/faq.png" id="myImg"></a></td>
+					<td><a href="http://192.168.20.48/project/drama/chatform"><img alt="" src="../resources/images/member/qna.png" id="myImg"></a></td>
+				</tr>
+			</table>
+		<div class="help">
+		    <ul>
+			    <li><h6>회원정보 수정</h6></li>
+				<li>회원님이 입력하신 회원 정보를 보거나 수정할 수 있습니다.</li>
+		    </ul>
+		    <ul>
+			    <li><h6>게시물 관리</h6></li>
+				<li>회원님이 작성한 공연정보 등 작성 게시물들을 확인 할 수 있습니다.</li>
+		    </ul>
+		    <ul>
+			    <li><h6>FAQ</h6></li>
+				<li>고객들이 자주 묻는 질문을 모아둔 게시판 입니다.</li>
+		    </ul>
+		    <ul>
+			    <li><h6>1:1 Q&A</h6></li>
+				<li>FAQ이외에 질문들을 운영자와의 실시간 채팅을 통하여 질문할 수 있습니다.</li>
+		    </ul>
+		</div>
+		</c:if>	
 		</div>
 		
 	</div>

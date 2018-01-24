@@ -66,7 +66,7 @@ td {
 #delete {
 	width: 135px;
 }
-.#smart_editor2 .se2_input_wysiwyg{
+#smart_editor2 .se2_input_wysiwyg{
 	min-height: 400px;
 }
 </style>
