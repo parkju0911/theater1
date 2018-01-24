@@ -89,7 +89,7 @@
 .list {
 	cursor: pointer;
 }
-.chat{
+/* .chat{
 	display: inline-block;
 	width: 85px;
 	height: 85px;
@@ -97,7 +97,7 @@
 }
 .chat:hover{
 	background-position: 0 -85px;
-}
+} */
 </style>
 <script type="text/javascript">
 	$(function(){

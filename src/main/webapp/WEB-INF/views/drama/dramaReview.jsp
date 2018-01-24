@@ -93,7 +93,7 @@ $(function(){
 					<div style="font-size: 14px;font-family: 'Nanum Gothic', sans-serif;"><p class="review_con">${list.contents }</p></div>
 					</a>
 					<c:if test="${member.id eq list.id}">
-					<div class="btnGroup">
+					<div class="btnGroup" style="    margin-top: 84px;">
 					<ul>
 					<li><a href="./dramaReviewupdate?review_num=${list.review_num}"><img alt="" src="../resources/images/review/update-btn.png"></a></li>
 					<li><a href="./dramaReviewdelete?review_num=${list.review_num }"  onclick="if(!confirm('정말로 삭제하시겠습니까?')){return false;}"><img alt="" src="../resources/images/review/delete-btn.png"></a></li>
@@ -102,7 +102,7 @@ $(function(){
 					</c:if>
 				</div>
 			</div>
-			<div class="star" style="    width: 855px;padding-top: 10px;padding-bottom: 50px;">
+			<div class="star" style="    margin-top: -28px; width: 855px;padding-bottom: 75px;">
 				<c:if test="${list.star==5 }">
 					<div class="review_star">별점:<img alt="" src="../resources/images/starpoint/star_5.png" style="height: 12px"></div>
 				</c:if>
