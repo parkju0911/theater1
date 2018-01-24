@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 	<!-- footer 시작 -->
-	<div class="push"></div>
+		<%-- <div style="position: absolute;
+    z-index: 1;
+    margin-top: -85px;
+    width: 94%;
+    margin: 0 auto;"><a style="    float: right;
+    margin-top: -140px;" href="#"><img style="width: 80px;" alt="" src="${pageContext.request.contextPath}/resources/images/common/top-btn.png"></a></div> 
+	<div class="push">
+	</div> --%>
 	<footer>
 		<div class="footer_wrap">
 		

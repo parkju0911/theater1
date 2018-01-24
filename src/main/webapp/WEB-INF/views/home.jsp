@@ -272,22 +272,35 @@ function popupOpen(){
 				</c:forEach>
 				</div>
 					
-
+<!-- 
 
 	<a href="drama/dramaList">Drama List</a>
 	<a href="./notice/noticeList">Go Notice</a>
 	<a href="./qna/qnaList">Go Qna</a>
 	<a href="javascript:popupOpen();" > chatting! </a>
 	<a href="./point/pointList">pointList</a>
-	<a href="./point/pointCheck">pointCheck</a>		
+	<a href="./point/pointCheck">pointCheck</a>	
+	
+	 -->
+		
 <!-- HOME FOOTER -->
 	<div style="padding: 50px 0 60px 0; margin-top: 30px; background: #eee;">
 		<div class="main_wrap" style="width: 960px; margin: 0 auto;">
+		
+		
 
 			<div class="main_cs_divide" style="text-align: center;" alt="출석체크">
+			
+			<c:if test="${member.id eq null}">
+				<a href="#"onclick="if(!confirm('출석체크를 하려면 로그인이 필요합니다.')){return false;}"> <img
+					src="./resources/images/home/btn_point.png"
+					style="padding: 8px 10px;">
+			</c:if>
+			<c:if test="${member.id ne null}">
 				<a href="./point/pointCheck"> <img
 					src="./resources/images/home/btn_point.png"
 					style="padding: 8px 10px;">
+			</c:if>
 				</a> <a href="./member/faq"> <img
 					src="./resources/images/home/btn_faq.png"
 					style="padding: 8px 10px;">
