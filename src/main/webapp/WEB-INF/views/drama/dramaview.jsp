@@ -88,6 +88,9 @@ $(document).ready(function() {
 	} );
 </script>
 <style type="text/css">
+body{
+	background-color: #fffff8;
+}
 A:VISITED {
 	text-decoration: none;
 }

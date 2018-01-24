@@ -8,6 +8,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=v1_dhkpTCMdne9dcmd_k&submodules=geocoder"></script>
 <title>Insert title here</title>
+<style type="text/css">
+*{
+	font-family: 'Nanum Gothic', sans-serif;
+}
+</style>
 </head>
 <body>
 				<div class="view_page">
@@ -20,7 +25,7 @@
 		</div>
 		<p id="warning_text1">예매 전 안내 및 주의사항을 꼭 확인하세요!</p>
 	
-		<p>티켓에 따라 이용방법/환불규정이 상이합니다. <a href="#menu3" id="refund_1" style="color:red;">환불규정 바로가기 > </a></p>
+		<p>티켓에 따라 이용방법/환불규정이 상이합니다. </p>
 		</div>
 		</div>
 

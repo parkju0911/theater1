@@ -1,9 +1,14 @@
 @CHARSET "UTF-8";
+*{
+	font-family: 'Nanum Gothic', sans-serif;
+}
 #section{
 	padding-top : 20px;
 	min-height : 100%;
 	background-color: #f4f4f4;
 	padding-bottom: 40px;
+	    width: 900px;
+    margin: 0 auto;
 }
 
 #section_info{
@@ -121,7 +126,7 @@
 }
 #afterview{
 	width: 830px;
-
+	font-family: 'Nanum Gothic', sans-serif;
 	margin : 0 auto;
 	margin-top: 65px;
 }
@@ -130,6 +135,7 @@
 	border: 1px white solid;
 	margin : 0 auto;
 	background-color: white;
+	font-family: 'Nanum Gothic', sans-serif;
 }
 .view_page{
 	width: 830px;
@@ -159,6 +165,7 @@
 #after_top_text{
 	font-size: 20px;
 	font-weight: bolder;
+	font-family: 'Nanum Gothic', sans-serif;
 }
 #afterview_box{
 	background-color: white;
@@ -186,9 +193,11 @@
 	text-decoration: none;
 	list-style: none;
 	color:#888;
+	font-family: 'Nanum Gothic', sans-serif;
 }
 #afterview_total a{
 	text-decoration: none;
+	font-family: 'Nanum Gothic', sans-serif;
 }
 #star_total{
 	font-size: 15px;
@@ -221,13 +230,14 @@
 	width: 700px;
 	height: 135px;
 	margin-left: 60px;
-	margin-top: -20px;
-	padding-top: 20px;
+    margin-top: -20px;
+    padding-top: 20px;
 }
 #warning_tool{
-	width: 650px;
+	width: 465px;
 	height: 100px;
 	margin-left: 100px;
+	    margin: 0 auto;
 }
 #images_noti{
 	margin-left:30px;
@@ -298,7 +308,7 @@
 	font-weight: bolder;
 	line-height: 60px;
 }
-##refund_info p{
+#refund_info p{
 	margin-left: 30px;
 }
 #refund_rull{
@@ -447,10 +457,12 @@
 	height: 40px;
 	margin: 0 auto;
 	margin-top: 10px;
+	font-family: 'Nanum Gothic', sans-serif;
 }
 #ticket_top p{
 	font-size: 20px;
 	font-weight: bolder;
+	font-family: 'Nanum Gothic', sans-serif;
 }
 #ticket_review{
 	width: 830px;
@@ -458,6 +470,7 @@
 	margin: 0 auto;
 	margin-bottom: 30px;
 	background-color: white;
+	font-family: 'Nanum Gothic', sans-serif;
 }
 #review_image{
 	width: 250px;
