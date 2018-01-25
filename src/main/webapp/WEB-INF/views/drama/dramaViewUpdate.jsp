@@ -113,34 +113,35 @@
 <div class="board_wrap">
 	<div class="title_wrap" style=" font-family: 'Nanum Gothic', sans-serif;">
 			<h6 id="h6_title" style="margin-top: 30px;"><a href="${pageContext.request.contextPath}"><img alt="" src="../resources/images/common/homeImg.png" id="homeImg"></a> > <a href="${pageContext.request.contextPath}/drama/dramaList">${fn:toUpperCase(board)}</a> > 
-			<a href="${pageContext.request.contextPath}/${board}/${board}View.${board}?num=${view.drama_num}">${fn:toUpperCase(board)} WRITE</a></h6>
+			<a href="${pageContext.request.contextPath}/${board}/${board}View.${board}?num=${view.drama_num}">${fn:toUpperCase(board)} UPDATE</a></h6>
 	</div>
-	<form action="${board}Write" method="post" id="frm" enctype="multipart/form-data">
+	<form id="frm" action="./dramaViewUpdate" method="POST" enctype="multipart/form-data">
+		<input type="hidden" name="drama_num" value="${view.drama_num}">
 		<table>
 			<tr>
 				<td>제&nbsp;&nbsp;&nbsp;목</td>
-				<td><input type="text" name="title" placeholder="제목을 입력해주세요." class="write_ip" required="required"></td>
+				<td><input type="text" name="title" placeholder="제목을 입력해주세요." class="write_ip" required="required" value="${view.title}"></td>
 				<td><input id="writer" type="text" value="${member.id}" placeholder="글쓴이를 입력해주세요." readonly="readonly"></td>
 			</tr>
 			<tr>
 				<td>공연장소</td>
-				<td colspan="2"><input type="text" id="place" name="place" placeholder="ex)대학로 틴틴홀" class="write_ip" required="required"></td>
+				<td colspan="2"><input type="text" id="place" name="place" placeholder="ex)대학로 틴틴홀" class="write_ip" required="required" value="${view.place}"></td>
 			</tr>
 			<tr>
 				<td>상세주소</td>
-				<td colspan="2"><input type="text" id="address" name="address" placeholder="건물명 포함하여 상세주소를 적어주세요" class="write_ip" required="required"></td>
+				<td colspan="2"><input type="text" id="address" name="address" placeholder="건물명 포함하여 상세주소를 적어주세요" class="write_ip" required="required" value="${view.address}"></td>
 			</tr>
 			<tr>
 				<td>가&nbsp;&nbsp;&nbsp;격</td>
-				<td><input type="number" id="price" name="price" placeholder="ex)5000" class="write_ip" required="required"></td>
+				<td><input type="number" id="price" name="price" placeholder="ex)5000" class="write_ip" required="required" value="${view.price}"></td>
 			</tr>
 			<tr>
 				<td>간단한소개</td>
-				<td><input type="text" id="simple" name="simple" placeholder="ex)7년연속 예매율 1위!! 대국민 추천연극" class="write_ip" required="required"></td>
+				<td><input type="text" id="simple" name="simple" placeholder="ex)7년연속 예매율 1위!! 대국민 추천연극" class="write_ip" required="required" value="${view.simple}"></td>
 			</tr>
 			<tr>
 				<td class="content" colspan="3">
-					<textarea id="contents" name="contents" draggable="false" required="required">내용을 입력해주세요.</textarea>
+					<textarea id="contents" name="contents">${view.contents}</textarea>
 				</td>
 			</tr>
 			<tr>
@@ -168,7 +169,7 @@
 		</table>		
 		
 		<div class="submit">
-			<button class="btn btn-default">Submit</button>
+			<button id="write" class="btn btn-default">Submit</button>
 		</div>
 		<input type="hidden" id="time" name="time">
 			

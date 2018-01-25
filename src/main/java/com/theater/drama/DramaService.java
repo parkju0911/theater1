@@ -354,7 +354,77 @@ public class DramaService {
 		
 		return mv;
 	}
-
+	
+	@Transactional
+	public int update(DramaDTO dramaDTO,HttpSession session, List<Date> dateArr, String time, MemberDTO memberDTO) throws Exception{
+		int result = 0;
+		//문자열을 배열로 파싱하기
+		List<String> timeArr = new ArrayList<String>();
+		StringTokenizer st = new StringTokenizer(time, ",");
+		
+		while(st.hasMoreTokens()) {
+			String token = st.nextToken();
+			timeArr.add(token);
+		}
+		
+		DramaDTO beforeDTO = dramaDAO.selectOne(dramaDTO.getDrama_num());
+		//file 테이블 값 변경하기
+		MultipartFile[] files =((DramaDTO)dramaDTO).getFiles();
+		
+		for (MultipartFile multipartFile : files) {
+			String name = fileSaver.fileSave(multipartFile, session, "upload");
+			FileDTO fileDTO = new FileDTO();
+			fileDTO.setFile_num(beforeDTO.getFile_num()); // 먼저 noticeDAO.insert(boardDTO); 했긴 때문에 가능
+			fileDTO.setFile_name(name);
+			fileDTO.setFile_route(multipartFile.getOriginalFilename());
+			fileDAO.update(fileDTO);
+		}
+		//drama 테이블 값 변경하기
+		result = dramaDAO.update(dramaDTO);
+		//date_list 값 변경하기
+		List<DramaListDTO> beforeList = dramaDAO.search_dateList(dramaDTO.getDrama_num());
+	
+		int totalSize = dateArr.size()*timeArr.size();
+		if(totalSize<beforeList.size()) {
+			int gap = beforeList.size()-totalSize;
+			for(int i=0; i<gap; i++) {
+				dramaDAO.delete_dateList(beforeList.get(i).getDate_num());
+			}
+			
+			for(int i=0; i<dateArr.size(); i++) {
+				for(int j=0; j<timeArr.size(); j++) {
+					result = dramaDAO.update_dateList(beforeList.get(gap).getDate_num(),dramaDTO.getDrama_num(), dateArr.get(i), timeArr.get(j));
+					gap++;
+				}
+			}
+				
+		}else {
+			if(totalSize>beforeList.size()) {
+				//새로 업데이트할 내용이 더 많을 경우
+				int gap=0;
+				for(int i=0; i<dateArr.size(); i++) {
+					for(int j=0; j<timeArr.size(); j++) {
+						if(gap>=beforeList.size()) {
+							result = dramaDAO.insert_dateList(dramaDTO.getDrama_num(), dateArr.get(i), timeArr.get(j));
+						}else {
+							result = dramaDAO.update_dateList(beforeList.get(gap).getDate_num(),dramaDTO.getDrama_num(), dateArr.get(i), timeArr.get(j));
+							gap++;
+						}
+					}
+				}
+			}else {
+				int gap=0;
+				for(int i=0; i<dateArr.size(); i++) {
+					for(int j=0; j<timeArr.size(); j++) {
+						result = dramaDAO.update_dateList(beforeList.get(gap).getDate_num(),dramaDTO.getDrama_num(), dateArr.get(i), timeArr.get(j));
+						gap++;
+					}
+				}
+			}
+		}
+		return result;
+	}
+	
 	
 	@Transactional
 	public int insert(DramaDTO dramaDTO, HttpSession session, List<Date> dateArr, String time, MemberDTO memberDTO) throws Exception {

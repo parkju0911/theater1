@@ -42,7 +42,59 @@ public class DramaController {
 	@Inject
 	public MemberService memberService;
 	
-	
+	//dramaView update
+	//update -> DB 처리
+	@RequestMapping(value="dramaViewUpdate", method=RequestMethod.POST)
+	public String viewUpdate(DramaDTO dramaDTO, Date startDate, Date lastDate, String time, Model model, HttpSession session) throws Exception {
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		//넘어온 날짜들 for문으로 돌려 배열을 생성
+		List<Date> dateArr = new ArrayList<Date>();
+		Calendar calStart = Calendar.getInstance();
+		Calendar calLast = Calendar.getInstance();
+							
+		calStart.setTime(startDate);
+		calLast.setTime(lastDate);
+							
+		//두 date의 일수를 구함
+		int intervalDay = (int)((calLast.getTimeInMillis() - calStart.getTimeInMillis()) / 1000)/(24*60*60)+1;
+
+		for(int i=0; i<intervalDay; i++) {
+			Date date = new Date(calStart.getTimeInMillis());
+			dateArr.add(date);
+			calStart.add(Calendar.DATE,1);
+		}
+							
+		int result = 0;
+		result = dramaService.update(dramaDTO, session, dateArr, time, memberDTO);
+							
+		String message = "Fail";
+		if(result > 0) {
+			message = "Success";
+		}
+		model.addAttribute("message", message);
+		model.addAttribute("path", "../drama/dramaList");
+							
+		return "common/message";
+	}
+	@RequestMapping(value="dramaViewUpdate", method=RequestMethod.GET)
+	public String viewUpdate(int drama_num, HttpSession session,RedirectAttributes ra,Model model) throws Exception{
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		DramaDTO dramaDTO = dramaService.selectOne(drama_num);
+		int company_num = 0;
+		if(memberDTO.getKind().equals("company")) {
+			company_num = memberService.searchCompany_num(memberDTO.getId());
+		}
+		String path = null;
+			
+		if(memberDTO==null || dramaDTO==null || dramaDTO.getCompany_num()!=company_num) {
+			ra.addFlashAttribute("result", "잘못된 접근 방식 입니다.");
+			path = "redirect:../";
+		}else {
+			model.addAttribute("view",dramaDTO);
+			path = "drama/dramaViewUpdate";
+		}				
+		return path;
+	}
 	
 @RequestMapping(value="checkCookie", method=RequestMethod.GET)
 	public String testCookie(HttpServletResponse response) throws Exception{

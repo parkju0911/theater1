@@ -272,9 +272,23 @@
 		(select * from drama order by buy_hit desc) N)
 		where r between #{startRow} and #{lastRow}
 	</select>
-<select id="review_totalcount" parameterType="int" resultType="java.lang.Integer">
-select nvl(count(review_num), 0) from review where drama_num=#{drama_num}
-
-</select>
+	<select id="review_totalcount" parameterType="int" resultType="java.lang.Integer">
+	select nvl(count(review_num), 0) from review where drama_num=#{drama_num}
+	
+	</select>
+	
+	<!-- drama update 부분 -->
+  	<update id="update" parameterType="com.theater.drama.DramaDTO">
+  		update drama set title=#{title}, contents=#{contents}, place=#{place}, price=#{price}, simple=#{simple}, address=#{address} where drama_num=#{drama_num}
+  	</update>
+  	<select id="search_dateList" parameterType="int" resultType="com.theater.drama.DramaListDTO">
+  		select * from date_list where drama_num=#{drama_num}
+  	</select>
+  	<update id="date_update" parameterType="java.util.HashMap">
+  		update date_list set drama_date=#{drama_date}, drama_time=#{drama_time} where date_num=#{date_num} and drama_num=#{drama_num}
+  	</update>
+  	<delete id="delete_dateList" parameterType="int">
+  		delete from date_list where date_num=#{date_num}
+  	</delete>
   </mapper><!-- xml과 동일한 이름으로 한다. -->
   

@@ -17,6 +17,10 @@ public class FileDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE="fileMapper.";
 	
+	public int update(FileDTO fileDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"update", fileDTO);
+	}
+	
 	public NoticeDTO test3() throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"selectTest3");
 	}

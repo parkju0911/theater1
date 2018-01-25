@@ -25,20 +25,38 @@ public class DramaDAO  {
 	private SqlSession sqlSession;
 	private static final String namespace="dramaMapper.";
 	
-	//dramaWrite 관련 1-22
-	public int nextDramaNum() throws Exception{
-		return sqlSession.selectOne(namespace+"nextDramaNum");
-	}
-		
-	public int insert_dateList(int drama_num, Date drama_date, String drama_time) throws Exception{
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("drama_num", drama_num);
-		map.put("drama_date", drama_date);
-		map.put("drama_time", drama_time);
+	//dramaWrite 관련 1-24
+		public int delete_dateList(int date_num) throws Exception{
+			return sqlSession.delete(namespace+"delete_dateList", date_num);
+		}
+		public List<DramaListDTO> search_dateList(int drama_num) throws Exception{
+			return sqlSession.selectList(namespace+"search_dateList", drama_num);
+		}
+		public int update_dateList(int date_num, int drama_num, Date drama_date, String drama_time) throws Exception{
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("drama_num", drama_num);
+			map.put("drama_date", drama_date);
+			map.put("drama_time", drama_time);
+			map.put("date_num", date_num);
 			
-		return sqlSession.insert(namespace+"date_insert", map);
-	}
-	//------------------
+			return sqlSession.insert(namespace+"date_update", map);
+		}
+		public int update(DramaDTO dramaDTO) throws Exception{
+			return sqlSession.update(namespace+"update", dramaDTO);
+		}
+		public int nextDramaNum() throws Exception{
+			return sqlSession.selectOne(namespace+"nextDramaNum");
+		}
+			
+		public int insert_dateList(int drama_num, Date drama_date, String drama_time) throws Exception{
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("drama_num", drama_num);
+			map.put("drama_date", drama_date);
+			map.put("drama_time", drama_time);
+				
+			return sqlSession.insert(namespace+"date_insert", map);
+		}
+		//------------------
 
 	//orderlist 관련 1-15
 	public List<OrderListDTO> orderList(String id) throws Exception{

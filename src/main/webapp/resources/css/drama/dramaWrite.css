@@ -1,0 +1,86 @@
+@charset "UTF-8";
+h1 {
+	text-align: center;
+}
+
+table {
+	margin: 0 auto;
+	width: 1000px;
+	/* border: 1px solid #ddd; */
+	border-collapse: collapse;
+}
+
+td {
+	height: 30px;
+	font-size: 15px;
+	color: #50382f;    
+	padding-top: 20px;
+}
+.board_wrap{
+	width : 1000px;
+	margin: 0 auto;
+}
+.title_wrap{
+	float: right;
+}
+.ampm, .ampm_{
+	margin-top: 7px;
+	color : #b39f98;
+	font-size: 15px;
+	border: 1px solid lightgray;
+}
+#homeImg{
+	height: 12px;
+}
+#writer{
+	width: 150px; 
+	border: none; 
+	background-color: #fffff8;
+	border-bottom: 1px solid lightgray; 
+	border-radius:0px;
+}
+.write_ip {
+	width: 500px;
+	border: 1px solid lightgray;
+	border-radius: 10px;
+	height: 30px;
+	padding-left: 10px;
+}
+
+.content textarea {
+	height: 100px;
+	width: 95%;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	color: gray;
+}
+
+.fileSec {
+	margin: 1% 24%;
+}
+
+#add {
+	width: 135px;
+}
+
+#delete {
+	width: 135px;
+}
+.#smart_editor2 .se2_input_wysiwyg{
+	min-height: 400px;
+}
+:-ms-input-placeholder {
+  color: red;
+}
+.selectDate{
+	width: 200px;
+}
+input[type=file], .delete{
+	display: inline-block;
+}
+.fileAdd{
+	margin-top: 10px;
+}
+.submit{
+	text-align: center;
+}

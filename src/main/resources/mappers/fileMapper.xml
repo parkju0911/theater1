@@ -86,4 +86,7 @@
   		select file_num.nextval from dual	
   	</select>	
 	
+	<update id="update" parameterType="FileDTO">
+		update file_table set file_name=#{file_name}, file_route=#{file_route} where file_num=#{file_num}
+	</update>
   </mapper>

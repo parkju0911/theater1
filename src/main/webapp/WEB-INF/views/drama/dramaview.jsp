@@ -83,6 +83,10 @@
 			$(".drama_time").load('dramaTime?drama_num=${view.drama_num}&&drama_date='+drama_date);
 		});
 		$(".drama_time").load('dramaTime?drama_num=${view.drama_num}&&drama_date='+drama_date);
+		
+		$('#update').click(function(){
+			$(location).attr('href', './dramaViewUpdate?drama_num=${view.drama_num}');
+		});
 });
 	
 $(document).ready(function() {
@@ -90,11 +94,7 @@ $(document).ready(function() {
 	$("#qna").trigger("click");
 	$("#review").trigger("click");
 	 $("#info").trigger("click");
-
-	} );
-$('#update').click(function(){
-    $(location).attr('href', './dramaViewUpdate?drama_num=${view.drama_num}');
- });
+} );
 </script>
 <style type="text/css">
 body{
