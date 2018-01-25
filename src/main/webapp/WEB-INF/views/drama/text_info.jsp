@@ -25,7 +25,9 @@
 		</div>
 		<p id="warning_text1">예매 전 안내 및 주의사항을 꼭 확인하세요!</p>
 	
+
 		<p>티켓에 따라 이용방법/환불규정이 상이합니다. </p>
+
 		</div>
 		</div>
 
@@ -71,14 +73,17 @@
 
 	<p id="map_info">지도에서 미리 확인하세요</p>
 
+
 	<p>장소명: ${view2.place}</p>
+
+
 
 	<p>주소: ${view2.address}</p>
 
 	<p>주차여부: 주차불가(인근 유료주차장 이용)</p>
 
 	<p>문의전화: 02-766-7667</p>
-		 <div id="map" style="width:700px;height:350px; margin-left: 30px;"></div>
+		 <div id="map" style="width:750px;height:350px; margin-left: 30px; margin: 0 auto;"></div>
     <script type="text/javascript">
 
     	var map = new naver.maps.Map('map');
@@ -114,6 +119,7 @@
 
       
       </script>
+		<div id="image_contents">${view2.contents }</div>
 		
 		</div><!-- info three close -->
 		

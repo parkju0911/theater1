@@ -160,9 +160,9 @@ public class DramaService {
 		public int qna_insert(Qna_viewDTO qna_viewDTO , HttpSession session)throws Exception{
 			MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 			qna_viewDTO.setId(memberDTO.getId());
-			System.out.println("ID : "+qna_viewDTO.getId());
+		/*	System.out.println("ID : "+qna_viewDTO.getId());
 			System.out.println("drama_num(serviceDTO) : "+qna_viewDTO.getDrama_num());
-			System.out.println("contents : "+qna_viewDTO.getContents());
+			System.out.println("contents : "+qna_viewDTO.getContents());*/
 			int result = dramaDAO.qna_insert(qna_viewDTO);
 			
 			return result;
@@ -174,9 +174,24 @@ public class DramaService {
 	}
 	//qna_reply
 		public int qna_reply(Qna_viewDTO qna_viewDTO , HttpSession session)throws Exception{
+			String contents = qna_viewDTO.getContents();
+			int qna_viewnum =qna_viewDTO.getQna_viewnum();
+			qna_viewDTO =dramaDAO.selectOne_qna(qna_viewnum);
+		
+			qna_viewDTO.setRef(qna_viewnum);
+			qna_viewDTO.setContents(contents);
+			qna_viewDTO.setDepth(qna_viewDTO.getDepth());
+			
 			MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 			qna_viewDTO.setId(memberDTO.getId());
+		
+			
 			int result = dramaDAO.qna_reply(qna_viewDTO);
+			return result;
+		}
+		//qna_reply step update
+		public int stepUpdate(Qna_viewDTO qna_viewDTO)throws Exception{
+			int result = dramaDAO.stepUpdate(qna_viewDTO);
 			return result;
 		}
 		//qna 글 삭제시 redirect drama_num 보내줌

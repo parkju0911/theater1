@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,29 +37,29 @@ $(function(){
 </style>
 </head>
 <body>
-		
-		
+	
 			<div id="afterview_list">
-		<div id="point_box">
+					<div id="point_box">
 		
-		<div id="point_box1">별점<span style="color:red;"></span>  <!-- 별점/후기인원수 --><span id="star_total">${avg }/5.0 (총  ${total }  명)</span></div>
-		<div id="point_box2"style="padding-top:10px;">
+				<div id="point_box1">별점<span style="color:red;"></span>  <!-- 별점/후기인원수 --><span id="star_total">${avg }/5.0 (총  ${total }  명) </span></div>
+					<div id="point_box2"style="padding-top:10px;">
 		
-			<div class="starRating">
-				<span style="width: ${avg*10}%;"></span>
-			</div>
+						<div class="starRating">
+							<span style="width: ${avg*10*2}%;"></span>
+						</div>
 
-		</div>
+					</div>
 		<div id="point_box3">실제 관객이 남긴 평균 별점입니다.</div>
 		 
 		
 		
 		
+				</div>
 		</div>
-		</div>
+		
 		<div id="afterview_box_list">
 			<table>
-			<c:if test="${review == null }">
+			<c:if test="${empty review }">
 					<tr>
 					<td><div id="afterview_box_a">아직 등록된 후기/별점이 없습니다.</div></td>
 					</tr>
@@ -92,6 +93,7 @@ $(function(){
 			</c:if>
 				</c:forEach>
 			</table>
+			
 		<div id="paging">
 		<c:if test="${pager.curBlock gt 1}">
 			<span class="list" title="${pager.startNum-1}">[이전]</span>

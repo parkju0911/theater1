@@ -141,7 +141,12 @@
   		(select * from qna_view order by ref desc , step asc) N)
   		where r between #{startRow} and #{lastRow}  
   </select>
- 
+  <!-- qna selectOne -->
+ 	<select id="selectOne_qna" parameterType="int" resultType="qna_viewDTO">
+ 	select * from qna_view where qna_viewnum=#{qna_viewnum}
+ 	
+ 	</select>
+ 	
  <!-- 리뷰 전체보기 --> 
   <select id="review_list" parameterType="com.theater.util.RowNum" resultMap="reviewDTO">
   		select * from
@@ -177,9 +182,9 @@
  <!-- qna reply -->
  <insert id="qna_reply" parameterType="qna_viewDTO">
  <selectKey keyProperty="qna_viewnum" resultType="int" order="BEFORE">
- 	select qna_viewnum.nextval from dual
+ 		select qna_viewnum.nextval from dual
  </selectKey>
-  insert into qna_view values(#{qna_viewnum},#{id},#{drama_num},#{contents} , sysdate , #{qna_viewnum},#{step}+1,#{depth}+1)
+  insert into qna_view values(#{qna_viewnum},#{id},#{drama_num},#{contents} , sysdate , #{ref},#{step}+1,#{depth}+1)
  </insert>
  
 <update id="stepUpdate" parameterType="qna_viewDTO">

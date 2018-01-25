@@ -21,11 +21,6 @@
 
 <script type="text/javascript">
 
-function member_confirm() {
-	
-	
-}
-
 	$(function() {
 			
 
@@ -51,6 +46,7 @@ function member_confirm() {
 		
 		//안내에 환불 규정
 		$("#refund_1").click(function() {
+			
 			$("#refund_list").load("./refundlist")
 		});
 		//후기 전체 보기 클릭시 후기 리스트 출력
@@ -60,6 +56,12 @@ function member_confirm() {
 		});
 		
 		$("#btn_buy").click(function(){
+			if(${member eq  null}){
+				alert("로그인 하신 후에 사용해주세요");
+				
+				 $("#section_info").prop("action", "../member/memberLogin"); 
+			}else{
+		
 			var drama_date = $("#drama_date").val();
 			var drama_time = $("#drama_time").val();
 			var drama_ticket = $("#drama_ticket").val();
@@ -68,6 +70,8 @@ function member_confirm() {
 			}else{
 				$("#section_info").prop("action", "./selectSeat");
 				document.frm.submit();
+			}
+				
 			}
 		});
 		
@@ -82,7 +86,9 @@ function member_confirm() {
 });
 	
 $(document).ready(function() {
-
+	$("refund").trigger("click");
+	$("#qna").trigger("click");
+	$("#review").trigger("click");
 	 $("#info").trigger("click");
 
 	} );
@@ -109,9 +115,6 @@ A:VISITED {
 	<!--   이미지 가져오기 -->
 			<div id="drama_image">
 				<img src="../resources/upload/${file.file_name}" style="width: 100%";height="100%";>
-
-
-			
 			</div>
 			
 			<div id="drama_info_form">
@@ -135,13 +138,12 @@ A:VISITED {
 					 		<fmt:parseDate value='${dto.drama_date}'  var='dto_date'  pattern="yyyy-MM-dd"  scope="page"/>
 							<option class="select_date"><fmt:formatDate value="${dto_date}" pattern="yyyy-MM-dd"/></option>
 
-
 						</c:forEach>
 					</optgroup>
 				</select>
 							
 				<div class="drama_time"></div>
-				<button id="btn_buy" onclick="member_confirm()" ></button>
+				<button id="btn_buy"></button>
 
 			</div>
 		</form>
@@ -153,7 +155,11 @@ A:VISITED {
 			</div>
 			<div id="afterview_box">
 				<table>
+						<c:if test="${empty review }">
+						<div class=review_null><p>	아직 등록된 후기/별점이 없습니다.</p></div>
+						</c:if>
 					<c:forEach items="${review }" var="re" begin="0" end="2">
+						
 						<tr>
 							<td><div id="afterview_box_a">${re.id }
 									(${re.review_date })</div></td>
@@ -182,12 +188,14 @@ A:VISITED {
 				</c:if>
 								</div></td>
 						</tr>
-
+					
 					</c:forEach>
 				</table>
+				<c:if test="${!empty review }">
 				<div id="afterview_total">
 					<a data-toggle="tab" href="#menu1" id="reviewlist_all">후기 전체보기></a>
 				</div>
+				</c:if>
 			</div>
 
 
@@ -196,15 +204,21 @@ A:VISITED {
 		<p>연극 리뷰</p>
 		</div>
 		<div id="ticket_review">
+		<c:if test="${empty review }">
+						<div class="review_null"><p>아직 작성된 리뷰가 없습니다.</p></div>
+			</c:if>
 				<c:forEach items="${review }"   var="one"  begin="1" end="1">
-				<div id="review_image"><img alt="" src="${pageContext.request.contextPath}/resources/upload/${file.file_name}" style="width: 250px;height: 120px;"></div>
+			
+				<div id="review_image"><img alt="" src="${pageContext.request.contextPath}/resources/upload/${file.file_name}" style="width: 250px;height: 150px;"></div>
 				<div id="review_text">
+						
 						<div id="review_title">${one.title }</div>
 						<div id="review_contents">${one.contents }<div id="view_go"><a href="./dramaReviewview?review_num=${one.review_num }"> ☞리뷰보러가기</a></div></div>
 					
 				</div>
 				
 				</c:forEach>
+			
 	</div>
 			
 
@@ -237,9 +251,6 @@ A:VISITED {
 
 		</div>
 	
-
-
-
 
 
 	</section>
