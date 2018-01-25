@@ -534,3 +534,7 @@
 	background: transparent url(../../images/starpoint/btn_del_reply.png) no-repeat;
 	float: left;
 }
+.btn_div{
+   margin-top : 10px;
+   text-align: center;
+}
