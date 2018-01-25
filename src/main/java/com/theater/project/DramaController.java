@@ -317,7 +317,7 @@ return "sss";
 					ReviewDTO result = dramaService.review_selectOne(review_num);
 					int drama_num = result.getDrama_num();
 					DramaDTO drama_title = dramaService.selectOne_view(drama_num);
-					System.out.println("file_num:"+reviewDTO.getFile_num());
+				
 					model.addAttribute("dto", result);
 					model.addAttribute("title", drama_title);
 					return "drama/dramaReviewupdate";
