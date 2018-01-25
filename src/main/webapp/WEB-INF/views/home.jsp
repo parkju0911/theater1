@@ -292,8 +292,8 @@ function popupOpen(){
 			<div class="main_cs_divide" style="text-align: center;" alt="출석체크">
 			
 			<c:if test="${member.id eq null}">
-				<a href="#"onclick="if(!confirm('출석체크를 하려면 로그인이 필요합니다.')){return false;}"> <img
-					src="./resources/images/home/btn_point.png"
+				<a href="#"onclick="if(!alert('출석체크를 하려면 로그인이 필요합니다.')){return false;}">
+				<img src="./resources/images/home/btn_point.png"
 					style="padding: 8px 10px;">
 			</c:if>
 			<c:if test="${member.id ne null}">

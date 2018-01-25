@@ -81,6 +81,7 @@
 
 	
 	});
+
 </script>
 
 
@@ -92,8 +93,6 @@ h1 {
 table {
 	margin: 0 auto;
 	width: 80%;
-	/* border: 1px solid #ddd; */
-
 }
 
 td {
