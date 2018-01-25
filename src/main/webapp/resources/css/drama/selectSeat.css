@@ -27,11 +27,13 @@
 #title,#date,#time{
 	color: #e6e6e6;
 	font-size: 2em;
-	font-weight: bold;
+	
 }
 #date, #time{
-	width : 200px;
-	float: right;
+	width: 200px;
+    float: right;
+    font-size: 13pt;
+    margin-top: 31px;
 }
 #anySeat, span>input{
 	color : #CA4D10;
@@ -65,9 +67,9 @@
 .seat_span{
 	display : block;
 	font-size : 18px;
-	width: 20px;
-	height: 20px;
-	line-height: 1;
+	width: 27px;
+    height: 28px;
+    line-height: 1.5;
 	text-align: center;
 	color : #fff;
 	background-color: #666;

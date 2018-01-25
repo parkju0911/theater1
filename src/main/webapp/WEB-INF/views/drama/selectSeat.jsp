@@ -105,7 +105,7 @@ $(function(){
 				}
 				alert(msg);
 			});	
-		}else{
+	}else{
 			alert('좌석을 선택하세요.');
 		}
 	});
@@ -123,8 +123,10 @@ $(function(){
 	<form>
 		<div class="totalbody">
 			<div class="title">
-				<marquee id="title" behavior="alternate" width="160" direction="left" scrollamount="5" loop="3">${drama.title}</marquee><span>${drama.place} | ${company.name} | 남은좌석</span> <input type="text" id="anySeat" readonly="readonly" value="${(company.row_num * company.col_num)-selectSize}"><span>/${company.row_num * company.col_num} | 구매 장수 <input id="select" type="number" readonly="readonly"/>/${seat.ticket_numbers}</span> 
-				<input id="time" type="text" value="${seat.drama_time}" readonly="readonly"> <input id="date" type="text" value="${seat.drama_date}" readonly="readonly">
+				<marquee id="title" behavior="alternate" width="160" direction="left" scrollamount="5" loop="3" style="margin-top: 4px;
+    margin-left: 163px;
+    font-family: -webkit-pictograph;">${drama.title}</marquee><span>${drama.place} | ${company.name} | 남은좌석</span> <input type="text" id="anySeat" readonly="readonly" value="${(company.row_num * company.col_num)-selectSize}"><span>/${company.row_num * company.col_num} | 구매 장수 <input id="select" type="number" readonly="readonly"/>/${seat.ticket_numbers}</span> 
+				<input id="time" type="text" value="${seat.drama_time}" readonly="readonly" style="margin-left: -85px;"> <input id="date" type="text" value="${seat.drama_date}" readonly="readonly">
 			</div>
 			
 			<div class="seat">
