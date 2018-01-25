@@ -58,7 +58,7 @@
 		$("#btn_buy").click(function(){
 			if(${member eq  null}){
 				alert("로그인 하신 후에 사용해주세요");
-				
+				$("#section_info").prop("method", "GET");
 				 $("#section_info").prop("action", "../member/memberLogin"); 
 			}else{
 		
@@ -92,6 +92,9 @@ $(document).ready(function() {
 	 $("#info").trigger("click");
 
 	} );
+$('#update').click(function(){
+    $(location).attr('href', './dramaViewUpdate?drama_num=${view.drama_num}');
+ });
 </script>
 <style type="text/css">
 body{
@@ -251,6 +254,10 @@ A:VISITED {
 
 		</div>
 	
+			<div class="btn_div">
+			<button id="update" class="btn btn-default">UPDATE</button>
+			<button id="delete" class="btn btn-default">DELETE</button>
+			</div>
 
 
 	</section>

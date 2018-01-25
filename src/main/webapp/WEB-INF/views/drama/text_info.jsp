@@ -124,10 +124,7 @@
 		</div><!-- info three close -->
 		
 		
-		<div id="info_three" style="margin-top: 30px;">
-			<p>${view2.contents}</p>
-		</div>
-		
+	
 		</div>
 </body>
 </html>
