@@ -6,9 +6,9 @@
     margin-top: -85px;
     width: 94%;
     margin: 0 auto;"><a style="    float: right;
-    margin-top: -140px;" href="#"><img style="width: 80px;" alt="" src="${pageContext.request.contextPath}/resources/images/common/top-btn.png"></a></div> 
+    margin-top: -140px;" href="#"><img style="width: 80px;" alt="" src="${pageContext.request.contextPath}/resources/images/common/top-btn.png"></a></div> --%>
 	<div class="push">
-	</div> --%>
+	</div> 
 	<footer>
 		<div class="footer_wrap">
 		
