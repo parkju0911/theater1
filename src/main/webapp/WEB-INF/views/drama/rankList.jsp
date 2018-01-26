@@ -29,13 +29,13 @@
 			alert(message);
 		}
 
-		$(".list").click(function() {
+	/* 	$(".list").click(function() {
 			var cur = $(this).attr("title");
 			var s = '${pager.search}';
 			var t = '${pager.kind}';
 			location.href = "rankList?curPage=" + cur;
-		});
-
+		}); */
+	
 	});
 </script>
 <style type="text/css">
@@ -85,7 +85,7 @@
 		</h6>
 	</div>
 	<h2
-		style="margin-top: 20px; font: 40px/41px 'fMdBT'; padding-bottom: 20px; width: 900px; margin: 0 auto;">RANKING</h2>
+		style="margin-top: 20px; font: 40px/41px 'fMdBT'; padding-bottom: 20px; width: 900px; margin: 0 auto;">TOP 5</h2>
 
 	<!-- header 부분 -->
 
@@ -101,9 +101,11 @@
 	<section id="Review_main">
 
 		<div id="rank_main">
-
+		
+	
 			<div class="rankMain_wrap">
-				<c:forEach items="${rank}" var="dto" varStatus="i">
+		
+				<c:forEach items="${rank}" var="dto" varStatus="i" begin="1" end="5">
 
 					<div class="list_box">
 						<div class="ranking_num"
@@ -118,7 +120,7 @@
 								</p> --%>
 								</c:when>
 								<c:when test="${i.count==2 }">
-									<%-- <p style="ffont-weight:bold; text-align:center;line-height:20px; font-size:15px; color: yellow;font-family: 'Nanum Gothic', sans-serif;">
+									<%-- <p style="font-weight:bold; text-align:center;line-height:20px; font-size:15px; color: yellow;font-family: 'Nanum Gothic', sans-serif;">
 									<c:out value="${i.count} " />
 								</p> --%>
 									<img alt="" src="../resources/images/point/rank2.png"
@@ -133,14 +135,12 @@
 								</c:when>
 								<c:otherwise>
 
-									<div
-										style="background: url(../resources/images/point/bg_w_mk.png) repeat-y left top; position: relative; left: 69px; width: 100px; font-weight: 500; text-align: left; padding-left: 5px; line-height: 35px; font-size: 21px; color: #fcf8e3; font-family: 'linlivertine'; font-style: italic;">
+							<div style="background: url(../resources/images/point/bg_w_mk.png) repeat-y left top; position: relative; left: 69px; width: 100px; font-weight: 500; text-align: left; padding-left: 5px; line-height: 35px; font-size: 21px; color: #fcf8e3; font-family: 'linlivertine'; font-style: italic;">
 										<c:out value="${i.count} " />
 									</div>
 
 								</c:otherwise>
 							</c:choose>
-
 
 
 						</div>
@@ -189,7 +189,7 @@
 			</div>
 		</div>
 	</section>
-	<div class="text-center">
+	<%-- <div class="text-center">
 		<ul class="pagination">
 
 			<c:if test="${pager.curBlock gt 1}">
@@ -205,7 +205,7 @@
 		</ul>
 
 
-	</div>
+	</div> --%>
 
 
 
