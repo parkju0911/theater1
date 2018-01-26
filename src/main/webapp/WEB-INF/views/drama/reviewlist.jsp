@@ -65,7 +65,7 @@ $(function(){
 					</tr>
 			</c:if>
 				<c:forEach items="${review }" var="re">
-				<c:if test="${re.drama_num eq drama_num }">
+			 		<c:if test="${re.drama_num eq drama_num }">
 				
 				<tr>
 				<td><div id="afterview_box_a">${re.id } (${re.review_date })</div></td>
@@ -90,11 +90,14 @@ $(function(){
 				</div>
 				</td>
 				</tr>
-			</c:if>
+					</c:if>
 				</c:forEach>
 			</table>
 			
-		<div id="paging">
+		
+			
+			
+		<%-- <div id="paging">
 		<c:if test="${pager.curBlock gt 1}">
 			<span class="list" title="${pager.startNum-1}">[이전]</span>
 		</c:if>
@@ -103,7 +106,7 @@ $(function(){
 		</c:forEach>
 		<c:if test="${pager.curBlock lt pager.totalBlock}">
 			<span class="list" title="${pager.lastNum+1}">[다음]</span>
-		</c:if>
+		</c:if> --%>
 		
 		
 	</div>

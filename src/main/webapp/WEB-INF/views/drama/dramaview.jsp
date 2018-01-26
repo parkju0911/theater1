@@ -94,7 +94,19 @@ $(document).ready(function() {
 	$("#qna").trigger("click");
 	$("#review").trigger("click");
 	 $("#info").trigger("click");
+<<<<<<< HEAD
 } );
+=======
+
+	} );
+$('#update').click(function(){
+    $(location).attr('href', './dramaViewUpdate?drama_num=${view.drama_num}');
+ });
+ 
+
+
+ 
+>>>>>>> 0125-yk2
 </script>
 <style type="text/css">
 body{
@@ -233,7 +245,7 @@ A:VISITED {
 				<li class="menu_li"><a data-toggle="tab" href="#menu1" id="review" >후기(${total })</a></li>
 				<li class="menu_li"><a data-toggle="tab" href="#menu2" id="qna">Q&A</a></li>
 				<li class="menu_li"><a data-toggle="tab" href="#menu3" id="refund">환불규정</a></li>
-			</ul>
+			</ul>								
 
 			<div class="tab-content"><!--  탭 클릭시 페이지 view -->
 				<div id="menu0" class="tab-pane fade in active">

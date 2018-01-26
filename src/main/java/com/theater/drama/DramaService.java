@@ -237,17 +237,16 @@ public class DramaService {
 		reviewDTO.setId(memberDTO.getId());
 		System.out.println("ID:"+reviewDTO.getId());
 		
-		int file_num = dramaDAO.review_file_num(reviewDTO);
-		System.out.println("file_num:"+file_num);
-		reviewDTO.setFile_num(file_num);
-		System.out.println("title"+reviewDTO.getTitle());
-		System.out.println("drama_num:"+reviewDTO.getDrama_num());
-		System.out.println("내용:"+reviewDTO.getContents()); 
-		System.out.println("별점:"+reviewDTO.getStar());
-		System.out.println("리뷰인서트");
-	
-		
 		MultipartFile  file  = Ms.getFile("files"); 
+		
+		if(file.isEmpty()){
+			reviewDTO.setFile_num(reviewDTO.getFile_num());
+		}else{
+		
+			int file_num = dramaDAO.review_file_num(reviewDTO);
+			
+			reviewDTO.setFile_num(file_num);
+		
 		List<FileDTO> names = new ArrayList<FileDTO>();
 	
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -256,13 +255,14 @@ public class DramaService {
 		map.put("contents", reviewDTO.getContents());
 
 			String name = fileSaver.fileSave(file, session, "upload");
+			System.out.println(name);
 			FileDTO fileDTO = new FileDTO();
 			fileDTO.setFile_num(file_num);
 			fileDTO.setFile_name(name);
 			fileDTO.setFile_route(file.getOriginalFilename());
 			names.add(fileDTO);
 			fileDAO.insert(fileDTO);
-		
+		}
 			int result = dramaDAO.review_insert(reviewDTO);
 			
 		return result;
@@ -278,14 +278,17 @@ public class DramaService {
 	//공연리뷰 수정
 		public int review_update(ReviewDTO reviewDTO , MultipartHttpServletRequest Ms , HttpSession session)throws Exception{
 			MemberDTO memberDTO =  (MemberDTO)session.getAttribute("member");
-			int file_num = dramaDAO.review_file_num(reviewDTO);
-			System.out.println("file_num:"+file_num);
-			
-		
 			
 			MultipartFile  file  = Ms.getFile("files"); 
-			System.out.println("file:"+file);
-			System.out.println("names: 이전");
+			if(file.isEmpty()){
+				reviewDTO=dramaDAO.review_selectOne(reviewDTO.getReview_num());
+				reviewDTO.setFile_num(reviewDTO.getFile_num());
+				System.out.println("file_num 파일값이 널일때"+reviewDTO.getFile_num());
+			}else{
+				System.out.println("reviewDTO.getreview_num:"+reviewDTO.getReview_num());
+				int file_num = dramaDAO.review_file_num(reviewDTO);
+				System.out.println("file_num:"+file_num);
+			
 			List<FileDTO> names = new ArrayList<FileDTO>();
 			System.out.println("names: 이후");
 		
@@ -297,9 +300,7 @@ public class DramaService {
 				reviewDTO.setFile_num(file_num);
 				System.out.println("reviewDTO.setfilenum:"+reviewDTO.getFile_num());
 				String name = fileSaver.fileSave(file, session, "upload");
-				if(name.isEmpty()){
-					reviewDTO.setFile_num(reviewDTO.getFile_num());
-				}
+			
 				System.out.println("name"+name);
 				FileDTO fileDTO = new FileDTO();
 				fileDTO.setFile_num(file_num);
@@ -310,7 +311,7 @@ public class DramaService {
 				System.out.println("names:"+names);
 				
 				fileDAO.insert(fileDTO);
-			
+			}
 				int result = dramaDAO.review_update(reviewDTO);
 			
 			return result;
