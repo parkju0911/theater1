@@ -17,6 +17,9 @@
 <link href="./resources/css/drama/dramaList.css" rel="stylesheet">
 <link href="styles/ihover.css" rel="stylesheet">
 <link href="./resources/css/common/ihover.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+
+<link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
    <title>Home</title>
 
 <style type="text/css">
@@ -107,6 +110,337 @@ td, select {
     width: 366PX;
     height: 180px;
  }
+ 
+ 
+ $green: #2ecc71;
+$red: #e74c3c;
+$blue: #3498db;
+$yellow: #f1c40f;
+$purple: #8e44ad;
+$turquoise: #1abc9c;
+
+// Reset and Layout Styles
+/* html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #2c3e50;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+}
+body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+
+h1 {
+  color: $yellow;
+  font-size: 4rem;
+  text-transform: uppercase;
+  display: block;
+  width: 100%;
+  text-align: center; */
+  /* 
+  @media screen and (max-width: 600px) {
+    font-size: 3rem;
+  }
+
+p {
+  color: $yellow;
+  font-size: 1.2rem;
+  // text-transform: uppercase;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+
+// Basic Button Style
+.btn {
+  box-sizing: border-box;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid $red;
+  border-radius: 0.6em;
+  color: $red;
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 20px;
+  padding: 1.2em 2.8em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+ .btn:hover,
+  .btn:focus {
+    color: #fff;
+    outline: 0;
+}
+ 
+ .fourth {
+  // background: $yellow;
+  border-color: $yellow;
+  color: #fff;
+  transition: background 300ms ease-in-out;
+  background-image: linear-gradient(45deg,$yellow 50%, transparent 50%);
+   background-position: 100%;
+   background-size: 400%;
+  }
+ .fourth:hover {
+    background-position: 0;
+  }
+  
+  
+  @import url(https://fonts.googleapis.com/css?family=Open+Sans:400|Raleway:300);
+
+$btn-width: 250px !default;
+$btn-height: 80px !default;
+$btn-full: $btn-height+$btn-width !default;
+$btn-half: $btn-full/2 !default;
+$bg-color: #eeeeee !default;
+
+html {
+  padding-top: 50px;
+  font-family: 'Open Sans', Helvetica, arial, sans-serif;
+  text-align: center;
+  background-color: $bg-color;
+}
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+    transition: 0.5s ease-in-out;
+  }
+
+  i,em,
+  b,strong,
+  span {
+    transition: none;
+  }
+
+*:before,
+*:after {
+  z-index: -1;
+}
+
+h1,
+h4 {
+  font-family: 'Raleway', 'Open Sans', sans-serif;
+  margin: 0;
+  line-height: 1;
+}
+
+a {
+  text-decoration: none;
+  line-height: $btn-height;
+  color: black;
+}
+
+.centerer {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 1rem
+}
+
+@media (min-width: 600px) {
+  .wrap {
+    width: 50%;
+    float: left;
+  }
+}
+
+[class^="btn-"] {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  @include size(100%, $btn-height);
+  max-width: $btn-width;
+  margin: 1rem auto;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+}
+
+.btn-0 {
+  $btn-color: random-color($max:200);
+  $btn-color-dark: shade($btn-color, 40%);
+  color: tint($btn-color);
+}
+.btn-0:before {
+    content: '';
+    @include absolute(0,0,0,0);
+    background-color: $btn-color-dark;
+    transform: translateX(-100%);
+  }
+
+.btn-0:hover {
+    color: tint($btn-color, 75%);
+}
+ .btn-0:before {
+      transform: translateX(0);
+ }
+  
+  
+  .boton {
+        width: 200px;
+        height: 50px;
+        margin: 200px auto;
+        display: block;
+        position: relative;
+    }
+    .botontext {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        text-align: center;
+        line-height: 50px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+    
+    .twist {
+        display: block;
+        height: 100%;
+        width: 25%;
+        position: relative;
+        float: left;
+        margin-left: -4px;
+    }
+    
+    .twist:before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        background: #fed5a9;
+        bottom: 100%;
+        position: absolute;
+        transform-origin: center bottom 0px; 
+        transform: matrix3d(1, 0, 0, 0, 
+                            0, 0, -1, -0.003, 
+                            0, 1, 0, 0, 
+                            0, 0, 0, 1);
+        
+-webkit-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+   -moz-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+     -o-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+        transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+    }
+    
+    .twist:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        top: 100%;
+        height: 100%;
+        background: #9f7f5e;
+        transform-origin: center top 0px;
+        transform: matrix3d(1, 0, 0, 0, 
+                            0, 1, 0, 0, 
+                            0, 0, 1, -0.003, 
+                            0, -50, 0, 1);
+        
+-webkit-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+   -moz-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+     -o-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+        transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995);
+    }
+    
+    .boton:hover .twist:before {
+        background: #fff;
+        transform: matrix3d(1, 0, 0, 0, 
+                            0, 1, 0, 0, 
+                            0, 0, 1, 0.003, 
+                            0, 50, 0, 1);
+    }
+    
+    .boton:hover .twist:after {
+        background: #dedae1;
+        transform: matrix3d(1, 0, 0, 0, 
+                            0, 0, -1, 0.003, 
+                            0, 1, 0, 0, 
+                            0, 0, 0, 1);
+    }
+
+    .boton .twist:nth-of-type(1) {
+        margin-left: 0;
+    }
+    
+    .boton .twist:nth-of-type(1):before,
+    .boton .twist:nth-of-type(1):after {
+        transition-delay: 0s;
+    }
+    
+    .boton .twist:nth-of-type(2):before,
+    .boton .twist:nth-of-type(2):after {
+        transition-delay: 0.1s;
+    }
+    
+    .boton .twist:nth-of-type(3):before,
+    .boton .twist:nth-of-type(3):after {
+        transition-delay: 0.2s;
+    }
+    
+    .boton .twist:nth-of-type(4):before,
+    .boton .twist:nth-of-type(4):after {
+        transition-delay: 0.3s;
+    }
+    
+    .boton .botontext:nth-of-type(1) {
+        color: #3d3b40;
+        bottom: 100%;
+        transform-origin: center bottom 0px; 
+        transform: matrix3d(1, 0, 0, 0, 
+                            0, 0, -1, -0.003, 
+                            0, 1, 0, 0, 
+                            0, 0, 0, 1);
+        
+-webkit-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+   -moz-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+     -o-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+        transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995);
+    }
+    
+    .boton:hover .botontext:nth-of-type(1) {
+        transform: matrix3d(1, 0, 0, 0, 
+                            0, 1, 0, 0, 
+                            0, 0, 1, 0.003, 
+                            0, 50, 0, 1);
+    }
+    
+    .boton .botontext:nth-of-type(2) {
+        color: #fff;
+        top: 100%;
+        transform-origin: center top 0px;
+        transform: matrix3d(1, 0, 0, 0, 
+                            0, 1, 0, 0, 
+                            0, 0, 1, -0.003, 
+                            0, -50, 0, 1);
+        
+-webkit-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+   -moz-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+     -o-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+        transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+    }
+    
+    .boton:hover .botontext:nth-of-type(2) {
+        transform: matrix3d(1, 0, 0, 0, 
+                            0, 0, -1, 0.003, 
+                            0, 1, 0, 0, 
+                            0, 0, 0, 1);
+    }
+   */
 </style>
 </head>
 <script type="text/javascript">
@@ -159,6 +493,24 @@ function popupOpen(){
 
 <body>
 <c:import url="./temp/header.jsp"></c:import>
+<c:if test="${member.id eq null}">
+<!-- <a href="#" class="boton">
+Fantastic    
+</a>
+ -->
+ <!-- <div class="wrap">
+    <a class="btn-0" href="#">Swipe</a>
+    </div> -->
+<p style=" margin: 0 auto;
+    width: 250px;
+    margin-top: -204px;"><button class="fourth"  style="background-color: #ffc910;
+    width: 250px;
+    height: 71px;
+    margin: 0 auto;
+    border-radius: 10px;
+    color: white;">JOIN US</button>
+</p>
+</c:if>
 
 	<p style="    width: 250px;
     height: auto;
@@ -407,7 +759,7 @@ function popupOpen(){
 					style="padding: 8px 10px;">
 			</c:if>
 			<c:if test="${member.id ne null}">
-				<a href="./point/pointList"> <img
+				<a href="./point/pointCheck"> <img
 					src="./resources/images/home/btn_point.png"
 					style="padding: 8px 10px;">
 			</c:if>
