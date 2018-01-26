@@ -183,7 +183,7 @@
 						<li>Q. 구매 후 영수증은 어떻게 발급받나요?</li>
 					</ul>
 
-					<form name="frm" action="./faq" method="get" ide="frm">
+					<form name="frm" action="./faq" method="get" id="frm">
 						<input type="hidden" name="curPage" value="1" id="curPage">
 						<input type="hidden" name="kind" value="title" id="kind">
 						<div class="search_wrap">
