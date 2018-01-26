@@ -325,7 +325,7 @@ return "sss";
 				//공연 업데이트(수정) post
 				@RequestMapping(value="dramaReviewupdate" , method=RequestMethod.POST)
 				public String dramaReviewupdate(ReviewDTO reviewDTO , ModelAndView mv , MultipartHttpServletRequest Ms , HttpSession session ,RedirectAttributes rd, ListData listData  )throws Exception{
-					System.out.println("review_num2: "+reviewDTO.getReview_num());
+					
 					int result= dramaService.review_update(reviewDTO , Ms, session);
 				
 					String message="DB오류.";

@@ -309,6 +309,7 @@
 	font-size: 20px;
 	font-weight: bolder;
 	line-height: 60px;
+	padding-left: 25px;
 }
 #refund_info p{
 	margin-left: 30px;
@@ -327,9 +328,11 @@
  	background-color: white;
  	margin-top: -10px;
  	margin:0 auto;
+ 	padding-bottom: 20px;
 }
 #refund_method p{
 	margin-left: 30px;
+	padding-bottom: 5px;
 }
 .warning{
 	width: 700px;
@@ -420,15 +423,26 @@
     background: #fff;
 }
 #member_qna1{
-	margin-left: 30px;
+	border: 1px solid #eee;
+	margin-left: 15px;
 	font-size: 17px;
 	color:#313131;
+	margin-top: 10px;
+	width: 800px;
 }
 #member_qna2{
 	margin-left: 30px;
 	margin-top:10px;
 	font-size: 17px;
 	color:#313131;
+}
+#member_qna_reply{
+	border: 1px solid #eee;
+	margin-left: 30px;
+	font-size: 17px;
+	color:#313131;
+	background-color: #ffebcc;
+	margin-top: 5px;
 }
 .write_reply{
 	padding-left: 10px;
@@ -537,4 +551,6 @@
 .btn_div{
    margin-top : 10px;
    text-align: center;
+}
+
 }

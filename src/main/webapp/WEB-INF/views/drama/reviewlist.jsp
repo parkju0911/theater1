@@ -94,6 +94,9 @@ $(function(){
 				</c:forEach>
 			</table>
 			
+		
+			
+			
 		<div id="paging">
 		<c:if test="${pager.curBlock gt 1}">
 			<span class="list" title="${pager.startNum-1}">[이전]</span>

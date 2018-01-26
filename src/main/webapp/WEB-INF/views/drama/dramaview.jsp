@@ -95,6 +95,10 @@ $(document).ready(function() {
 $('#update').click(function(){
     $(location).attr('href', './dramaViewUpdate?drama_num=${view.drama_num}');
  });
+ 
+
+
+ 
 </script>
 <style type="text/css">
 body{
