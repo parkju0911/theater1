@@ -58,10 +58,20 @@ public class DramaDAO  {
 		}
 		//------------------
 
-	//orderlist 관련 1-15
-	public List<OrderListDTO> orderList(String id) throws Exception{
-		List<OrderListDTO> orderList = sqlSession.selectList(namespace+"orderList", id);
+	//orderlist 관련 1-26
+	public int getTotalCount_orderList(String id) throws Exception{
+		return sqlSession.selectOne(namespace+"getTotalCount_orderList", id);
+	}
+	public List<OrderListDTO> orderList(RowNum rowNum, String id) throws Exception{
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("startRow", rowNum.getStartRow());
+		map.put("lastRow", rowNum.getLastRow());
+					
+		List<OrderListDTO> orderList = sqlSession.selectList(namespace+"orderList", map);
+					
 		List<OrderListDTO> ar = new ArrayList<OrderListDTO>();
+					
 		for(OrderListDTO orderListDTO : orderList) {
 			orderListDTO = sqlSession.selectOne(namespace+"orderListOne", orderListDTO);
 			String file_name = sqlSession.selectOne(namespace+"orderFileName", orderListDTO.getFile_num());
@@ -69,6 +79,7 @@ public class DramaDAO  {
 
 			ar.add(orderListDTO);
 		}
+					
 		return ar;
 	}
 	//seat페이지 DB관련 01-10수정

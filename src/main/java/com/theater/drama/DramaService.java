@@ -43,9 +43,16 @@ public class DramaService {
 	@Inject
 	private MemberDAO memberDAO;
 	
-	//orderlist 관련 01-15
-	public List<OrderListDTO> orderList(MemberDTO memberDTO) throws Exception{
-		return dramaDAO.orderList(memberDTO.getId());
+	//orderlist 관련 01-26
+	public ModelAndView orderList(MemberDTO memberDTO,ListData listData,ModelAndView mv) throws Exception{
+		RowNum rowNum = listData.makeRow();
+		int totalCount = dramaDAO.getTotalCount_orderList(memberDTO.getId());
+		Pager pager = listData.makePage(totalCount);
+		List<OrderListDTO> orderList = dramaDAO.orderList(rowNum, memberDTO.getId());
+		mv.addObject("orderList", orderList);
+		mv.addObject("pager", pager);
+		mv.setViewName("member/orderlist");
+		return mv;
 	}
 	//=============
 	/*1-15수정*/
@@ -73,8 +80,17 @@ public class DramaService {
 	public int search_dateNum(int drama_num, String drama_date, String drama_time) throws Exception{
 		return dramaDAO.search_dateNum(drama_num, drama_date, drama_time);
 	}
-	public List<SeatDTO> selectSeat(int drama_num, int date_num) throws Exception{
-		return dramaDAO.selectSeat(drama_num, date_num);
+	public List<String> selectSeat(int drama_num, int date_num) throws Exception{
+		List<SeatDTO> StringSeat = dramaDAO.selectSeat(drama_num, date_num);
+		List<String> parsingSeat = new ArrayList<String>();
+		for(SeatDTO seatDTO : StringSeat) {
+			StringTokenizer st = new StringTokenizer(seatDTO.getSelect_seat(), ",");
+			while(st.hasMoreTokens()) {
+				String parsing = st.nextToken();
+				parsingSeat.add(parsing);
+			}
+		}
+		return parsingSeat;
 	}
 	public DramaDTO selectOne(int num) throws Exception{
 		dramaDAO.hitUpdate(num);

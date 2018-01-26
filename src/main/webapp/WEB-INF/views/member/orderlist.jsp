@@ -83,6 +83,24 @@
 						</c:forEach>
 					</tbody>
 				</table>
+				<c:if test="${pager.totalPage>0}">
+					<div class="paging">
+						<ul class="pagination">
+						<c:if test="${pager.curBlock>1}">
+							<li><a href="./orderlist?curPage=1">&lt;&lt;</a></li>
+							<li><a href="./orderlist?curPage=${pager.startNum-1}">[이전]</a></li>
+						</c:if>
+							
+						<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+							<li><a href="./orderlist?curPage=${i}">${i}</a></li>
+						</c:forEach>
+						<c:if test="${pager.curBlock < pager.totalBlock}">
+							<li><a href="./orderlist?curPage=${pager.getLastNum()+1}">[다음]</a></li>
+							<li><a href="./orderlist?curPage=${pager.totalPage}">&gt;&gt;</a></li>
+						</c:if>
+					</ul>
+					</div>
+				</c:if>
 			</div>
 		</div>
 <c:import url="../temp/footer.jsp"></c:import>
