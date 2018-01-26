@@ -535,8 +535,9 @@
 	border: 1px red solid;
 }
 #image_contents{
-		width:750px;
-		margin: 0 auto;
+	width:750px;
+	margin: 0 auto;
+	margin-top: 50px;
 }
 #dele{
 	display: inline-block;

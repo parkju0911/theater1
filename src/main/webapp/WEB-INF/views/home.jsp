@@ -297,7 +297,7 @@ function popupOpen(){
 					style="padding: 8px 10px;">
 			</c:if>
 			<c:if test="${member.id ne null}">
-				<a href="./point/pointCheck"> <img
+				<a href="./point/pointList"> <img
 					src="./resources/images/home/btn_point.png"
 					style="padding: 8px 10px;">
 			</c:if>
