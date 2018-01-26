@@ -1,6 +1,5 @@
  <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
@@ -16,6 +15,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link href="./resources/css/drama/dramaList.css" rel="stylesheet">
+<link href="styles/ihover.css" rel="stylesheet">
+<link href="./resources/css/common/ihober.css" rel="stylesheet">
    <title>Home</title>
 
 <style type="text/css">
@@ -139,7 +140,7 @@ function popupOpen(){
 
 <body>
 <c:import url="./temp/header.jsp"></c:import>
-<div style="height: 60px;"></div>
+<div style="height: 110px;"></div>
 <!-- SLIDEBOX -->
 	<div class="w3-content w3-display-container" style="max-width: 1000px;  background-image: url(./resources/images/home/MAINBG.png);    width: 100%;    height: 650px;    MARGIN: 0 AUTO;">
 			<div id="slidebox">
@@ -215,14 +216,20 @@ function popupOpen(){
 	}
 	setInterval(changeSlide, 6000);
 </script>
-				<div class="mainDramaList" style="margin: 0 auto;    width: 1300px;   overflow: overlay;    padding: 50px;">
-				<c:forEach begin="0" end="3" var = "j">
+
+	<p style="    width: 250px;
+    height: auto;
+    margin: 0 auto;
+    padding-top: 300px;"><img style="    width: 250px;" alt="" src="./resources/images/home/homeDrama.png"></p>
+
+				<div class="mainDramaList" style="margin: 0 auto;    width: 1000px;   overflow: overlay;    padding: 50px;">
+				<c:forEach begin="0" end="5" var = "j">
 					<a href="./drama/dramaview?drama_num=${list[j].drama_num}">
-					<div class="col-md-4 unpa-ad-responsive-parent"  style="width: 300px;">
-						<div class="unpa-card unpa-card-box-shadow unpa-review" style="background-color: whitesmoke; border: 0px;">
+					<div class="col-md-4 unpa-ad-responsive-parent"  style="    PADDING-LEFT: 50PX; width: 300px; height: 345px; PADDING-RIGHT: 50PX;    MARGIN-TOP: 50PX;">
+						<!-- <div class="unpa-card unpa-card-box-shadow unpa-review" style="background-color: snow;"> -->
 							<div class="main-section"
-								style="border-left: 1px solid #f2f2f2;border-right: 1px solid #f2f2f2;">
-								<a class="user-info-link" href="">
+								style="width: 200PX;">
+								<%-- <a class="user-info-link" href="">
 									<div class="user-info" style="display: inline-block; ">
 										<div class="unpa-feed-user-info-box">
 											<div class="unpa-user-block">
@@ -233,7 +240,7 @@ function popupOpen(){
 										</div>
 									</div>
 									<div class="time">${list[j].file_num}</div>
-								</a>
+								</a> --%>
 								<div class="unpa-feed-card-hover-actions">
 									<span class="unpa-share-this-button"><i
 										class="unpacon-share"></i></span>
@@ -242,10 +249,10 @@ function popupOpen(){
 
 					<a href="./drama/dramaview?drama_num=${list[j].drama_num}">
 								<div class="main-image"
-									style="background-image: url('./resources/upload/${file[j].file_name}')" >
-									<div class="content">
+									style="background-position: center; width: 220px;height: 220px; border-radius: 100%; background-image: url('./resources/upload/${file[j].file_name}');">
+									<%-- <div class="content">
 										${list[j].contents}
-									</div>
+									</div> --%>
 								</div></a>
 								<div class="review-contents">
 									<div class="product-info" style="min-height: 60px;">
@@ -266,7 +273,7 @@ function popupOpen(){
 									</div>
 								</div>
 							</div>
-						</div>
+						<!-- </div> -->
 					</div>	
 					</a>
 				</c:forEach>
@@ -345,6 +352,40 @@ function popupOpen(){
 			<div style="clear: both;"></div>
 		</div>
 	</div>
+	
+	
+	
+	<!-- <!--  --> -->
+	<div class="row">
+  <div class="col-sm-6">
+ 
+    <!-- normal -->
+    <div class="ih-item circle effect5"><a href="#">
+        <div class="img"><img src="images/assets/1.jpg" alt="img"></div>
+        <div class="info">
+          <div class="info-back">
+            <h3>Heading here</h3>
+            <p>Description goes here</p>
+          </div>
+        </div></a></div>
+    <!-- end normal -->
+ 
+  </div>
+  <div class="col-sm-6">
+ 
+    <!-- colored -->
+    <div class="ih-item circle colored effect5"><a href="#">
+        <div class="img"><img src="images/assets/3.jpg" alt="img"></div>
+        <div class="info">
+          <div class="info-back">
+            <h3>Heading here</h3>
+            <p>Description goes here</p>
+          </div>
+        </div></a></div>
+    <!-- end colored -->
+ 
+  </div>
+</div>
 	<c:import url="./temp/footer.jsp"></c:import>
 </body>
 
