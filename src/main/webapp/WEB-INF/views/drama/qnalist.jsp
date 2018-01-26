@@ -40,18 +40,7 @@
 				document.frm.kind=v;
 				document.frm.submit();
 			}); 
-			$(".list").click(function (){
-				$.ajax({
-				url:"qnalist.jsp",
-				dataType:"html",
-				type:"get",
-				data:{},
-				success: function(result) {
-					$("#review_list").html(result);
-						
-						}
-				})
-		}); 
+			
 		
 	});
 
