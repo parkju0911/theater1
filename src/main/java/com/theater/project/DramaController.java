@@ -147,10 +147,10 @@ return "sss";
 		//회사명,좌석 수 가져오기
 		CompanyDTO companyDTO = memberService.searchCompany(dramaDTO.getCompany_num());
 		companyDTO.setName(memberService.searchCompanyName(companyDTO.getId()));
-			
+				
 		//해당 공연 선택된 좌석 리스트 가져오기
 		int date_num= dramaService.search_dateNum(seatDTO.getDrama_num(), seatDTO.getDrama_date().toString(), seatDTO.getDrama_time());
-		List<SeatDTO> selectSeatDTO=dramaService.selectSeat(seatDTO.getDrama_num(), date_num);
+		List<String> selectSeatDTO=dramaService.selectSeat(seatDTO.getDrama_num(), date_num);
 		int selectSize = selectSeatDTO.size();
 		mv.addObject("drama", dramaDTO);
 		mv.addObject("company", companyDTO);
@@ -158,7 +158,7 @@ return "sss";
 		mv.addObject("select", selectSeatDTO);
 		mv.addObject("selectSize", selectSize);
 		mv.setViewName("drama/selectSeat");
-			
+				
 		return mv;
 	}
 	//Drama_ticket
@@ -167,15 +167,15 @@ return "sss";
 		//해당 날짜의 해당 시간의 남아있는 좌석 수만큼 가져오기
 		int total_seat = dramaService.total_seat(dramaListDTO.getDrama_num());
 		int date_num = dramaService.search_dateNum(dramaListDTO.getDrama_num(), dramaListDTO.getDrama_date(), dramaListDTO.getDrama_time());
-		List<SeatDTO> select = dramaService.selectSeat(dramaListDTO.getDrama_num(), date_num);
-			
+		List<String> select = dramaService.selectSeat(dramaListDTO.getDrama_num(), date_num);
+				
 		int select_size = 0;
 		if(date_num != 0) {
 			select_size = total_seat-select.size();
 		}
 		mv.addObject("ticket", select_size);
 		mv.setViewName("drama/drama_ticket");
-			
+				
 		return mv;
 	}
 	//Drama_time list
@@ -377,7 +377,7 @@ return "sss";
 				//공연 업데이트(수정) post
 				@RequestMapping(value="dramaReviewupdate" , method=RequestMethod.POST)
 				public String dramaReviewupdate(ReviewDTO reviewDTO , ModelAndView mv , MultipartHttpServletRequest Ms , HttpSession session ,RedirectAttributes rd, ListData listData  )throws Exception{
-					System.out.println("review_num2: "+reviewDTO.getReview_num());
+					
 					int result= dramaService.review_update(reviewDTO , Ms, session);
 				
 					String message="DB오류.";
@@ -455,7 +455,20 @@ return "sss";
 			
 			return mv;
 		}
-		
+	//좌석 선택 1-10 수정
+	@RequestMapping(value="insertBuy")
+	public void insertBuy(SeatDTO seatDTO, String drama_date, int price, HttpSession session) throws Exception{
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+
+		seatDTO.setDrama_date(Date.valueOf(drama_date));;
+		int result=dramaService.insertBuy(seatDTO, memberDTO, price);
+								
+		if(result>0) {
+			System.out.println("성공");
+		}else {
+			System.out.println("실패");
+		}
+	}	
 	//insert -> form 이동
 	@RequestMapping(value="dramaWrite", method=RequestMethod.GET)
 	public String insert(Model model, HttpSession session,RedirectAttributes ra) {

@@ -8,7 +8,14 @@ public class Pager {
 	private int totalBlock;
 	private String search;
 	private String kind;
+	private int totalPage;
 	
+	public int getTotalPage() {
+		return totalPage;
+	}
+	public void setTotalPage(int totalPage) {
+		this.totalPage = totalPage;
+	}
 	public int getStartNum() {
 		return startNum;
 	}

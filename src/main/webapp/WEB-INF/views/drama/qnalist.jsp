@@ -30,14 +30,8 @@
 					}  
 				});
 			});
-		/* $(".write_reply").click(function() {
-			if($(".reply_form").css("display") =="none"){
-				$(".reply_form").css("display", "block");
-			} else {
-				$(".reply_form").css("display" , "none");
-			}
-		}) */
-		
+	
+		 
 			$(".list").click(function (){
 				var cur=$(this).attr("title");
 				var s = '${pager.search}';
@@ -46,20 +40,10 @@
 				document.frm.search=s;
 				document.frm.kind=v;
 				document.frm.submit();
-			});
-		/* $("#con").click(function() {
-			var conf = confirm("삭제하겠습니까?")
-			if(conf == true){
-				$("#dele").prop("action", "qna_delete?qna_viewnum="+$(this).attr("title"));
-			}else{
-				window.reload();
-			}
-		}) */
+			}); 
+	
 		
 	});
-	$(".paging").click(function() {
-		location.href=$("#page")
-	})
 
 </script>
 </head>
@@ -94,10 +78,10 @@
 			<table id="qna_box">
 				<c:forEach items="${qnalist}"  var="list">
 				<c:if test="${list.drama_num eq drama_num }">
-				
+				<!-- 부모글 form -->
 								<tr>
 									<td>
-											
+											<c:if test="${list.depth eq 0 }">
 											<div id="member_qna1">
 														
 														<c:catch>
@@ -110,9 +94,10 @@
 																			
 														<c:if test="${member.id == list.id }">
 																		 
-														<a href="##"  class="write_reply" id="${list.qna_viewnum }" title="${list.qna_viewnum }">
-														<!-- qna 작성 아이콘 -->
+														<c:if test="${list.depth eq 0}">
+				<!-- qna 작성 아이콘 --><a href="##"  class="write_reply" id="${list.qna_viewnum }" title="${list.qna_viewnum }">
 														<img alt="" src="../resources/images/starpoint/btn_write_reply.png"></a>
+														</c:if>
 														<!-- qna 삭제 아이콘  -->
 														<a href="qna_delete?qna_viewnum=${list.qna_viewnum}" class="del_reply" onclick="if(!confirm('정말로 삭제하시겠습니까?')){return false;}" title="${list.qna_viewnum }" >
 														<img alt="" src="../resources/images/starpoint/btn_del_reply.png"></a>				
@@ -120,12 +105,34 @@
 														<p>${list.contents }</p>
 																	
 											</div>
+												</c:if>
+				<!-- 답글 form -->
+											<c:if test="${list.depth > 0 }">
+														<div id="member_qna_reply">
+														<c:catch>
+														<c:forEach begin="1" end="${list.depth }">
+														<img src="../resources/images/starpoint/reply_icon.png">
+														</c:forEach>
+														</c:catch>		
+											 				${list.qna_viewnum } ${list.id } ${list.reg_date }
+														<c:if test="${member.id == list.id }">
+														
+														<!-- qna 삭제 아이콘  -->
+														<a href="qna_delete?qna_viewnum=${list.qna_viewnum}" class="del_reply" onclick="if(!confirm('정말로 삭제하시겠습니까?')){return false;}" title="${list.qna_viewnum }" >
+														<img alt="" src="../resources/images/starpoint/btn_del_reply.png"></a>				
+														</c:if>
+														<p>${list.contents }</p>
+														</div>		
+											<!--답글 --></c:if>
+											
+											
+										<!-- 해당 dramaNum qna만 보게끔 -->
 									</td>
 							</tr>
-					<tr>
-			
-								
+				
+				
 <!--------------답글------------->		
+					<tr>
 						<td class="${list.qna_viewnum }" id="reply_form">
 							<form action="qnareply"  method="post" style="float: left;">
 									<input type="hidden" name="qna_viewnum" value="${list.qna_viewnum }">
@@ -143,17 +150,20 @@
 				</c:forEach>
 				
 			</table>
-		``		<div id="paging">
-				<c:if test="${pager.curBlock gt 1}">
-					<span class="list" title="${pager.startNum-1}" class="paging" #page>[이전]</span>
-				</c:if>
-				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i" >
-					<span class="list" title="${i}" class="paging" #page>${i}</span>
-				</c:forEach>
-				<c:if test="${pager.curBlock lt pager.totalBlock}">
-					<span class="list" title="${pager.lastNum+1}" class="paging" #page>[다음]</span>
-				</c:if>
-			</div>
+		``				
+		<div id="paging">
+		<c:if test="${pager.curBlock gt 1}">
+			<span class="list" title="${pager.startNum-1}">[이전]</span>
+		</c:if>
+		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+			<span class="list" title="${i}">${i}</span>
+		</c:forEach>
+		<c:if test="${pager.curBlock lt pager.totalBlock}">
+			<span class="list" title="${pager.lastNum+1}">[다음]</span>
+		</c:if>
+		
+		
+	</div>
 		</div>
 </body>
 </html>

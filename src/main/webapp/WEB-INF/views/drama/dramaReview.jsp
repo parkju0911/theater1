@@ -45,13 +45,11 @@
 </style>
 </head>
 <body>
-	<%-- <c:import url="../temp/review_search.jsp"></c:import> --%>
 	<!-- header -->
 	<c:import url="../temp/header.jsp"></c:import>
 	<!-- header end -->
-	<!-- <p id="top_line"></p> -->
+	
 	<section id="Review_main">
-
 		<div class="title_wrap"
 			style="border-top: 2px solid #5d4137; padding-top: 8px; width: 1000px; font-family: 'Nanum Gothic', sans-serif;">
 			<h6 id="h6_title" style="margin-right: 5px; margin-top: 8px;">
@@ -78,6 +76,7 @@
 			</div>
 		</c:if>
 		<div class="sb-search">
+
 			<form name="frm" id="frm" action="./dramaReview" method="get"
 				class="form-wrapper cf" style="width: 250px; height: auto;">
 				<input type="hidden" value="1" name="curPage" id="curPage">
@@ -86,47 +85,52 @@
 					required>
 				<button type="submit">Search</button>
 			</form>
-
 		</div>
-
 		<c:forEach items="${review}" var="list" varStatus="i">
 			<div class="list_box">
 				<a href="./dramaReviewview?review_num=${list.review_num}">
 					<div class="box_left">
-						<img alt=""
-							src="${pageContext.request.contextPath}/resources/upload/${file[i.index].file_name}"
-							style="width: 230px; height: 200px;">
+						<c:if test="${file[i.index].file_num eq 0 }">
+							<img alt="" src="../resources/images/starpoint/no_image.png"
+								style="width: 230px; height: 200px";>
+						</c:if>
+						<c:if test="${file[i.index].file_num ne 0 }">
+							<img alt=""
+								src="${pageContext.request.contextPath}/resources/upload/${file[i.index].file_name}"
+								style="width: 230px; height: 200px;">
+						</c:if>
 					</div>
 					<div class="box_right">
 						<p class="review_date">${list.review_date}</p>
-						<p id="writer" style="width: 111px; font-size: 14px; font-weight: bold; text-align: right; margin-top: 39px; margin-right: -84px;">${list.id}</p>
+						<p id="writer"
+							style="width: 111px; font-size: 14px; font-weight: bold; text-align: right; margin-top: 39px; margin-right: -84px;">${list.id}</p>
 						<div id="review_contents">
 							<a href="./dramaReviewview?review_num=${list.review_num}">
 								<p id="review_title">${list.title}</p>
-								<div style="font-size: 14px; font-family: 'Nanum Gothic', sans-serif;">
+								<div
+									style="font-size: 14px; font-family: 'Nanum Gothic', sans-serif;">
 									<p class="review_con">${list.contents}</p>
 								</div>
 							</a>
 							<c:if test="${member.id eq list.id}">
 								<div class="btnGroup" style="margin-top: 84px;">
 									<ul>
-										<li>
-											<a href="./dramaReviewupdate?review_num=${list.review_num}">
-											<img alt="" src="../resources/images/review/update-btn.png">
-											</a>
-										</li>
-										<li>
-											<a href="./dramaReviewdelete?review_num=${list.review_num }"
-											onclick="if(!confirm('정말로 삭제하시겠습니까?')){return false;}">
-											<img alt="" src="../resources/images/review/delete-btn.png">
-											</a>
-										</li>
+										<li><a
+											href="./dramaReviewupdate?review_num=${list.review_num}">
+												<img alt="" src="../resources/images/review/update-btn.png">
+										</a></li>
+										<li><a
+											href="./dramaReviewdelete?review_num=${list.review_num }"
+											onclick="if(!confirm('정말로 삭제하시겠습니까?')){return false;}"> <img
+												alt="" src="../resources/images/review/delete-btn.png">
+										</a></li>
 									</ul>
 								</div>
 							</c:if>
 						</div>
 					</div>
-					<div class="star" style="margin-top: -28px; width: 855px; padding-bottom: 75px;">
+					<div class="star"
+						style="margin-top: -28px; width: 855px; padding-bottom: 75px;">
 						<c:if test="${list.star==5 }">
 							<div class="review_star">
 								별점:<img alt="" src="../resources/images/starpoint/star_5.png"
@@ -176,15 +180,16 @@
 				<form id="frm" name="frm" action="./dramaReview" method="get"
 					class="form-wrapper cf" style="width: 250px; height: auto;">
 					<input type="hidden" value="1" name="curPage" id="curPage">
-					<input type="hidden" id="kind" name="kind" value="title">
-					<input type="text" id="search" name="search" placeholder="Search here..." required>
+					<input type="hidden" id="kind" name="kind" value="title"> <input
+						type="text" id="search" name="search" placeholder="Search here..."
+						required>
 					<button type="submit">Search</button>
 				</form>
 			</div>
 		</div>
 	</section>
-	
-	
+
+
 	<!-- footer  -->
 	<c:import url="../temp/footer.jsp"></c:import>
 	<!-- footer end -->

@@ -108,7 +108,15 @@ function del() {
 				<img alt="" src="../resources/images/starpoint/star_1.png" style="height: 20px;float: right; margin-right: -122px;">
 			</c:if>
 		</p>
-		<div id="image_box"><img alt="" src="${pageContext.request.contextPath}/resources/upload/${file.file_name}" style="width: 400px;height: 200px;"> </div>
+		<div id="image_box">
+			<c:if test="${file.file_num eq 0 }">
+				<img alt="" src="../resources/images/starpoint/no_image.png" style="width: 400px; height: 200px;">			
+			</c:if>
+			<c:if test="${file.file_num ne 0 }">
+			<img alt="" src="${pageContext.request.contextPath}/resources/upload/${file.file_name}" style="width: 400px;height: 200px;"> 
+			</c:if>
+			
+			</div>
 	<div class="b_contents">${selectOne.contents}</div>
 	
 	<div class="btn-group">

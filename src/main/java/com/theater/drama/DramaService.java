@@ -43,9 +43,16 @@ public class DramaService {
 	@Inject
 	private MemberDAO memberDAO;
 	
-	//orderlist 관련 01-15
-	public List<OrderListDTO> orderList(MemberDTO memberDTO) throws Exception{
-		return dramaDAO.orderList(memberDTO.getId());
+	//orderlist 관련 01-26
+	public ModelAndView orderList(MemberDTO memberDTO,ListData listData,ModelAndView mv) throws Exception{
+		RowNum rowNum = listData.makeRow();
+		int totalCount = dramaDAO.getTotalCount_orderList(memberDTO.getId());
+		Pager pager = listData.makePage(totalCount);
+		List<OrderListDTO> orderList = dramaDAO.orderList(rowNum, memberDTO.getId());
+		mv.addObject("orderList", orderList);
+		mv.addObject("pager", pager);
+		mv.setViewName("member/orderlist");
+		return mv;
 	}
 	//=============
 	/*1-15수정*/
@@ -73,8 +80,17 @@ public class DramaService {
 	public int search_dateNum(int drama_num, String drama_date, String drama_time) throws Exception{
 		return dramaDAO.search_dateNum(drama_num, drama_date, drama_time);
 	}
-	public List<SeatDTO> selectSeat(int drama_num, int date_num) throws Exception{
-		return dramaDAO.selectSeat(drama_num, date_num);
+	public List<String> selectSeat(int drama_num, int date_num) throws Exception{
+		List<SeatDTO> StringSeat = dramaDAO.selectSeat(drama_num, date_num);
+		List<String> parsingSeat = new ArrayList<String>();
+		for(SeatDTO seatDTO : StringSeat) {
+			StringTokenizer st = new StringTokenizer(seatDTO.getSelect_seat(), ",");
+			while(st.hasMoreTokens()) {
+				String parsing = st.nextToken();
+				parsingSeat.add(parsing);
+			}
+		}
+		return parsingSeat;
 	}
 	public DramaDTO selectOne(int num) throws Exception{
 		dramaDAO.hitUpdate(num);
@@ -237,17 +253,16 @@ public class DramaService {
 		reviewDTO.setId(memberDTO.getId());
 		System.out.println("ID:"+reviewDTO.getId());
 		
-		int file_num = dramaDAO.review_file_num(reviewDTO);
-		System.out.println("file_num:"+file_num);
-		reviewDTO.setFile_num(file_num);
-		System.out.println("title"+reviewDTO.getTitle());
-		System.out.println("drama_num:"+reviewDTO.getDrama_num());
-		System.out.println("내용:"+reviewDTO.getContents()); 
-		System.out.println("별점:"+reviewDTO.getStar());
-		System.out.println("리뷰인서트");
-	
-		
 		MultipartFile  file  = Ms.getFile("files"); 
+		
+		if(file.isEmpty()){
+			reviewDTO.setFile_num(reviewDTO.getFile_num());
+		}else{
+		
+			int file_num = dramaDAO.review_file_num(reviewDTO);
+			
+			reviewDTO.setFile_num(file_num);
+		
 		List<FileDTO> names = new ArrayList<FileDTO>();
 	
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -256,13 +271,14 @@ public class DramaService {
 		map.put("contents", reviewDTO.getContents());
 
 			String name = fileSaver.fileSave(file, session, "upload");
+			System.out.println(name);
 			FileDTO fileDTO = new FileDTO();
 			fileDTO.setFile_num(file_num);
 			fileDTO.setFile_name(name);
 			fileDTO.setFile_route(file.getOriginalFilename());
 			names.add(fileDTO);
 			fileDAO.insert(fileDTO);
-		
+		}
 			int result = dramaDAO.review_insert(reviewDTO);
 			
 		return result;
@@ -278,14 +294,17 @@ public class DramaService {
 	//공연리뷰 수정
 		public int review_update(ReviewDTO reviewDTO , MultipartHttpServletRequest Ms , HttpSession session)throws Exception{
 			MemberDTO memberDTO =  (MemberDTO)session.getAttribute("member");
-			int file_num = dramaDAO.review_file_num(reviewDTO);
-			System.out.println("file_num:"+file_num);
-			
-		
 			
 			MultipartFile  file  = Ms.getFile("files"); 
-			System.out.println("file:"+file);
-			System.out.println("names: 이전");
+			if(file.isEmpty()){
+				reviewDTO=dramaDAO.review_selectOne(reviewDTO.getReview_num());
+				reviewDTO.setFile_num(reviewDTO.getFile_num());
+				System.out.println("file_num 파일값이 널일때"+reviewDTO.getFile_num());
+			}else{
+				System.out.println("reviewDTO.getreview_num:"+reviewDTO.getReview_num());
+				int file_num = dramaDAO.review_file_num(reviewDTO);
+				System.out.println("file_num:"+file_num);
+			
 			List<FileDTO> names = new ArrayList<FileDTO>();
 			System.out.println("names: 이후");
 		
@@ -297,9 +316,7 @@ public class DramaService {
 				reviewDTO.setFile_num(file_num);
 				System.out.println("reviewDTO.setfilenum:"+reviewDTO.getFile_num());
 				String name = fileSaver.fileSave(file, session, "upload");
-				if(name.isEmpty()){
-					reviewDTO.setFile_num(reviewDTO.getFile_num());
-				}
+			
 				System.out.println("name"+name);
 				FileDTO fileDTO = new FileDTO();
 				fileDTO.setFile_num(file_num);
@@ -310,7 +327,7 @@ public class DramaService {
 				System.out.println("names:"+names);
 				
 				fileDAO.insert(fileDTO);
-			
+			}
 				int result = dramaDAO.review_update(reviewDTO);
 			
 			return result;

@@ -33,12 +33,12 @@ $(function(){
 			if(select==id){
 				$('#'+id).css('background-image','url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/step2/seat_icons_new.png)');
 				$('#'+id).css('background-color', '#bbb');
-				$('#'+id).css('background-position', '-25px 0');
+				$('#'+id).css('background-position', '-32px 2px');
+				$('#'+id).css('background-size','350px');
 			}
 		</c:forEach>
 		$('#'+id).click(function(){
 			var color=$('#'+id).css('background-color');
-			
 			if(color != 'rgb(187, 187, 187)'){
 				if(count<'${seat.ticket_numbers}'||color=='rgb(255, 0, 0)'){
 					if(color=='rgb(255, 0, 0)'){
@@ -123,9 +123,7 @@ $(function(){
 	<form>
 		<div class="totalbody">
 			<div class="title">
-				<marquee id="title" behavior="alternate" width="160" direction="left" scrollamount="5" loop="3" style="margin-top: 4px;
-    margin-left: 163px;
-    font-family: -webkit-pictograph;">${drama.title}</marquee><span>${drama.place} | ${company.name} | 남은좌석</span> <input type="text" id="anySeat" readonly="readonly" value="${(company.row_num * company.col_num)-selectSize}"><span>/${company.row_num * company.col_num} | 구매 장수 <input id="select" type="number" readonly="readonly"/>/${seat.ticket_numbers}</span> 
+				<marquee id="title" behavior="alternate" width="160" direction="left" scrollamount="5" loop="3" style="margin-top: 4px;font-family: -webkit-pictograph;">${drama.title}</marquee><span>${drama.place} | ${company.name} | 남은좌석</span> <input type="text" id="anySeat" readonly="readonly" value="${(company.row_num * company.col_num)-selectSize}"><span>/${company.row_num * company.col_num} | 구매 장수 <input id="select" type="number" readonly="readonly"/>/${seat.ticket_numbers}</span> 
 				<input id="time" type="text" value="${seat.drama_time}" readonly="readonly" style="margin-left: -85px;"> <input id="date" type="text" value="${seat.drama_date}" readonly="readonly">
 			</div>
 			
