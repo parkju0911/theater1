@@ -1,6 +1,5 @@
  <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
@@ -16,19 +15,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link href="./resources/css/drama/dramaList.css" rel="stylesheet">
+<link href="styles/ihover.css" rel="stylesheet">
+<link href="./resources/css/common/ihover.css" rel="stylesheet">
    <title>Home</title>
 
 <style type="text/css">
 header{
     background-image: url(./resources/images/home/headerImg.jpg);
-    height: 541px;
+    height: 980px;
     width: 100%;    
     background-size: cover;
     background-position-y: -189px;
-   /*  padding-bottom: 50px; */
-    /* background-repeat-x: no-repeat; */
-    
-    /* background-position: center; */
 }
 nav li a {
     text-shadow: #fffffb66 0px 2px, #fffffb6b 2px 0px, #fffffb69 -2px 0px, #fffffb69 0px -2px, #fffffb57 -1.4px -1.4px, #fffffb47 1.4px 1.4px, #fffffb54 1.4px -1.4px, #fffffb40 -1.4px 1.4px;
@@ -86,8 +83,10 @@ td, select {
 }
 #slidebox {
 		position:relative;
-		width: 690px;
-    height: 518px;
+		/* width: 690px;
+    height: 518px; */
+       width: 363px;
+    height: 226px;
 		overflow:hidden;
 		white-space:nowrap;
 		    MARGIN: 0 AUTO;
@@ -99,12 +98,15 @@ td, select {
 	}
 	#slidebox ul li {
 		position:absolute;
-		MARGIN-TOP: 128PX;
+		/* MARGIN-TOP: 128PX; */
+		margin-top: 45px;
 	}
 	#slidebox ul li img {
-		width: 689PX;
-    height: 390PX;
-	}
+		/* width: 689PX;
+    height: 390PX; */
+    width: 366PX;
+    height: 180px;
+ }
 </style>
 </head>
 <script type="text/javascript">
@@ -115,6 +117,11 @@ td, select {
 </script>
 
 <script type="text/javascript">
+$(".hover").mouseleave(
+		  function () {
+		    $(this).removeClass("hover");
+		  }
+		);
 
 
 
@@ -129,6 +136,19 @@ function popupOpen(){
 	}
 
 
+	
+	
+	$(document).ready(function() {
+		  var count = 0;
+		  var blocks = $(".main-section");
+
+		  var testEffect = setInterval(function() {
+		    $(blocks[count - 1]).removeClass("hover");
+		    $(blocks[count]).addClass("hover");
+		    count++;
+		    if (count > 4) clearInterval(testEffect);
+		  }, 800);
+		});
 
 </script>
 
@@ -139,42 +159,195 @@ function popupOpen(){
 
 <body>
 <c:import url="./temp/header.jsp"></c:import>
-<div style="height: 60px;"></div>
+
+	<p style="    width: 250px;
+    height: auto;
+    margin: 0 auto;
+    padding-top: 300px;"><img style="    width: 250px;" alt="" src="./resources/images/home/homeDrama.png"></p>
+
+				<div class="mainDramaList" style="margin: 0 auto;    width: 1000px;   overflow: overlay;    padding: 50px;">
+				<c:forEach begin="0" end="5" var = "j">
+					<a href="./drama/dramaview?drama_num=${list[j].drama_num}">
+					<div class="col-md-4 unpa-ad-responsive-parent"  style="    PADDING-LEFT: 50PX; width: 300px; height: 290px;MARGIN-TOP: 50PX;">
+						<!-- <div class="unpa-card unpa-card-box-shadow unpa-review" style="background-color: snow;"> -->
+							<div class="main-section"style="width: 260PX;">
+								<%-- <a class="user-info-link" href="">
+									<div class="user-info" style="display: inline-block; ">
+										<div class="unpa-feed-user-info-box">
+											<div class="unpa-user-block">
+												<div class="user-labels" style="margin-top: 5px;">
+													<span class="skin-type false ">${list[j].place}</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="time">${list[j].file_num}</div>
+								</a> --%>
+								<div class="unpa-feed-card-hover-actions">
+									<span class="unpa-share-this-button"><i
+										class="unpacon-share"></i></span>
+
+								</div>
+
+					
+					<%-- 	<a href="./drama/dramaview?drama_num=${list[j].drama_num}"> --%>
+							<figure class="snip1566">	
+								<div class="main-image"
+									style="background-position: center; width: 220px;height: 220px; border-radius: 100%; background-image: url('./resources/upload/${file[j].file_name}');">									
+								</div>
+								 <figcaption><i class="ion-android-add"></i></figcaption>
+						
+								<div class="review-contents">
+									<div class="product-info" style="min-height: 60px;    text-align: center; padding-top: 10px;">
+										<!-- <div class="left">
+										
+											<div class="product-image"
+												style="background-image: url(./resources/images/drama_1.jpg')"></div>
+										</div> -->
+
+
+										<div class="right">
+											<div class="brand-name-and-rating">
+												<div class="brand-name" style="color: black;font-size: 12px;font-family: 'Nanum Gothic', sans-serif;">
+												<%-- 	<a href="./drama/dramaview?drama_num=${list[j].drama_num}"> --%>${list[j].title}<br><p style="color: #a2a2a2;">${list[j].place}</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</figure>
+						</div>
+						</div>
+						</a>
+						</c:forEach>
+						</div>
+					<%-- </div>	
+					</a>
+				</c:forEach>
+				</div>
+					 --%>
+					 
+					 
+					 <div style="height: 140px;"></div>
+					 <p ><img style="width: 12%;margin-bottom: -13px;" alt="" src="./resources/images/home/homeEvent.png"></p>
 <!-- SLIDEBOX -->
-	<div class="w3-content w3-display-container" style="max-width: 1000px;  background-image: url(./resources/images/home/MAINBG.png);    width: 100%;    height: 650px;    MARGIN: 0 AUTO;">
-			<div id="slidebox">
+	<div class="w3-content w3-display-container" style="max-width: 100%; background-image: url(./resources/images/home/film.png);width: 100%;  height: 270px;MARGIN: 0 AUTO; background-repeat: round;">
+	<!-- style="max-width: 1000px;  background-image: url(./resources/images/home/MAINBG.png);    width: 100%;    height: 650px;    MARGIN: 0 AUTO;" -->
+			<div id="slidebox"  style="    float: left;  margin-left: 9px;">
 			<ul id="slider">
 				<li>
-					<img class="mySlides" src="./resources/images/home/main1.jpg">
+					<a href="./event/eventView.event?num=3"><img class="mySlides" src="./resources/images/home/main1.jpg"></a>
+				</li>
+				<!-- <li>
+					<a href="./event/eventView.event?num=3"><img class="mySlides" src="./resources/images/home/main2.jpg"></a>
 				</li>
 				<li>
-					<img class="mySlides" src="./resources/images/home/main2.jpg">
+					<a href="./event/eventView.event?num=4"><img class="mySlides" src="./resources/images/home/main3.jpg"></a>
 				</li>
 				<li>
-					<img class="mySlides" src="./resources/images/home/main3.jpg">
+					<a href="./event/eventView.event?num=2"><img class="mySlides" src="./resources/images/home/main4.jpg"></a>
 				</li>
 				<li>
-					<img class="mySlides" src="./resources/images/home/main4.jpg">
+					<a href="./event/eventView.event?num=3"><img class="mySlides" src="./resources/images/home/main5.jpg"></a>
+				</li> -->
+			</ul>
+		</div>
+		
+			<div id="slidebox" style="float: left;margin-left: 17px;">
+			<ul id="slider">
+				<li>
+					<a href="./event/eventView.event?num=12"><img class="mySlides" src="./resources/images/home/main5.jpg"></a>
+				</li>
+				<!-- <li>
+					<a href="./event/eventView.event?num=3"><img class="mySlides" src="./resources/images/home/main1.jpg"></a>
 				</li>
 				<li>
-					<img class="mySlides" src="./resources/images/home/main5.jpg">
+					<a href="./event/eventView.event?num=3"><img class="mySlides" src="./resources/images/home/main2.jpg"></a>
 				</li>
+				<li>
+					<a href="./event/eventView.event?num=4"><img class="mySlides" src="./resources/images/home/main3.jpg"></a>
+				</li>
+				<li>
+					<a href="./event/eventView.event?num=2"><img class="mySlides" src="./resources/images/home/main4.jpg"></a>
+				</li> -->
+			</ul>
+		</div>
+		
+			<div id="slidebox" style="float: left;margin-left: 18px;">
+			<ul id="slider">
+				<li>
+					<a href="./event/eventView.event?num=2"><img class="mySlides" src="./resources/images/home/main4.jpg"></a>
+				</li>
+				<!-- <li>
+					<a href="./event/eventView.event?num=3"><img class="mySlides" src="./resources/images/home/main5.jpg"></a>
+				</li>
+				<li>
+					<a href="./event/eventView.event?num=3"><img class="mySlides" src="./resources/images/home/main1.jpg"></a>
+				</li>
+				<li>
+					<a href="./event/eventView.event?num=3"><img class="mySlides" src="./resources/images/home/main2.jpg"></a>
+				</li>
+				<li>
+					<a href="./event/eventView.event?num=4"><img class="mySlides" src="./resources/images/home/main3.jpg"></a>
+				</li> -->
+			</ul>
+		</div>
+		
+			<div id="slidebox" style="float: left;margin-left: 17px;">
+			<ul id="slider">
+				<li>
+					<a href="./event/eventView.event?num=4"><img class="mySlides" src="./resources/images/home/main3.jpg"></a>
+				</li>
+				<!-- <li>
+					<a href="./event/eventView.event?num=2"><img class="mySlides" src="./resources/images/home/main4.jpg"></a>
+				</li>
+				<li>
+					<a href="./event/eventView.event?num=3"><img class="mySlides" src="./resources/images/home/main5.jpg"></a>
+				</li>
+				<li>
+					<a href="./event/eventView.event?num=3"><img class="mySlides" src="./resources/images/home/main1.jpg"></a>
+				</li>
+				<li>
+					<a href="./event/eventView.event?num=3"><img class="mySlides" src="./resources/images/home/main2.jpg"></a>
+				</li> -->
+			</ul>
+		</div>
+		
+			<div id="slidebox" style="    float: right;margin-right: 8px;">
+			<ul id="slider">
+				<li>
+					<a href="./event/eventView.event?num=11"><img class="mySlides" src="./resources/images/home/main2.jpg"></a>
+				</li>
+				<!-- <li>
+					<a href="./event/eventView.event?num=4"><img class="mySlides" src="./resources/images/home/main3.jpg"></a>
+				</li>
+				<li>
+					<a href="./event/eventView.event?num=2"><img class="mySlides" src="./resources/images/home/main4.jpg"></a>
+				</li>
+				<li>
+					<a href="./event/eventView.event?num=3"><img class="mySlides" src="./resources/images/home/main5.jpg"></a>
+				</li>
+				<li>
+					<a href="./event/eventView.event?num=3"><img class="mySlides" src="./resources/images/home/main1.jpg"></a>
+				</li> -->
 			</ul>
 		</div>
 	</div>
-	
+<!-- 
 <script type='text/javascript'>
-	var x = 800;
+	var x = 366;
 	var slider = document.getElementById("slider");
 	var slideArray = slider.getElementsByTagName("li");
 	var slideMax = slideArray.length - 1;
 	var curSlideNo = 0;
 
 	for (i = 0; i <= slideMax; i++) {
-		if (i == curSlideNo)
-			slideArray[i].style.right = 0;
-		else
+		if (i == curSlideNo){
+			var slideMax = slideArray.length - 1;
+		}
+		else{
 			slideArray[i].style.right = -x + "px";
+		}
 	}
 
 	slider.addEventListener('click', function() {
@@ -214,74 +387,11 @@ function popupOpen(){
 		}, 20);
 	}
 	setInterval(changeSlide, 6000);
-</script>
-				<div class="mainDramaList" style="margin: 0 auto;    width: 1300px;   overflow: overlay;    padding: 50px;">
-				<c:forEach begin="0" end="3" var = "j">
-					<a href="./drama/dramaview?drama_num=${list[j].drama_num}">
-					<div class="col-md-4 unpa-ad-responsive-parent"  style="width: 300px;">
-						<div class="unpa-card unpa-card-box-shadow unpa-review" style="background-color: whitesmoke; border: 0px;">
-							<div class="main-section"
-								style="border-left: 1px solid #f2f2f2;border-right: 1px solid #f2f2f2;">
-								<a class="user-info-link" href="">
-									<div class="user-info" style="display: inline-block; ">
-										<div class="unpa-feed-user-info-box">
-											<div class="unpa-user-block">
-												<div class="user-labels" style="margin-top: 5px;">
-													<span class="skin-type false ">${list[j].place}</span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="time">${list[j].file_num}</div>
-								</a>
-								<div class="unpa-feed-card-hover-actions">
-									<span class="unpa-share-this-button"><i
-										class="unpacon-share"></i></span>
-
-								</div>
-
-					<a href="./drama/dramaview?drama_num=${list[j].drama_num}">
-								<div class="main-image"
-									style="background-image: url('./resources/upload/${file[j].file_name}')" >
-									<div class="content">
-										${list[j].contents}
-									</div>
-								</div></a>
-								<div class="review-contents">
-									<div class="product-info" style="min-height: 60px;">
-										<!-- <div class="left">
-										
-											<div class="product-image"
-												style="background-image: url(./resources/images/drama_1.jpg')"></div>
-										</div> -->
-
-
-										<div class="right" style="margin-left: 10px;">
-											<div class="brand-name-and-rating">
-												<div class="brand-name" style="    font-size: 15px;">
-													<a href="./drama/dramaview?drama_num=${list[j].drama_num}">${list[j].title}</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>	
-					</a>
-				</c:forEach>
-				</div>
-					
-<!-- 
-
-	<a href="drama/dramaList">Drama List</a>
-	<a href="./notice/noticeList">Go Notice</a>
-	<a href="./qna/qnaList">Go Qna</a>
-	<a href="javascript:popupOpen();" > chatting! </a>
-	<a href="./point/pointList">pointList</a>
-	<a href="./point/pointCheck">pointCheck</a>	
-	
-	 -->
+</script> -->
+					 
+					 
+					 
+					 
 		
 <!-- HOME FOOTER -->
 	<div style="padding: 50px 0 60px 0; margin-top: 30px; background: #eee;">
@@ -345,6 +455,10 @@ function popupOpen(){
 			<div style="clear: both;"></div>
 		</div>
 	</div>
+	
+	
+	
+
 	<c:import url="./temp/footer.jsp"></c:import>
 </body>
 
