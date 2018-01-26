@@ -139,7 +139,7 @@ input::-moz-placeholder {
 	height: 30px;
 	width: 245px;
 	border: 1px #795548;
-	background: white;
+	background: #ffffff00;
 	float: right;
 	margin-top: -12px;
 }
@@ -162,7 +162,7 @@ input::-moz-placeholder {
 	float: left;
 	position: absolute;
 	height: 30px;
-	background-color: #fffffb;
+	background-color:#ffffff7d;
     border: 1px solid #795548;
 }
 
@@ -170,7 +170,7 @@ input::-moz-placeholder {
 	height: 30px;
 	width: 245px;
 	border: 1px #795548;
-	background: white;
+	background: #ffffff00;
 	float: right;
 	margin-top: -20px;
 }
