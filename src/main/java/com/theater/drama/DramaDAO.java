@@ -32,6 +32,9 @@ public class DramaDAO  {
 		public List<DramaListDTO> search_dateList(int drama_num) throws Exception{
 			return sqlSession.selectList(namespace+"search_dateList", drama_num);
 		}
+		
+	
+		
 		public int update_dateList(int date_num, int drama_num, Date drama_date, String drama_time) throws Exception{
 			HashMap<String, Object> map = new HashMap<String, Object>();
 			map.put("drama_num", drama_num);
@@ -143,6 +146,11 @@ public class DramaDAO  {
 	public int searchCompany_num(int drama_num) throws Exception{
 		return sqlSession.selectOne(namespace+"searchCompany_num", drama_num);
 	}
+	
+	public int searchBuy_hit(int num) throws Exception{
+		return sqlSession.selectOne(namespace+"searchBuy_hit", num);
+	}
+	
 	public int searchCompany_num(MemberDTO memberDTO) throws Exception{
 		return sqlSession.selectOne(namespace+"searchCompanyNum", memberDTO);
 	}
@@ -231,9 +239,9 @@ public class DramaDAO  {
 		return sqlSession.selectList(namespace+"dramaReviewList", rowNum);
 	}
 
-	public int hitUpdate(int num) throws Exception {
+/*	public int hitUpdate(int num) throws Exception {
 		return sqlSession.update(namespace+"hitUpdate", num);
-	}
+	}*/
 	
 	public ReviewDTO review_selectOne(int review_num)throws Exception{
 		return sqlSession.selectOne(namespace+"review_selectOne", review_num);

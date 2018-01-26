@@ -64,10 +64,15 @@
   	<select id="fileList" parameterType="int" resultType="com.theater.file.FileDTO">
   		select * from file_table where file_num=#{file_num}
   	</select> 
+  
+  	<select id="searchBuy_hit" parameterType="int" resultType="int">
+  		select count(buy_num) from seat where drama_num=#{drama_num}
+  	</select>
   	
-  	<update id="hitUpdate" parameterType="int">
+  	  	
+  <!-- 	<update id="hitUpdate" parameterType="int">
   		update drama set buy_hit=buy_hit+1 where drama_num=#{drama_num}
-  	</update>
+  	</update> -->
   
   	
  	<!-- 공연 선택 view page -->

@@ -93,7 +93,7 @@ public class DramaService {
 		return parsingSeat;
 	}
 	public DramaDTO selectOne(int num) throws Exception{
-		dramaDAO.hitUpdate(num);
+		/*dramaDAO.hitUpdate(num);*/
 		DramaDTO dramaDTO = dramaDAO.selectOne(num);
 		return dramaDTO;
 	}
@@ -356,11 +356,13 @@ public class DramaService {
 		List<DramaDTO> ar = dramaDAO.selectList(rowNum);
 		List<FileDTO> file=new ArrayList<FileDTO>();
 		for(DramaDTO dramaDTO: ar){
+			dramaDTO.setBuy_hit(dramaDAO.searchBuy_hit(dramaDTO.getDrama_num()));
 			FileDTO fileDTO=dramaDAO.fileList(dramaDTO.getFile_num());
 			file.add(fileDTO);
 		}
 		List<FileDTO> file1=new ArrayList<FileDTO>();
 		for(DramaDTO dramaDTO: ar){
+			dramaDTO.setBuy_hit(dramaDAO.searchBuy_hit(dramaDTO.getDrama_num()));
 			FileDTO fileDTO=dramaDAO.fileList(dramaDTO.getFile_num());
 			file1.add(fileDTO);
 		}
