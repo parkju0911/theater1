@@ -100,8 +100,18 @@ $('#update').click(function(){
     $(location).attr('href', './dramaViewUpdate?drama_num=${view.drama_num}');
  });
  
-
-
+	$(".list").click(function (){
+		$.ajax({
+		url:"qnalist.jsp",
+		dataType:"html",
+		type:"get",
+		data:{},
+		success: function(result) {
+			$("#review_list").html(result);
+				
+				}
+		})
+}); 
  
 
 </script>
