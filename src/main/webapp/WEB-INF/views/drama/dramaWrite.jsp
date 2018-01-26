@@ -168,7 +168,7 @@
 		</table>		
 		
 		<div class="submit">
-			<button class="btn btn-default">Submit</button>
+			<button id="write" class="btn btn-default">Submit</button>
 		</div>
 		<input type="hidden" id="time" name="time">
 			
