@@ -83,6 +83,9 @@ $(function(){
 	<div class="list_box">
 	<a href="./dramaReviewview?review_num=${list.review_num }">
 		<div class="box_left">
+		<%-- <c:if test="${file.file_num eq 0 }">
+				<img alt="" src="../resources/images/starpoint/no_image.png" style="width: 230px; height: 200px;">
+		</c:if> --%>
 			 <img alt="" src="${pageContext.request.contextPath}/resources/upload/${file[i.index].file_name}"style="width: 230px; height: 200px;">
 		</div>
 			<div class="box_right">

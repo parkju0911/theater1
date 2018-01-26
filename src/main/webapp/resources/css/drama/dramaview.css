@@ -423,7 +423,7 @@
     background: #fff;
 }
 #member_qna1{
-	border: 1px solid #eee;
+	border-bottom:1px solid #eee;
 	margin-left: 15px;
 	font-size: 17px;
 	color:#313131;
@@ -437,11 +437,10 @@
 	color:#313131;
 }
 #member_qna_reply{
-	border: 1px solid #eee;
+	border-bottom:1px solid #eee;
 	margin-left: 30px;
 	font-size: 17px;
 	color:#313131;
-	background-color: #ffebcc;
 	margin-top: 5px;
 }
 .write_reply{

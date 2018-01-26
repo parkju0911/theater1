@@ -31,7 +31,7 @@
 				});
 			});
 	
-		/* 
+		 
 			$(".list").click(function (){
 				var cur=$(this).attr("title");
 				var s = '${pager.search}';
@@ -40,7 +40,7 @@
 				document.frm.search=s;
 				document.frm.kind=v;
 				document.frm.submit();
-			}); */
+			}); 
 	
 		
 	});
@@ -126,7 +126,7 @@
 											<!--답글 --></c:if>
 											
 											
-										<!-- 해당 dramaNum qna만 보게끔 -->	</c:if>
+										<!-- 해당 dramaNum qna만 보게끔 -->
 									</td>
 							</tr>
 				

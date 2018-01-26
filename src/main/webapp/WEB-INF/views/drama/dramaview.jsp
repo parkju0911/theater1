@@ -237,7 +237,7 @@ A:VISITED {
 				<li class="menu_li"><a data-toggle="tab" href="#menu1" id="review" >후기(${total })</a></li>
 				<li class="menu_li"><a data-toggle="tab" href="#menu2" id="qna">Q&A</a></li>
 				<li class="menu_li"><a data-toggle="tab" href="#menu3" id="refund">환불규정</a></li>
-			</ul>
+			</ul>								
 
 			<div class="tab-content"><!--  탭 클릭시 페이지 view -->
 				<div id="menu0" class="tab-pane fade in active">
