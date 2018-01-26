@@ -97,7 +97,7 @@ $(function(){
 		
 			
 			
-		<%-- <div id="paging">
+		 <div id="paging">
 		<c:if test="${pager.curBlock gt 1}">
 			<span class="list" title="${pager.startNum-1}">[이전]</span>
 		</c:if>
@@ -106,7 +106,7 @@ $(function(){
 		</c:forEach>
 		<c:if test="${pager.curBlock lt pager.totalBlock}">
 			<span class="list" title="${pager.lastNum+1}">[다음]</span>
-		</c:if> --%>
+		</c:if>
 		
 		
 	</div>

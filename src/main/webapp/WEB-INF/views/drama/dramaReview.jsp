@@ -78,7 +78,7 @@
 			</div>
 		</c:if>
 		<div class="sb-search">
-<<<<<<< HEAD
+
 			<form name="frm" id="frm" action="./dramaReview" method="get"
 				class="form-wrapper cf" style="width: 250px; height: auto;">
 				<input type="hidden" value="1" name="curPage" id="curPage">
@@ -88,7 +88,7 @@
 				<button type="submit">Search</button>
 			</form>
 
-=======
+
 			<form name="frm" action="./dramaReview" method="get" class="form-wrapper cf" style="width: 250px;height: auto;">
 					<input type="hidden" name="kind" value="title">
 						<input type="text" placeholder="Search here..." required>
@@ -97,24 +97,18 @@
 		
 		</div>
 	
-	<c:forEach items="${review}" var="list" varStatus="i">
-	<div class="list_box">
-	<a href="./dramaReviewview?review_num=${list.review_num }">
-		<div class="box_left">
-		<%-- <c:if test="${file.file_num eq 0 }">
-				<img alt="" src="../resources/images/starpoint/no_image.png" style="width: 230px; height: 200px;">
-		</c:if> --%>
-			 <img alt="" src="${pageContext.request.contextPath}/resources/upload/${file[i.index].file_name}"style="width: 230px; height: 200px;">
->>>>>>> 0125-yk2
-		</div>
+
 
 		<c:forEach items="${review}" var="list" varStatus="i">
 			<div class="list_box">
 				<a href="./dramaReviewview?review_num=${list.review_num}">
 					<div class="box_left">
-						<img alt=""
-							src="${pageContext.request.contextPath}/resources/upload/${file[i.index].file_name}"
-							style="width: 230px; height: 200px;">
+				<c:if test="${file[i.index].file_num eq 0 }">
+					<img alt="" src="../resources/images/starpoint/no_image.png" style="width: 230px; height: 200px";>
+					</c:if>
+					<c:if test="${file[i.index].file_num ne 0 }">
+						<img alt=""src="${pageContext.request.contextPath}/resources/upload/${file[i.index].file_name}" style="width: 230px; height: 200px;">
+					</c:if>
 					</div>
 					<div class="box_right">
 						<p class="review_date">${list.review_date}</p>

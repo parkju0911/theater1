@@ -90,15 +90,12 @@
 });
 	
 $(document).ready(function() {
-	$("refund").trigger("click");
-	$("#qna").trigger("click");
-	$("#review").trigger("click");
+	
 	 $("#info").trigger("click");
-<<<<<<< HEAD
-} );
-=======
 
-	} );
+} );
+
+
 $('#update').click(function(){
     $(location).attr('href', './dramaViewUpdate?drama_num=${view.drama_num}');
  });
@@ -106,7 +103,7 @@ $('#update').click(function(){
 
 
  
->>>>>>> 0125-yk2
+
 </script>
 <style type="text/css">
 body{

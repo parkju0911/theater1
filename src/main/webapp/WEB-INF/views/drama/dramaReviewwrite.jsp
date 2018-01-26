@@ -109,11 +109,11 @@
 			alert("별점을 선택해주세요");
 			return false;
 		}
-		//파일
+		/* //파일
 		if ($("#file").val() == "") {
 			alert("파일을 선택해주세요");
 			return false;
-		}
+		} */
 		//내용
 		if ($("#contents").val() == "내용을 입력해주세요.") {
 			alert("내용을 입력해주세요");
