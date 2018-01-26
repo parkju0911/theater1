@@ -84,6 +84,43 @@
 
 </script>
 
+<script type="text/javascript">
+
+	function checkForm(theForm) {
+		//연극명
+		if ($("#select_drama").val() == '연극명') {
+			alert("관람하신 연극을 선택해주세요");
+			return false;
+		}
+		//제목
+		if ($("#title").val() == "") {
+			alert("제목을 입력해주세요");
+			return false;
+		}
+		//별점
+		var chk_radio = document.getElementsByName('star');
+		var sel_type = null;
+		for(var i=0;i<chk_radio.length;i++){
+			if(chk_radio[i].checked == true){ 
+				sel_type = chk_radio[i].value;
+			}
+		}
+		if(sel_type == null){
+			alert("별점을 선택해주세요");
+			return false;
+		}
+		//파일
+		if ($("#file").val() == "") {
+			alert("파일을 선택해주세요");
+			return false;
+		}
+		//내용
+		if ($("#contents").val() == "내용을 입력해주세요.") {
+			alert("내용을 입력해주세요");
+			return false;
+		}
+	}
+</script>
 
 <style type="text/css">
 h1 {
@@ -133,7 +170,7 @@ display: none;}
 			</h6>
 		</div>
 	<div class="board_wrap1" style="font-size: 12px;">
-	<form id="frm" action="dramaReviewwrite" method="post" enctype="multipart/form-data">
+	<form id="frm" action="dramaReviewwrite" method="post" enctype="multipart/form-data" onsubmit="return checkForm(this);">
 		<table>
 			<tr>
 				<td><select id="select_drama" style="width: 170px;height: 18px; border: wheat;border-bottom: 1px solid lightgray;"name="drama_num">
@@ -143,7 +180,7 @@ display: none;}
 						</c:forEach>
 							</optgroup>
 					</select></td>
-				<td style="margin-left: 10px; float: left;">제목 : <input type="text" name="title" placeholder="제목을 입력해주세요." class="write_ip"
+				<td style="margin-left: 10px; float: left;">제목 : <input type="text" id="title" name="title" placeholder="제목을 입력해주세요." class="write_ip"
 				 style="width: 300px; border: none; border-bottom: 1px solid lightgray; border-radius:0px;"></td>
 				<td style="float: right; margin-right: 50px; padding-bottom: 20px;">작성자 : <input type="text" value="${member.id}" class="write_ip" readonly="readonly"
 				 style="width: 150px; border: none; border-bottom: 1px solid lightgray;background-color: #fffff8; border-radius:0px;"></td>
@@ -151,20 +188,20 @@ display: none;}
 			<tr>
 				<td class="content" colspan="2" style="padding: 0;">
 				<div id="select_1" style="width: 788px;height: auto;margin: 0 auto;">
-					<input type="radio"  class="radio" value="5" name="star" checked="checked"  style="float:left;">
+					<input type="radio" class="radio" value="5" name="star" checked="checked"  style="float:left;">
 					<img alt="" src="../resources/images/starpoint/star_5.png" style="height: 20px; float: left;padding-left: 7px; padding-right: 26px;">
-					<input type="radio"  class="radio" value="4" name="star"  style="float:left;">
+					<input type="radio" class="radio" value="4" name="star"  style="float:left;">
 					<img alt="" src="../resources/images/starpoint/star_4.png" style="height: 20px; float: left;padding-left: 7px; padding-right: 26px;">
-					<input type="radio"  class="radio" value="3" name="star"  style="float:left;">
+					<input type="radio" class="radio" value="3" name="star"  style="float:left;">
 					<img alt="" src="../resources/images/starpoint/star_3.png" style="height: 20px; float: left;padding-left: 7px; padding-right: 26px;">
-					<input type="radio"  class="radio" value="2" name="star"  style="float:left;">
+					<input type="radio" class="radio" value="2" name="star"  style="float:left;">
 					<img alt="" src="../resources/images/starpoint/star_2.png" style="height: 20px; float: left;padding-left: 7px; padding-right: 26px;">
-					<input type="radio"  class="radio" value="1" name="star"  style="float:left;">
+					<input type="radio" class="radio" value="1" name="star"  style="float:left;">
 					<img alt="" src="../resources/images/starpoint/star_1.png" style="height: 20px; float: left;padding-left: 7px; padding-right: 26px;">
 			</div>
 			<tr>
 				<td class="content" colspan="2" style="padding-bottom:0px;">
-					<input type="file" name="files">
+					<input type="file" name="files" id="file">
 				</td>
 			</tr>
 			<tr>
