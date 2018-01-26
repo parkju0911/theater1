@@ -29,7 +29,7 @@
   		select * from point where id=#{id} order by point_num desc
   	</select>
   	<insert id="insertPoint_seat" parameterType="com.theater.point.PointDTO">
-  		insert into point values(#{point_num},#{id},'연극 예매',#{point}, #{total_point}, '적립', sysdate)
+  		insert into point values(#{point_num},#{id},'적립',#{point}, #{total_point}, '연극예매', sysdate)
   	</insert>
 
    <select id="selectList" resultType="com.theater.point.PointDTO"  parameterType="java.util.HashMap"  >
