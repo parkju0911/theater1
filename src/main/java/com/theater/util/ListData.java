@@ -13,6 +13,12 @@ public class ListData {
 		search="";
 		this.perPage=6;
 	}
+	public void ListData2(){
+		curPage=1;
+		kind="title";
+		search="";
+		this.perPage=10;
+	}
 	
 	//row
 	public RowNum makeRow(){

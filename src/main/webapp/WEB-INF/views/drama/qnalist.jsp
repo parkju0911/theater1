@@ -38,12 +38,11 @@
 				document.frm.curPage=cur;
 				document.frm.search=s;
 				document.frm.kind=v;
-				document.frm.submit();
-			}); 
 			
-		
+			}); 
+	
+	
 	});
-
 </script>
 </head>
 <body>
@@ -163,6 +162,7 @@
 		
 		
 	</div>
+	
 		</div>
 </body>
 </html>

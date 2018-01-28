@@ -32,7 +32,7 @@
 		//후기 리스트 출력
 		$("#review").click(function() {
 			$("#review_list").load("./reviewlist?drama_num="+${view.drama_num})
-		});
+		}); 
 		
 		//문의사항 리스트 출력
 		$("#qna").click(function() {
@@ -87,14 +87,23 @@
 		$('#update').click(function(){
 			$(location).attr('href', './dramaViewUpdate?drama_num=${view.drama_num}');
 		});
+		
+		$("paging_move").click(function() {
+			$(document).ready(function() {
+			 $("#review").trigger("click");
+					location.href=$("#test");
+				
+			})
+		})
+		
 });
 	
-$(document).ready(function() {
+ $(document).ready(function() {
 	
 	 $("#info").trigger("click");
 
 } );
-
+ 
 
 $('#update').click(function(){
     $(location).attr('href', './dramaViewUpdate?drama_num=${view.drama_num}');

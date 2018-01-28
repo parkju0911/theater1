@@ -12,11 +12,7 @@
 <script type="text/javascript">
 $(function(){
 	
-	var message='${message}';
-	if(message !=''){
-		alert(message);
-	}
-	
+
 	
 	$(".list").click(function (){
 		var cur=$(this).attr("title");
@@ -24,13 +20,12 @@ $(function(){
 		var v = '${pager.kind}';
 		document.frm.curPage=cur;
 		document.frm.search=s;
-
-	}); 
-	$("paging_move").click(function() {
-		location.href=$("#test");
-	})
-
+		document.frm.kind=v;
+		
+	});
 });
+	
+
 
 </script>
 <style type="text/css">
@@ -99,14 +94,13 @@ $(function(){
 			
 		
 			
-			
-		 <div id="paging">
+	
+		<div id="paging">
 		<c:if test="${pager.curBlock gt 1}">
 			<span class="list" title="${pager.startNum-1}">[이전]</span>
 		</c:if>
 		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
 			<span class="list" title="${i}">${i}</span>
-			<a href="./dramaview?drama_num=${drama_num}&curPage=${i}#test" class="paging_move">${i}</a>
 		</c:forEach>
 		<c:if test="${pager.curBlock lt pager.totalBlock}">
 			<span class="list" title="${pager.lastNum+1}">[다음]</span>
