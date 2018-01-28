@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import javax.inject.Inject;
 import javax.servlet.http.Cookie;
@@ -204,7 +205,47 @@ return "sss";
 		mv.addObject("total", totalcount);
 		List<ReviewDTO> ar_review = dramaService.selectList_review(drama_num);
 		if(dramaDTO != null) {
+			String [] strings=null;
+			boolean check=true;
+			boolean newCheck=true;
+			String result="";
+			Cookie [] cookies = request.getCookies();
+			for (Cookie cookie : cookies) {
+				if(cookie.getName().equals("title")){
+					strings = cookie.getValue().split(".");
+					for(String s : strings){
+						System.out.println("string : "+s+", drama_num : "+dramaDTO.getDrama_num());
+						if(s.equals(String.valueOf(dramaDTO.getDrama_num()))){
+							check=false;
+						}
+					}
+					if(check){
+						//중복데이터 X
+						result=cookie.getValue();
+						result=dramaDTO.getDrama_num()+"."+result;
+						Cookie c = new Cookie("title", result);
+						response.addCookie(c);
+					}
+					newCheck=false;
+					break;
+				}	
+			}
 			
+			if(newCheck){
+				Cookie c = new Cookie("title", String.valueOf(dramaDTO.getDrama_num()));
+				response.addCookie(c);
+			}
+			
+			mv.addObject("view", dramaDTO);
+			mv.addObject("list", ar);
+			mv.addObject("file", fileDTO);
+			mv.addObject("review", ar_review);
+			mv.setViewName("drama/dramaview");
+		}else {
+			rd.addFlashAttribute("message", "잘못된 접근방식 입니다.");
+			mv.setViewName("Redirect:../");
+		}
+		/*if(dramaDTO != null) {
 			//중복제거
 			String [] strings=null;
 			boolean check=true;
@@ -212,7 +253,6 @@ return "sss";
 			String result="";
 			Cookie [] cookies = request.getCookies();
 			for (Cookie cookie : cookies) {
-				
 				if(cookie.getName().equals("title")){
 					strings = cookie.getValue().split(",");
 					for(String s : strings){
@@ -229,10 +269,7 @@ return "sss";
 					}
 					newCheck=false;
 					break;
-				
-				}
-			
-				
+				}	
 			}
 			
 			if(newCheck){
@@ -249,7 +286,7 @@ return "sss";
 		}else {
 			rd.addFlashAttribute("message", "잘못된 접근방식 입니다.");
 			mv.setViewName("Redirect:../");
-		}
+		}*/
 				
 		return mv;
 	}
@@ -413,7 +450,6 @@ return "sss";
 	public ModelAndView selectList(ListData listData, HttpServletRequest request) throws Exception {
 		ModelAndView mv = null;
 		DramaDTO dramaDTO=new DramaDTO();
-		FileDTO fileDTO=new FileDTO();
 		mv = dramaService.selectList(listData);
 		mv.setViewName("drama/list");
 		mv.addObject("num", dramaDTO.getDrama_num());
@@ -423,18 +459,19 @@ return "sss";
 		for (Cookie cookie : cookies) {
 			cookie.setMaxAge(60*60*24);
 			if(cookie.getName().equals("title")){
-				String [] strings = cookie.getValue().split(",");
+				StringTokenizer strToken = new StringTokenizer(cookie.getValue(), ".");
+				List<String> strings = new ArrayList<String>();
+				while(strToken.hasMoreTokens()) {
+					String token = strToken.nextToken();
+					strings.add(token);
+				}
 				for (String string : strings) {
-					
 					dramaDTO=dramaService.selectOne(Integer.parseInt(string));
 					ar.add(dramaDTO);
 					ar1.add(dramaService.fileList(dramaDTO));
 				}
-			
 				mv.addObject("title", ar);
-				mv.addObject("fileimage",ar1);
-				
-				
+				mv.addObject("fileimage",ar1);	
 			}
 		}
 		

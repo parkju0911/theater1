@@ -362,14 +362,12 @@ public class DramaService {
 		}
 		List<FileDTO> file1=new ArrayList<FileDTO>();
 		for(DramaDTO dramaDTO: ar){
-			dramaDTO.setBuy_hit(dramaDAO.searchBuy_hit(dramaDTO.getDrama_num()));
 			FileDTO fileDTO=dramaDAO.fileList(dramaDTO.getFile_num());
 			file1.add(fileDTO);
 		}
-		mv.addObject("file1",file1);
+		mv.addObject("file",file);
 		
-	
-		mv.addObject("list", dramaDAO.selectList(rowNum)).addObject("pager", pager).addObject("board", "drama").addObject("file", file).addObject("file1",file1);
+		mv.addObject("list", ar).addObject("pager", pager).addObject("board", "drama").addObject("file", file).addObject("file1",file1);
 		
 		return mv;
 	}
