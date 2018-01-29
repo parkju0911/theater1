@@ -97,13 +97,18 @@
 
 } );
 
+
  
 
 $('#update').click(function(){
     $(location).attr('href', './dramaViewUpdate?drama_num=${view.drama_num}');
  });
  
-/* $("#select_date").click(function() {
+/*  $("#select_date").click(function() {
+
+
+$("#select_date").click(function() {
+>>>>>>> 6ec712d4912858d684161e49443b1332648bef61
 	var now = new Date();
  	var sysdate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 	var afterdrama = new Date("1/28/2018");
@@ -113,8 +118,11 @@ $('#update').click(function(){
 	}else{
 		
 	}
-}); */
+
+}); 
 	
+}); */
+
 
 </script>
 <style type="text/css">
