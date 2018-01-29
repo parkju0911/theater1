@@ -54,8 +54,13 @@
 			 $("#qna_insert").prop("action", "../member/memberLogin"); 
 		
 	}else {
-			if($("contents").val() ==null){
+			if($("contents").val() == null){
 				alert("내용을 작성하여주세요.");	
+				$("#qna_insert").prop("method", "GET");
+				$("#qna_insert").prop("action" , "./qnalist");
+			}else{
+				$("#qna_insert").prop("method", "POST");
+				$("#qna_insert").prop("action" , "./qnawrite");
 				
 			}
 				}
