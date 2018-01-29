@@ -16,7 +16,6 @@ src:url('/web/font/FuturaMediumBT.TTF.woff') format('woff'),url('/web/font/Futur
 	padding: 0;
 	margin: 0;
 	padding: 0;
-	
     font-family: "Lucida Console",Monospace;
 	/* font-family: 'Nanum Gothic', sans-serif; */
 }
@@ -119,6 +118,13 @@ li.member_wrap {
 	margin-left: 25px;
 }
 
+.n_member_wrap a:hover,
+.n_member_wrap a:ACTIVE{
+	text-decoration: none;
+	text-shadow: #fffffb66 0px 2px, #fffffb6b 2px 0px, #fffffb69 -2px 0px, #fffffb69 0px -2px, #fffffb57 -1.4px -1.4px, #fffffb47 1.4px 1.4px, #fffffb54 1.4px -1.4px, #fffffb40 -1.4px 1.4px;	
+}
+
+
 input:-ms-input-placeholder {
 	font-size: 8px;
 	color: #79554896;
@@ -216,6 +222,12 @@ nav li a {
 	margin-right: 30px;
 }
 
+nav li a:HOVER,
+nav li a:ACTIVE{
+	color: black;
+	text-decoration: none;
+}
+
 .blank {
 	height: 110px;
 }
@@ -254,6 +266,15 @@ footer { <<<<<<<
 	font-family: 'Nanum Gothic';
 }
 
+.f_ag:HOVER,
+.f_ag:ACTIVE{
+	color: white;
+}
+.f_link:HOVER,
+.f_link:ACTIVE{
+	color: #ccc;
+}
+
 .f_ag {
 	color: #ccc;
 }
@@ -265,6 +286,8 @@ footer { <<<<<<<
 	cursor: pointer;
 	font-family: 'Nanum Gothic';
 }
+
+
 
 .footer_wrap ul.copy_menu {
 	padding: 25px 0 5px 0;
