@@ -130,7 +130,7 @@
 						</div>
 					</div>
 					<div class="star"
-						style="margin-top: -28px; width: 855px; padding-bottom: 75px;">
+						style="margin-top: -41px; width: 855px; padding-bottom: 75px;">
 						<c:if test="${list.star==5 }">
 							<div class="review_star">
 								별점:<img alt="" src="../resources/images/starpoint/star_5.png"
