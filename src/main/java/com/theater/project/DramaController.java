@@ -214,7 +214,7 @@ return "sss";
 				if(cookie.getName().equals("title")){
 					strings = cookie.getValue().split(",");
 					for(String s : strings){
-						System.out.println("string : "+s+", drama_num : "+dramaDTO.getDrama_num());
+					/*	System.out.println("string : "+s+", drama_num : "+dramaDTO.getDrama_num());*/
 						if(s.equals(String.valueOf(dramaDTO.getDrama_num()))){
 							check=false;
 						}
@@ -574,6 +574,7 @@ return "sss";
 	
 		return mv;
 	}
+	
 	
 	
 }

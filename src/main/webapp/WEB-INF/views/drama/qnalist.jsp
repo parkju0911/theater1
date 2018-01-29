@@ -93,7 +93,7 @@
 					</div>
 		
 					
-			<table id="qna_box">
+			<table id="qna_box" style="border-collapse: inherit;">
 				<c:forEach items="${qnalist}"  var="list">
 				<c:if test="${list.drama_num eq drama_num }">
 				<!-- 부모글 form -->

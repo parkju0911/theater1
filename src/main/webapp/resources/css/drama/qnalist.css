@@ -40,6 +40,8 @@ li{
 }
 #paging{
 	margin: 0 auto;
+    margin-top: 5px;
+    margin-left: -20px;
 }
 #insertbut{
 	display: inline-block; 
@@ -59,5 +61,5 @@ li{
 	background-color: #fffff8
 }
 table{
-	border-collapse: none;
+	border-collapse: inherit;
 }

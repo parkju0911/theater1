@@ -3,7 +3,7 @@ body{
 	background-color: #fffff8;
 }
 #point_box{
-		width: 700px;
+	width: 700px;
 	height: 100px;
 	background-color:white;
 	margin-left: 30px;
@@ -51,7 +51,5 @@ li{
 #paging{
 	margin-left:50px;
 }
-#reviewlist_al{
-	
-}
+
 }

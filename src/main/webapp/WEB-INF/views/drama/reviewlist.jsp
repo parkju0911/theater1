@@ -38,6 +38,9 @@ $(function(){
 .list {
 		cursor: pointer;
 	}
+	body{
+	background-color: #fffff8;
+	}
 </style>
 </head>
 <body>
@@ -55,8 +58,6 @@ $(function(){
 					</div>
 		<div id="point_box3">실제 관객이 남긴 평균 별점입니다.</div>
 		 
-		
-		
 		
 				</div>
 		</div>
