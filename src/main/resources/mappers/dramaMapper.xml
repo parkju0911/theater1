@@ -318,6 +318,11 @@
   		delete from date_list where date_num=#{date_num}
   	</delete>
   	
+  	<select id="member_company_num" parameterType="String" resultType="int">
+  		select company_num from company_info where id=#{id}
+  	</select>
+  	
+  	
   	<!-- dramaDelete 부분 -->
   	<select id="end_list" resultType="com.theater.drama.DramaDTO">
   		select drama_num from drama where title like '%[종료]%'

@@ -555,5 +555,6 @@
    margin-top : 10px;
    text-align: center;
 }
-
+#image_contents>img{
+	width : 750px;
 }

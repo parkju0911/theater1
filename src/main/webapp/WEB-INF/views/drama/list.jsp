@@ -31,32 +31,40 @@
 			var t = '${pager.kind}';
 			location.href="dramaList?curPage="+cur;
 		});
-		
 		$(".drama_num").each(function(){
 			var id=$(this).attr("title");
-				<c:forEach items="${end_list}" var="dto">
-					$('#'+id).click(function(){
+			$('#'+id).click(function(){
+				if(${empty end_list}){
+					$(location).attr('href', './dramaview?drama_num='+id);
+				}else{
+					<c:forEach items="${end_list}" var="dto">
 						var end = '${dto.drama_num}';
 						if(end==id){
 							alert('종료된 공연입니다.');
 						}else{
 							$(location).attr('href', './dramaview?drama_num='+id);
 						}
-					});
-				</c:forEach>				
+					</c:forEach>
+				}
+			});
 		});
+		
 		$(".price").each(function(){
 			var id=$(this).attr("title");
-				<c:forEach items="${end_list}" var="dto">
-					$('#'+id+'_price').click(function(){
+			$('#'+id+'_price').click(function(){
+				if(${empty end_list}){
+					$(location).attr('href', './dramaview?drama_num='+id);
+				}else{
+					<c:forEach items="${end_list}" var="dto">
 						var end = '${dto.drama_num}';
 						if(end==id){
 							alert('종료된 공연입니다.');
 						}else{
 							$(location).attr('href', './dramaview?drama_num='+id);
 						}
-					});
-				</c:forEach>				
+					</c:forEach>
+				}
+			});			
 		});
 	});
 </script>
