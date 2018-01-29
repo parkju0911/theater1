@@ -104,14 +104,7 @@
 	 $("#info").trigger("click");
 
 } );
-<<<<<<< HEAD
-=======
- 
 
-$('#update').click(function(){
-    $(location).attr('href', './dramaViewUpdate?drama_num=${view.drama_num}');
- });
- 
 $("#select_date").click(function() {
 	var now = new Date();
  	var sysdate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -123,8 +116,7 @@ $("#select_date").click(function() {
 		
 	}
 });
-	
->>>>>>> 0129-yk
+
 </script>
 <style type="text/css">
 body{
