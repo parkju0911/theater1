@@ -173,12 +173,14 @@
 }
 #afterview_box_a{
 	width: 830px;
-	height: 50px;
+	height: 26px;
 	margin-left: 30px;
 	font-size: 17px;
+	margin-top: 10px;
 }
 #atfterview_box_b{
 	width:830px;
+	height:40px;
 	margin-left: 30px;
 	font-size:17px;
 	border-bottom: 1px solid #f3f3f3;
@@ -394,7 +396,7 @@
 }
 #qna_text{
 	margin-left: 30px;
-	
+	display: block;
 }
 #qna_form{
 	width:720px;
@@ -411,6 +413,7 @@
 	height: 50px;
 	text-align: center;
 	line-height: 50px;
+	display: none;
 }
 #paging span{
 	padding-right: 10px;
@@ -451,7 +454,7 @@
     border: 1px solid #e6e6e6;
     padding-top: 10px;
     background: #fafafa;
-}
+} 
 #master_qna1{
 	margin-left: 30px;
 	font-size: 17px;

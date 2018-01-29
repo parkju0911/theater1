@@ -7,6 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title>Insert title here</title>
+<link href="../resources/css/drama/qnalist.css" rel="stylesheet">
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css" rel="stylesheet">
 #reply_form{
 	display:none;
@@ -30,8 +33,7 @@
 					}  
 				});
 			});
-	
-		 
+
 			$(".list").click(function (){
 				var cur=$(this).attr("title");
 				var s = '${pager.search}';
@@ -39,24 +41,40 @@
 				document.frm.curPage=cur;
 				document.frm.search=s;
 				document.frm.kind=v;
-				document.frm.submit();
+			
 			}); 
-	
-		
-	});
+		$("#qna_all").click(function() {
+			window.open("./qnalist?drama_num=" +${drama_num} ,"Q&A 전체보기", "width=1050 , height=800 , top=100, left=550 , resize=none , location=no, scrollbars=no, menubar=no");
 
+		})
+	$("#insertbut").click(function() {
+		if(${member eq  null}){
+			alert("로그인 하셔야 등록가능합니다.");
+			$("#qna_insert").prop("method", "GET");
+			 $("#qna_insert").prop("action", "../member/memberLogin"); 
+		
+	}else {
+			if($("contents").val() ==null){
+				alert("내용을 작성하여주세요.");	
+				
+			}
+				}
+	});
+	});
 </script>
 </head>
 <body>
 		<div id="qna_listform">
 			<div id="qna_text">
 				<p style="padding-top: 30px; font-size: 25px; font-weight: bolder;">티켓관련 문의를 남겨주세요.</p>
-				<p style="padding-top: 20px; font-size: 15px;">환불/취소요청은 <a href="../member/orderlist" style="text-decoration:underline;">마이티켓 > 환불신청</a>, 이용 불편 및 요청사항은 <a href="##1:1문의 페이지 이동" style="text-decoration: underline;">1:1문의</a>를 이용해주세요.</p>
+				<p style="padding-top: 20px; font-size: 15px;">환불/취소요청은 <a href="../member/orderlist" style="text-decoration:underline;">마이티켓 > 환불신청</a>, 이용 불편 및 요청사항은 
+				<a href="##1:1문의 페이지 이동" style="text-decoration: underline;">1:1문의</a>를 이용해주세요.
+				<a href="##" id="qna_all">Q&A 전체보기</a></p>
 			</div>
 <!------------- 문의 글 ---------------->	
 				<div id="qna_form">
 							
-							<form action="qnawrite" method="post">
+							<form id="qna_insert" name="frm" method="post"  >
 								<div id="qna_textbox">
 	
 								<input type="hidden"  name="drama_num" value="${drama_num}" >
@@ -66,9 +84,9 @@
 								</div>
 							
 							<div id="qna_button">
-								<button style="width: 150px; height: 70px; margin-top: 10px;">등록</button>
+								<button id="insertbut" style="width: 150px; height: 70px; margin-top: 10px;">등록</button>
 									</div>
-								<p style="color:red; float:left;">* Q&A를 통한 환불/취소/변경 문의는 처리되지 않습니다</p>
+								<p id="notextqna" style="color:red; float:left;">* Q&A를 통한 환불/취소/변경 문의는 처리되지 않습니다</p>
 								
 							</form>
 							
@@ -89,7 +107,7 @@
 														<img src="../resources/images/starpoint/reply_icon.png">
 														</c:forEach>
 														</c:catch>		
-																	
+																
 											 				${list.qna_viewnum } ${list.id } ${list.reg_date }
 																			
 														<c:if test="${member.id == list.id }">
@@ -150,20 +168,21 @@
 				</c:forEach>
 				
 			</table>
-		``				
-		<div id="paging">
+			
+			
+	<div class="pagination"  id="paging">
 		<c:if test="${pager.curBlock gt 1}">
-			<span class="list" title="${pager.startNum-1}">[이전]</span>
+				<li><a href="./qnalist?drama_num=${drama_num}&curPage=${i}" class="paging_move" id="move">[이전]</a></li>
 		</c:if>
 		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-			<span class="list" title="${i}">${i}</span>
+		
+			<li><a href="./qnalist?drama_num=${drama_num}&curPage=${i} " class="paging_move">${i}</a></li>
 		</c:forEach>
 		<c:if test="${pager.curBlock lt pager.totalBlock}">
-			<span class="list" title="${pager.lastNum+1}">[다음]</span>
+			<li><a href="./qnalist?drama_num=${drama_num}&curPage=${i} " class="paging_move">${i}</a></li>
 		</c:if>
-		
-		
-	</div>
+		</div>
+	
 		</div>
 </body>
 </html>

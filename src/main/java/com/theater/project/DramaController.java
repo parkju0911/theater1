@@ -363,7 +363,7 @@ return "sss";
 	}
 	//공연 리뷰 selectOne Page
 		@RequestMapping(value="dramaReviewview")
-			public ModelAndView dramaReviewview(ModelAndView mv, int review_num)throws Exception{
+			public ModelAndView dramaReviewview(ModelAndView mv, int review_num, String title)throws Exception{
 			ReviewDTO reviewDTO= dramaService.review_selectOne(review_num);
 			int file_num= reviewDTO.getFile_num();
 			FileDTO fileDTO = dramaService.selectFile(file_num);
@@ -378,7 +378,7 @@ return "sss";
 		public  ModelAndView dramaReviewwrite(ListData listData)throws Exception{
 			
 			ModelAndView mv = null;
-			mv = dramaService.selectList(listData);
+			mv = dramaService.selectList_write_title(listData);
 			mv.setViewName("drama/dramaReviewwrite");
 			
 			return mv;

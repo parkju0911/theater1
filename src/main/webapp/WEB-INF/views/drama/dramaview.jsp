@@ -11,8 +11,7 @@
 <link href="../resources/css/drama/dramaview.css" rel="stylesheet">
 <link href="../resources/css/common/header.css" rel="stylesheet">
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=v1_dhkpTCMdne9dcmd_k&submodules=geocoder"></script>
@@ -26,17 +25,18 @@
 
 		//안내 리스트 출력
 		$("#info").click(function() {
-			$("#info_text").load("./text_info?drama_num="+${view.drama_num})
+			$("#info_text").load("./text_info?drama_num="+${view.drama_num} )
 		});
 		
 		//후기 리스트 출력
 		$("#review").click(function() {
-			$("#review_list").load("./reviewlist?drama_num="+${view.drama_num})
-		});
+			$("#review_list").load("./reviewlist?drama_num="+${view.drama_num} )
+			$("#paging").css("display","none");
+		}); 
 		
 		//문의사항 리스트 출력
 		$("#qna").click(function() {
-			$("#qna_list").load("./qnalist?drama_num="+${view.drama_num})
+			$("#qna_list").load("./qnalist?drama_num="+${view.drama_num} )
 		});
 		
 		//환불규정
@@ -52,7 +52,9 @@
 		//후기 전체 보기 클릭시 후기 리스트 출력
 		$("#reviewlist_all").click(function() {
 			
-			$("#review_list").load("./reviewlist?drama_num="+${view.drama_num})
+		window.open("./reviewlist?drama_num=" +${view.drama_num} ,"후기 전체보기", "width=850 , height=600 , top=200, left=550 , resize=none , location=no, scrollbars=no, menubar=no");
+		/* $("#paging").css("display","block"); */
+		$("#info").trigger("click");
 		});
 		
 		$("#btn_buy").click(function(){
@@ -87,23 +89,24 @@
 		$('#update').click(function(){
 			$(location).attr('href', './dramaViewUpdate?drama_num=${view.drama_num}');
 		});
+		
+	
+		
 });
 	
-$(document).ready(function() {
+ $(document).ready(function() {
 	
 	 $("#info").trigger("click");
 
 } );
-
+ 
 
 $('#update').click(function(){
     $(location).attr('href', './dramaViewUpdate?drama_num=${view.drama_num}');
  });
  
 
-
- 
-
+	
 </script>
 <style type="text/css">
 body{
@@ -250,7 +253,9 @@ A:VISITED {
 					<div id="info_text"></div>
 				</div>
 				<div id="menu1" class="tab-pane fade">
+						
 					<div id="review_list"></div>
+						
 				</div>
 				<div id="menu2" class="tab-pane fade">
 					<div id="qna_list"></div>
@@ -268,7 +273,7 @@ A:VISITED {
 			<button id="delete" class="btn btn-default">DELETE</button>
 			</div>
 
-
+	
 	</section>
 	<!-- footer  -->
 	<c:import url="../temp/footer.jsp"></c:import>

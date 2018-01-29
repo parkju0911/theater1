@@ -14,8 +14,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript"
 	src="../resources/SE2/js/HuskyEZCreator.js"></script>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link href="../resources/css/drama/dramaReview.css" rel="stylesheet">
@@ -70,7 +69,7 @@
 		<c:if test="${member.id eq null }">
 			<div class="top_wrap">
 				<a href="./dramaReviewwrite"
-					onclick="if(!alert('출석체크를 하려면 로그인이 필요합니다.'));{return false;}"><img
+					onclick="if(!alert('로그인하셔야 작성가능합니다.'));{return false;}"><img
 					src="../resources/images/review/writeBtn.png" class="writeBtn"></a>
 				<!-- <a herf="#"><img alt="" src="../resources/images/review/writeBtn.png"></a> -->
 			</div>
@@ -167,7 +166,7 @@
 			</div>
 		</c:forEach>
 
-		<div id="paging">
+		<div  class="pagination" id="paging">
 			<c:if test="${pager.curBlock gt 1}">
 				<span class="list" title="${pager.startNum-1}">[이전]</span>
 			</c:if>
@@ -177,6 +176,8 @@
 			<c:if test="${pager.curBlock lt pager.totalBlock}">
 				<span class="list" title="${pager.lastNum+1}">[다음]</span>
 			</c:if>
+			
+			
 			<div id="search_box_bottom">
 				<form id="frm" name="frm" action="./dramaReview" method="get"
 					class="form-wrapper cf" style="width: 250px; height: auto;">

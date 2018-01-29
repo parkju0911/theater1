@@ -41,7 +41,21 @@
   		where R between #{startRow} and #{lastRow}
   	</select>
   	
-  	
+  		<select id="selectList_write_title" parameterType="java.util.Map" resultType="DramaDTO">
+  		select * from
+  		(select rownum R, N.* from
+  		(select * from drama
+  		
+  		<if test="kind == 'title'">
+  		where title like '%'||#{search}||'%'
+  		</if> 
+  		
+  		<if test="kind == 'contents'">
+  		where contents like '%'||#{search}||'%'
+  		</if>
+  		order by drama_num desc) N)
+  		where R between #{startRow} and #{lastRow}
+  	</select>
   	
   	<!-- 공연리뷰 리스트 출력시 drama 제목 출력 -->	
   	<select id="drama_title" parameterType="int" resultType="dramaDTO">
