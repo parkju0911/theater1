@@ -44,7 +44,7 @@
 			
 			}); 
 		$("#qna_all").click(function() {
-			window.open("./qnalist?drama_num=" +${drama_num} ,"Q&A 전체보기", "width=1050 , height=800 , top=100, left=550 , resize=none , location=no, scrollbars=no, menubar=no");
+			window.open("./qnalist?drama_num=" +${drama_num} ,"Q&A 전체보기", "width=850 , height=600 , top=100, left=550 , resize=none , location=no, scrollbars=no, menubar=no");
 
 		})
 	$("#insertbut").click(function() {
