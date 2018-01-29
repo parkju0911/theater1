@@ -335,6 +335,30 @@ public class DramaService {
 	
 	public ModelAndView selectList(ListData listData) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		RowNum rowNum = listData.makeRow();
+		int totalCount = dramaDAO.totalcount_list(rowNum);
+		Pager pager = listData.makePage(totalCount);
+		List<DramaDTO> ar = dramaDAO.selectList(rowNum);
+		List<FileDTO> file=new ArrayList<FileDTO>();
+		for(DramaDTO dramaDTO: ar){
+			FileDTO fileDTO=dramaDAO.fileList(dramaDTO.getFile_num());
+			file.add(fileDTO);
+		}
+		List<FileDTO> file1=new ArrayList<FileDTO>();
+		for(DramaDTO dramaDTO: ar){
+			FileDTO fileDTO=dramaDAO.fileList(dramaDTO.getFile_num());
+			file1.add(fileDTO);
+		}
+		mv.addObject("file1",file1);
+		
+	
+		mv.addObject("list", dramaDAO.selectList(rowNum)).addObject("pager", pager).addObject("board", "drama").addObject("file", file).addObject("file1",file1);
+		
+		return mv;
+	}
+	//공연 insert시 공연 제목 선택
+	public ModelAndView selectList_write_title(ListData listData) throws Exception {
+		ModelAndView mv = new ModelAndView();
 		listData.ListData2();
 		RowNum rowNum = listData.makeRow();
 		int totalCount = dramaDAO.totalcount_list(rowNum);

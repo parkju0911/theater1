@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 <link href="../resources/css/drama/qnalist.css" rel="stylesheet">
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css" rel="stylesheet">
 #reply_form{
 	display:none;
@@ -46,7 +47,7 @@
 			window.open("./qnalist?drama_num=" +${drama_num} ,"Q&A 전체보기", "width=1050 , height=800 , top=100, left=550 , resize=none , location=no, scrollbars=no, menubar=no");
 
 		})
-	$(".insertbut").click(function() {
+	$("#insertbut").click(function() {
 		if(${member eq  null}){
 			alert("로그인 하셔야 등록가능합니다.");
 			$("#qna_insert").prop("method", "GET");
@@ -54,10 +55,11 @@
 		
 	}else {
 			if($("contents").val() ==null){
-				alert("내용을 작성하여주세요.");
+				alert("내용을 작성하여주세요.");	
+				
 			}
 				}
-	}
+	});
 	});
 </script>
 </head>
@@ -72,7 +74,7 @@
 <!------------- 문의 글 ---------------->	
 				<div id="qna_form">
 							
-							<form action="qnawrite" method="post" id="qna_insert">
+							<form id="qna_insert" name="frm" method="post"  >
 								<div id="qna_textbox">
 	
 								<input type="hidden"  name="drama_num" value="${drama_num}" >
@@ -82,7 +84,7 @@
 								</div>
 							
 							<div id="qna_button">
-								<button class="insertbut" style="width: 150px; height: 70px; margin-top: 10px;">등록</button>
+								<button id="insertbut" style="width: 150px; height: 70px; margin-top: 10px;">등록</button>
 									</div>
 								<p id="notextqna" style="color:red; float:left;">* Q&A를 통한 환불/취소/변경 문의는 처리되지 않습니다</p>
 								

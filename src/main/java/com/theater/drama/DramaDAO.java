@@ -154,6 +154,15 @@ public class DramaDAO  {
 
 		return sqlSession.selectList(namespace+ "selectList", map);
 	}
+	public List<DramaDTO> selectList_write_title(RowNum rowNum) throws Exception {
+		Map<String, Object>  map = new HashMap<String, Object>();
+		map.put("startRow", rowNum.getStartRow());
+		map.put("lastRow", rowNum.getLastRow());
+		map.put("kind", rowNum.getKind());
+		map.put("search", rowNum.getSearch());
+
+		return sqlSession.selectList(namespace+ "selectList", map);
+	}
 	public DramaDTO drama_title(int drama_num) throws Exception {
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
