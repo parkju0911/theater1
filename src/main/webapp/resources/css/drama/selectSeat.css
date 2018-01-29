@@ -65,6 +65,7 @@
 	margin-bottom : 20px;
 }
 .seat_span{
+	border: 1px solid;
 	display : block;
 	font-size : 18px;
 	width: 27px;
