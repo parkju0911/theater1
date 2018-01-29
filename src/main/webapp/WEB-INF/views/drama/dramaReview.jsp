@@ -88,7 +88,7 @@
 		</div>
 		<c:forEach items="${review}" var="list" varStatus="i">
 			<div class="list_box">
-				<a href="./dramaReviewview?review_num=${list.review_num}">
+				<a href="./dramaReviewview?review_num=${list.review_num}&title=${title[i.index].title}">
 					<div class="box_left">
 						<c:if test="${file[i.index].file_num eq 0 }">
 							<img alt="" src="../resources/images/starpoint/no_image.png"
@@ -105,8 +105,9 @@
 						<p id="writer"
 							style="width: 111px; font-size: 14px; font-weight: bold; text-align: right; margin-top: 39px; margin-right: -84px;">${list.id}</p>
 						<div id="review_contents">
-							<a href="./dramaReviewview?review_num=${list.review_num}">
-								<p id="review_title">${list.title}</p>
+							<a href="./dramaReviewview?review_num=${list.review_num}&title=${title[i.index].title}">
+								<p id="review_drama">${title[i.index].title} ::</p>
+								<p id="review_title"> ${list.title}</p>
 								<div
 									style="font-size: 14px; font-family: 'Nanum Gothic', sans-serif;">
 									<p class="review_con">${list.contents}</p>

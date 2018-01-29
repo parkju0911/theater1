@@ -86,11 +86,11 @@ function del() {
 	<!-- header end -->
 	<div class="title_wrap"
 			style="width: 950px; margin: 0 auto; padding-top: 8px; font-family: 'Nanum Gothic', sans-serif;">
-			<h6 id="h6_title"><a href="${pageContext.request.contextPath}"><img alt="" src="../resources/images/common/homeImg.png" id="homeImg"></a> > <a href="${pageContext.request.contextPath}/drama/dramaReview">Review</a> > 
+			<h6 id="h6_title" style="margin-top: 2px;"><a href="${pageContext.request.contextPath}"><img alt="" src="../resources/images/common/homeImg.png" id="homeImg"></a> > <a href="${pageContext.request.contextPath}/drama/dramaReview">Review</a> > 
 	<a href="${pageContext.request.contextPath}/drama/dramaReviewview?review_num=${selectOne.review_num}">${selectOne.title}</a></h6>
 	</div>
-<div class="board_wrap1" style="width: 850px;"><img style="    width: 23px;" alt="" src="../resources/images/review/pointing.png">
-	<p style="padding: 0;font-size: 18px;font-weight: 550;padding-left: 10px;color: #795548;padding-left: 30px; margin-top: -22px; line-height: initial; color: #473e37; font-family: 'Nanum Gothic', sans-serif;">공연명<%-- ${selectOne.drama_title} --%></p>
+<div class="board_wrap1" style="width: 850px; padding-bottom: 100px;"><img style="    width: 23px;" alt="" src="../resources/images/review/pointing.png">
+	<p style="padding: 0;font-size: 18px;font-weight: 550;padding-left: 10px;color: #795548;padding-left: 30px; margin-top: -22px; line-height: initial; color: #473e37; font-family: 'Nanum Gothic', sans-serif;">${param.title}</p>
 	<p class="b_title" style="background-color: #fffffb;">${selectOne.title}
 			<c:if test="${selectOne.star ==5}">
 				<img alt="" src="../resources/images/starpoint/star_5.png" style="height: 20px;float: right; margin-right: -122px; float: right;">
@@ -108,15 +108,14 @@ function del() {
 				<img alt="" src="../resources/images/starpoint/star_1.png" style="height: 20px;float: right; margin-right: -122px;">
 			</c:if>
 		</p>
-		<div id="image_box">
-			<c:if test="${file.file_num eq 0 }">
-				<img alt="" src="../resources/images/starpoint/no_image.png" style="width: 400px; height: 200px;">			
+			<c:if test="${file.file_num eq 0 }">		
 			</c:if>
 			<c:if test="${file.file_num ne 0 }">
+			<div id="image_box">
 			<img alt="" src="${pageContext.request.contextPath}/resources/upload/${file.file_name}" style="width: 400px;height: 200px;"> 
+			</div>
 			</c:if>
 			
-			</div>
 	<div class="b_contents">${selectOne.contents}</div>
 	
 	<div class="btn-group">
