@@ -32,18 +32,27 @@
 			location.href="dramaList?curPage="+cur;
 		});
 		
-		$(".drama_num").each(function(){
+		
+		 $(".drama_num").each(function(){
 			var id=$(this).attr("title");
+			<c:if test="${end_list ne null}">
 				<c:forEach items="${end_list}" var="dto">
 					$('#'+id).click(function(){
+						
+				
 						var end = '${dto.drama_num}';
 						if(end==id){
 							alert('종료된 공연입니다.');
 						}else{
+							
 							$(location).attr('href', './dramaview?drama_num='+id);
 						}
 					});
-				</c:forEach>				
+				</c:forEach>
+			</c:if>
+			<c:if test="${end_list eq null}">
+				$(location).attr('href', './dramaview?drama_num='+id);
+			</c:if>
 		});
 		$(".price").each(function(){
 			var id=$(this).attr("title");
@@ -53,16 +62,18 @@
 						if(end==id){
 							alert('종료된 공연입니다.');
 						}else{
+							
 							$(location).attr('href', './dramaview?drama_num='+id);
 						}
 					});
 				</c:forEach>				
-		});
+		}); 
 	});
 </script>
 <title>Insert title here</title>
 </head>
 <body>
+
 	<!-- Header 시작 -->
 	<c:import url="../temp/header.jsp"></c:import>
 	<!-- Header 끝 -->
