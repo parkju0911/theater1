@@ -59,15 +59,7 @@
 				 $("#section_info").prop("action", "../member/memberLogin"); 
 			}else{
 
-			/* var now = new Date();
-				var sysdate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-				var afterdrama = new Date("1/28/2018");
-				if(sysdate.getTime() > afterdrama.getTime()){
-				alert("종료된 공연입니다. 다른날짜를 선택하여주십시오.")
-					window.reload();
-					}else{
-						
-					} */
+		
 				var drama_date = $("#drama_date").val();
 				var drama_time = $("#drama_time").val();
 				var drama_ticket = $("#drama_ticket").val();
@@ -104,15 +96,14 @@
 	 $("#info").trigger("click");
 
 } );
-<<<<<<< HEAD
-=======
+
  
 
 $('#update').click(function(){
     $(location).attr('href', './dramaViewUpdate?drama_num=${view.drama_num}');
  });
  
-$("#select_date").click(function() {
+/* $("#select_date").click(function() {
 	var now = new Date();
  	var sysdate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 	var afterdrama = new Date("1/28/2018");
@@ -122,9 +113,9 @@ $("#select_date").click(function() {
 	}else{
 		
 	}
-});
+}); */
 	
->>>>>>> 0129-yk
+
 </script>
 <style type="text/css">
 body{
