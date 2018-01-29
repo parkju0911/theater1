@@ -396,7 +396,7 @@
 }
 #qna_text{
 	margin-left: 30px;
-	
+	display: block;
 }
 #qna_form{
 	width:720px;
@@ -413,6 +413,7 @@
 	height: 50px;
 	text-align: center;
 	line-height: 50px;
+	display: none;
 }
 #paging span{
 	padding-right: 10px;

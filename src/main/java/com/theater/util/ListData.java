@@ -17,7 +17,7 @@ public class ListData {
 		curPage=1;
 		kind="title";
 		search="";
-		this.perPage=10;
+		this.perPage=100;
 	}
 	
 	//row

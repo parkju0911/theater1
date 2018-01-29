@@ -1,0 +1,57 @@
+@CHARSET "UTF-8";
+#qna_listform{
+	width:830px;
+	background-color: white;
+	margin: 0 auto;
+}
+#qna_text{
+	margin-left: 30px;
+	display: block;
+}
+
+li{
+	text-decoration: none;
+	list-style: none;
+	float: left;
+	padding-left: 20px;
+}
+#qna_form{
+	width:720px;
+	height:110px;
+	background-color:#fafafa;
+	margin-left: 30px;
+}
+#qna_textbox{
+	padding: 13px 10px 0 10px;
+	float: left;
+}
+#notextqna{
+	float:left;
+}
+#qna_box{
+	 width: 100%;
+    border: 1px solid #e6e6e6;
+    margin-top: 15px;
+    padding-top: 10px;
+    background: #fff;
+}
+#paging{
+	margin: 0 auto;
+}
+.insertbut{
+	display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: black;
+  background-color: #fffff8;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+.insertbut hover{
+	background-color: #fffff8
+}

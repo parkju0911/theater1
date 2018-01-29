@@ -7,25 +7,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <title>Insert title here</title>
+<link href="../resources/css/drama/reviewlist.css" rel="stylesheet">
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 $(function(){
 	
+	//후기 전체 보기 클릭시 후기 리스트 출력
+	$("#reviewlist_al").click(function() {
+		
+	window.open("./reviewlist?drama_num=" +${drama_num} ,"후기 전체보기", "width=850 , height=500 , top=200, left=550 , resize=none , location=no, scrollbars=no, menubar=no");
+
+	});
 
 	
-	$(".list").click(function (){
-		var cur=$(this).attr("title");
+	$(".list").click(function() {
+		var cur = $(this).attr("title");
 		var s = '${pager.search}';
 		var v = '${pager.kind}';
-		document.frm.curPage=cur;
-		document.frm.search=s;
-		document.frm.kind=v;
-		
+		$("#curPage").val(cur);
+		$("#search").val(s);
+		$("#kind").val(v);
+		$("#frm").submit();
 	});
 });
-	
-
 
 </script>
 <style type="text/css">
@@ -35,7 +41,7 @@ $(function(){
 </style>
 </head>
 <body>
-	
+		
 			<div id="afterview_list">
 					<div id="point_box">
 		
@@ -62,7 +68,7 @@ $(function(){
 					<td><div id="afterview_box_a">아직 등록된 후기/별점이 없습니다.</div></td>
 					</tr>
 			</c:if>
-				<c:forEach items="${review }" var="re">
+				<c:forEach items="${review }" var="re" begin="0" end="5">
 			 		<c:if test="${re.drama_num eq drama_num }">
 				
 				<tr>
@@ -92,22 +98,26 @@ $(function(){
 				</c:forEach>
 			</table>
 			
-		
+			<c:if test="${!empty review }">
+				<div id="afterview_total">
+					<a href="##" id="reviewlist_al">후기 전체보기></a>
+				</div>
+				</c:if>
 			
 	
-		<div id="paging">
+		<div  class="pagination"   id="paging">
 		<c:if test="${pager.curBlock gt 1}">
-			<span class="list" title="${pager.startNum-1}">[이전]</span>
+				<li><a href="./reviewlist?drama_num=${drama_num}&curPage=${i}" class="paging_move" id="move">[이전]</a></li>
 		</c:if>
 		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-			<span class="list" title="${i}">${i}</span>
+		
+			<li><a href="./reviewlist?drama_num=${drama_num}&curPage=${i} " class="paging_move">${i}</a></li>
 		</c:forEach>
 		<c:if test="${pager.curBlock lt pager.totalBlock}">
-			<span class="list" title="${pager.lastNum+1}">[다음]</span>
+			<li><a href="./reviewlist?drama_num=${drama_num}&curPage=${i} " class="paging_move">${i}</a></li>
 		</c:if>
-		
-		
-	</div>
-		
+		</div>
+	
+
 </body>
 </html>

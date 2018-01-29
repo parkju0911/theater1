@@ -72,7 +72,7 @@
 		<c:if test="${member.id eq null }">
 			<div class="top_wrap">
 				<a href="./dramaReviewwrite"
-					onclick="if(!alert('출석체크를 하려면 로그인이 필요합니다.'));{return false;}"><img
+					onclick="if(!alert('로그인하셔야 작성가능합니다.'));{return false;}"><img
 					src="../resources/images/review/writeBtn.png" class="writeBtn"></a>
 				<!-- <a herf="#"><img alt="" src="../resources/images/review/writeBtn.png"></a> -->
 			</div>

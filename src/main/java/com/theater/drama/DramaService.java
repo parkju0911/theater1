@@ -147,13 +147,12 @@ public class DramaService {
 	//리뷰 전체보기(별점 리스트)
 	public ModelAndView review_list(ListData listData , int drama_num)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		listData.ListData2();
+	/*	listData.ListData2();*/
 		RowNum rowNum = listData.makeRow();
 		Pager pager = listData.makePage(dramaDAO.totalcount_review(rowNum));
 		List<ReviewDTO> review = dramaDAO.review_list(rowNum);
 		mv.addObject("pager", pager);
 		mv.addObject("review", review);
-		System.out.println("drama_num:"+drama_num);
 		mv.addObject("drama_num", drama_num);
 		mv.setViewName("drama/reviewlist");
 		return mv;
@@ -336,6 +335,7 @@ public class DramaService {
 	
 	public ModelAndView selectList(ListData listData) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		listData.ListData2();
 		RowNum rowNum = listData.makeRow();
 		int totalCount = dramaDAO.totalcount_list(rowNum);
 		Pager pager = listData.makePage(totalCount);
