@@ -110,6 +110,106 @@ td, select {
     width: 366PX;
     height: 180px;
  }
+ 
+ .btn{
+	/*  background-color: #ffc910;   
+ 	width: 242px;
+    height: 60px;
+    margin: 0 auto;
+    border-radius: 10px;
+    color: #fff;
+    font-family: Sans-serif;
+    font-size: 20px;
+    margin: 25px 25px;
+    text-align: center;
+    border: 0;
+    transition: all 0.3s ease 0s; */
+    background-color:#fd920a;
+    display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+ /*  font-size: 14px; */
+  font-weight: normal;
+  line-height: 1.42857143; 
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: none;/* 
+  border: 1px solid transparent;
+  border-radius: 4px; */
+  padding: 10px 16px;
+    }
+    .btn-lg {
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 6px;
+}
+ 
+ .btn:hover {
+  background: #CF4647;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #ffc910;
+  border-color: #357ebd;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #fd920a;
+  border-color: #fd920a;
+}
+
+/***********************
+  RAISED BUTTONS
+************************/
+.btn-primary.raised {
+    box-shadow: 0 3px 0 0 #997200;
+}
+.btn-primary.raised:active, .btn-primary.raised.active {
+    background: #fd920a;
+    box-shadow: none;
+    margin-bottom: -3px;
+    margin-top: 3px;
+}
+
+/***********************
+  CUSTON BTN VALUES
+************************/
+
+.btn {
+    padding: 14px 24px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+    color: #eeee;
+}
+
+.btn-primary {
+    background:#ffc910;
+    color: #ffffff;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background:#fd920a;
+}
+.btn-primary:active, .btn-primary.active {
+    background: #fd920a;
+    box-shadow: none;
+}
 </style>
 </head>
 <script type="text/javascript">
@@ -170,21 +270,14 @@ Fantastic
  <!-- <div class="wrap">
     <a class="btn-0" href="#">Swipe</a>
     </div> -->
-<p style=" margin: 0 auto;
-    width: 250px;
-    margin-top: -204px;"><button class="fourth"  style="background-color: #ffc910;
-    width: 250px;
-    height: 71px;
-    margin: 0 auto;
-    border-radius: 10px;
-    color: white;">JOIN US</button>
+<p style=" margin: 0 auto; width: 250px; margin-top: -175px;"><button style="width: 225px;height: 60px;" class="btn btn-primary btn-lg raised" onclick="window.location.href='./member/memberJoin'">JOIN US >></button>
 </p>
 </c:if>
 
 	<p style="    width: 250px;
     height: auto;
     margin: 0 auto;
-    padding-top: 300px;"><img style="    width: 250px;" alt="" src="./resources/images/home/homeDrama.png"></p>
+    padding-top: 300px;"><a href="./drama/dramaList"><img style="    width: 250px;" alt="" src="./resources/images/home/homeDrama.png"></a></p>
 
 				<div class="mainDramaList" style="margin: 0 auto;    width: 1000px;   overflow: overlay;    padding: 50px;">
 				<c:forEach begin="0" end="5" var = "j">
@@ -250,7 +343,7 @@ Fantastic
 					 
 					 
 					 <div style="height: 140px;"></div>
-					 <p><a href="./drama/dramaList"><img style="width: 12%;margin-bottom: -13px;" alt="" src="./resources/images/home/homeEvent.png"></a></p>
+					 <p><img style="width: 12%;margin-bottom: -13px;" alt="" src="./resources/images/home/homeEvent.png"></p>
 <!-- SLIDEBOX -->
 	<div class="w3-content w3-display-container" style="max-width: 100%; background-image: url(./resources/images/home/film.png);width: 100%;  height: 270px;MARGIN: 0 AUTO; background-repeat: round;">
 	<!-- style="max-width: 1000px;  background-image: url(./resources/images/home/MAINBG.png);    width: 100%;    height: 650px;    MARGIN: 0 AUTO;" -->
