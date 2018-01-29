@@ -43,6 +43,30 @@ public class DramaController {
 	@Inject
 	public MemberService memberService;
 	
+	//dramaViewDelete
+		@RequestMapping(value="dramaViewDelete")
+		public String viewDelete(DramaDTO dramaDTO,HttpSession session,RedirectAttributes ra) throws Exception{
+			MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+			String path = null;
+			if(memberDTO==null) {
+				ra.addFlashAttribute("result", "잘못된 접근 방식 입니다.");
+				path = "redirect:../";
+			}else {
+				if(memberDTO.getKind().equals("company")) {
+					int member_company_num = dramaService.member_company_num(memberDTO.getId());
+					if(member_company_num==dramaDTO.getCompany_num()) {
+						dramaDTO.setTitle("[종료]"+dramaDTO.getTitle());
+						dramaService.viewDelete(dramaDTO);
+						
+						path="redirect:./dramaList";
+					}else {
+						ra.addFlashAttribute("result", "잘못된 접근 방식 입니다.");
+						path = "redirect:../";
+					}
+				}
+			}
+			return path;
+		}
 	//dramaView update
 	//update -> DB 처리
 	@RequestMapping(value="dramaViewUpdate", method=RequestMethod.POST)
@@ -192,104 +216,73 @@ return "sss";
 		return mv;
 	}
 	//Drama View
-	@RequestMapping(value="dramaview")
-	public ModelAndView selectOne(int drama_num, ModelAndView mv,RedirectAttributes rd,HttpServletRequest request, HttpServletResponse response) throws Exception{
-		//공연 정보가져오기
-		DramaDTO dramaDTO = dramaService.selectOne(drama_num);
-		//해당 공연의 날짜 정보 가져오기
-		List<DramaListDTO> ar = dramaService.dramaList(drama_num);
-		
-		int totalcount = dramaService.totalcount(drama_num);
-		int file_num = dramaDTO.getFile_num();
-		FileDTO fileDTO = dramaService.selectFile(file_num);
-		mv.addObject("total", totalcount);
-		List<ReviewDTO> ar_review = dramaService.selectList_review(drama_num);
-		if(dramaDTO != null) {
-			String [] strings=null;
-			boolean check=true;
-			boolean newCheck=true;
-			String result="";
-			Cookie [] cookies = request.getCookies();
-			for (Cookie cookie : cookies) {
-				if(cookie.getName().equals("title")){
-					strings = cookie.getValue().split(",");
-					for(String s : strings){
-						System.out.println("string : "+s+", drama_num : "+dramaDTO.getDrama_num());
-						if(s.equals(String.valueOf(dramaDTO.getDrama_num()))){
-							check=false;
+		@RequestMapping(value="dramaview")
+		public ModelAndView selectOne(int drama_num, ModelAndView mv,RedirectAttributes rd,HttpServletRequest request, HttpServletResponse response,HttpSession session) throws Exception{
+			//공연 정보가져오기
+			DramaDTO dramaDTO = dramaService.selectOne(drama_num);
+			//해당 공연의 날짜 정보 가져오기
+			List<DramaListDTO> ar = dramaService.dramaList(drama_num);
+			
+			int totalcount = dramaService.totalcount(drama_num);
+			int file_num = dramaDTO.getFile_num();
+			FileDTO fileDTO = dramaService.selectFile(file_num);
+			mv.addObject("total", totalcount);
+			List<ReviewDTO> ar_review = dramaService.selectList_review(drama_num);
+			if(dramaDTO != null) {
+				String [] strings=null;
+				boolean check=true;
+				boolean newCheck=true;
+				String result="";
+				Cookie [] cookies = request.getCookies();
+				for (Cookie cookie : cookies) {
+					if(cookie.getName().equals("title")){
+						strings = cookie.getValue().split(",");
+						for(String s : strings){
+							System.out.println("string : "+s+", drama_num : "+dramaDTO.getDrama_num());
+							if(s.equals(String.valueOf(dramaDTO.getDrama_num()))){
+								check=false;
+							}
 						}
-					}
-					if(check){
-						//중복데이터 X
-						result=cookie.getValue();
-						result=dramaDTO.getDrama_num()+","+result;
-						Cookie c = new Cookie("title", result);
-						response.addCookie(c);
-					}
-					newCheck=false;
-					break;
-				}	
-			}
-			
-			if(newCheck){
-				Cookie c = new Cookie("title", String.valueOf(dramaDTO.getDrama_num()));
-				response.addCookie(c);
-			}
-			
-			mv.addObject("view", dramaDTO);
-			mv.addObject("list", ar);
-			mv.addObject("file", fileDTO);
-			mv.addObject("review", ar_review);
-			mv.setViewName("drama/dramaview");
-		}else {
-			rd.addFlashAttribute("message", "잘못된 접근방식 입니다.");
-			mv.setViewName("Redirect:../");
-		}
-		/*if(dramaDTO != null) {
-			//중복제거
-			String [] strings=null;
-			boolean check=true;
-			boolean newCheck=true;
-			String result="";
-			Cookie [] cookies = request.getCookies();
-			for (Cookie cookie : cookies) {
-				if(cookie.getName().equals("title")){
-					strings = cookie.getValue().split(",");
-					for(String s : strings){
-						if(s.equals(String.valueOf(dramaDTO.getDrama_num()))){
-							check=false;
+						if(check){
+							//중복데이터 X
+							result=cookie.getValue();
+							result=dramaDTO.getDrama_num()+"."+result;
+							Cookie c = new Cookie("title", result);
+							response.addCookie(c);
 						}
-					}
-					if(check){
-						//중복데이터 X
-						result=cookie.getValue();
-						result=result+","+dramaDTO.getDrama_num();
-						Cookie c = new Cookie("title", result);
-						response.addCookie(c);
-					}
-					newCheck=false;
-					break;
-				}	
-			}
-			
-			if(newCheck){
-				Cookie c = new Cookie("title", String.valueOf(dramaDTO.getDrama_num()));
-				response.addCookie(c);
-			}
-			//쿠키 파싱후 추가
-			//중복제거 끝
-			mv.addObject("view", dramaDTO);
-			mv.addObject("list", ar);
-			mv.addObject("file", fileDTO);
-			mv.addObject("review", ar_review);
-			mv.setViewName("drama/dramaview");
-		}else {
-			rd.addFlashAttribute("message", "잘못된 접근방식 입니다.");
-			mv.setViewName("Redirect:../");
-		}*/
+						newCheck=false;
+						break;
+					}	
+				}
 				
-		return mv;
-	}
+				if(newCheck){
+					Cookie c = new Cookie("title", String.valueOf(dramaDTO.getDrama_num()));
+					response.addCookie(c);
+				}
+				boolean company_check = false;
+				MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+				
+				if(memberDTO!=null) {
+					if(memberDTO.getKind().equals("company")) {
+						int member_company_num = dramaService.member_company_num(memberDTO.getId());
+						if(member_company_num==dramaDTO.getCompany_num()) {
+							company_check = true;
+						}
+					}				
+				}
+				mv.addObject("company_check", company_check);
+				mv.addObject("view", dramaDTO);
+				mv.addObject("list", ar);
+				mv.addObject("file", fileDTO);
+				mv.addObject("review", ar_review);
+				mv.setViewName("drama/dramaview");
+			}else {
+				rd.addFlashAttribute("message", "잘못된 접근방식 입니다.");
+				mv.setViewName("Redirect:../");
+			}
+					
+			return mv;
+		}
 	//환불규정 page
 	@RequestMapping(value="refundlist")
 	public String refundlist()throws Exception{
@@ -445,38 +438,40 @@ return "sss";
 		}
 		
 		
-	//selectList
-	@RequestMapping(value="dramaList")
-	public ModelAndView selectList(ListData listData, HttpServletRequest request) throws Exception {
-		ModelAndView mv = null;
-		DramaDTO dramaDTO=new DramaDTO();
-		mv = dramaService.selectList(listData);
-		mv.setViewName("drama/list");
-		mv.addObject("num", dramaDTO.getDrama_num());
-		Cookie [] cookies = request.getCookies();
-		List<DramaDTO> ar = new ArrayList<DramaDTO>();
-		List<FileDTO> ar1=new ArrayList<FileDTO>();
-		for (Cookie cookie : cookies) {
-			cookie.setMaxAge(60*60*24);
-			if(cookie.getName().equals("title")){
-				StringTokenizer strToken = new StringTokenizer(cookie.getValue(), ",");
-				List<String> strings = new ArrayList<String>();
-				while(strToken.hasMoreTokens()) {
-					String token = strToken.nextToken();
-					strings.add(token);
+		//selectList
+		@RequestMapping(value="dramaList")
+		public ModelAndView selectList(ListData listData, HttpServletRequest request) throws Exception {
+			ModelAndView mv = null;
+			DramaDTO dramaDTO=new DramaDTO();
+			mv = dramaService.selectList(listData);
+			mv.setViewName("drama/list");
+			mv.addObject("num", dramaDTO.getDrama_num());
+			Cookie [] cookies = request.getCookies();
+			List<DramaDTO> ar = new ArrayList<DramaDTO>();
+			List<FileDTO> ar1=new ArrayList<FileDTO>();
+			List<DramaDTO> end_list = dramaService.end_list();
+			mv.addObject("end_list",end_list);
+			for (Cookie cookie : cookies) {
+				cookie.setMaxAge(60*60*24);
+				if(cookie.getName().equals("title")){
+					StringTokenizer strToken = new StringTokenizer(cookie.getValue(), ".");
+					List<String> strings = new ArrayList<String>();
+					while(strToken.hasMoreTokens()) {
+						String token = strToken.nextToken();
+						strings.add(token);
+					}
+					for (String string : strings) {
+						dramaDTO=dramaService.selectOne(Integer.parseInt(string));
+						ar.add(dramaDTO);
+						ar1.add(dramaService.fileList(dramaDTO));
+					}
+					mv.addObject("title", ar);
+					mv.addObject("fileimage",ar1);	
 				}
-				for (String string : strings) {
-					dramaDTO=dramaService.selectOne(Integer.parseInt(string));
-					ar.add(dramaDTO);
-					ar1.add(dramaService.fileList(dramaDTO));
-				}
-				mv.addObject("title", ar);
-				mv.addObject("fileimage",ar1);	
 			}
+			
+			return mv;
 		}
-		
-		return mv;
-	}
 	
 	
 	//Drama_file list

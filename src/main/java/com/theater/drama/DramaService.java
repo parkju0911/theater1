@@ -43,6 +43,16 @@ public class DramaService {
 	@Inject
 	private MemberDAO memberDAO;
 	
+	public int member_company_num(String id) throws Exception{
+		return dramaDAO.member_company_num(id);
+	}
+	//dramaViewDelete 관련
+		public List<DramaDTO> end_list() throws Exception{
+			return dramaDAO.end_list();
+		}
+		public int viewDelete(DramaDTO dramaDTO) throws Exception{
+			return dramaDAO.viewDelete(dramaDTO);
+		}
 	//orderlist 관련 01-26
 	public ModelAndView orderList(MemberDTO memberDTO,ListData listData,ModelAndView mv) throws Exception{
 		RowNum rowNum = listData.makeRow();

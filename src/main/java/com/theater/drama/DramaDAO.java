@@ -24,7 +24,16 @@ public class DramaDAO  {
 	@Inject
 	private SqlSession sqlSession;
 	private static final String namespace="dramaMapper.";
-	
+	//dramaDelete 관련
+		public List<DramaDTO> end_list() throws Exception{
+			return sqlSession.selectList(namespace+"end_list");
+		}
+		public int viewDelete(DramaDTO dramaDTO) throws Exception{
+			return sqlSession.update(namespace+"viewDelete", dramaDTO);
+		}
+		public int member_company_num(String id) throws Exception{
+			return sqlSession.selectOne(namespace+"member_company_num", id);
+		}
 	//dramaWrite 관련 1-24
 		public int delete_dateList(int date_num) throws Exception{
 			return sqlSession.delete(namespace+"delete_dateList", date_num);

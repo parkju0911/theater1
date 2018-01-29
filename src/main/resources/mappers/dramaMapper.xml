@@ -317,5 +317,13 @@
   	<delete id="delete_dateList" parameterType="int">
   		delete from date_list where date_num=#{date_num}
   	</delete>
+  	
+  	<!-- dramaDelete 부분 -->
+  	<select id="end_list" resultType="com.theater.drama.DramaDTO">
+  		select drama_num from drama where title like '%[종료]%'
+  	</select>
+  	<update id="viewDelete" parameterType="com.theater.drama.DramaDTO">
+  		update drama set title=#{title} where drama_num=#{drama_num}
+  	</update>
   </mapper><!-- xml과 동일한 이름으로 한다. -->
   

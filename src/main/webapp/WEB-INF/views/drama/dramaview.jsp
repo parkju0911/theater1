@@ -19,10 +19,7 @@
 
 
 <script type="text/javascript">
-
 	$(function() {
-			
-
 		//안내 리스트 출력
 		$("#info").click(function() {
 			$("#info_text").load("./text_info?drama_num="+${view.drama_num} )
@@ -51,10 +48,8 @@
 		});
 		//후기 전체 보기 클릭시 후기 리스트 출력
 		$("#reviewlist_all").click(function() {
-			
-		window.open("./reviewlist?drama_num=" +${view.drama_num} ,"후기 전체보기", "width=850 , height=600 , top=200, left=550 , resize=none , location=no, scrollbars=no, menubar=no");
-		/* $("#paging").css("display","block"); */
-		$("#info").trigger("click");
+			window.open("./reviewlist?drama_num=" +${view.drama_num} ,"후기 전체보기", "width=850 , height=600 , top=200, left=550 , resize=none , location=no, scrollbars=no, menubar=no");
+			$("#info").trigger("click");
 		});
 		
 		$("#btn_buy").click(function(){
@@ -63,17 +58,15 @@
 				$("#section_info").prop("method", "GET");
 				 $("#section_info").prop("action", "../member/memberLogin"); 
 			}else{
-		
-			var drama_date = $("#drama_date").val();
-			var drama_time = $("#drama_time").val();
-			var drama_ticket = $("#drama_ticket").val();
-			if(drama_date=='날짜 선택' || drama_time=='시간 선택'||drama_ticket=='매수 설정'){
-				alert("날짜/시간/티켓 장수를 선택하세요.");
-			}else{
-				$("#section_info").prop("action", "./selectSeat");
-				document.frm.submit();
-			}
-				
+				var drama_date = $("#drama_date").val();
+				var drama_time = $("#drama_time").val();
+				var drama_ticket = $("#drama_ticket").val();
+				if(drama_date=='날짜 선택' || drama_time=='시간 선택'||drama_ticket=='매수 설정'){
+					alert("날짜/시간/티켓 장수를 선택하세요.");
+				}else{
+					$("#section_info").prop("action", "./selectSeat");
+					document.frm.submit();
+				}
 			}
 		});
 		
@@ -88,9 +81,10 @@
 		
 		$('#update').click(function(){
 			$(location).attr('href', './dramaViewUpdate?drama_num=${view.drama_num}');
+		});	
+		$('#btn_delete').click(function(){
+			$(location).attr('href', './dramaViewDelete?drama_num=${view.drama_num}&&company_num=${view.company_num}&&title=${view.title}');
 		});
-		
-	
 		
 });
 	
@@ -99,14 +93,6 @@
 	 $("#info").trigger("click");
 
 } );
- 
-
-$('#update').click(function(){
-    $(location).attr('href', './dramaViewUpdate?drama_num=${view.drama_num}');
- });
- 
-
-	
 </script>
 <style type="text/css">
 body{
@@ -124,7 +110,7 @@ A:VISITED {
 
 	<section id="section">
 		<form id="section_info" name="frm"method="post">
-
+			<input type="hidden" name="company_num" value="${view.company_num}">
 			<input type="hidden" name="drama_num" value="${view.drama_num}">
 
 	<!--   이미지 가져오기 -->
@@ -267,13 +253,34 @@ A:VISITED {
 			</div>
 
 		</div>
-	
+		<c:if test="${company_check eq true}">
 			<div class="btn_div">
-			<button id="update" class="btn btn-default">UPDATE</button>
-			<button id="delete" class="btn btn-default">DELETE</button>
+			<button id="update" class="btn btn-default">수정</button>
+			<button class="btn btn-default" data-toggle="modal" data-target="#end">종료</button>
 			</div>
-
-	
+			
+			 <!-- Modal -->
+  			<div class="modal fade" id="end" role="dialog">
+    			<div class="modal-dialog">
+    
+      				<!-- Modal content-->
+      				<div class="modal-content">
+        				<div class="modal-header">
+         	 				<button type="button" class="close" data-dismiss="modal">&times;</button>
+         	 				<h4>${view.title} 종료</h4>
+        				</div>
+        				<div class="modal-body">
+          					<p>해당 공연을 종료 하시겠습니까?</p>
+        				</div>
+        				<div class="modal-footer">
+          					<button id="btn_delete" class="btn btn-default">네</button>
+          					<button type="button" class="btn btn-default" data-dismiss="modal">아니오</button>
+        				</div>
+     		 		</div>
+      
+    			</div>
+  			</div>
+		</c:if>
 	</section>
 	<!-- footer  -->
 	<c:import url="../temp/footer.jsp"></c:import>

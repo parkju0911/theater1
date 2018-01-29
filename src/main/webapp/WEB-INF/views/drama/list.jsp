@@ -31,6 +31,33 @@
 			var t = '${pager.kind}';
 			location.href="dramaList?curPage="+cur;
 		});
+		
+		$(".drama_num").each(function(){
+			var id=$(this).attr("title");
+				<c:forEach items="${end_list}" var="dto">
+					$('#'+id).click(function(){
+						var end = '${dto.drama_num}';
+						if(end==id){
+							alert('종료된 공연입니다.');
+						}else{
+							$(location).attr('href', './dramaview?drama_num='+id);
+						}
+					});
+				</c:forEach>				
+		});
+		$(".price").each(function(){
+			var id=$(this).attr("title");
+				<c:forEach items="${end_list}" var="dto">
+					$('#'+id+'_price').click(function(){
+						var end = '${dto.drama_num}';
+						if(end==id){
+							alert('종료된 공연입니다.');
+						}else{
+							$(location).attr('href', './dramaview?drama_num='+id);
+						}
+					});
+				</c:forEach>				
+		});
 	});
 </script>
 <title>Insert title here</title>
@@ -88,11 +115,11 @@
 											<div class="right">
 												<div class="brand-name-and-rating">
 													<div class="brand-name">
-														<a href="./dramaview?drama_num=${dto.drama_num}">${dto.title}</a>
+														<span id="${dto.drama_num}" class="drama_num" title="${dto.drama_num}">${dto.title}</span>
 													</div>
 												</div>
 												<div class="product-name">
-													<a href="">${dto.price} 원</a>
+													<span id="${dto.drama_num}_price" class="price" title="${dto.drama_num}">${dto.price} 원</span>
 												</div>
 											</div>
 										</div>
