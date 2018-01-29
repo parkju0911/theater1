@@ -90,11 +90,11 @@ td>input{
 	text-align: center;
 }
 #btn{
-	background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/tnb/tnb_buttons.png) no-repeat;
-	width : 220px;
-	height: 108px;
-	background-position: 0 -550px;
-	border : none;
-	margin : 0 auto;
-	cursor : pointer;
+background: url(../../images/buy_buy.png),no-repeat;
+    width: 200px;
+    height: 80px;
+    background-position: 12px -529px;
+    border: none;
+    margin: 0 auto;
+    cursor: pointer;
 }

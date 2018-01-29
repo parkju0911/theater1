@@ -6,9 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>좌석 선택</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
-<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../resources/SE2/js/HuskyEZCreator.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link href="../resources/css/common/header.css" rel="stylesheet">
 <link href="../resources/css/drama/selectSeat.css" rel="stylesheet">
 <script type="text/javascript">
@@ -146,6 +151,7 @@ $(function(){
 			</div>
 			<div id="btn_div">
 				<input type="button" id="btn">
+				<!-- <a type="button" id="btn"><img alt="" src="../resources/iamges/buy.png"></a> -->
 			</div>
 		</div>
 	</form>
