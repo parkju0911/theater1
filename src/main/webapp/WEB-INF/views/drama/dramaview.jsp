@@ -58,6 +58,16 @@
 				$("#section_info").prop("method", "GET");
 				 $("#section_info").prop("action", "../member/memberLogin"); 
 			}else{
+
+			/* var now = new Date();
+				var sysdate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+				var afterdrama = new Date("1/28/2018");
+				if(sysdate.getTime() > afterdrama.getTime()){
+				alert("종료된 공연입니다. 다른날짜를 선택하여주십시오.")
+					window.reload();
+					}else{
+						
+					} */
 				var drama_date = $("#drama_date").val();
 				var drama_time = $("#drama_time").val();
 				var drama_ticket = $("#drama_ticket").val();
@@ -67,6 +77,7 @@
 					$("#section_info").prop("action", "./selectSeat");
 					document.frm.submit();
 				}
+
 			}
 		});
 		
@@ -93,6 +104,27 @@
 	 $("#info").trigger("click");
 
 } );
+<<<<<<< HEAD
+=======
+ 
+
+$('#update').click(function(){
+    $(location).attr('href', './dramaViewUpdate?drama_num=${view.drama_num}');
+ });
+ 
+$("#select_date").click(function() {
+	var now = new Date();
+ 	var sysdate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+	var afterdrama = new Date("1/28/2018");
+	if(sysdate.getTime() > afterdrama.getTime()){
+		alert("종료된 공연입니다. 다른날짜를 선택하여주십시오.")
+		window.reload();
+	}else{
+		
+	}
+});
+	
+>>>>>>> 0129-yk
 </script>
 <style type="text/css">
 body{
@@ -137,7 +169,7 @@ A:VISITED {
 						<c:forEach items="${list}" var="dto">
 
 					 		<fmt:parseDate value='${dto.drama_date}'  var='dto_date'  pattern="yyyy-MM-dd"  scope="page"/>
-							<option class="select_date"><fmt:formatDate value="${dto_date}" pattern="yyyy-MM-dd"/></option>
+							<option class="select_date" id="select_date"><fmt:formatDate value="${dto_date}" pattern="yyyy-MM-dd"/></option>
 
 						</c:forEach>
 					</optgroup>

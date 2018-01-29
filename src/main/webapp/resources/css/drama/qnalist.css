@@ -1,4 +1,7 @@
 @CHARSET "UTF-8";
+body{
+	background-color: #fffff8;
+}
 #qna_listform{
 	width:830px;
 	background-color: white;
@@ -37,6 +40,8 @@ li{
 }
 #paging{
 	margin: 0 auto;
+    margin-top: 5px;
+    margin-left: -20px;
 }
 #insertbut{
 	display: inline-block; 
@@ -54,4 +59,7 @@ li{
 }
 #insertbut hover{
 	background-color: #fffff8
+}
+table{
+	border-collapse: inherit;
 }

@@ -222,7 +222,7 @@ return "sss";
 			DramaDTO dramaDTO = dramaService.selectOne(drama_num);
 			//해당 공연의 날짜 정보 가져오기
 			List<DramaListDTO> ar = dramaService.dramaList(drama_num);
-			
+
 			int totalcount = dramaService.totalcount(drama_num);
 			int file_num = dramaDTO.getFile_num();
 			FileDTO fileDTO = dramaService.selectFile(file_num);
@@ -569,6 +569,7 @@ return "sss";
 	
 		return mv;
 	}
+	
 	
 	
 }
