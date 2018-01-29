@@ -196,6 +196,7 @@
 	list-style: none;
 	color:#888;
 	font-family: 'Nanum Gothic', sans-serif;
+	display: block;
 }
 #afterview_total a{
 	text-decoration: none;
@@ -557,4 +558,12 @@
 }
 #image_contents>img{
 	width : 750px;
+}
+#close{
+
+	display: none;
+	
+}
+#hidden_btn{
+	display: none;
 }

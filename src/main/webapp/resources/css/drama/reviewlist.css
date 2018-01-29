@@ -51,5 +51,23 @@ li{
 #paging{
 	margin-left:50px;
 }
-
+#afterview_total2{
+	display: none;
+	
+}
+#close{
+	float: right;
+	background-color: #999;
+	 border: none;
+    color: white;
+    padding: 12px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    margin-top: -65px;
+    margin-right: 100px;
+}
 }

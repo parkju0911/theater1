@@ -20,7 +20,7 @@
 <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 
 <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
-   <title>Home</title>
+   <title>T E A T R O</title>
 
 <style type="text/css">
 header{

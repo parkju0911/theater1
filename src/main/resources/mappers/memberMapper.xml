@@ -4,10 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="memberMapper">
   	<resultMap type="CompanyDTO" id="companyDTO"/>
-  	<!-- 사업자 등록번호 찾기 -->
-  	<select id="searchCompany_num" parameterType="String" resultType="int">
-  		select company_num from company_info where id=#{id}
-  	</select>
+  	
   	<!-- 로그인 -->
   	<select id="login" resultType="com.theater.member.MemberDTO" parameterType="com.theater.member.MemberDTO">
   		select * from member where id=#{id} and pw=#{pw}

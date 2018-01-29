@@ -325,10 +325,9 @@ return "sss";
 		public String qna_reply(HttpSession session , Qna_viewDTO qna_viewDTO) throws Exception{
 			int result=0;
 			int stepup = dramaService.stepUpdate(qna_viewDTO);
-			System.out.println("qna_viewnum:"+qna_viewDTO.getQna_viewnum());
+			/*System.out.println("qna_viewnum:"+qna_viewDTO.getQna_viewnum());*/
 			result = dramaService.qna_reply(qna_viewDTO, session);
 				
-			System.out.println("reply 컨트롤러");
 			
 			return "redirect:./dramaview?drama_num="+qna_viewDTO.getDrama_num();
 		
@@ -429,7 +428,7 @@ return "sss";
 		//selectList
 		@RequestMapping(value="dramaReviewwrite")
 		public ModelAndView selectList2(ListData listData) throws Exception {
-			System.out.println("컨트롤");
+			/*System.out.println("컨트롤");*/
 			ModelAndView mv = null;
 			mv = dramaService.selectList(listData);
 			mv.setViewName("drama/dramaReviewwrite");

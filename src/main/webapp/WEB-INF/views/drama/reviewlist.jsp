@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<title>Insert title here</title>
+<title>Review List</title>
 <link href="../resources/css/drama/reviewlist.css" rel="stylesheet">
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
@@ -17,7 +17,7 @@ $(function(){
 	//후기 전체 보기 클릭시 후기 리스트 출력
 	$("#reviewlist_al").click(function() {
 		
-	window.open("./reviewlist?drama_num=" +${drama_num} ,"후기 전체보기", "width=850 , height=500 , top=200, left=550 , resize=none , location=no, scrollbars=no, menubar=no");
+	window.open("./reviewlist?drama_num=" +${drama_num} ,"후기 전체보기", "width=800 , height=400 , top=200, left=520 , resize=none , location=no, scrollbars=no, menubar=no");
 
 	});
 
@@ -31,6 +31,11 @@ $(function(){
 		$("#kind").val(v);
 		$("#frm").submit();
 	});
+	
+	$("#close").click(function() {
+		window.opener.location.reload();
+		self.close();
+});	
 });
 
 </script>
@@ -100,7 +105,7 @@ $(function(){
 			</table>
 			
 			<c:if test="${!empty review }">
-				<div id="afterview_total">
+				<div id="afterview_total2">
 					<a href="##" id="reviewlist_al">후기 전체보기></a>
 				</div>
 				</c:if>
@@ -119,6 +124,9 @@ $(function(){
 		</c:if>
 		</div>
 	
+	<div id="hidden_btn">
+		<input type="button" value="Close" id="close">
+	</div>	
 
 </body>
 </html>

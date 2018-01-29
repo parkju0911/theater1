@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<title>Insert title here</title>
+<title>Q&A List</title>
 <link href="../resources/css/drama/qnalist.css" rel="stylesheet">
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -18,6 +18,9 @@
 		cursor: pointer;
 	}
 
+body{
+background-color: #fffff8;
+}
 </style>
 <script type="text/javascript">
 	$(function() {
@@ -44,20 +47,22 @@
 			
 			}); 
 		$("#qna_all").click(function() {
-			window.open("./qnalist?drama_num=" +${drama_num} ,"Q&A 전체보기", "width=850 , height=600 , top=100, left=550 , resize=none , location=no, scrollbars=no, menubar=no");
+			window.open("./qnalist?drama_num=" +${drama_num} ,"Q&A 전체보기", "width=850 , height=600 , top=100, left=530 , resize=none , location=no, scrollbars=no, menubar=no");
 
 		})
 	$("#insertbut").click(function() {
 		if(${member eq  null}){
 			alert("로그인 하셔야 등록가능합니다.");
+			self.close();
+			window.opener.location.href="../member/memberLogin";
 			$("#qna_insert").prop("method", "GET");
 			 $("#qna_insert").prop("action", "../member/memberLogin"); 
 		
 	}else {
-			if($("contents").val() == null){
+		var cont = $("#cont").val();
+			if(cont == ""){
 				alert("내용을 작성하여주세요.");	
-				$("#qna_insert").prop("method", "GET");
-				$("#qna_insert").prop("action" , "./qnalist");
+				return false;
 			}else{
 				$("#qna_insert").prop("method", "POST");
 				$("#qna_insert").prop("action" , "./qnawrite");
@@ -65,6 +70,12 @@
 			}
 				}
 	});
+		
+	$("#close").click(function() {
+			self.close();
+		
+	});	
+		
 	});
 </script>
 </head>
@@ -84,7 +95,7 @@
 	
 								<input type="hidden"  name="drama_num" value="${drama_num}" >
 								<input type="hidden" name="id" value="${member.id }">
-								<textarea style="width:530px; height: 70px; border: 1px solid #e6e6e6; font-size: 13px; color:#000;" name="contents"></textarea>
+								<textarea style="width:530px; height: 70px; border: 1px solid #e6e6e6; font-size: 13px; color:#000;" name="contents" id="cont"></textarea>
 										
 								</div>
 							
@@ -187,6 +198,10 @@
 			<li><a href="./qnalist?drama_num=${drama_num}&curPage=${i} " class="paging_move">${i}</a></li>
 		</c:if>
 		</div>
+	
+	<div id="hidden_btn">
+		<input type="button" value="Close" id="close">
+	</div>	
 	
 		</div>
 </body>

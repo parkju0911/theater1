@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Drama View</title>
 <link href="../resources/css/drama/dramaview.css" rel="stylesheet">
 <link href="../resources/css/common/header.css" rel="stylesheet">
 
@@ -41,11 +41,7 @@
 			$("#refund_list").load("./refundlist")
 		});
 		
-		//안내에 환불 규정
-		$("#refund_1").click(function() {
-			
-			$("#refund_list").load("./refundlist")
-		});
+		
 		//후기 전체 보기 클릭시 후기 리스트 출력
 		$("#reviewlist_all").click(function() {
 			window.open("./reviewlist?drama_num=" +${view.drama_num} ,"후기 전체보기", "width=850 , height=600 , top=200, left=550 , resize=none , location=no, scrollbars=no, menubar=no");
@@ -58,21 +54,26 @@
 				$("#section_info").prop("method", "GET");
 				 $("#section_info").prop("action", "../member/memberLogin"); 
 			}else{
-
-		
 				var drama_date = $("#drama_date").val();
 				var drama_time = $("#drama_time").val();
 				var drama_ticket = $("#drama_ticket").val();
-				if(drama_date=='날짜 선택' || drama_time=='시간 선택'||drama_ticket=='매수 설정'){
+				var now = new Date();
+			 	var sysdate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+				var afterdrama = new Date(drama_date);
+				if(sysdate.getTime() > afterdrama.getTime()){
+					alert("종료된 공연입니다. 다른날짜를 선택하여주십시오.")
+					window.reload();
+			
+				}else if(drama_date=='날짜 선택' || drama_time=='시간 선택'||drama_ticket=='매수 설정'){
 					alert("날짜/시간/티켓 장수를 선택하세요.");
 				}else{
 					$("#section_info").prop("action", "./selectSeat");
 					document.frm.submit();
 				}
 
-			}
+			
+		};
 		});
-		
 		var drama_date = '';
 		$('#drama_date').change(function(){
 			if($('#drama_date').val()!='날짜 선택'){
