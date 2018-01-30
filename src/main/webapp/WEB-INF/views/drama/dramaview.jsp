@@ -241,7 +241,7 @@ A:VISITED {
 			</c:if>
 				<c:forEach items="${review }"   var="one"  begin="1" end="1">
 			
-				<div id="review_image"><img alt="" src="${pageContext.request.contextPath}/resources/upload/${file.file_name}" style="width: 250px;height: 150px;"></div>
+				<div id="review_image"><img alt="" src="${pageContext.request.contextPath}/resources/upload/${file.file_name}" style="width: 250px;height: 200px;"></div>
 				<div id="review_text">
 						
 						<div id="review_title">${one.title }</div>
