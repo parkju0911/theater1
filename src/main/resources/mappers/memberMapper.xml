@@ -84,7 +84,7 @@
   		select * from file_table where file_num=#{file_num}
   	</select>
   	
-  	!-- 사업자 등록번호 찾기 -->
+  	<!-- 사업자 등록번호 찾기 -->
   	<select id="searchCompany_num" parameterType="String" resultType="int">
   		select company_num from company_info where id=#{id}
   	</select>
