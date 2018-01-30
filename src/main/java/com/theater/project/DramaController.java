@@ -246,7 +246,7 @@ return "sss";
 						if(check){
 							//중복데이터 X
 							result=cookie.getValue();
-							result=dramaDTO.getDrama_num()+"."+result;
+							result=dramaDTO.getDrama_num()+","+result;
 							Cookie c = new Cookie("title", result);
 							response.addCookie(c);
 						}
@@ -453,7 +453,7 @@ return "sss";
 			for (Cookie cookie : cookies) {
 				cookie.setMaxAge(60*60*24);
 				if(cookie.getName().equals("title")){
-					StringTokenizer strToken = new StringTokenizer(cookie.getValue(), ".");
+					StringTokenizer strToken = new StringTokenizer(cookie.getValue(), ",");
 					List<String> strings = new ArrayList<String>();
 					while(strToken.hasMoreTokens()) {
 						String token = strToken.nextToken();
