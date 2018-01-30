@@ -173,14 +173,14 @@
 }
 #afterview_box_a{
 	width: 830px;
-	height: 26px;
+	height: 40px;
 	margin-left: 30px;
 	font-size: 17px;
 	margin-top: 10px;
 }
 #atfterview_box_b{
 	width:830px;
-	height:40px;
+	height:70px;
 	margin-left: 30px;
 	font-size:17px;
 	border-bottom: 1px solid #f3f3f3;
@@ -485,7 +485,7 @@
 }
 #ticket_review{
 	width: 830px;
-	height: 150px;
+	height: 200px;
 	margin: 0 auto;
 	margin-bottom: 30px;
 	background-color: white;
@@ -502,7 +502,7 @@
 }
 #review_image{
 	width: 250px;
-	height: 150px;
+	height: 200px;
 	float: left;
 }
 #review_text{
